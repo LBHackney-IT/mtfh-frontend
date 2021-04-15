@@ -27,12 +27,15 @@
   },
   "private": true,
   "dependencies": {
-    "core-js": "^3.6.5",
+    "core-js": "3.6.5",
     "document-register-element": "1.13.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "regenerator-runtime": "0.13.7",
-    "tslib": "^2.0.0"
+    "tslib": "2.0.0",
+    "lbh-frontend": "3.3.0",
+    "single-spa": "5.9.2",
+    "single-spa-layout": "1.5.0"
   },
   "devDependencies": {
     "@babel/core": "7.12.13",
@@ -53,6 +56,7 @@
     "@types/node": "14.14.33",
     "@types/react": "17.0.3",
     "@types/react-dom": "17.0.3",
+    "@types/systemjs": "6.1.0",
     "@typescript-eslint/eslint-plugin": "4.19.0",
     "@typescript-eslint/parser": "4.19.0",
     "babel-jest": "26.2.2",
@@ -60,15 +64,20 @@
     "dotenv": "8.2.0",
     "eslint": "7.22.0",
     "eslint-config-prettier": "8.1.0",
+    "eslint-plugin-html": "6.1.2",
     "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-prettier": "3.3.1",
+    "eslint-plugin-unicorn": "29.0.0",
     "eslint-plugin-react": "7.23.1",
     "eslint-plugin-react-hooks": "4.2.0",
     "jest": "26.2.2",
+    "jest-cli": "26.6.3",
     "prettier": "2.2.1",
+    "ts-config-single-spa": "2.0.1",
     "ts-jest": "26.4.0",
     "ts-node": "~9.1.1",
-    "typescript": "~4.1.4"
+    "typescript": "4.2.4"
   }
 }

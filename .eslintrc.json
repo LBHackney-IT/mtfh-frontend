@@ -1,7 +1,23 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "plugins": ["@nrwl/nx", "html"],
+  "settings": {
+    "html/html-extensions": [".html", ".ejs"]
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:unicorn/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
+  ],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -18,13 +34,69 @@
               }
             ]
           }
-        ]
+        ],
+        "unicorn/no-useless-undefined": "off",
+        "unicorn/no-reduce": "off",
+        "unicorn/prefer-query-selector": "off",
+        "unicorn/no-null": "off",
+        "unicorn/prevent-abbreviations": [
+          "error",
+          {
+            "whitelist": {
+              "getServerSideProps": true,
+              "getStaticProps": true
+            },
+            "replacements": {
+              "env": {
+                "environment": false
+              }
+            }
+          }
+        ],
+        "import/order": [
+          "error",
+          {
+            "groups": [
+              ["builtin", "external"],
+              ["parent", "internal", "sibling", "index"]
+            ],
+            "pathGroups": [
+              {
+                "pattern": "@pb/**",
+                "group": "internal"
+              }
+            ],
+            "alphabetize": {
+              "order": "desc"
+            }
+          }
+        ],
+
+        "arrow-parens": ["error", "as-needed"],
+        "no-duplicate-imports": "error",
+        "no-irregular-whitespace": "error",
       }
     },
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "interface",
+            "format": ["PascalCase"],
+            "custom": {
+              "regex": "^I[A-Z]",
+              "match": true
+            }
+          }
+        ],
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/ban-ts-comment": "off"
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

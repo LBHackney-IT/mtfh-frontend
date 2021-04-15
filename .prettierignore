@@ -2,3 +2,16 @@
 
 /dist
 /coverage
+yarn.lock
+yarn-error.log
+LICENSE
+*.ejs
+*.tf
+.idea/
+.nvmrc
+.gitattributes
+.editorconfig
+.circleci/
+.yarn/
+.yarnrc
+node_modules/
