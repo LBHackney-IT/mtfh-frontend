@@ -22,7 +22,10 @@
     "lint": "lerna run lint --no-private --stream",
     "storybook": "start-storybook -p 6006 --ci",
     "build-storybook": "build-storybook",
-    "postinstall": "husky install"
+    "prestart": "yarn && yarn bootstrap",
+    "bootstrap": "lerna bootstrap --use-workspaces",
+    "postinstall": "husky install",
+    "build": "lerna run build --ignore @lbh-mtfh/test-utils --no-private --stream"
   },
   "repository": {
     "type": "git",
