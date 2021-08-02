@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it passes a11y 1`] = `
+<div>
+  <div
+    class="govukFormGroup lbhFormGroup"
+    id="test"
+  >
+    <label
+      class="govukLabel lbhLabel"
+      for="test-field"
+    >
+      DateInput Test
+      
+    </label>
+    <div
+      class="govukDateInput lbhDateInput"
+      name="test"
+    >
+      <div
+        class="govukDateInputItem"
+      >
+        <label
+          class="govukLabel lbhLabel"
+          for="date-input-day"
+        >
+          Day
+        </label>
+        <input
+          aria-valuemax="31"
+          aria-valuemin="1"
+          class="govukInput lbhInput govukDateInputInput govukInputWidth2"
+          id="date-input-day"
+          name="day"
+          role="spinbutton"
+          type="number"
+          value=""
+        />
+      </div>
+      <div
+        class="govukDateInputItem"
+      >
+        <label
+          class="govukLabel lbhLabel"
+          for="date-input-month"
+        >
+          Month
+        </label>
+        <input
+          aria-valuemax="12"
+          aria-valuemin="1"
+          class="govukInput lbhInput govukDateInputInput govukInputWidth2"
+          id="date-input-month"
+          name="month"
+          role="spinbutton"
+          type="number"
+          value=""
+        />
+      </div>
+      <div
+        class="govukDateInputItem"
+      >
+        <label
+          class="govukLabel lbhLabel"
+          for="date-input-year"
+        >
+          Year
+        </label>
+        <input
+          class="govukInput lbhInput govukDateInputInput govukInputWidth4"
+          id="date-input-year"
+          name="year"
+          role="spinbutton"
+          type="number"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`it renders correctly 1`] = `
+<div>
+  <div
+    class="govukDateInput lbhDateInput"
+  >
+    <div
+      class="govukDateInputItem"
+    >
+      <label
+        class="govukLabel lbhLabel"
+        for="date-input-day"
+      >
+        Day
+      </label>
+      <input
+        aria-valuemax="31"
+        aria-valuemin="1"
+        class="govukInput lbhInput govukDateInputInput govukInputWidth2"
+        id="date-input-day"
+        name="day"
+        role="spinbutton"
+        type="number"
+        value=""
+      />
+    </div>
+    <div
+      class="govukDateInputItem"
+    >
+      <label
+        class="govukLabel lbhLabel"
+        for="date-input-month"
+      >
+        Month
+      </label>
+      <input
+        aria-valuemax="12"
+        aria-valuemin="1"
+        class="govukInput lbhInput govukDateInputInput govukInputWidth2"
+        id="date-input-month"
+        name="month"
+        role="spinbutton"
+        type="number"
+        value=""
+      />
+    </div>
+    <div
+      class="govukDateInputItem"
+    >
+      <label
+        class="govukLabel lbhLabel"
+        for="date-input-year"
+      >
+        Year
+      </label>
+      <input
+        class="govukInput lbhInput govukDateInputInput govukInputWidth4"
+        id="date-input-year"
+        name="year"
+        role="spinbutton"
+        type="number"
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it adds an astreix to the label if required 1`] = `
+<div>
+  <div
+    class="govukFormGroup lbhFormGroup"
+    id="test"
+  >
+    <label
+      class="govukLabel lbhLabel"
+      for="test-field"
+    >
+      Test Label
+      <sup
+        aria-hidden="true"
+      >
+        *
+      </sup>
+    </label>
+    <input
+      class="govukInput lbhInput"
+      id="test-field"
+      name="test"
+      placeholder="Test Value"
+      required=""
+    />
+  </div>
+</div>
+`;

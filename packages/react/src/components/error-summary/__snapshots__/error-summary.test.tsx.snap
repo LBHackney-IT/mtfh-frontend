@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it creates a list of the children 1`] = `
+<div>
+  <div
+    aria-labelledby="error"
+    class="govukErrorSummary lbhErrorSummary"
+    role="alert"
+  >
+    <h2
+      class="govukErrorSummaryTitle"
+      id="error"
+    >
+      Something went wrong
+    </h2>
+    <div
+      class="govukErrorSummaryBody"
+    >
+      <ul
+        class="lbhList govukErrorSummaryList"
+      >
+        <li>
+          <a
+            href="#test"
+          >
+            Test
+          </a>
+        </li>
+        <li>
+          <a
+            href="#next"
+          >
+            Next
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

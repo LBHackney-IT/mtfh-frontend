@@ -1,0 +1,38 @@
+{
+  "name": "@lbh-mtfh/test-utils",
+  "version": "1.0.0",
+  "description": "Test utilities for LBH Modern Tools for Housing",
+  "author": "Gareth Cozens <gareth.cozens@amido.com>",
+  "homepage": "https://github.com/LBHackney-IT/mtfh-frontend",
+  "license": "MIT",
+  "main": "index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://cloudratha@github.com/LBHackney-IT/mtfh-frontend.git"
+  },
+  "scripts": {},
+  "bugs": {
+    "url": "https://github.com/LBHackney-IT/mtfh-frontend/issues"
+  },
+  "dependencies": {
+    "@lbh-mtfh/system": "^1.0.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/react-hooks": "^7.0.1",
+    "@testing-library/user-event": "^13.1.9",
+    "@types/jest-axe": "^3.5.2",
+    "jest-axe": "^5.0.1",
+    "jest-matchmedia-mock": "^1.1.0",
+    "msw": "^0.30.1",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/history": "^4.7.9",
+    "@types/react-router-dom": "5.1.7",
+    "react": "^17.0.2"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-router-dom": "^5.2.0"
+  }
+}

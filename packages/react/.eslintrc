@@ -1,0 +1,22 @@
+{
+  "extends": "@lbh-mtfh/eslint-config",
+  "parserOptions": {
+    "project": "tsconfig.json"
+  },
+  "rules": {
+    "prefer-arrow-callback": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/*/rollup.config.js"]
+      }
+    ],
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "aspects": ["invalidHref"]
+      }
+    ]
+  }
+}

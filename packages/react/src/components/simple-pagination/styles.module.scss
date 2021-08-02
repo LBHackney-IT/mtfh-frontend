@@ -1,0 +1,9 @@
+@import "~lbh-frontend/lbh/base";
+
+.lbh-simple-pagination__link {
+  background: transparent;
+  border: none;
+  text-align: left;
+}
+
+@import "~lbh-frontend/lbh/components/lbh-simple-pagination/simple-pagination";

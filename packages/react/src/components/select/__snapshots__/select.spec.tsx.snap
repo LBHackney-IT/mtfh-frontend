@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it passes a11y 1`] = `
+<div>
+  <div
+    class="govukFormGroup lbhFormGroup"
+    id="test"
+  >
+    <label
+      class="govukLabel lbhLabel"
+      for="test-field"
+    >
+      Select Test
+      
+    </label>
+    <select
+      class="govukSelect lbhSelect"
+      id="test-field"
+      name="test"
+    >
+      <option
+        value="name"
+      >
+        Name
+      </option>
+    </select>
+  </div>
+</div>
+`;
+
+exports[`it renders correctly 1`] = `
+<div>
+  <select
+    class="govukSelect lbhSelect"
+  />
+</div>
+`;
+
+exports[`it renders correctly with error 1`] = `
+<div>
+  <select
+    class="govukSelect lbhSelect govukSelectError"
+  />
+</div>
+`;

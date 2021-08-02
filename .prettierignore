@@ -1,17 +1,5 @@
-# Add files here to ignore them from prettier formatting
-
-/dist
-/coverage
-yarn.lock
-yarn-error.log
-LICENSE
-*.ejs
-*.tf
-.idea/
-.nvmrc
-.gitattributes
-.editorconfig
-.circleci/
-.yarn/
-.yarnrc
-node_modules/
+dist
+node_modules
+coverage
+.next
+build

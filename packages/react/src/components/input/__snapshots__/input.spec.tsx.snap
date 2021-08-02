@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it passes a11y 1`] = `
+<div>
+  <div
+    class="govukFormGroup lbhFormGroup"
+    id="test"
+  >
+    <label
+      class="govukLabel lbhLabel"
+      for="test-field"
+    >
+      Input Test
+      
+    </label>
+    <input
+      class="govukInput lbhInput"
+      id="test-field"
+      name="test"
+    />
+  </div>
+</div>
+`;
+
+exports[`it renders correctly 1`] = `
+<div>
+  <input
+    class="govukInput lbhInput"
+  />
+</div>
+`;
+
+exports[`it renders correctly with an error 1`] = `
+<div>
+  <input
+    class="govukInput lbhInput govukInputError"
+  />
+</div>
+`;

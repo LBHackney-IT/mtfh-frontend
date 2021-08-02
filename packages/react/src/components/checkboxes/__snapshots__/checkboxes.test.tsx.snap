@@ -1,0 +1,220 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it passes a11y on checkbox group 1`] = `
+<div>
+  <div
+    class="govukFormGroup lbhFormGroup"
+    id="test"
+  >
+    <label
+      class="govukLabel lbhLabel"
+      for="test-field"
+    >
+      Checkbox Test
+      
+    </label>
+    <div
+      class="govukCheckboxes lbhCheckboxes"
+      id="test-field"
+    >
+      <div
+        class="govukCheckboxesItem"
+      >
+        <input
+          class="govukCheckboxesInput"
+          id="checkbox-1"
+          name="test-1"
+          type="checkbox"
+        />
+        <label
+          class="govukLabel govukCheckboxesLabel"
+          for="checkbox-1"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="govukCheckboxesItem"
+      >
+        <input
+          class="govukCheckboxesInput"
+          id="checkbox-2"
+          name="test-2"
+          type="checkbox"
+        />
+        <label
+          class="govukLabel govukCheckboxesLabel"
+          for="checkbox-2"
+        >
+          Label2
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`it passes a11y on single checkbox 1`] = `
+<div>
+  <div
+    class="govukFormGroup lbhFormGroup"
+    id="test"
+  >
+    <label
+      class="govukLabel lbhLabel"
+      for="test-field"
+    >
+      Checkbox Test
+      
+    </label>
+    <div
+      class="govukCheckboxesItem"
+    >
+      <input
+        class="govukCheckboxesInput"
+        id="radio"
+        name="test"
+        type="checkbox"
+      />
+      <label
+        class="govukLabel govukCheckboxesLabel"
+        for="radio"
+      >
+        Label
+      </label>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`it renders a checkbox 1`] = `
+<div>
+  <div
+    class="govukCheckboxesItem"
+  >
+    <input
+      class="govukCheckboxesInput"
+      id="test"
+      type="checkbox"
+    />
+    <label
+      class="govukLabel govukCheckboxesLabel"
+      for="test"
+    >
+      Label
+    </label>
+  </div>
+</div>
+`;
+
+exports[`it renders a checkbox with a hint 1`] = `
+<div>
+  <div
+    class="govukCheckboxesItem"
+  >
+    <input
+      aria-describedby="test-hint"
+      class="govukCheckboxesInput"
+      id="test"
+      type="checkbox"
+    />
+    <label
+      class="govukLabel govukCheckboxesLabel"
+      for="test"
+    >
+      Label
+    </label>
+    <span
+      class="govukHint govukCheckboxesHint lbhHint"
+      id="test-hint"
+    >
+      A short description
+    </span>
+  </div>
+</div>
+`;
+
+exports[`it renders a group of checkboxes 1`] = `
+<div>
+  <div
+    class="govukCheckboxes lbhCheckboxes"
+  >
+    <div
+      class="govukCheckboxesItem"
+    >
+      <input
+        class="govukCheckboxesInput"
+        id="test"
+        type="checkbox"
+      />
+      <label
+        class="govukLabel govukCheckboxesLabel"
+        for="test"
+      >
+        Label
+      </label>
+    </div>
+    <div
+      class="govukCheckboxesItem"
+    >
+      <input
+        class="govukCheckboxesInput"
+        id="test2"
+        type="checkbox"
+      />
+      <label
+        class="govukLabel govukCheckboxesLabel"
+        for="test2"
+      >
+        Label2
+      </label>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`it renders a group of checkboxes with a conditional 1`] = `
+<div>
+  <div
+    class="govukCheckboxes govukCheckboxesConditionals lbhCheckboxes"
+  >
+    <div
+      class="govukCheckboxesItem"
+    >
+      <input
+        class="govukCheckboxesInput"
+        data-aria-controls="conditional"
+        id="test"
+        type="checkbox"
+      />
+      <label
+        class="govukLabel govukCheckboxesLabel"
+        for="test"
+      >
+        Label
+      </label>
+    </div>
+    <div
+      class="govukCheckboxesConditional govuk-checkboxes__conditional--hidden"
+      id="conditional"
+    >
+      Hello
+    </div>
+    <div
+      class="govukCheckboxesItem"
+    >
+      <input
+        class="govukCheckboxesInput"
+        id="test2"
+        type="checkbox"
+      />
+      <label
+        class="govukLabel govukCheckboxesLabel"
+        for="test2"
+      >
+        Label2
+      </label>
+    </div>
+  </div>
+</div>
+`;

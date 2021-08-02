@@ -1,0 +1,288 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders correctly 1`] = `
+<div>
+  <dl
+    class="govukSummaryList govukSummaryListNoBorder lbhSummaryList"
+  >
+    <div
+      class="govukSummaryListRow"
+    >
+      <dt
+        class="govukSummaryListKey"
+      >
+        Person
+      </dt>
+      <dd
+        class="govukSummaryListValue"
+      >
+        Test
+      </dd>
+    </div>
+  </dl>
+</div>
+`;
+
+exports[`it renders correctly with columns 1`] = `
+<div>
+  <dl
+    class="govukSummaryList govukSummaryListNoBorder lbhSummaryList"
+  >
+    <div
+      class="govukSummaryListRow"
+    >
+      <dt
+        class="govukSummaryListKey govuk-!-width-one-half"
+      >
+        First Name
+      </dt>
+      <dd
+        class="govukSummaryListValue govuk-!-width-one-quarter"
+      >
+        John
+      </dd>
+      <dd
+        class="govukSummaryListActions govuk-!-width-one-half"
+      >
+        <ul
+          class="govukSummaryListActionsList"
+        >
+          <li
+            class="govukSummaryListActionsListItem"
+          >
+            <a
+              class="govukLink lbhLink lbhLinkNoVisitedState"
+              href="/edit"
+            >
+              Edit
+            </a>
+          </li>
+          <li
+            class="govukSummaryListActionsListItem"
+          >
+            <a
+              class="govukLink lbhLink lbhLinkNoVisitedState"
+              href="/remove"
+            >
+              Remove
+            </a>
+          </li>
+        </ul>
+      </dd>
+    </div>
+    <div
+      class="govukSummaryListRow"
+    >
+      <dt
+        class="govukSummaryListKey"
+      >
+        Last Name
+      </dt>
+      <dd
+        class="govukSummaryListValue"
+      >
+        Smith
+      </dd>
+    </div>
+    <div
+      class="govukSummaryListRow"
+    >
+      <dt
+        class="govukSummaryListKey"
+      >
+        Gender
+      </dt>
+      <dd
+        class="govukSummaryListValue"
+      >
+        M
+      </dd>
+    </div>
+  </dl>
+</div>
+`;
+
+exports[`it renders correctly with fallback 1`] = `
+<div>
+  <dl
+    class="govukSummaryList govukSummaryListNoBorder lbhSummaryList"
+  >
+    <div
+      class="govukSummaryListRow"
+    >
+      <dt
+        class="govukSummaryListKey"
+      >
+        Email
+      </dt>
+      <dd
+        class="govukSummaryListValue"
+      >
+        N/A
+      </dd>
+    </div>
+    <div
+      class="govukSummaryListRow"
+    >
+      <dt
+        class="govukSummaryListKey"
+      >
+        Mobile
+      </dt>
+      <dd
+        class="govukSummaryListValue"
+      >
+        N/A
+      </dd>
+    </div>
+    <div
+      class="govukSummaryListRow"
+    >
+      <dt
+        class="govukSummaryListKey"
+      >
+        Phone
+      </dt>
+      <dd
+        class="govukSummaryListValue"
+      >
+        N/A
+      </dd>
+    </div>
+    <div
+      class="govukSummaryListRow"
+    >
+      <dt
+        class="govukSummaryListKey"
+      >
+        Address
+      </dt>
+      <dd
+        class="govukSummaryListValue"
+      >
+        N/A
+      </dd>
+    </div>
+  </dl>
+</div>
+`;
+
+exports[`it renders correctly with multiple action 1`] = `
+<div>
+  <dl
+    class="govukSummaryList govukSummaryListNoBorder lbhSummaryList"
+  >
+    <div
+      class="govukSummaryListRow"
+    >
+      <dt
+        class="govukSummaryListKey"
+      >
+        First Name
+      </dt>
+      <dd
+        class="govukSummaryListValue"
+      >
+        John
+      </dd>
+      <dd
+        class="govukSummaryListActions"
+      >
+        <ul
+          class="govukSummaryListActionsList"
+        >
+          <li
+            class="govukSummaryListActionsListItem"
+          >
+            <a
+              class="govukLink lbhLink lbhLinkNoVisitedState"
+              href="/edit"
+            >
+              Edit
+            </a>
+          </li>
+          <li
+            class="govukSummaryListActionsListItem"
+          >
+            <a
+              class="govukLink lbhLink lbhLinkNoVisitedState"
+              href="/remove"
+            >
+              Remove
+            </a>
+          </li>
+        </ul>
+      </dd>
+    </div>
+    <div
+      class="govukSummaryListRow"
+    >
+      <dt
+        class="govukSummaryListKey"
+      >
+        Last Name
+      </dt>
+      <dd
+        class="govukSummaryListValue"
+      >
+        Smith
+      </dd>
+    </div>
+  </dl>
+</div>
+`;
+
+exports[`it renders correctly with single action 1`] = `
+<div>
+  <dl
+    class="govukSummaryList govukSummaryListNoBorder lbhSummaryList"
+  >
+    <div
+      class="govukSummaryListRow"
+    >
+      <dt
+        class="govukSummaryListKey"
+      >
+        First Name
+      </dt>
+      <dd
+        class="govukSummaryListValue"
+      >
+        John
+      </dd>
+      <dd
+        class="govukSummaryListActions"
+      >
+        <ul
+          class="govukSummaryListActionsList"
+        >
+          <li
+            class="govukSummaryListActionsListItem"
+          >
+            <a
+              class="govukLink lbhLink lbhLinkNoVisitedState"
+              href="/"
+            >
+              Edit
+            </a>
+          </li>
+        </ul>
+      </dd>
+    </div>
+    <div
+      class="govukSummaryListRow"
+    >
+      <dt
+        class="govukSummaryListKey"
+      >
+        Last Name
+      </dt>
+      <dd
+        class="govukSummaryListValue"
+      >
+        Smith
+      </dd>
+    </div>
+  </dl>
+</div>
+`;

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders correctly 1`] = `
+<div>
+  <button
+    class="govukButton lbhButton"
+    type="button"
+  >
+    Test Button
+  </button>
+</div>
+`;
+
+exports[`it renders the correct variant 1`] = `
+<div>
+  <button
+    class="govukButton lbhButton govukButtonSecondary lbhButtonSecondary"
+    type="button"
+  >
+    Test Link
+  </button>
+</div>
+`;
+
+exports[`it shows a loading state 1`] = `
+<div>
+  <button
+    aria-disabled="true"
+    class="govukButton lbhButton"
+    disabled=""
+    type="button"
+  >
+    <span
+      class="buttonLoadingIndicator"
+    >
+      <span>
+        Loading...
+      </span>
+    </span>
+    Test Button
+  </button>
+</div>
+`;

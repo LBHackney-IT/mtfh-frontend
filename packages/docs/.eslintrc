@@ -1,0 +1,6 @@
+{
+  "extends": "@lbh-mtfh/eslint-config",
+  "parserOptions": {
+    "project": "tsconfig.json"
+  }
+}
