@@ -1,0 +1,6 @@
+@import "~lbh-frontend/lbh/base";
+@import "~govuk-frontend/govuk/helpers/visually-hidden";
+
+.visuallyHidden {
+  @include govuk-visually-hidden;
+}

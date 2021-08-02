@@ -1,0 +1,264 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it passes a11y on radio group 1`] = `
+<div>
+  <div
+    class="govukFormGroup lbhFormGroup"
+    id="test"
+  >
+    <label
+      class="govukLabel lbhLabel"
+      for="test-field"
+    >
+      Radios Test
+      
+    </label>
+    <div
+      class="lbhRadios"
+      id="test-field"
+    >
+      <div
+        class="govukRadiosItem"
+      >
+        <input
+          class="govukRadiosInput"
+          id="radio-1"
+          name="test"
+          type="radio"
+        />
+        <label
+          class="govukLabel lbhLabel govukRadiosLabel"
+          for="radio-1"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="govukRadiosItem"
+      >
+        <input
+          class="govukRadiosInput"
+          id="radio-2"
+          name="test"
+          type="radio"
+        />
+        <label
+          class="govukLabel lbhLabel govukRadiosLabel"
+          for="radio-2"
+        >
+          Label2
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`it passes a11y on single radio 1`] = `
+<div>
+  <div
+    class="govukFormGroup lbhFormGroup"
+    id="test"
+  >
+    <label
+      class="govukLabel lbhLabel"
+      for="test-field"
+    >
+      Radio Test
+      
+    </label>
+    <div
+      class="govukRadiosItem"
+    >
+      <input
+        class="govukRadiosInput"
+        id="radio"
+        name="test"
+        type="radio"
+      />
+      <label
+        class="govukLabel lbhLabel govukRadiosLabel"
+        for="radio"
+      >
+        Label
+      </label>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`it renders a group of radios 1`] = `
+<div>
+  <div
+    class="lbhRadios"
+  >
+    <div
+      class="govukRadiosItem"
+    >
+      <input
+        class="govukRadiosInput"
+        id="test"
+        type="radio"
+      />
+      <label
+        class="govukLabel lbhLabel govukRadiosLabel"
+        for="test"
+      >
+        Label
+      </label>
+    </div>
+    <div
+      class="govukRadiosItem"
+    >
+      <input
+        class="govukRadiosInput"
+        id="test2"
+        type="radio"
+      />
+      <label
+        class="govukLabel lbhLabel govukRadiosLabel"
+        for="test2"
+      >
+        Label2
+      </label>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`it renders a group of radios with a conditional 1`] = `
+<div>
+  <div
+    class="govukRadiosConditionals lbhRadios"
+  >
+    <div
+      class="govukRadiosItem"
+    >
+      <input
+        class="govukRadiosInput"
+        data-aria-controls="conditional"
+        id="test"
+        type="radio"
+      />
+      <label
+        class="govukLabel lbhLabel govukRadiosLabel"
+        for="test"
+      >
+        Label
+      </label>
+    </div>
+    <div
+      class="govukRadiosConditional govuk-radios__conditional govuk-radios__conditional--hidden"
+      id="conditional"
+    >
+      Hello
+    </div>
+    <div
+      class="govukRadiosItem"
+    >
+      <input
+        class="govukRadiosInput"
+        id="test2"
+        type="radio"
+      />
+      <label
+        class="govukLabel lbhLabel govukRadiosLabel"
+        for="test2"
+      >
+        Label2
+      </label>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`it renders a group of radios with a divider 1`] = `
+<div>
+  <div
+    class="lbhRadios"
+  >
+    <div
+      class="govukRadiosItem"
+    >
+      <input
+        class="govukRadiosInput"
+        id="test"
+        type="radio"
+      />
+      <label
+        class="govukLabel lbhLabel govukRadiosLabel"
+        for="test"
+      >
+        Label
+      </label>
+    </div>
+    <div
+      class="govukRadiosDivider"
+    >
+      Or
+    </div>
+    <div
+      class="govukRadiosItem"
+    >
+      <input
+        class="govukRadiosInput"
+        id="test2"
+        type="radio"
+      />
+      <label
+        class="govukLabel lbhLabel govukRadiosLabel"
+        for="test2"
+      >
+        Label2
+      </label>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`it renders a radio 1`] = `
+<div>
+  <div
+    class="govukRadiosItem"
+  >
+    <input
+      class="govukRadiosInput"
+      id="test"
+      type="radio"
+    />
+    <label
+      class="govukLabel lbhLabel govukRadiosLabel"
+      for="test"
+    >
+      Label
+    </label>
+  </div>
+</div>
+`;
+
+exports[`it renders a radio with a hint 1`] = `
+<div>
+  <div
+    class="govukRadiosItem"
+  >
+    <input
+      aria-describedby="test-hint"
+      class="govukRadiosInput"
+      id="test"
+      type="radio"
+    />
+    <label
+      class="govukLabel lbhLabel govukRadiosLabel"
+      for="test"
+    >
+      Label
+    </label>
+    <span
+      class="govukHint lbhHint govukRadiosHint"
+      id="test-hint"
+    >
+      A short description
+    </span>
+  </div>
+</div>
+`;

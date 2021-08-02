@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it passes a11y 1`] = `
+<div>
+  <div
+    class="govukFormGroup lbhFormGroup"
+    id="test"
+  >
+    <label
+      class="govukLabel lbhLabel"
+      for="test-field"
+    >
+      TextArea Test
+      
+    </label>
+    <textarea
+      class="govukTextarea lbhTextarea govukCharacterCount lbhCharacterCount"
+      id="test-field"
+      name="test"
+    />
+  </div>
+</div>
+`;
+
+exports[`it renders correctly 1`] = `
+<div>
+  <textarea
+    class="govukTextarea lbhTextarea govukCharacterCount lbhCharacterCount"
+  />
+</div>
+`;

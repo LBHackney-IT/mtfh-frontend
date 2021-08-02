@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["src", "node_modules/@types/lbh-frontend/index.d.ts"],
+  "exclude": ["dist"],
+  "compilerOptions": {
+    "declarationDir": "."
+  }
+}

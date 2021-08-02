@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders a back link 1`] = `
+<div>
+  <a
+    class="govukBackLink lbhBackLink lbhLinkNoVisitedState"
+    href="http://localhost"
+  >
+    Test Button
+  </a>
+</div>
+`;
+
+exports[`it renders a variant 1`] = `
+<div>
+  <a
+    class="govukLink lbhLink lbh-link--muted"
+    href="http://localhost"
+  >
+    Test Button
+  </a>
+</div>
+`;
+
+exports[`it renders correctly 1`] = `
+<div>
+  <a
+    class="govukLink lbhLink lbhLinkNoVisitedState"
+    href="http://localhost"
+  >
+    Test Button
+  </a>
+</div>
+`;
+
+exports[`it sets the correct attributes on isExternal 1`] = `
+<div>
+  <a
+    class="govukLink lbhLink"
+    href="http://localhost"
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    Test Button
+  </a>
+</div>
+`;

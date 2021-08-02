@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it applies an error 1`] = `
+<div>
+  <fieldset
+    class="govukFieldset lbhFieldset fieldsetHasError"
+  >
+    <legend
+      class="govukFieldsetLegend govukFieldsetLegendL"
+    >
+      heading
+      <span
+        class="visuallyHidden fieldsetError"
+      >
+        This is an error
+      </span>
+    </legend>
+    <div
+      class="fieldsetContent"
+    >
+      <span
+        aria-hidden="true"
+        class="govukErrorMessage lbhErrorMessage"
+      >
+        <span
+          class="visuallyHidden"
+        >
+          Error
+          :
+        </span>
+        This is an error
+      </span>
+      <div
+        class="govukFormGroup lbhFormGroup"
+        id="test"
+      >
+        <label
+          class="govukLabel lbhLabel"
+          for="test-field"
+        >
+          Test
+          
+        </label>
+        <input
+          class="govukInput lbhInput"
+          id="test-field"
+          name="test"
+        />
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`it applies the correct variant styling 1`] = `
+<div>
+  <fieldset
+    class="govukFieldset lbhFieldset"
+  >
+    <legend
+      class="govukFieldsetLegend govukFieldsetLegendL"
+    >
+      <h1
+        class="govukFieldsetHeading"
+      >
+        Heading
+      </h1>
+    </legend>
+    <div
+      class="fieldsetContent"
+    >
+      <div
+        class="govukFormGroup lbhFormGroup"
+        id="test"
+      >
+        <label
+          class="govukLabel lbhLabel"
+          for="test-field"
+        >
+          Test
+          
+        </label>
+        <input
+          class="govukInput lbhInput"
+          id="test-field"
+          name="test"
+        />
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`it renders correctly 1`] = `
+<div>
+  <fieldset
+    class="govukFieldset lbhFieldset"
+  >
+    <legend
+      class="govukFieldsetLegend govukFieldsetLegendM"
+    >
+      Group name
+    </legend>
+    <div
+      class="fieldsetContent"
+    >
+      <div
+        class="govukFormGroup lbhFormGroup"
+        id="test"
+      >
+        <label
+          class="govukLabel lbhLabel"
+          for="test-field"
+        >
+          Test
+          
+        </label>
+        <input
+          class="govukInput lbhInput"
+          id="test-field"
+          name="test"
+        />
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`it renders correctly with an h tag 1`] = `
+<div>
+  <fieldset
+    class="govukFieldset lbhFieldset"
+  >
+    <legend
+      class="govukFieldsetLegend govukFieldsetLegendM"
+    >
+      <h1
+        class="govukFieldsetHeading"
+      >
+        Heading
+      </h1>
+    </legend>
+    <div
+      class="fieldsetContent"
+    >
+      <div
+        class="govukFormGroup lbhFormGroup"
+        id="test"
+      >
+        <label
+          class="govukLabel lbhLabel"
+          for="test-field"
+        >
+          Test
+          
+        </label>
+        <input
+          class="govukInput lbhInput"
+          id="test-field"
+          name="test"
+        />
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;

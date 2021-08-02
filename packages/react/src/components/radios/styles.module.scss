@@ -1,0 +1,12 @@
+@import "~lbh-frontend/lbh/base";
+@import "~lbh-frontend/lbh/components/lbh-radios/radios";
+
+.lbh-radios__conditional {
+  composes: govuk-radios__conditional;
+}
+
+:global {
+  .govuk-radios__conditional--hidden {
+    display: none;
+  }
+}

@@ -1,0 +1,8 @@
+@import "~lbh-frontend/lbh/base";
+@import "~govuk-frontend/govuk/core/links";
+@import "~lbh-frontend/lbh/core/links";
+@import "~lbh-frontend/lbh/components/lbh-back-link/back-link";
+
+.lbh-link--no-underline {
+  composes: govuk-link--no-underline;
+}

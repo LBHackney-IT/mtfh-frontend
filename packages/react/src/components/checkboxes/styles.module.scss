@@ -1,0 +1,8 @@
+@import "~lbh-frontend/lbh/base";
+@import "~lbh-frontend/lbh/components/lbh-checkboxes/checkboxes";
+
+.lbh-checkboxes *,
+.govuk-checkboxes__item * {
+  @include lbh-font;
+  margin: 0;
+}

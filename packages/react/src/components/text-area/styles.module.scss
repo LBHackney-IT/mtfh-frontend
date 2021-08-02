@@ -1,0 +1,7 @@
+@import "~lbh-frontend/lbh/base";
+@import "~lbh-frontend/lbh/components/lbh-textarea/textarea";
+@import "~lbh-frontend/lbh/components/lbh-character-count/character-count";
+
+label + .govuk-character-count {
+  margin-top: 0;
+}

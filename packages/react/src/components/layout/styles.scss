@@ -1,0 +1,30 @@
+@import '~lbh-frontend/lbh/base';
+@import '~govuk-frontend/govuk/helpers/media-queries';
+
+.mtfh-layout {
+  @include govuk-media-query($from: desktop) {
+    &__container {
+      display: grid;
+      grid-row-gap: 0;
+      grid-column-gap: 30px;
+      grid-template-rows: 1fr;
+      grid-template-columns: 310px 1fr;
+    }
+
+    &--narrow .mtfh-layout__container {
+      grid-template-columns: 1fr;
+    }
+
+    &__aside {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+
+    &__main {
+      margin-top: 0;
+
+      .mtfh-layout:not(.mtfh-layout--narrow) & {
+        grid-area: 1 / 2 / 2 / 3;
+      }
+    }
+  }
+}

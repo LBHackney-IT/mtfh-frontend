@@ -1,0 +1,226 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders control as buttons 1`] = `
+<div>
+  <nav
+    class="lbhPagination"
+  >
+    <ul
+      class="lbhPaginationList"
+    >
+      <li
+        class="lbhPaginationItem"
+      >
+        <a
+          class="lbhPaginationLink"
+          href="/2"
+        >
+          <span
+            aria-hidden="true"
+            role="presentation"
+          >
+            «
+             
+          </span>
+          Previous
+        </a>
+      </li>
+      <li
+        class="lbhPaginationItem"
+      >
+        <button
+          class="lbhPaginationLink"
+        >
+          1
+        </button>
+      </li>
+      <li
+        class="lbhPaginationItem"
+      >
+        <a
+          class="lbhPaginationLink lbhPaginationLinkNext"
+          href="/4"
+        >
+          Next
+          <span
+            aria-hidden="true"
+            role="presentation"
+          >
+             
+            »
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;
+
+exports[`it renders correctly 1`] = `
+<div>
+  <nav
+    class="lbhPagination"
+  >
+    <div
+      class="lbhPaginationSummary"
+    >
+      Showing 101—150 of 246 results
+    </div>
+    <ul
+      class="lbhPaginationList"
+    >
+      <li
+        class="lbhPaginationItem"
+      >
+        <a
+          class="lbhPaginationLink"
+          href="/2"
+        >
+          <span
+            aria-hidden="true"
+            role="presentation"
+          >
+            «
+             
+          </span>
+          Previous
+        </a>
+      </li>
+      <li
+        class="lbhPaginationItem"
+      >
+        <a
+          class="lbhPaginationLink"
+          href="/1"
+        >
+          1
+        </a>
+      </li>
+      <li
+        class="lbhPaginationItem"
+      >
+        <a
+          class="lbhPaginationLink"
+          href="/2"
+        >
+          2
+        </a>
+      </li>
+      <li
+        class="lbhPaginationItem"
+      >
+        <a
+          class="lbhPaginationLink lbhPaginationLinkCurrent"
+          href="/3"
+        >
+          3
+        </a>
+      </li>
+      <li
+        class="lbhPaginationItem"
+      >
+        <a
+          class="lbhPaginationLink"
+          href="/4"
+        >
+          4
+        </a>
+      </li>
+      <li
+        class="lbhPaginationItem"
+      >
+        <a
+          class="lbhPaginationLink"
+          href="/5"
+        >
+          5
+        </a>
+      </li>
+      <li
+        class="lbhPaginationItem"
+      >
+        <a
+          class="lbhPaginationLink lbhPaginationLinkNext"
+          href="/4"
+        >
+          Next
+          <span
+            aria-hidden="true"
+            role="presentation"
+          >
+             
+            »
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;
+
+exports[`it renders without a summary 1`] = `
+<div>
+  <nav
+    class="lbhPagination"
+  >
+    <ul
+      class="lbhPaginationList"
+    >
+      <li
+        class="lbhPaginationItem"
+      >
+        <a
+          class="lbhPaginationLink"
+          href="/2"
+        >
+          <span
+            aria-hidden="true"
+            role="presentation"
+          >
+            «
+             
+          </span>
+          Previous
+        </a>
+      </li>
+      <li
+        class="lbhPaginationItem"
+      >
+        <a
+          class="lbhPaginationLink"
+          href="/1"
+        >
+          1
+        </a>
+      </li>
+      <li
+        class="lbhPaginationItem"
+      >
+        <a
+          class="lbhPaginationLink"
+          href="/2"
+        >
+          2
+        </a>
+      </li>
+      <li
+        class="lbhPaginationItem"
+      >
+        <a
+          class="lbhPaginationLink lbhPaginationLinkNext"
+          href="/4"
+        >
+          Next
+          <span
+            aria-hidden="true"
+            role="presentation"
+          >
+             
+            »
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;

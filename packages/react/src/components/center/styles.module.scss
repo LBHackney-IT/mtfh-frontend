@@ -1,0 +1,11 @@
+.center {
+  display: flex;
+
+  &--vertical {
+    align-items: center;
+  }
+
+  &--horizontal {
+    justify-content: center;
+  }
+}

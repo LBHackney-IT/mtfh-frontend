@@ -1,0 +1,24 @@
+@import "~lbh-frontend/lbh/base";
+@import "~lbh-frontend/lbh/components/lbh-accordion/accordion";
+@import "~govuk-frontend/govuk/helpers/visually-hidden";
+
+.visually-hidden {
+  .govuk-accordion__open-all {
+    @include govuk-visually-hidden-focusable;
+  }
+}
+
+.govuk-accordion__section[data-state="open"] {
+  .govuk-accordion__section-content {
+    display: block;
+  }
+  .govuk-accordion__icon:after {
+    content: none;
+  }
+}
+
+:global .js-enabled {
+  :local .govuk-accordion__section-button:hover:not(.focus) {
+    color: inherit;
+  }
+}
