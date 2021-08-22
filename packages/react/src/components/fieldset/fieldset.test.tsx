@@ -1,9 +1,9 @@
-import React from "react";
-import { render } from "@testing-library/react";
-import { testA11y } from "@lbh-mtfh/test-utils";
+import React from "react"
+import { testA11y } from "@hackney/mtfh-test-utils"
+import { render } from "@testing-library/react"
 
-import { FormGroup, Input } from "..";
-import { Fieldset } from "./fieldset";
+import { FormGroup, Input } from ".."
+import { Fieldset } from "./fieldset"
 
 test("it renders correctly", async () => {
   const { container } = render(
@@ -11,11 +11,11 @@ test("it renders correctly", async () => {
       <FormGroup id="test" label="Test" name="test">
         <Input />
       </FormGroup>
-    </Fieldset>
-  );
-  expect(container).toMatchSnapshot();
-  await testA11y(container);
-});
+    </Fieldset>,
+  )
+  expect(container).toMatchSnapshot()
+  await testA11y(container)
+})
 
 test("it renders correctly with an h tag", async () => {
   const { container } = render(
@@ -23,11 +23,11 @@ test("it renders correctly with an h tag", async () => {
       <FormGroup id="test" label="Test" name="test">
         <Input />
       </FormGroup>
-    </Fieldset>
-  );
-  expect(container).toMatchSnapshot();
-  await testA11y(container);
-});
+    </Fieldset>,
+  )
+  expect(container).toMatchSnapshot()
+  await testA11y(container)
+})
 
 test("it applies the correct variant styling", () => {
   const { container } = render(
@@ -35,10 +35,10 @@ test("it applies the correct variant styling", () => {
       <FormGroup id="test" label="Test" name="test">
         <Input />
       </FormGroup>
-    </Fieldset>
-  );
-  expect(container).toMatchSnapshot();
-});
+    </Fieldset>,
+  )
+  expect(container).toMatchSnapshot()
+})
 
 test("it applies an error", async () => {
   const { container } = render(
@@ -46,8 +46,8 @@ test("it applies an error", async () => {
       <FormGroup id="test" label="Test" name="test">
         <Input />
       </FormGroup>
-    </Fieldset>
-  );
-  expect(container).toMatchSnapshot();
-  await testA11y(container);
-});
+    </Fieldset>,
+  )
+  expect(container).toMatchSnapshot()
+  await testA11y(container)
+})

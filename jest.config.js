@@ -13,6 +13,6 @@ module.exports = {
   ],
   setupFilesAfterEnv: [
     "@testing-library/jest-dom/extend-expect",
-    "@lbh-mtfh/test-utils",
+    "@hackney/mtfh-test-utils",
   ],
-};
+}

@@ -55,5 +55,16 @@ jobs:
           publish: yarn release
           commit: "chore(release): version packages"
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Build Storybook
+        if: steps.changesets.outputs.published == 'true'
+        run: yarn build-storybook
+
+      - name: Deploy Storybook
+        if: steps.changesets.outputs.published == 'true'
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: storybook-static

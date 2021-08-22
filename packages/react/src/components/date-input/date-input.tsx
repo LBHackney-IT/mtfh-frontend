@@ -1,26 +1,26 @@
-import React, { ComponentPropsWithoutRef, forwardRef } from "react";
-import cn from "classnames";
+import React, { ComponentPropsWithoutRef, forwardRef } from "react"
+import cn from "classnames"
 
-import { Label } from "../label";
-import { NumberInput, NumberInputProps } from "../number-input";
-import styles from "./styles.module.scss";
+import { Label } from "../label"
+import { NumberInput, NumberInputProps } from "../number-input"
+import styles from "./styles.module.scss"
 
 export interface DateInputProps extends ComponentPropsWithoutRef<"div"> {
-  id: string;
-  error?: string;
-  required?: boolean;
-  dayProps?: NumberInputProps;
-  monthProps?: NumberInputProps;
-  yearProps?: NumberInputProps;
-  dayLabel?: string;
-  monthLabel?: string;
-  yearLabel?: string;
+  id?: string
+  error?: string
+  required?: boolean
+  dayProps?: NumberInputProps
+  monthProps?: NumberInputProps
+  yearProps?: NumberInputProps
+  dayLabel?: string
+  monthLabel?: string
+  yearLabel?: string
 }
 
 export const DateInput = forwardRef<HTMLDivElement, DateInputProps>(
   function DateInput(
     {
-      id,
+      id = "date-input",
       dayProps,
       monthProps,
       yearProps,
@@ -32,7 +32,7 @@ export const DateInput = forwardRef<HTMLDivElement, DateInputProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) {
     return (
       <div
@@ -81,6 +81,6 @@ export const DateInput = forwardRef<HTMLDivElement, DateInputProps>(
           />
         </div>
       </div>
-    );
-  }
-);
+    )
+  },
+)

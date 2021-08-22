@@ -1,5 +1,5 @@
 {
-  "name": "@lbh-mtfh/docs",
+  "name": "@hackney/mtfh-docs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,14 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@lbh-mtfh/react": "^1.0.0",
+    "@hackney/mtfh-react": "^1.0.0",
     "next": "11.0.1",
     "next-transpile-modules": "^8.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@lbh-mtfh/eslint-config": "^1.0.0",
+    "@hackney/eslint-config": "^1.0.0",
     "@types/react": "17.0.13",
     "eslint": "7.30.0",
     "eslint-config-next": "11.0.1",

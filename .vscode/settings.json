@@ -10,5 +10,6 @@
     "typescript",
     "typescriptreact",
     "html"
-  ]
+  ],
+  "eslint.workingDirectories": [{ "mode": "location" }]
 }

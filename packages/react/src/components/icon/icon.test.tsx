@@ -1,8 +1,8 @@
-import React from "react";
-import { render } from "@testing-library/react";
-import { testA11y } from "@lbh-mtfh/test-utils";
+import React from "react"
+import { testA11y } from "@hackney/mtfh-test-utils"
+import { render } from "@testing-library/react"
 
-import { Icon } from "./icon";
+import { Icon } from "./icon"
 
 test("it renders a icon with defaults", async () => {
   const { container } = render(
@@ -11,11 +11,11 @@ test("it renders a icon with defaults", async () => {
         fill="currentColor"
         d="M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"
       />
-    </Icon>
-  );
-  expect(container).toMatchSnapshot();
-  await testA11y(container);
-});
+    </Icon>,
+  )
+  expect(container).toMatchSnapshot()
+  await testA11y(container)
+})
 
 test("it renders a icon with inline color", () => {
   const { container } = render(
@@ -24,7 +24,7 @@ test("it renders a icon with inline color", () => {
         fill="currentColor"
         d="M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"
       />
-    </Icon>
-  );
-  expect(container).toMatchSnapshot();
-});
+    </Icon>,
+  )
+  expect(container).toMatchSnapshot()
+})

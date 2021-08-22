@@ -1,5 +1,5 @@
 {
-  "name": "lbh-mtfh-frontend",
+  "name": "mtfh-frontend",
   "version": "1.0.0",
   "private": true,
   "workspaces": {
@@ -8,7 +8,8 @@
     ],
     "nohoist": [
       "**/lbh-frontend",
-      "**/govuk-frontend"
+      "**/govuk-frontend",
+      "**/webpack"
     ]
   },
   "scripts": {
@@ -25,7 +26,7 @@
     "prestart": "yarn && yarn bootstrap",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "postinstall": "husky install",
-    "build": "lerna run build --ignore @lbh-mtfh/test-utils --no-private --stream"
+    "build": "lerna run build --ignore @hackney/mtfh-test-utils --no-private --stream"
   },
   "repository": {
     "type": "git",
@@ -44,6 +45,7 @@
     "@types/react": "^17.0.13",
     "@types/react-dom": "^17.0.9",
     "babel-jest": "^27.0.6",
+    "eslint": "7.30.0",
     "identity-obj-proxy": "^3.0.0",
     "lerna": "^4.0.0",
     "prettier": "^2.3.2",

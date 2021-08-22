@@ -114,7 +114,7 @@ module.exports = {
     {
       files: ["*.js", "*.ts", "*.tsx"],
       parserOptions: {
-        project: ["../tsconfig.json"],
+        project: ["./tsconfig.json"],
       },
     },
     {
@@ -125,7 +125,7 @@ module.exports = {
     },
     {
       files: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
-      plugins: ["plugin:testing-library/react"],
+      extends: ["plugin:testing-library/react"],
     },
   ],
   settings: {
@@ -139,4 +139,4 @@ module.exports = {
       },
     },
   },
-};
+}
