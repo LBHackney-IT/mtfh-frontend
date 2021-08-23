@@ -1,11 +1,13 @@
 {
-  "name": "@lbh-mtfh/react",
-  "version": "1.1.0",
-  "description": "React component library of the LBH Design System",
+  "name": "@hackney/mtfh-react",
+  "version": "1.0.0",
+  "description": "LBH React Design System for LBH Modern Tools for Housing",
   "author": "https://hackney.gov.uk/",
   "homepage": "https://github.com/LBHackney-IT/mtfh-frontend",
   "license": "MIT",
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -13,24 +15,28 @@
     ".": {
       "require": "./dist/cjs/index.js",
       "default": "./dist/esm/index.js"
-    }
+    },
+    "./reset.css": "./dist/reset.css"
   },
   "files": [
     "dist"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LBHackney-IT/mtfh-frontend.git"
+    "url": "git+https://github.com/LBHackney-IT/mtfh-frontend.git",
+    "directory": "packages/react"
   },
   "scripts": {
-    "test": "jest --env=jsdom --passWithNoTests",
+    "test": "jest --passWithNoTests",
+    "test:ci": "jest --runInBand",
+    "lint": "eslint src --ext js,jsx,ts,tsx",
     "build": "rollup -c"
   },
   "bugs": {
     "url": "https://github.com/LBHackney-IT/mtfh-frontend/issues"
   },
   "devDependencies": {
-    "@lbh-mtfh/eslint-config": "^1.1.0",
+    "@hackney/eslint-config": "^1.0.0",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@rollup/plugin-typescript": "^8.2.1",
@@ -41,6 +47,7 @@
     "axios": "^0.21.1",
     "jest": "^27.0.6",
     "jest-axe": "^5.0.1",
+    "jest-matchmedia-mock": "^1.1.0",
     "node-sass": "^6.0.1",
     "postcss": "^8.3.5",
     "rollup": "^2.52.8",
@@ -48,25 +55,30 @@
     "rollup-plugin-postcss": "^4.0.0"
   },
   "dependencies": {
-    "@lbh-mtfh/system": "^1.1.0",
-    "@lbh-mtfh/test-utils": "^1.1.0",
+    "@hackney/mtfh-system": "^1.0.0",
+    "@hackney/mtfh-test-utils": "^1.0.0",
     "@mtfh/common": "https://github.com/LBHackney-IT/mtfh-frontend-common.git",
     "@radix-ui/react-polymorphic": "^0.0.12",
     "@reach/accordion": "^0.15.3",
     "@reach/dialog": "^0.15.3",
+    "@testing-library/react-hooks": "^7.0.1",
     "@types/lbh-frontend": "^1.0.0",
     "classnames": "^2.3.1",
+    "formik": "^2.2.9",
     "generic-names": "^3.0.0",
     "govuk-frontend": "^3.13.0",
     "lbh-frontend": "^3.5.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-merge-refs": "^1.1.0",
+    "react-router-dom": "^5.2.0",
     "swr": "^0.5.6",
     "use-breakpoint": "^2.0.1"
   },
   "peerDependencies": {
+    "formik": "^2.2.9",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0"
   }
 }

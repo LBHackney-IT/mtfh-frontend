@@ -1,14 +1,18 @@
 {
-  "extends": "@lbh-mtfh/eslint-config",
+  "extends": "@hackney/eslint-config",
   "parserOptions": {
-    "project": "tsconfig.json"
+    "project": "./tsconfig.json"
   },
   "rules": {
     "prefer-arrow-callback": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": ["**/*/rollup.config.js"]
+        "devDependencies": [
+          "**/*/rollup.config.js",
+          "**/*.test.ts",
+          "**/*.test.tsx"
+        ]
       }
     ],
     "jsx-a11y/anchor-is-valid": [
@@ -17,6 +21,17 @@
         "components": ["Link"],
         "aspects": ["invalidHref"]
       }
-    ]
+    ],
+    "jsx-a11y/label-has-associated-control": "off"
+    // "jsx-a11y/label-has-associated-control": [
+    //   2,
+    //   {
+    //     "labelComponents": ["Label"],
+    //     "labelAttributes": ["label"],
+    //     "controlComponents": ["Input"],
+    //     "assert": "htmlFor",
+    //     "depth": 3
+    //   }
+    // ]
   }
 }

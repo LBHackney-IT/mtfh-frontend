@@ -1,26 +1,26 @@
-import React, { ReactElement, forwardRef, useEffect, useRef } from "react";
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
-import cn from "classnames";
-import mergeRefs from "react-merge-refs";
+import React, { ReactElement, forwardRef, useEffect, useRef } from "react"
+import type * as Polymorphic from "@radix-ui/react-polymorphic"
+import cn from "classnames"
+import mergeRefs from "react-merge-refs"
 
-import { widthOverrides } from "../../utils";
-import { Heading } from "../heading";
-import styles from "./styles.module.scss";
+import { widthOverrides } from "../../utils"
+import { Heading } from "../heading"
+import styles from "./styles.module.scss"
 
 export interface AccordionItemProps {
-  id: string;
-  title: string;
+  id: string
+  title: string
 }
 
 export type AccordionItemComponent = Polymorphic.ForwardRefComponent<
   "div",
   AccordionItemProps
->;
+>
 
 export const AccordionItem: AccordionItemComponent = forwardRef(
   function AccordionItem(
     { as: AccordionItemComp = "div", children, className, id, title },
-    ref
+    ref,
   ) {
     return (
       <AccordionItemComp
@@ -49,26 +49,26 @@ export const AccordionItem: AccordionItemComponent = forwardRef(
           {children}
         </div>
       </AccordionItemComp>
-    );
-  }
-);
+    )
+  },
+)
 
 type AccordionChild =
   | ReactElement<AccordionItemProps>
   | ReactElement<AccordionItemProps>[]
-  | null;
+  | null
 
 export interface AccordionProps {
-  id: string;
-  children: AccordionChild | AccordionChild[];
-  visuallyHideControls?: boolean;
-  override?: number;
+  id: string
+  children: AccordionChild | AccordionChild[]
+  visuallyHideControls?: boolean
+  override?: number
 }
 
 export type AccordionComponent = Polymorphic.ForwardRefComponent<
   "div",
   AccordionProps
->;
+>
 
 export const Accordion: AccordionComponent = forwardRef(function Accordion(
   {
@@ -78,27 +78,29 @@ export const Accordion: AccordionComponent = forwardRef(function Accordion(
     visuallyHideControls = false,
     ...props
   },
-  ref
+  ref,
 ) {
-  const localRef = useRef<HTMLElement>(null);
+  const localRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     /* istanbul ignore else */
     if (localRef.current && window?.LBHFrontend?.Accordion) {
-      const acc = new window.LBHFrontend.Accordion(localRef.current);
-      acc.controlsClass = styles.govukAccordionControls;
-      acc.openAllClass = styles.govukAccordionOpenAll;
-      acc.iconClass = styles.govukAccordionIcon;
-
-      acc.sectionHeaderClass = styles.govukAccordionSectionHeader;
-      acc.sectionHeaderFocusedClass = styles.govukAccordionSectionHeaderFocused;
-      acc.sectionHeadingClass = styles.govukAccordionSectionHeading;
-      acc.sectionSummaryClass = styles.govukAccordionSectionSummary;
-      acc.sectionButtonClass = styles.govukAccordionSectionButton;
-      acc.sectionExpandedClass = styles.govukAccordionSectionExpanded;
-      acc.init();
+      const acc = new window.LBHFrontend.Accordion(localRef.current)
+      acc.$sections = localRef.current.querySelectorAll(
+        `.${styles.govukAccordionSection}`,
+      )
+      acc.controlsClass = styles.govukAccordionControls
+      acc.openAllClass = styles.govukAccordionOpenAll
+      acc.iconClass = styles.govukAccordionIcon
+      acc.sectionHeaderClass = styles.govukAccordionSectionHeader
+      acc.sectionHeaderFocusedClass = styles.govukAccordionSectionHeaderFocused
+      acc.sectionHeadingClass = styles.govukAccordionSectionHeading
+      acc.sectionSummaryClass = styles.govukAccordionSectionSummary
+      acc.sectionButtonClass = styles.govukAccordionSectionButton
+      acc.sectionExpandedClass = styles.govukAccordionSectionExpanded
+      acc.init()
     }
-  }, []);
+  }, [])
 
   return (
     <AccordionComp
@@ -107,11 +109,11 @@ export const Accordion: AccordionComponent = forwardRef(function Accordion(
         styles.lbhAccordion,
         { [styles.visuallyHidden]: visuallyHideControls },
         widthOverrides(override),
-        className
+        className,
       )}
       data-attribute="value"
       ref={mergeRefs([localRef, ref])}
       {...props}
     />
-  );
-});
+  )
+})

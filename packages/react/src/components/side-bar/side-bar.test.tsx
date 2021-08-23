@@ -1,63 +1,73 @@
-import React from "react";
-import { screen } from "@testing-library/react";
-import { render, testA11y } from "@lbh-mtfh/test-utils";
+import React from "react"
+import { render, testA11y } from "@hackney/mtfh-test-utils"
+import { screen } from "@testing-library/react"
 
-import { SideBar, SideBarSection } from "./side-bar";
+import { SideBar, SideBarSection } from "./side-bar"
 
 test("it renders correctly on desktop", async () => {
-  const [{ container }] = render(
+  const {
+    render: { container },
+  } = render(
     <SideBar id="sidebar">
       <SideBarSection id="section-1" title="More Details">
         <div>Content</div>
       </SideBarSection>
     </SideBar>,
-    { query: "lg" }
-  );
-  expect(container).toMatchSnapshot();
-  await testA11y(container);
-});
+    { query: "lg" },
+  )
+  expect(container).toMatchSnapshot()
+  await testA11y(container)
+})
 
 test("it renders correctly on mobile", async () => {
-  const [{ container }] = render(
+  const {
+    render: { container },
+  } = render(
     <SideBar id="sidebar">
       <SideBarSection id="section-1" title="More Details">
         <div>Content</div>
       </SideBarSection>
     </SideBar>,
-    { query: "base" }
-  );
-  expect(container).toMatchSnapshot();
-  await testA11y(container);
-});
+    { query: "base" },
+  )
+  expect(container).toMatchSnapshot()
+  await testA11y(container)
+})
 
 test("it renders a heading on desktop", async () => {
-  const [{ container }] = render(
+  const {
+    render: { container },
+  } = render(
     <SideBar id="sidebar">
       <SideBarSection id="section-1" title="More Details" heading="A Heading">
         <div>Content</div>
       </SideBarSection>
     </SideBar>,
-    { query: "lg" }
-  );
-  expect(screen.getByRole("heading")).toHaveTextContent("A Heading");
-  await testA11y(container);
-});
+    { query: "lg" },
+  )
+  expect(screen.getByRole("heading")).toHaveTextContent("A Heading")
+  await testA11y(container)
+})
 
 test("it does not renders a heading on mobile", async () => {
-  const [{ container }] = render(
+  const {
+    render: { container },
+  } = render(
     <SideBar id="sidebar">
       <SideBarSection id="section-1" title="More Details" heading="A Heading">
         <div>Content</div>
       </SideBarSection>
     </SideBar>,
-    { query: "base" }
-  );
-  expect(screen.queryByText("A Heading")).toBe(null);
-  await testA11y(container);
-});
+    { query: "base" },
+  )
+  expect(screen.queryByText("A Heading")).toBe(null)
+  await testA11y(container)
+})
 
 test("accepts and ignores a null child", () => {
-  const [{ container }] = render(
+  const {
+    render: { container },
+  } = render(
     <SideBar id="sidebar">
       <SideBarSection id="section-1" title="More Details" heading="A Heading">
         <div>Content</div>
@@ -72,7 +82,7 @@ test("accepts and ignores a null child", () => {
       </SideBarSection>
       {null}
     </SideBar>,
-    { query: "base" }
-  );
-  expect(container).toMatchSnapshot();
-});
+    { query: "base" },
+  )
+  expect(container).toMatchSnapshot()
+})

@@ -52,6 +52,45 @@ exports[`it applies an error 1`] = `
 </div>
 `;
 
+exports[`it applies aria-hidden to legend with variant hidden 1`] = `
+<div>
+  <fieldset
+    class="govukFieldset lbhFieldset"
+  >
+    <span
+      class="visuallyHidden"
+    >
+      <legend
+        class="govukFieldsetLegend"
+      >
+        Text
+      </legend>
+    </span>
+    <div
+      class="fieldsetContent"
+    >
+      <div
+        class="govukFormGroup lbhFormGroup"
+        id="test"
+      >
+        <label
+          class="govukLabel lbhLabel"
+          for="test-field"
+        >
+          Test
+          
+        </label>
+        <input
+          class="govukInput lbhInput"
+          id="test-field"
+          name="test"
+        />
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;
+
 exports[`it applies the correct variant styling 1`] = `
 <div>
   <fieldset

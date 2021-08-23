@@ -1,31 +1,15 @@
-const path = require("path");
+const genericNames = require("generic-names")
+
+const generate = genericNames("[local]-[hash:base64:5]", {
+  context: process.cwd(),
+})
 
 module.exports = {
+  core: {
+    builder: "webpack5",
+  },
   stories: ["../packages/react/src/components/**/*.stories.tsx"],
-  addons: [
-    // {
-    //   name: "@storybook/preset-scss",
-    //   options: {
-    //     test: /\.module\.s?css$/,
-    //     cssLoaderOptions: {
-    //       importLoaders: 1,
-    //       modules: {
-    //         mode: "local",
-    //         localIdentName: "[local]",
-    //         exportLocalsConvention: "camelCase",
-    //       },
-    //     },
-    //     sassLoaderOptions: {
-    //       sassOptions: {
-    //         includePaths: ["packages/react"],
-    //       },
-    //       // additionalData: "@import '../../base';",
-    //     },
-    //   },
-    // },
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-  ],
+  addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
   webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.scss$/,
@@ -42,7 +26,7 @@ module.exports = {
           },
         },
       ],
-    });
+    })
 
     config.module.rules.push({
       test: /\.module\.scss$/,
@@ -54,9 +38,14 @@ module.exports = {
             importLoaders: 1,
             modules: {
               mode: "local",
-              localIdentName: "[local]",
+              // localIdentName: "[local]",
+              getLocalIdent: (ctx, local, name) => {
+                return name === "js-enabled"
+                  ? name
+                  : generate(name, ctx.resourcePath)
+              },
+              exportLocalsConvention: "camelCase",
             },
-            localsConvention: "camelCase",
           },
         },
         {
@@ -68,8 +57,8 @@ module.exports = {
           },
         },
       ],
-    });
+    })
 
-    return config;
+    return config
   },
-};
+}

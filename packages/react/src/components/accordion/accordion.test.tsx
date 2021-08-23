@@ -1,8 +1,8 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+import React from "react"
+import { testA11y } from "@hackney/mtfh-test-utils"
+import { render, screen } from "@testing-library/react"
 
-import { testA11y } from "@lbh-mtfh/test-utils";
-import { Accordion, AccordionItem } from "./accordion";
+import { Accordion, AccordionItem } from "./accordion"
 
 test("it passes a11y", async () => {
   const { container } = render(
@@ -13,12 +13,12 @@ test("it passes a11y", async () => {
       <AccordionItem id="test-2" title="Next">
         Hello
       </AccordionItem>
-    </Accordion>
-  );
+    </Accordion>,
+  )
 
-  expect(container).toMatchSnapshot();
-  await testA11y(container);
-});
+  expect(container).toMatchSnapshot()
+  await testA11y(container)
+})
 
 test("it renders correctly", () => {
   render(
@@ -29,9 +29,9 @@ test("it renders correctly", () => {
       <AccordionItem id="test-2" title="Next">
         Hello
       </AccordionItem>
-    </Accordion>
-  );
+    </Accordion>,
+  )
 
-  expect(screen.getAllByRole("heading")).toHaveLength(2);
-  expect(screen.getByText("Test")).toBeInTheDocument();
-});
+  expect(screen.getAllByRole("heading")).toHaveLength(2)
+  expect(screen.getByText("Test")).toBeInTheDocument()
+})

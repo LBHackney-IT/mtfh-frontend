@@ -1,14 +1,14 @@
-import React from "react";
-import { StoryContext } from "@storybook/react";
-import "@lbh-mtfh/react/dist/reset.css";
+import React from "react"
+import { StoryContext } from "@storybook/react"
+import "@hackney/mtfh-react/reset.css"
 
 const withContainer = (StoryFn, context: StoryContext) => {
   return (
     <div className="js-enabled">
       <StoryFn />
     </div>
-  );
-};
+  )
+}
 
 // export const parameters = {
 //   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -20,4 +20,4 @@ const withContainer = (StoryFn, context: StoryContext) => {
 //   },
 // };
 
-export const decorators = [withContainer];
+export const decorators = [withContainer]

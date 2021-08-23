@@ -1,5 +1,5 @@
 {
-  "name": "lbh-mtfh-frontend",
+  "name": "mtfh-frontend",
   "version": "1.0.0",
   "private": true,
   "workspaces": {
@@ -17,15 +17,15 @@
     "fix:pkgs": "manypkg fix",
     "version:pkgs": "changeset version",
     "release": "changeset publish",
-    "test": "jest --maxWorkers=50%",
-    "test:ci": "jest --runInBand",
+    "test": "lerna run test --stream --concurrency=1",
+    "test:ci": "lerna run test:ci --stream --concurrency=1",
     "lint": "lerna run lint --no-private --stream",
     "storybook": "start-storybook -p 6006 --ci",
     "build-storybook": "build-storybook",
     "prestart": "yarn && yarn bootstrap",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "postinstall": "husky install",
-    "build": "lerna run build --ignore @lbh-mtfh/test-utils --no-private --stream"
+    "build": "lerna run build --ignore @hackney/mtfh-test-utils --no-private --stream"
   },
   "repository": {
     "type": "git",
@@ -44,25 +44,30 @@
     "@types/react": "^17.0.13",
     "@types/react-dom": "^17.0.9",
     "babel-jest": "^27.0.6",
+    "eslint": "7.30.0",
     "identity-obj-proxy": "^3.0.0",
     "lerna": "^4.0.0",
     "prettier": "^2.3.2",
     "ts-jest": "^27.0.3",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "webpack": "^5.51.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
-    "@storybook/addon-actions": "^6.3.4",
-    "@storybook/addon-essentials": "^6.3.4",
-    "@storybook/addon-links": "^6.3.4",
-    "@storybook/preset-scss": "^1.0.3",
-    "@storybook/react": "^6.3.4",
+    "@storybook/addon-actions": "^6.4.0-alpha.30",
+    "@storybook/addon-essentials": "^6.4.0-alpha.30",
+    "@storybook/addon-links": "^6.4.0-alpha.30",
+    "@storybook/builder-webpack5": "^6.4.0-alpha.30",
+    "@storybook/manager-webpack5": "^6.4.0-alpha.30",
+    "@storybook/react": "^6.4.0-alpha.30",
+    "@storybook/react-docgen-typescript-plugin": "1.0.2-canary.187a82f.0",
     "babel-loader": "^8.2.2",
-    "css-loader": "^4.3.0",
+    "concurrently": "^6.2.1",
+    "css-loader": "^5.2.7",
     "husky": "^7.0.1",
     "lint-staged": "^11.1.1",
-    "sass-loader": "^10.2.0",
-    "style-loader": "^1.3.0"
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.2.1"
   }
 }

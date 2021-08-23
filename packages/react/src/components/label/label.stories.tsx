@@ -1,16 +1,16 @@
-import React from "react";
+import React from "react"
 
-import { Label } from "./label";
+import { Label } from "./label"
 
 export default {
   title: "Label",
   component: Label,
-};
+}
 
 export const Base = () => {
-  return <Label>A descriptive label</Label>;
-};
+  return <Label htmlFor="test">A descriptive label</Label>
+}
 
-export const PolymorphicHint = () => {
-  return <Label as="p">A descriptive label</Label>;
-};
+export const PolymorphicLabel = () => {
+  return <Label as="p">A descriptive label</Label>
+}

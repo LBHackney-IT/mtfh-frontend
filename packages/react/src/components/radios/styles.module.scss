@@ -1,6 +1,11 @@
 @import "~lbh-frontend/lbh/base";
 @import "~lbh-frontend/lbh/components/lbh-radios/radios";
 
+.govuk-radios__label {
+  margin-top: 0;
+  margin-bottom: 0.375rem;
+}
+
 .lbh-radios__conditional {
   composes: govuk-radios__conditional;
 }

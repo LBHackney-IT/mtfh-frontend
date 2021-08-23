@@ -1,12 +1,12 @@
-import React, { FC, useState } from "react";
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { testA11y } from "@lbh-mtfh/test-utils";
+import React, { FC, useState } from "react"
+import { testA11y } from "@hackney/mtfh-test-utils"
+import { render, screen } from "@testing-library/react"
+import userEvent from "@testing-library/user-event"
 
-import { Dialog, DialogActions } from "./dialog";
+import { Dialog, DialogActions } from "./dialog"
 
 const Component: FC = ({ children }) => {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false)
   return (
     <>
       <button type="button" onClick={() => setOpen(true)}>
@@ -20,24 +20,24 @@ const Component: FC = ({ children }) => {
         {children}
       </Dialog>
     </>
-  );
-};
+  )
+}
 
 test("it renders correctly", async () => {
   const { container } = render(
     <Component>
       <p>Content</p>
-    </Component>
-  );
-  expect(container).toMatchSnapshot();
-  await testA11y(container);
+    </Component>,
+  )
+  expect(container).toMatchSnapshot()
+  await testA11y(container)
 
-  const toggle = screen.getByText("Toggle") as HTMLButtonElement;
-  userEvent.click(toggle);
+  const toggle = screen.getByText("Toggle") as HTMLButtonElement
+  userEvent.click(toggle)
 
-  expect(container).toMatchSnapshot();
-  await testA11y(container);
-});
+  expect(container).toMatchSnapshot()
+  await testA11y(container)
+})
 
 test("it renders correctly with actions", async () => {
   const { container } = render(
@@ -47,12 +47,12 @@ test("it renders correctly with actions", async () => {
         <button type="button">Confirm</button>
         <a href="/">Cancel</a>
       </DialogActions>
-    </Component>
-  );
+    </Component>,
+  )
 
-  const toggle = screen.getByText("Toggle") as HTMLButtonElement;
-  userEvent.click(toggle);
+  const toggle = screen.getByText("Toggle") as HTMLButtonElement
+  userEvent.click(toggle)
 
-  expect(container).toMatchSnapshot();
-  await testA11y(container);
-});
+  expect(container).toMatchSnapshot()
+  await testA11y(container)
+})

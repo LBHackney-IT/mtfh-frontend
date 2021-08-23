@@ -7,18 +7,20 @@ import React, {
   useEffect,
   useMemo,
   useRef,
-} from "react";
-import cn from "classnames";
-import mergeRefs from "react-merge-refs";
+} from "react"
+import cn from "classnames"
+import mergeRefs from "react-merge-refs"
 
-import styles from "./styles.module.scss";
+import { Hint } from "../hint"
+import { Label } from "../label"
+import styles from "./styles.module.scss"
 
 export interface CheckboxProps extends ComponentPropsWithoutRef<"input"> {
-  id: string;
-  hint?: string;
-  children: ReactNode;
-  conditionalId?: string;
-  error?: string;
+  id: string
+  hint?: string
+  children: ReactNode
+  conditionalId?: string
+  error?: string
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
@@ -33,7 +35,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       error,
       ...props
     },
-    ref
+    ref,
   ) {
     return (
       <div className={cn(styles.govukCheckboxesItem, className)}>
@@ -46,28 +48,18 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           data-aria-controls={conditionalId}
           {...props}
         />
-        <label
-          className={cn(styles.govukLabel, styles.govukCheckboxesLabel)}
-          htmlFor={id}
-        >
+        <Label className={styles.govukCheckboxesLabel} htmlFor={id}>
           {children}
-        </label>
+        </Label>
         {hint ? (
-          <span
-            id={`${id}-hint`}
-            className={cn(
-              styles.govukHint,
-              styles.govukCheckboxesHint,
-              styles.lbhHint
-            )}
-          >
+          <Hint id={`${id}-hint`} className={styles.govukCheckboxesHint}>
             {hint}
-          </span>
+          </Hint>
         ) : null}
       </div>
-    );
-  }
-);
+    )
+  },
+)
 
 export const CheckboxConditional = forwardRef<
   HTMLDivElement,
@@ -78,36 +70,38 @@ export const CheckboxConditional = forwardRef<
       ref={ref}
       className={cn(
         styles.govukCheckboxesConditional,
-        "govuk-checkboxes__conditional--hidden"
+        "govuk-checkboxes__conditional",
+        "govuk-checkboxes__conditional--hidden",
       )}
       {...props}
     />
-  );
-});
+  )
+})
 
 export interface CheckboxGroupProps extends ComponentPropsWithoutRef<"div"> {
-  variant?: "base" | "small";
-  error?: string;
+  variant?: "base" | "small"
+  error?: string
 }
 
 export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
   function CheckboxGroup({ variant = "base", children, error, ...props }, ref) {
-    const localRef = useRef<HTMLDivElement>();
+    const localRef = useRef<HTMLDivElement>()
 
     useEffect(() => {
       /* istanbul ignore else */
       if (localRef.current && window?.LBHFrontend?.Checkboxes) {
-        new window.LBHFrontend.Checkboxes(localRef.current).init();
+        new window.LBHFrontend.Checkboxes(localRef.current).init()
       }
-    }, []);
+    }, [])
 
     const hasConditionals = useMemo(
       () =>
         Children.toArray(children).some(
-          (child) => isValidElement(child) && child.type === CheckboxConditional
+          (child) =>
+            isValidElement(child) && child.type === CheckboxConditional,
         ),
-      [children]
-    );
+      [children],
+    )
 
     return (
       <div
@@ -118,12 +112,12 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
             [styles.govukCheckboxesSmall]: variant === "small",
             [styles.govukCheckboxesConditionals]: hasConditionals,
           },
-          styles.lbhCheckboxes
+          styles.lbhCheckboxes,
         )}
         {...props}
       >
         {children}
       </div>
-    );
-  }
-);
+    )
+  },
+)

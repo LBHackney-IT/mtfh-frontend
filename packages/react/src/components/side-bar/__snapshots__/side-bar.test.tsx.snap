@@ -11,6 +11,22 @@ exports[`accepts and ignores a null child 1`] = `
       id="sidebar"
     >
       <div
+        class="govukAccordionControls"
+      >
+        <button
+          aria-expanded="false"
+          class="govukAccordionOpenAll"
+          type="button"
+        >
+          Open all
+          <span
+            class="govuk-visually-hidden"
+          >
+             sections
+          </span>
+        </button>
+      </div>
+      <div
         class="govukAccordionSection"
       >
         <div
@@ -19,12 +35,19 @@ exports[`accepts and ignores a null child 1`] = `
           <h3
             class="lbh-heading-h5 govukAccordionSectionHeading"
           >
-            <span
+            <button
+              aria-controls="sidebar-content-1"
+              aria-expanded="false"
               class="govukAccordionSectionButton"
               id="accordion-heading-section-1"
+              type="button"
             >
               More Details
-            </span>
+              <span
+                aria-hidden="true"
+                class="govukAccordionIcon"
+              />
+            </button>
           </h3>
         </div>
         <div
@@ -46,12 +69,19 @@ exports[`accepts and ignores a null child 1`] = `
           <h3
             class="lbh-heading-h5 govukAccordionSectionHeading"
           >
-            <span
+            <button
+              aria-controls="sidebar-content-2"
+              aria-expanded="false"
               class="govukAccordionSectionButton"
               id="accordion-heading-section-2"
+              type="button"
             >
               More Details 2
-            </span>
+              <span
+                aria-hidden="true"
+                class="govukAccordionIcon"
+              />
+            </button>
           </h3>
         </div>
         <div
@@ -102,6 +132,22 @@ exports[`it renders correctly on mobile 1`] = `
       id="sidebar"
     >
       <div
+        class="govukAccordionControls"
+      >
+        <button
+          aria-expanded="false"
+          class="govukAccordionOpenAll"
+          type="button"
+        >
+          Open all
+          <span
+            class="govuk-visually-hidden"
+          >
+             sections
+          </span>
+        </button>
+      </div>
+      <div
         class="govukAccordionSection"
       >
         <div
@@ -110,12 +156,19 @@ exports[`it renders correctly on mobile 1`] = `
           <h3
             class="lbh-heading-h5 govukAccordionSectionHeading"
           >
-            <span
+            <button
+              aria-controls="sidebar-content-1"
+              aria-expanded="false"
               class="govukAccordionSectionButton"
               id="accordion-heading-section-1"
+              type="button"
             >
               More Details
-            </span>
+              <span
+                aria-hidden="true"
+                class="govukAccordionIcon"
+              />
+            </button>
           </h3>
         </div>
         <div

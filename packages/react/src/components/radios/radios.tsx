@@ -8,20 +8,20 @@ import React, {
   useEffect,
   useMemo,
   useRef,
-} from "react";
-import cn from "classnames";
-import mergeRefs from "react-merge-refs";
+} from "react"
+import cn from "classnames"
+import mergeRefs from "react-merge-refs"
 
-import { Hint } from "../hint";
-import { Label } from "../label";
-import styles from "./styles.module.scss";
+import { Hint } from "../hint"
+import { Label } from "../label"
+import styles from "./styles.module.scss"
 
 export interface RadioProps extends ComponentPropsWithoutRef<"input"> {
-  id: string;
-  hint?: string;
-  children: ReactNode;
-  conditionalId?: string;
-  error?: string;
+  id: string
+  hint?: string
+  children: ReactNode
+  conditionalId?: string
+  error?: string
 }
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
@@ -35,7 +35,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
     error,
     ...props
   },
-  ref
+  ref,
 ) {
   return (
     <div className={cn(styles.govukRadiosItem, className)}>
@@ -57,8 +57,8 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
         </Hint>
       ) : null}
     </div>
-  );
-});
+  )
+})
 
 export const RadioDivider = forwardRef<
   HTMLDivElement,
@@ -70,8 +70,8 @@ export const RadioDivider = forwardRef<
       className={cn(styles.govukRadiosDivider, className)}
       {...props}
     />
-  );
-});
+  )
+})
 
 export const RadioConditional = forwardRef<
   HTMLDivElement,
@@ -83,19 +83,19 @@ export const RadioConditional = forwardRef<
       className={cn(
         styles.govukRadiosConditional,
         "govuk-radios__conditional",
-        "govuk-radios__conditional--hidden"
+        "govuk-radios__conditional--hidden",
       )}
       {...props}
     />
-  );
-});
+  )
+})
 
 export interface RadioGroupProps extends ComponentPropsWithoutRef<"div"> {
-  variant?: "base" | "sm";
-  inline?: boolean;
-  name?: string;
-  error?: string;
-  required?: boolean;
+  variant?: "base" | "sm"
+  inline?: boolean
+  name?: string
+  error?: string
+  required?: boolean
 }
 
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
@@ -109,35 +109,36 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
       required,
       ...props
     },
-    ref
+    ref,
   ) {
-    const localRef = useRef<HTMLDivElement>();
+    const localRef = useRef<HTMLDivElement>()
 
     useEffect(() => {
       /* istanbul ignore else */
       if (localRef.current && window?.LBHFrontend?.Radios) {
-        new window.LBHFrontend.Radios(localRef.current).init();
+        new window.LBHFrontend.Radios(localRef.current).init()
       }
-    }, []);
+    }, [])
 
     const hasConditionals = useMemo(
       () =>
         Children.toArray(children).some(
-          (child) => isValidElement(child) && child.type === RadioConditional
+          (child) => isValidElement(child) && child.type === RadioConditional,
         ),
-      [children]
-    );
+      [children],
+    )
 
     return (
       <div
         ref={mergeRefs([localRef, ref])}
         className={cn(
+          styles.govukRadios,
           {
             [styles.govukRadiosSmall]: variant === "sm",
             [styles.govukRadiosInline]: inline,
             [styles.govukRadiosConditionals]: hasConditionals,
           },
-          styles.lbhRadios
+          styles.lbhRadios,
         )}
         {...props}
       >
@@ -150,9 +151,9 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
               name,
               required,
               ...child.props,
-            })
+            }),
         )}
       </div>
-    );
-  }
-);
+    )
+  },
+)

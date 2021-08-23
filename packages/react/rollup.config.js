@@ -1,15 +1,15 @@
-import commonjs from "@rollup/plugin-commonjs";
-import resolve from "@rollup/plugin-node-resolve";
-import typescript from "@rollup/plugin-typescript";
-import genericNames from "generic-names";
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
-import postcss from "rollup-plugin-postcss";
+import commonjs from "@rollup/plugin-commonjs"
+import resolve from "@rollup/plugin-node-resolve"
+import typescript from "@rollup/plugin-typescript"
+import genericNames from "generic-names"
+import peerDepsExternal from "rollup-plugin-peer-deps-external"
+import postcss from "rollup-plugin-postcss"
 
-const packageJson = require("./package.json");
+const packageJson = require("./package.json")
 
 const generate = genericNames("[hash:base64:5]", {
   context: process.cwd(),
-});
+})
 
 export default [
   {
@@ -38,7 +38,7 @@ export default [
         modules: {
           localsConvention: "camelCase",
           generateScopedName: (name, file) => {
-            return name === "js-enabled" ? name : generate(name, file);
+            return name === "js-enabled" ? name : generate(name, file)
           },
         },
         extensions: [".css", ".scss"],
@@ -60,4 +60,4 @@ export default [
       }),
     ],
   },
-];
+]
