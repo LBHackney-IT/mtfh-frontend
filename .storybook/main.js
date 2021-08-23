@@ -1,11 +1,13 @@
-const path = require("path")
 const genericNames = require("generic-names")
 
-const generate = genericNames("[hash:base64:5]", {
+const generate = genericNames("[local]-[hash:base64:5]", {
   context: process.cwd(),
 })
 
 module.exports = {
+  core: {
+    builder: "webpack5",
+  },
   stories: ["../packages/react/src/components/**/*.stories.tsx"],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
   webpackFinal: async (config) => {
@@ -42,8 +44,8 @@ module.exports = {
                   ? name
                   : generate(name, ctx.resourcePath)
               },
+              exportLocalsConvention: "camelCase",
             },
-            localsConvention: "camelCase",
           },
         },
         {

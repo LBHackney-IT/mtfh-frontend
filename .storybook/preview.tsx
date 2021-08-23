@@ -1,6 +1,6 @@
 import React from "react"
 import { StoryContext } from "@storybook/react"
-import "@hackney/mtfh-react/dist/reset.css"
+import "@hackney/mtfh-react/reset.css"
 
 const withContainer = (StoryFn, context: StoryContext) => {
   return (

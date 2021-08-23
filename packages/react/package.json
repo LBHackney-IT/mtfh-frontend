@@ -1,11 +1,13 @@
 {
   "name": "@hackney/mtfh-react",
-  "version": "1.1.0",
-  "description": "React component library of the LBH Design System",
+  "version": "1.0.0",
+  "description": "LBH React Design System for LBH Modern Tools for Housing",
   "author": "https://hackney.gov.uk/",
   "homepage": "https://github.com/LBHackney-IT/mtfh-frontend",
   "license": "MIT",
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -13,17 +15,20 @@
     ".": {
       "require": "./dist/cjs/index.js",
       "default": "./dist/esm/index.js"
-    }
+    },
+    "./reset.css": "./dist/reset.css"
   },
   "files": [
     "dist"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LBHackney-IT/mtfh-frontend.git"
+    "url": "git+https://github.com/LBHackney-IT/mtfh-frontend.git",
+    "directory": "packages/react"
   },
   "scripts": {
-    "test": "jest --env=jsdom --passWithNoTests",
+    "test": "jest --passWithNoTests",
+    "test:ci": "jest --runInBand",
     "lint": "eslint src --ext js,jsx,ts,tsx",
     "build": "rollup -c"
   },
@@ -31,7 +36,7 @@
     "url": "https://github.com/LBHackney-IT/mtfh-frontend/issues"
   },
   "devDependencies": {
-    "@hackney/eslint-config": "^1.1.0",
+    "@hackney/eslint-config": "^1.0.0",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@rollup/plugin-typescript": "^8.2.1",
@@ -49,8 +54,8 @@
     "rollup-plugin-postcss": "^4.0.0"
   },
   "dependencies": {
-    "@hackney/mtfh-system": "^1.1.0",
-    "@hackney/mtfh-test-utils": "^1.1.0",
+    "@hackney/mtfh-system": "^1.0.0",
+    "@hackney/mtfh-test-utils": "^1.0.0",
     "@mtfh/common": "https://github.com/LBHackney-IT/mtfh-frontend-common.git",
     "@radix-ui/react-polymorphic": "^0.0.12",
     "@reach/accordion": "^0.15.3",
