@@ -8,6 +8,22 @@ exports[`it passes a11y 1`] = `
     id="test"
   >
     <div
+      class="govukAccordionControls"
+    >
+      <button
+        aria-expanded="false"
+        class="govukAccordionOpenAll"
+        type="button"
+      >
+        Open all
+        <span
+          class="govuk-visually-hidden"
+        >
+           sections
+        </span>
+      </button>
+    </div>
+    <div
       class="govukAccordionSection"
     >
       <div
@@ -16,12 +32,19 @@ exports[`it passes a11y 1`] = `
         <h3
           class="lbh-heading-h5 govukAccordionSectionHeading"
         >
-          <span
+          <button
+            aria-controls="test-content-1"
+            aria-expanded="false"
             class="govukAccordionSectionButton"
             id="accordion-heading-test-1"
+            type="button"
           >
             Test
-          </span>
+            <span
+              aria-hidden="true"
+              class="govukAccordionIcon"
+            />
+          </button>
         </h3>
       </div>
       <div
@@ -41,12 +64,19 @@ exports[`it passes a11y 1`] = `
         <h3
           class="lbh-heading-h5 govukAccordionSectionHeading"
         >
-          <span
+          <button
+            aria-controls="test-content-2"
+            aria-expanded="false"
             class="govukAccordionSectionButton"
             id="accordion-heading-test-2"
+            type="button"
           >
             Next
-          </span>
+            <span
+              aria-hidden="true"
+              class="govukAccordionIcon"
+            />
+          </button>
         </h3>
       </div>
       <div

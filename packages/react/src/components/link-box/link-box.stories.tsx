@@ -1,13 +1,13 @@
-import React from "react";
+import React from "react"
 
-import { Center } from "../center";
-import { Link } from "../link";
-import { LinkBox, LinkOverlay } from "./link-box";
+import { Center } from "../center"
+import { Link } from "../link"
+import { LinkBox, LinkOverlay } from "./link-box"
 
 export default {
   title: "LinkBox",
   component: LinkBox,
-};
+}
 
 export const Base = () => {
   return (
@@ -19,11 +19,14 @@ export const Base = () => {
         height: "200px",
       }}
     >
-      <Center style={{ height: "100%" }}>
-        <LinkOverlay>
-          <Link href="/">Link</Link>
+      <Center style={{ height: "100%", width: "100%" }}>
+        <LinkOverlay as="span">
+          <Link href="#main">Main</Link>
         </LinkOverlay>
+        <Link href="#second" style={{ marginTop: 0, marginLeft: "10px" }}>
+          Secondary
+        </Link>
       </Center>
     </LinkBox>
-  );
-};
+  )
+}

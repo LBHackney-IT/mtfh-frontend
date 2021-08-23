@@ -17,8 +17,7 @@
 .link-box {
   position: relative;
 
-  a[href]:not(.link-box a),
-  abbr[title] {
+  *:not(.link-overlay) > a[href] {
     position: relative;
     z-index: 1;
   }

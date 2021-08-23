@@ -40,6 +40,18 @@ test("it applies the correct variant styling", () => {
   expect(container).toMatchSnapshot()
 })
 
+test("it applies aria-hidden to legend with variant hidden", () => {
+  const { container } = render(
+    <Fieldset variant="hidden" heading="Text">
+      <FormGroup id="test" label="Test" name="test">
+        <Input />
+      </FormGroup>
+    </Fieldset>,
+  )
+
+  expect(container).toMatchSnapshot()
+})
+
 test("it applies an error", async () => {
   const { container } = render(
     <Fieldset variant="large" heading="heading" error="This is an error">

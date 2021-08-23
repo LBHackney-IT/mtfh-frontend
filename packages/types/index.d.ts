@@ -1,50 +1,49 @@
-/* eslint-disable max-classes-per-file */
+declare module "lbh-frontend" {
+  export class Accordion {
+    constuctor(module: HTMLElement)
 
-interface Accordion {
-  new (module: HTMLElement): ThisType;
+    init(): void
 
-  init(): void;
+    setExpanded(expanded: boolean, section: HTMLElement | null): void
 
-  setExpanded(expanded: boolean, section: HTMLElement | null): void;
+    isExpanded(section: HTMLElement | null): boolean
 
-  isExpanded(section: HTMLElement | null): boolean;
+    $sections: NodeListOf<HTMLElement>
 
-  $sections: NodeListOf<HTMLElement>;
+    controlsClass: string
+    openAllClass: string
+    iconClass: string
+    sectionHeaderClass: string
+    sectionHeaderFocusedClass: string
+    sectionHeadingClass: string
+    sectionSummaryClass: string
+    sectionButtonClass: string
+    sectionExpandedClass: string
+  }
 
-  controlsClass: string;
-  openAllClass: string;
-  iconClass: string;
-  sectionHeaderClass: string;
-  sectionHeaderFocusedClass: string;
-  sectionHeadingClass: string;
-  sectionSummaryClass: string;
-  sectionButtonClass: string;
-  sectionExpandedClass: string;
+  export class ErrorSummary {
+    constuctor(module: HTMLElement)
+
+    init(): void
+  }
+
+  export class Radios {
+    constuctor(module: HTMLElement)
+
+    init(): void
+  }
+
+  export class Checkboxes {
+    constuctor(module: HTMLElement)
+
+    init(): void
+  }
 }
-
-interface ErrorSummary {
-  new (module: HTMLElement): ThisType;
-
-  init(): void;
-}
-
-interface Radios {
-  new (module: HTMLElement): ThisType;
-
-  init(): void;
-}
-
-interface Checkboxes {
-  new (module: HTMLElement): ThisType;
-
-  init(): void;
-}
-
 interface Window {
   LBHFrontend: {
-    Accordion: Accordion;
-    Radios: Radios;
-    Checkboxes: Checkboxes;
-    ErrorSummary: ErrorSummary;
-  };
+    Accordion: Accordion
+    Radios: Radios
+    Checkboxes: Checkboxes
+    ErrorSummary: ErrorSummary
+  }
 }

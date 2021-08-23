@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { testA11y } from "@hackney/mtfh-test-utils"
 import { render, screen } from "@testing-library/react"
 
@@ -31,18 +31,8 @@ test("it renders the correct variant", async () => {
   await testA11y(container)
 })
 
-test("it accepts a ref", () => {
-  const callback = jest.fn()
-  const Comp = () => {
-    const ref = React.createRef<HTMLButtonElement>()
-
-    useEffect(() => {
-      if (ref.current) {
-        callback(ref.current)
-      }
-    }, [ref])
-    return <Button ref={ref}>Test Button</Button>
-  }
-  render(<Comp />)
-  expect(callback).toBeCalledTimes(1)
+test("it does not set the type when it is used polymorphically", () => {
+  render(<Button as="span">Test Button</Button>)
+  const button = screen.getByText("Test Button")
+  expect(button).not.toHaveAttribute("type")
 })

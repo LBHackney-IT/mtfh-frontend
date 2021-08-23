@@ -1,6 +1,6 @@
 {
   "name": "@hackney/mtfh-system",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "Design system configuration for LBH Modern Tools for Housing",
   "author": "Gareth Cozens <gareth.cozens@amido.com>",
   "homepage": "https://github.com/LBHackney-IT/mtfh-frontend",
@@ -9,7 +9,8 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "git+https://cloudratha@github.com/LBHackney-IT/mtfh-frontend.git"
+    "url": "git+https://cloudratha@github.com/LBHackney-IT/mtfh-frontend.git",
+    "directory": "packages/system"
   },
   "scripts": {},
   "bugs": {

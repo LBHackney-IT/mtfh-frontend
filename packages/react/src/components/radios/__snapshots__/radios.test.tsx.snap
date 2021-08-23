@@ -14,7 +14,7 @@ exports[`it passes a11y on radio group 1`] = `
       
     </label>
     <div
-      class="lbhRadios"
+      class="govukRadios lbhRadios"
       id="test-field"
     >
       <div
@@ -90,7 +90,7 @@ exports[`it passes a11y on single radio 1`] = `
 exports[`it renders a group of radios 1`] = `
 <div>
   <div
-    class="lbhRadios"
+    class="govukRadios lbhRadios"
   >
     <div
       class="govukRadiosItem"
@@ -129,14 +129,15 @@ exports[`it renders a group of radios 1`] = `
 exports[`it renders a group of radios with a conditional 1`] = `
 <div>
   <div
-    class="govukRadiosConditionals lbhRadios"
+    class="govukRadios govukRadiosConditionals lbhRadios"
   >
     <div
       class="govukRadiosItem"
     >
       <input
+        aria-controls="conditional"
+        aria-expanded="false"
         class="govukRadiosInput"
-        data-aria-controls="conditional"
         id="test"
         type="radio"
       />
@@ -175,7 +176,7 @@ exports[`it renders a group of radios with a conditional 1`] = `
 exports[`it renders a group of radios with a divider 1`] = `
 <div>
   <div
-    class="lbhRadios"
+    class="govukRadios lbhRadios"
   >
     <div
       class="govukRadiosItem"

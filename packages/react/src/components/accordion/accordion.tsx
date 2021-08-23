@@ -86,10 +86,12 @@ export const Accordion: AccordionComponent = forwardRef(function Accordion(
     /* istanbul ignore else */
     if (localRef.current && window?.LBHFrontend?.Accordion) {
       const acc = new window.LBHFrontend.Accordion(localRef.current)
+      acc.$sections = localRef.current.querySelectorAll(
+        `.${styles.govukAccordionSection}`,
+      )
       acc.controlsClass = styles.govukAccordionControls
       acc.openAllClass = styles.govukAccordionOpenAll
       acc.iconClass = styles.govukAccordionIcon
-
       acc.sectionHeaderClass = styles.govukAccordionSectionHeader
       acc.sectionHeaderFocusedClass = styles.govukAccordionSectionHeaderFocused
       acc.sectionHeadingClass = styles.govukAccordionSectionHeading

@@ -16,6 +16,6 @@ test("it passes a11y", async () => {
 })
 
 test("it renders correctly", () => {
-  const { container } = render(<DateInput id="date-input" />)
+  const { container } = render(<DateInput />)
   expect(container).toMatchSnapshot()
 })

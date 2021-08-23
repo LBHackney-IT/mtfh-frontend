@@ -5,31 +5,31 @@ import React, {
   isValidElement,
   useEffect,
   useRef,
-} from "react";
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
-import cn from "classnames";
-import mergeRefs from "react-merge-refs";
+} from "react"
+import type * as Polymorphic from "@radix-ui/react-polymorphic"
+import cn from "classnames"
+import mergeRefs from "react-merge-refs"
 
-import { widthOverrides } from "../../utils";
-import { List } from "../list";
-import styles from "./styles.module.scss";
+import { widthOverrides } from "../../utils"
+import { List } from "../list"
+import styles from "./styles.module.scss"
 
 export interface ErrorSummaryProps {
-  id: string;
-  title: string;
-  description?: string;
-  reFocus?: number;
+  id: string
+  title: string
+  description?: string
+  reFocus?: number
   children?:
     | ReactElement<ComponentProps<"a">>
     | null
-    | Array<ReactElement<ComponentProps<"a">> | null>;
-  override?: number;
+    | Array<ReactElement<ComponentProps<"a">> | null>
+  override?: number
 }
 
 export type ErrorSummaryComponent = Polymorphic.ForwardRefComponent<
   "div",
   ErrorSummaryProps
->;
+>
 
 export const ErrorSummary: ErrorSummaryComponent = forwardRef(
   function ErrorSummary(
@@ -44,25 +44,25 @@ export const ErrorSummary: ErrorSummaryComponent = forwardRef(
       override,
       ...props
     },
-    ref
+    ref,
   ) {
-    const localRef = useRef<HTMLElement>(null);
+    const localRef = useRef<HTMLElement>(null)
 
     useEffect(() => {
       /* istanbul ignore else */
-      if (localRef.current && window?.GOVUKFrontend?.ErrorSummary) {
-        // eslint-disable-next-line no-new
-        new window.GOVUKFrontend.ErrorSummary(localRef.current);
-        localRef.current.scrollIntoView(true);
+      if (localRef.current && window?.LBHFrontend?.ErrorSummary) {
+        const summary = new window.LBHFrontend.ErrorSummary(localRef.current)
+        summary.init()
+        localRef.current.scrollIntoView(true)
       }
-    }, []);
+    }, [])
 
     useEffect(() => {
       /* istanbul ignore else */
       if (localRef.current) {
-        localRef.current.scrollIntoView(true);
+        localRef.current.scrollIntoView(true)
       }
-    }, [reFocus]);
+    }, [reFocus])
 
     return (
       <ErrorSummaryComp
@@ -71,7 +71,7 @@ export const ErrorSummary: ErrorSummaryComponent = forwardRef(
           styles.govukErrorSummary,
           styles.lbhErrorSummary,
           widthOverrides(override),
-          className
+          className,
         )}
         aria-labelledby={id}
         role="alert"
@@ -87,13 +87,13 @@ export const ErrorSummary: ErrorSummaryComponent = forwardRef(
               <List className={styles.govukErrorSummaryList}>
                 {React.Children.map(
                   children,
-                  (child) => child && isValidElement(child) && <li>{child}</li>
+                  (child) => child && isValidElement(child) && <li>{child}</li>,
                 )}
               </List>
             ) : null}
           </div>
         ) : null}
       </ErrorSummaryComp>
-    );
-  }
-);
+    )
+  },
+)

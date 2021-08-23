@@ -11,9 +11,6 @@
     "type": "git",
     "url": "git+https://cloudratha@github.com/LBHackney-IT/mtfh-frontend.git"
   },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
   "bugs": {
     "url": "https://github.com/LBHackney-IT/mtfh-frontend/issues"
   }
