@@ -1,6 +1,6 @@
+import { queries } from "@hackney/mtfh-system"
 import { renderHook } from "@testing-library/react-hooks"
 import MatchMediaMock from "jest-matchmedia-mock"
-import { queries } from "@hackney/mtfh-system"
 
 import {
   BreakpointKey,

@@ -1,9 +1,9 @@
+import path from "path"
+import { IFs, Volume, createFsFromVolume } from "memfs"
+import webpack, { Configuration } from "webpack"
 import ImportMapWebpackPlugin, {
   ImportMapWebpackPluginOptions,
 } from "./ImportMapWebpackPlugin"
-import webpack, { Configuration } from "webpack"
-import path from "path"
-import { createFsFromVolume, IFs, Volume } from "memfs"
 
 const generateConfig = (
   options: ImportMapWebpackPluginOptions,

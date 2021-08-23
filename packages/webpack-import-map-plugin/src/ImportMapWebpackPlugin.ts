@@ -31,6 +31,7 @@ export default class ImportMapWebpackPlugin {
     }
 
     try {
+      // eslint-disable-next-line no-new
       new URL(basePath)
     } catch (e) {
       throw new Error(`[${this.name}] basePath is not a valid domain.`)

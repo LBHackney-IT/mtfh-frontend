@@ -1,0 +1,95 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 10
+  },
+  "extends": [
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "airbnb-typescript",
+    "prettier"
+  ],
+  "plugins": ["@typescript-eslint/eslint-plugin"],
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "rules": {
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "no-param-reassign": "off",
+    "no-console": "off",
+    "import/prefer-default-export": "off",
+    "no-underscore-dangle": "off",
+    "no-shadow": "off",
+    "no-plusplus": "off",
+    "spaced-comment": "off",
+    "guard-for-in": "off",
+    "operator-assignment": "off",
+    "prefer-destructuring": "off",
+    "consistent-return": "off",
+    "no-restricted-syntax": "off",
+    "no-continue": "off",
+    "@typescript-eslint/dot-notation": "off",
+    "no-bitwise": "off",
+    "no-redeclare": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.+(test|spec).+(j|t)s?(x)",
+          "test?(s)/**/*.+(j|t)s?(x)"
+        ]
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "index"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between": "ignore",
+        "pathGroupsExcludedImportTypes": ["builtin"]
+      }
+    ],
+    "sort-imports": [
+      "error",
+      {
+        "ignoreDeclarationSort": true,
+        "allowSeparatedGroups": true
+      }
+    ],
+    "@typescript-eslint/lines-between-class-members": "off",
+    "no-alert": "off",
+    "@typescript-eslint/no-shadow": "off",
+    "import/no-named-as-default": "off",
+    "prefer-object-spread": "off",
+    "arrow-body-style": "off"
+  },
+  "overrides": [
+    {
+      "files": ["*.js", "*.ts", "*.tsx"],
+      "parserOptions": {
+        "project": ["./tsconfig.json"]
+      }
+    },
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ],
+  "settings": {
+    "import/resolver": {
+      "typescript": {},
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}

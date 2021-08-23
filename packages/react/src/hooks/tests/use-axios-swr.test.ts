@@ -1,6 +1,6 @@
+import { request } from "@hackney/mtfh-test-utils"
 import { act, renderHook } from "@testing-library/react-hooks"
 
-import { request } from "@hackney/mtfh-test-utils"
 import { useAxiosSWR, useAxiosSWRInfinite } from "../use-axios-swr"
 
 describe("useAxiosSWR", () => {
