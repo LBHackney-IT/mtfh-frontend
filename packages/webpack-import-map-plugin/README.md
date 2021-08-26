@@ -5,26 +5,26 @@ Import Map Webpack Plugin will produce an import-map of built files.
 ## Usage
 
 ```js
-const { ImportMapWebpackPlugin } = require('@hackney/webpack-import-map-plugin');
+const { ImportMapWebpackPlugin } = require("@hackney/webpack-import-map-plugin")
 
 const webpackConfig = {
-    plugins: [
-        entry: {
-            main: './src/index.js'
-        },
-        output: {
-            filename: '[name].[contenthash:8].js',
-        },
-        new ImportMapWebpackPlugin({
-            basePath: process.env.CDN_URL || 'http://localhost:8000',
-            mapFilenameToNamespace: (filename) => {
-                if (/main\..*\.js/.test(filename)) {
-                    return '@org/project';
-                }
-            },
-            outputFilename: `import-map.${process.env.APP_ENV || "development"}`
-        })
-    ]
+  entry: {
+    main: "./src/index.js",
+  },
+  output: {
+    filename: "[name].[contenthash:8].js",
+  },
+  plugins: [
+    new ImportMapWebpackPlugin({
+      basePath: process.env.CDN_URL || "http://localhost:8000",
+      mapFilenameToNamespace: filename => {
+        if (/main\..*\.js/.test(filename)) {
+          return "@org/project"
+        }
+      },
+      outputFilename: `import-map.${process.env.APP_ENV || "development"}`,
+    }),
+  ],
 }
 ```
 

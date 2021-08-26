@@ -72,8 +72,10 @@ export const DateField = ({
   const [monthField, monthMeta] = useField(monthName)
   const [yearField, yearMeta] = useField(yearName)
 
+  const error = dayMeta.error || monthMeta.error || yearMeta.error
+
   return (
-    <FormGroup as="fieldset" {...props}>
+    <FormGroup as="fieldset" error={error} {...props}>
       <DateInput
         dayProps={{ ...dayField, ...dayProps, error: !!dayMeta.error }}
         monthProps={{
