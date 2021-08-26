@@ -38,6 +38,7 @@
     "prettier": "^2.3.2"
   },
   "dependencies": {
-    "@typescript-eslint/parser": "^4.28.2"
+    "@typescript-eslint/parser": "^4.28.2",
+    "eslint-import-resolver-typescript": "^2.4.0"
   }
 }
