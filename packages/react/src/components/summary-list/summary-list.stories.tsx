@@ -1,12 +1,12 @@
-import React from "react";
+import React from "react"
 
-import { Link } from "../link";
-import { SummaryList, SummaryListItem } from "./summary-list";
+import { Link } from "../link"
+import { SummaryList, SummaryListItem } from "./summary-list"
 
 export default {
   title: "Summary List",
   component: SummaryList,
-};
+}
 
 export const Base = () => {
   return (
@@ -14,8 +14,8 @@ export const Base = () => {
       <SummaryListItem title="Name">John Smith</SummaryListItem>
       <SummaryListItem title="Date of birth">12/08/1980</SummaryListItem>
     </SummaryList>
-  );
-};
+  )
+}
 
 export const SummaryListWithBorder = () => {
   return (
@@ -23,8 +23,8 @@ export const SummaryListWithBorder = () => {
       <SummaryListItem title="Name">John Smith</SummaryListItem>
       <SummaryListItem title="Date of birth">12/08/1980</SummaryListItem>
     </SummaryList>
-  );
-};
+  )
+}
 
 export const SummaryListWithActions = () => {
   return (
@@ -48,14 +48,15 @@ export const SummaryListWithActions = () => {
         12/08/1980
       </SummaryListItem>
     </SummaryList>
-  );
-};
+  )
+}
 
 export const SummaryListWithOverrides = () => {
   return (
     <SummaryList variant="border" overrides={[1 / 2, 1 / 2]}>
       <SummaryListItem title="Name">John Smith</SummaryListItem>
       <SummaryListItem title="Date of birth">12/08/1980</SummaryListItem>
+      <SummaryListItem title="Date of birth2">12/08/1981</SummaryListItem>
     </SummaryList>
-  );
-};
+  )
+}

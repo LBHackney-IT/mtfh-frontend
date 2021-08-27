@@ -1,0 +1,23 @@
+@import "~lbh-frontend/lbh/base";
+@import "~lbh-frontend/lbh/components/lbh-panel/panel";
+
+.govuk-panel--confirmation {
+
+  &.panel__container--success, &.panel__container--error {
+    display: flex;
+    text-align: left;
+    .panel-text__container {
+      margin-left: 35px;
+    }  
+  }
+  &.panel__container--error {
+    background: lbh-colour("lbh-f02");
+  }
+  .icon-status__container {
+    margin-top: 8px;
+  }
+  .panel-text__container {
+    margin-top: 0;
+  }
+
+}
