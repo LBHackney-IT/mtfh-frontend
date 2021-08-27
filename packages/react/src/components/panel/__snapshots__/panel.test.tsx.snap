@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders correctly 1`] = `
+<div>
+  <div
+    class="govukPanel govukPanelConfirmation lbhPanel"
+  />
+</div>
+`;
+
+exports[`it shows a title that its polymorphic 1`] = `
+<div>
+  <div
+    class="govukPanel govukPanelConfirmation lbhPanel"
+  >
+    <h2
+      class="lbh-heading-h1 govukPanelTitle"
+    >
+      A title
+    </h2>
+  </div>
+</div>
+`;

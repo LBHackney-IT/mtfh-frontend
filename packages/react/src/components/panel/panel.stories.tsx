@@ -8,23 +8,13 @@ export default {
 }
 
 export const Base = () => <Panel titleText="Application complete" />
-export const WithBodyText = () => (
+export const WithTitleAndBody = () => (
   <Panel
     titleText="Application complete"
     bodyText="Your reference number: HDJ2123F"
   />
 )
-export const WithSuccessIcon = () => (
-  <Panel
-    titleText="Application complete"
-    bodyText="Your reference number: HDJ2123F"
-    variant="success"
-  />
-)
-export const WithErrorIcon = () => (
-  <Panel
-    titleText="Application incomplete"
-    bodyText="You need to fill more details"
-    variant="error"
-  />
+export const WithTitle = () => <Panel titleText="Application complete" />
+export const WithBody = () => (
+  <Panel bodyText="Your reference number: HDJ2123F" />
 )
