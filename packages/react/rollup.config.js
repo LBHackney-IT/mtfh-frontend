@@ -5,8 +5,6 @@ import genericNames from "generic-names"
 import peerDepsExternal from "rollup-plugin-peer-deps-external"
 import postcss from "rollup-plugin-postcss"
 
-const packageJson = require("./package.json")
-
 const generate = genericNames("[hash:base64:5]", {
   context: process.cwd(),
 })
@@ -16,23 +14,26 @@ export default [
     input: "src/index.ts",
     output: [
       {
-        file: packageJson.main,
+        dir: "dist/cjs",
         format: "cjs",
         sourcemap: true,
       },
       {
-        file: packageJson.module,
+        dir: "dist/esm",
         format: "esm",
         sourcemap: true,
+        preserveModules: true,
+        preserveModulesRoot: "src",
       },
     ],
-    inlineDynamicImports: true,
-    external: ["@mtfh/common"],
     plugins: [
       peerDepsExternal(),
       resolve(),
       commonjs(),
-      typescript({ tsconfig: "./tsconfig.json" }),
+      typescript({
+        tsconfig: "./tsconfig.json",
+        exclude: ["**/*.test.ts?x", "**/*.stories.tsx", "jest.setup.ts"],
+      }),
       postcss({
         extract: false,
         modules: {

@@ -1,22 +1,22 @@
-import React, { forwardRef } from "react";
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
-import cn from "classnames";
+import React, { forwardRef } from "react"
+import type * as Polymorphic from "@radix-ui/react-polymorphic"
+import cn from "classnames"
 
-import { widthOverrides } from "../../utils";
-import styles from "./styles.module.scss";
+import { widthOverrides } from "../../utils"
+import styles from "./styles.module.scss"
 
 export interface ButtonProps {
-  variant?: "primary" | "secondary";
-  isLoading?: boolean;
-  isDisabled?: boolean;
-  loadingText?: string;
-  override?: number;
+  variant?: "primary" | "secondary"
+  isLoading?: boolean
+  isDisabled?: boolean
+  loadingText?: string
+  override?: number
 }
 
 export type ButtonComponent = Polymorphic.ForwardRefComponent<
   "button",
   ButtonProps
->;
+>
 
 export const Button: ButtonComponent = forwardRef(function Button(
   {
@@ -30,7 +30,7 @@ export const Button: ButtonComponent = forwardRef(function Button(
     override,
     ...props
   },
-  ref
+  ref,
 ) {
   const buttonClasses = cn(
     styles.govukButton,
@@ -41,10 +41,10 @@ export const Button: ButtonComponent = forwardRef(function Button(
       [`${styles.govukButtonDisabled} ${styles.lbhButtonDisabled}`]: isDisabled,
     },
     widthOverrides(override),
-    className
-  );
+    className,
+  )
 
-  const disabled = isDisabled || isLoading || undefined;
+  const disabled = isDisabled || isLoading || undefined
 
   return (
     <ButtonComp
@@ -62,5 +62,5 @@ export const Button: ButtonComponent = forwardRef(function Button(
       )}
       {isLoading && loadingText ? loadingText : children}
     </ButtonComp>
-  );
-});
+  )
+})

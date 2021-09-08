@@ -83,12 +83,12 @@ export const Accordion: AccordionComponent = forwardRef(function Accordion(
   const localRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    /* istanbul ignore else */
-    if (localRef.current && window?.LBHFrontend?.Accordion) {
-      const acc = new window.LBHFrontend.Accordion(localRef.current)
-      acc.$sections = localRef.current.querySelectorAll(
-        `.${styles.govukAccordionSection}`,
+    const init = async (ref: HTMLElement) => {
+      const { default: LBHAccordion } = await import(
+        "lbh-frontend/lbh/components/lbh-accordion/accordion"
       )
+      const acc = new LBHAccordion(ref)
+      acc.$sections = ref.querySelectorAll(`.${styles.govukAccordionSection}`)
       acc.controlsClass = styles.govukAccordionControls
       acc.openAllClass = styles.govukAccordionOpenAll
       acc.iconClass = styles.govukAccordionIcon
@@ -99,6 +99,9 @@ export const Accordion: AccordionComponent = forwardRef(function Accordion(
       acc.sectionButtonClass = styles.govukAccordionSectionButton
       acc.sectionExpandedClass = styles.govukAccordionSectionExpanded
       acc.init()
+    }
+    if (localRef.current && window !== undefined && document !== undefined) {
+      init(localRef.current)
     }
   }, [])
 

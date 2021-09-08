@@ -49,11 +49,16 @@ export const ErrorSummary: ErrorSummaryComponent = forwardRef(
     const localRef = useRef<HTMLElement>(null)
 
     useEffect(() => {
-      /* istanbul ignore else */
-      if (localRef.current && window?.LBHFrontend?.ErrorSummary) {
-        const summary = new window.LBHFrontend.ErrorSummary(localRef.current)
+      const init = async (ref: HTMLElement) => {
+        const { default: LBHErrorSummary } = await import(
+          "lbh-frontend/lbh/components/lbh-error-summary/error-summary"
+        )
+        const summary = new LBHErrorSummary(ref)
         summary.init()
-        localRef.current.scrollIntoView(true)
+        ref.scrollIntoView(true)
+      }
+      if (localRef.current && window !== undefined && document !== undefined) {
+        init(localRef.current)
       }
     }, [])
 

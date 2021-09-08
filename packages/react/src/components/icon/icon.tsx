@@ -1,12 +1,12 @@
-import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
-import cn from 'classnames';
+import React, { ComponentPropsWithoutRef, forwardRef } from "react"
+import cn from "classnames"
 
-import './styles.scss';
+import styles from "./styles.module.scss"
 
-export interface IconProps extends ComponentPropsWithoutRef<'svg'> {
-  viewBox: string;
-  size?: string;
-  color?: string;
+export interface IconProps extends ComponentPropsWithoutRef<"svg"> {
+  viewBox: string
+  size?: string
+  color?: string
 }
 
 export const Icon = forwardRef<SVGSVGElement, IconProps>(function Icon(
@@ -15,18 +15,18 @@ export const Icon = forwardRef<SVGSVGElement, IconProps>(function Icon(
     height,
     color,
     className,
-    size = '1em',
+    size = "1em",
     focusable = false,
     ...props
   },
-  ref
+  ref,
 ) {
-  const iconClasses = cn('mtfh-icon', className);
+  const iconClasses = cn(styles.icon, className)
 
-  const style: Record<string, string | number> = {};
+  const style: Record<string, string | number> = {}
 
-  if (color && color !== 'currentColor') {
-    style.color = color;
+  if (color && color !== "currentColor") {
+    style.color = color
   }
 
   return (
@@ -39,5 +39,5 @@ export const Icon = forwardRef<SVGSVGElement, IconProps>(function Icon(
       style={style}
       {...props}
     />
-  );
-});
+  )
+})

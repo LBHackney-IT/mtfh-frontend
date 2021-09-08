@@ -88,9 +88,15 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
     const localRef = useRef<HTMLDivElement>()
 
     useEffect(() => {
-      /* istanbul ignore else */
-      if (localRef.current && window?.LBHFrontend?.Checkboxes) {
-        new window.LBHFrontend.Checkboxes(localRef.current).init()
+      const init = async (ref: HTMLElement) => {
+        const { default: LBHCheckboxes } = await import(
+          "lbh-frontend/lbh/components/lbh-checkboxes/checkboxes"
+        )
+        const checkboxes = new LBHCheckboxes(ref)
+        checkboxes.init()
+      }
+      if (localRef.current && window !== undefined) {
+        init(localRef.current)
       }
     }, [])
 

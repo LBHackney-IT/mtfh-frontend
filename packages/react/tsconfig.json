@@ -1,12 +1,10 @@
 {
   "extends": "../../tsconfig.json",
-  "include": [
-    "src",
-    "node_modules/@types/lbh-frontend/index.d.ts",
-    "jest.setup.ts"
-  ],
+  "include": ["src"],
   "exclude": ["dist"],
   "compilerOptions": {
-    "declarationDir": "."
+    "noEmit": true,
+    "declaration": false,
+    "declarationMap": false
   }
 }

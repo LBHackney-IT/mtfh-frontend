@@ -114,9 +114,16 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
     const localRef = useRef<HTMLDivElement>()
 
     useEffect(() => {
-      /* istanbul ignore else */
-      if (localRef.current && window?.LBHFrontend?.Radios) {
-        new window.LBHFrontend.Radios(localRef.current).init()
+      const init = async (ref: HTMLElement) => {
+        const { default: LBHRadios } = await import(
+          "lbh-frontend/lbh/components/lbh-radios/radios"
+        )
+        const radios = new LBHRadios(ref)
+        radios.init()
+      }
+
+      if (localRef.current && window !== undefined) {
+        init(localRef.current)
       }
     }, [])
 
