@@ -4,18 +4,13 @@ import cn from "classnames";
 
 import styles from "./styles.module.scss";
 
-export const SimplePagination = forwardRef<
-  HTMLElement,
-  ComponentPropsWithoutRef<"nav">
->(function SimplePagination({ className, ...props }, ref) {
-  return (
-    <nav
-      ref={ref}
-      className={cn(styles.lbhSimplePagination, className)}
-      {...props}
-    />
-  );
-});
+export const SimplePagination = forwardRef<HTMLElement, ComponentPropsWithoutRef<"nav">>(
+  function SimplePagination({ className, ...props }, ref) {
+    return (
+      <nav ref={ref} className={cn(styles.lbhSimplePagination, className)} {...props} />
+    );
+  },
+);
 
 export interface SimplePaginationButtonProps {
   title?: string;
@@ -27,17 +22,10 @@ export type SimplePaginationButtonComponent = Polymorphic.ForwardRefComponent<
   SimplePaginationButtonProps
 >;
 
-export const SimplePaginationButton: SimplePaginationButtonComponent =
-  forwardRef(function SimplePaginationButton(
-    {
-      as: SimplePaginationComp = "a",
-      variant,
-      className,
-      title,
-      children,
-      ...props
-    },
-    ref
+export const SimplePaginationButton: SimplePaginationButtonComponent = forwardRef(
+  function SimplePaginationButton(
+    { as: SimplePaginationComp = "a", variant, className, title, children, ...props },
+    ref,
   ) {
     return (
       <SimplePaginationComp
@@ -45,7 +33,7 @@ export const SimplePaginationButton: SimplePaginationButtonComponent =
         className={cn(
           styles.lbhSimplePaginationLink,
           { [styles.lbhSimplePaginationLinkNext]: variant === "next" },
-          className
+          className,
         )}
         {...props}
       >
@@ -55,9 +43,7 @@ export const SimplePaginationButton: SimplePaginationButtonComponent =
           </svg>
         ) : null}
         {children}
-        {title ? (
-          <span className={styles.lbhSimplePaginationTitle}>{title}</span>
-        ) : null}
+        {title ? <span className={styles.lbhSimplePaginationTitle}>{title}</span> : null}
         {variant === "next" ? (
           <svg width="11" height="19" viewBox="0 0 11 19" fill="none">
             <path d="M1 18L9 9.5L1 1" strokeWidth="2" />
@@ -65,4 +51,5 @@ export const SimplePaginationButton: SimplePaginationButtonComponent =
         ) : null}
       </SimplePaginationComp>
     );
-  });
+  },
+);

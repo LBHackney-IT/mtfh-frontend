@@ -23,48 +23,28 @@ export interface SummaryListItemProps extends ComponentPropsWithoutRef<"div"> {
 export const SummaryListItem = forwardRef<HTMLDivElement, SummaryListItemProps>(
   function SummaryListItem(
     { title, actions, children, className, fallback, overrides = [], ...props },
-    ref
+    ref,
   ) {
     const value = useMemo(
       () => (typeof children === "string" ? children.trim() : children),
-      [children]
+      [children],
     );
 
     return (
-      <div
-        ref={ref}
-        className={cn(styles.govukSummaryListRow, className)}
-        {...props}
-      >
-        <dt
-          className={cn(
-            styles.govukSummaryListKey,
-            widthOverrides(overrides[0])
-          )}
-        >
+      <div ref={ref} className={cn(styles.govukSummaryListRow, className)} {...props}>
+        <dt className={cn(styles.govukSummaryListKey, widthOverrides(overrides[0]))}>
           {title}
         </dt>
-        <dd
-          className={cn(
-            styles.govukSummaryListValue,
-            widthOverrides(overrides[1])
-          )}
-        >
+        <dd className={cn(styles.govukSummaryListValue, widthOverrides(overrides[1]))}>
           {value || fallback || "N/A"}
         </dd>
         {actions && (
           <dd
-            className={cn(
-              styles.govukSummaryListActions,
-              widthOverrides(overrides[2])
-            )}
+            className={cn(styles.govukSummaryListActions, widthOverrides(overrides[2]))}
           >
             <ul className={styles.govukSummaryListActionsList}>
               {Children.map(actions, (action) => (
-                <li
-                  key={action.key}
-                  className={styles.govukSummaryListActionsListItem}
-                >
+                <li key={action.key} className={styles.govukSummaryListActionsListItem}>
                   {action}
                 </li>
               ))}
@@ -73,7 +53,7 @@ export const SummaryListItem = forwardRef<HTMLDivElement, SummaryListItemProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 type SummaryListChild =
@@ -90,7 +70,7 @@ export interface SummaryListProps extends ComponentPropsWithoutRef<"dl"> {
 export const SummaryList = forwardRef<HTMLDListElement, SummaryListProps>(
   function SummaryList(
     { variant = "base", className, overrides, children, ...props },
-    ref
+    ref,
   ) {
     return (
       <dl
@@ -99,7 +79,7 @@ export const SummaryList = forwardRef<HTMLDListElement, SummaryListProps>(
           styles.govukSummaryList,
           { [styles.govukSummaryListNoBorder]: variant !== "border" },
           styles.lbhSummaryList,
-          className
+          className,
         )}
         {...props}
       >
@@ -110,12 +90,10 @@ export const SummaryList = forwardRef<HTMLDListElement, SummaryListProps>(
             isValidElement<SummaryListItemProps>(child) &&
             cloneElement(child, {
               overrides:
-                !child.props.overrides && index === 0
-                  ? overrides
-                  : child.props.overrides,
-            })
+                !child.props.overrides && index === 0 ? overrides : child.props.overrides,
+            }),
         )}
       </dl>
     );
-  }
+  },
 );

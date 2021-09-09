@@ -31,20 +31,18 @@ export const Link: LinkComponent = forwardRef(function Link(
     override,
     ...props
   },
-  ref
+  ref,
 ) {
   const linkClasses = cn(
     variant !== "native" && {
       [`${styles.govukLink} ${styles.lbhLink}`]: variant !== "back-link",
-      [`${styles.govukBackLink} ${styles.lbhBackLink}`]:
-        variant === "back-link",
-      [styles[`lbh-link--${variant}`]]:
-        variant !== "link" && variant !== "back-link",
+      [`${styles.govukBackLink} ${styles.lbhBackLink}`]: variant === "back-link",
+      [styles[`lbh-link--${variant}`]]: variant !== "link" && variant !== "back-link",
       [styles.lbhLinkNoVisitedState]:
         !isExternal && !["danger", "muted", "text-colour"].includes(variant),
     },
     widthOverrides(override),
-    className
+    className,
   );
 
   return (

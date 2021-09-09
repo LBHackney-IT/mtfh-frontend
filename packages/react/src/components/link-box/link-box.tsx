@@ -16,33 +16,28 @@ export type LinkOverlayComponent = Polymorphic.ForwardRefComponent<
   LinkOverlayProps
 >;
 
-export const LinkOverlay: LinkOverlayComponent = forwardRef(
-  function LinkOverlay(
-    { as: LinkOverlayComp = "div", className, override, ...props },
-    ref
-  ) {
-    return (
-      <LinkOverlayComp
-        ref={ref}
-        className={cn(styles.linkOverlay, widthOverrides(override), className)}
-        {...props}
-      />
-    );
-  }
-);
+export const LinkOverlay: LinkOverlayComponent = forwardRef(function LinkOverlay(
+  { as: LinkOverlayComp = "div", className, override, ...props },
+  ref,
+) {
+  return (
+    <LinkOverlayComp
+      ref={ref}
+      className={cn(styles.linkOverlay, widthOverrides(override), className)}
+      {...props}
+    />
+  );
+});
 
 export interface LinkBoxProps {
   override?: number;
 }
 
-export type LinkBoxComponent = Polymorphic.ForwardRefComponent<
-  "div",
-  LinkBoxProps
->;
+export type LinkBoxComponent = Polymorphic.ForwardRefComponent<"div", LinkBoxProps>;
 
 export const LinkBox: LinkBoxComponent = forwardRef(function LinkBox(
   { as: LinkBoxComp = "div", className, override, ...props },
-  ref
+  ref,
 ) {
   return (
     <LinkBoxComp

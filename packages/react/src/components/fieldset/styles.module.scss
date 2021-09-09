@@ -11,14 +11,12 @@
 .fieldset {
   &--indent > .fieldset__content {
     padding-left: govuk-spacing(3);
-    border-left: $govuk-border-width-form-group-error solid
-      lbh-colour("lbh-grey-2");
+    border-left: $govuk-border-width-form-group-error solid lbh-colour("lbh-grey-2");
   }
 
   &--has-error > .fieldset__content {
     padding-left: govuk-spacing(3);
-    border-left: $govuk-border-width-form-group-error solid
-      lbh-colour("lbh-error");
+    border-left: $govuk-border-width-form-group-error solid lbh-colour("lbh-error");
   }
 
   &__content {

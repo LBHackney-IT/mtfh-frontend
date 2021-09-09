@@ -1,14 +1,14 @@
-import React from "react"
-import { render, screen, waitFor } from "@testing-library/react"
-import userEvent from "@testing-library/user-event"
-import { Form, Formik } from "formik"
+import React from "react";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { Form, Formik } from "formik";
 
-import { Input } from "../input"
-import { Radio, RadioGroup } from "../radios"
-import { DateField, Field, InlineField } from "./field"
+import { Input } from "../input";
+import { Radio, RadioGroup } from "../radios";
+import { DateField, Field, InlineField } from "./field";
 
 test("field renders correctly", async () => {
-  const onSubmit = jest.fn()
+  const onSubmit = jest.fn();
   render(
     <Formik initialValues={{ text: "" }} onSubmit={onSubmit}>
       <Form>
@@ -18,11 +18,11 @@ test("field renders correctly", async () => {
         <button type="submit">Submit</button>
       </Form>
     </Formik>,
-  )
+  );
 
-  const input = screen.getByLabelText("Text") as HTMLInputElement
-  userEvent.type(input, "Hello")
-  userEvent.click(screen.getByRole("button"))
+  const input = screen.getByLabelText("Text") as HTMLInputElement;
+  userEvent.type(input, "Hello");
+  userEvent.click(screen.getByRole("button"));
 
   await waitFor(() => {
     expect(onSubmit).toHaveBeenCalledWith(
@@ -38,12 +38,12 @@ test("field renders correctly", async () => {
         setTouched: expect.any(Function),
         setValues: expect.any(Function),
       }),
-    )
-  })
-})
+    );
+  });
+});
 
 test("field renders correctly as radios", async () => {
-  const onSubmit = jest.fn()
+  const onSubmit = jest.fn();
   render(
     <Formik initialValues={{ choice: "" }} onSubmit={onSubmit}>
       <Form>
@@ -60,11 +60,11 @@ test("field renders correctly as radios", async () => {
         <button type="submit">Submit</button>
       </Form>
     </Formik>,
-  )
+  );
 
-  const input = screen.getByLabelText("Choice 2") as HTMLInputElement
-  userEvent.click(input)
-  userEvent.click(screen.getByRole("button"))
+  const input = screen.getByLabelText("Choice 2") as HTMLInputElement;
+  userEvent.click(input);
+  userEvent.click(screen.getByRole("button"));
 
   await waitFor(() => {
     expect(onSubmit).toHaveBeenCalledWith(
@@ -80,12 +80,12 @@ test("field renders correctly as radios", async () => {
         setTouched: expect.any(Function),
         setValues: expect.any(Function),
       }),
-    )
-  })
-})
+    );
+  });
+});
 
 test("inline field renders correctly", async () => {
-  const onSubmit = jest.fn()
+  const onSubmit = jest.fn();
   render(
     <Formik initialValues={{ text: "" }} onSubmit={onSubmit}>
       <Form>
@@ -96,11 +96,11 @@ test("inline field renders correctly", async () => {
         <button type="submit">Submit</button>
       </Form>
     </Formik>,
-  )
+  );
 
-  const input = screen.getByLabelText("Text") as HTMLInputElement
-  userEvent.type(input, "Hello")
-  userEvent.click(screen.getByRole("button"))
+  const input = screen.getByLabelText("Text") as HTMLInputElement;
+  userEvent.type(input, "Hello");
+  userEvent.click(screen.getByRole("button"));
 
   await waitFor(() => {
     expect(onSubmit).toHaveBeenCalledWith(
@@ -116,17 +116,14 @@ test("inline field renders correctly", async () => {
         setTouched: expect.any(Function),
         setValues: expect.any(Function),
       }),
-    )
-  })
-})
+    );
+  });
+});
 
 test("inline field renders correctly", async () => {
-  const onSubmit = jest.fn()
+  const onSubmit = jest.fn();
   render(
-    <Formik
-      initialValues={{ day: "", month: "", year: "" }}
-      onSubmit={onSubmit}
-    >
+    <Formik initialValues={{ day: "", month: "", year: "" }} onSubmit={onSubmit}>
       <Form>
         <DateField
           id="date"
@@ -138,17 +135,17 @@ test("inline field renders correctly", async () => {
         <button type="submit">Submit</button>
       </Form>
     </Formik>,
-  )
+  );
 
-  const day = screen.getByLabelText("Day")
-  const month = screen.getByLabelText("Month")
-  const year = screen.getByLabelText("Year")
+  const day = screen.getByLabelText("Day");
+  const month = screen.getByLabelText("Month");
+  const year = screen.getByLabelText("Year");
 
-  userEvent.type(day, "1")
-  userEvent.type(month, "12")
-  userEvent.type(year, "1998")
+  userEvent.type(day, "1");
+  userEvent.type(month, "12");
+  userEvent.type(year, "1998");
 
-  userEvent.click(screen.getByRole("button"))
+  userEvent.click(screen.getByRole("button"));
 
   await waitFor(() => {
     expect(onSubmit).toHaveBeenCalledWith(
@@ -164,6 +161,6 @@ test("inline field renders correctly", async () => {
         setTouched: expect.any(Function),
         setValues: expect.any(Function),
       }),
-    )
-  })
-})
+    );
+  });
+});

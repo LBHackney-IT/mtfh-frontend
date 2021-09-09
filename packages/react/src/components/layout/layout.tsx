@@ -1,15 +1,11 @@
-import React, {
-  ComponentPropsWithoutRef,
-  ReactElement,
-  forwardRef,
-} from "react"
-import cn from "classnames"
+import React, { ComponentPropsWithoutRef, ReactElement, forwardRef } from "react";
+import cn from "classnames";
 
-import "./styles.module.scss"
+import "./styles.module.scss";
 
 export interface LayoutProps extends ComponentPropsWithoutRef<"div"> {
-  top?: ReactElement
-  side?: ReactElement
+  top?: ReactElement;
+  side?: ReactElement;
 }
 
 export const Layout = forwardRef<HTMLDivElement, LayoutProps>(function Layout(
@@ -28,5 +24,5 @@ export const Layout = forwardRef<HTMLDivElement, LayoutProps>(function Layout(
         <div className="mtfh-layout__main">{children}</div>
       </div>
     </div>
-  )
-})
+  );
+});

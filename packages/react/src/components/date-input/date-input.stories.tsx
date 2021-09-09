@@ -1,16 +1,16 @@
-import React from "react"
+import React from "react";
 
-import { FormGroup } from "../form-group"
-import { DateInput } from "./date-input"
+import { FormGroup } from "../form-group";
+import { DateInput } from "./date-input";
 
 export default {
   title: "Date Input",
   component: DateInput,
-}
+};
 
 export const Base = () => {
-  return <DateInput id="date-input" />
-}
+  return <DateInput id="date-input" />;
+};
 
 export const DateInputWithError = () => {
   return (
@@ -27,17 +27,13 @@ export const DateInputWithError = () => {
         yearProps={{ error: true }}
       />
     </FormGroup>
-  )
-}
+  );
+};
 
 export const DateInputWithSingleError = () => {
   return (
-    <FormGroup
-      id="date-input"
-      label="Date of Birth"
-      error="Date cannot be in the future"
-    >
+    <FormGroup id="date-input" label="Date of Birth" error="Date cannot be in the future">
       <DateInput yearProps={{ error: true }} />
     </FormGroup>
-  )
-}
+  );
+};

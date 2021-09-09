@@ -16,7 +16,5 @@ export const NumberInputWithTypeNumber = () => {
 };
 
 export const NumberWithMinMax = () => {
-  return (
-    <NumberInput placeholder="Enter Month" min={0} max={12} padStart={2} />
-  );
+  return <NumberInput placeholder="Enter Month" min={0} max={12} padStart={2} />;
 };

@@ -12,7 +12,7 @@ export type TextComponent = Polymorphic.ForwardRefComponent<"p", TextProps>;
 
 export const Text: TextComponent = forwardRef(function Heading(
   { as: TextComp = "p", variant = "md", className, ...props },
-  ref
+  ref,
 ) {
   return (
     <TextComp
@@ -24,7 +24,7 @@ export const Text: TextComponent = forwardRef(function Heading(
           [styles.lbhBodyM]: variant === "md",
           [styles.lbhBodyL]: variant === "lg",
         },
-        className
+        className,
       )}
       {...props}
     />

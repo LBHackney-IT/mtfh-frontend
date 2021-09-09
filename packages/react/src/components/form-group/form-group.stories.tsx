@@ -38,12 +38,7 @@ export const FormGroupWithRequired = () => {
 
 export const FormGroupWithError = () => {
   return (
-    <FormGroup
-      id="name"
-      label="First Name"
-      error="First Name is required"
-      required
-    >
+    <FormGroup id="name" label="First Name" error="First Name is required" required>
       <Input />
     </FormGroup>
   );

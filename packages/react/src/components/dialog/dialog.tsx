@@ -15,16 +15,8 @@ export interface DialogProps extends ComponentPropsWithoutRef<"div"> {
 }
 
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
-  {
-    isOpen,
-    onDismiss,
-    dismissText = "Close",
-    children,
-    className,
-    title,
-    ...props
-  },
-  ref
+  { isOpen, onDismiss, dismissText = "Close", children, className, title, ...props },
+  ref,
 ) {
   return (
     <ReachDialog
@@ -38,11 +30,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
       <Heading variant="h2" className={styles.lbhDialogTitle}>
         {title}
       </Heading>
-      <button
-        type="button"
-        onClick={onDismiss}
-        className={styles.lbhDialogClose}
-      >
+      <button type="button" onClick={onDismiss} className={styles.lbhDialogClose}>
         <VisuallyHidden>{dismissText}</VisuallyHidden>
 
         <svg width="18" height="18" viewBox="0 0 13 13" fill="none">
@@ -61,15 +49,10 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
   );
 });
 
-export const DialogActions = forwardRef<
-  HTMLDivElement,
-  ComponentPropsWithoutRef<"div">
->(function DialogActions({ className, ...props }, ref) {
-  return (
-    <div
-      ref={ref}
-      className={cn(styles.lbhDialogActions, className)}
-      {...props}
-    />
-  );
-});
+export const DialogActions = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<"div">>(
+  function DialogActions({ className, ...props }, ref) {
+    return (
+      <div ref={ref} className={cn(styles.lbhDialogActions, className)} {...props} />
+    );
+  },
+);

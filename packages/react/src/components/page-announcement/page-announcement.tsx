@@ -35,7 +35,7 @@ export const PageAnnouncement = forwardRef<HTMLElement, PageAnnouncementProps>(
             [styles[`lbh-page-announcement--${variant}`]]:
               variant && variant !== "success",
           },
-          className
+          className,
         )}
         {...rest}
         role="alert"
@@ -46,5 +46,5 @@ export const PageAnnouncement = forwardRef<HTMLElement, PageAnnouncementProps>(
         )}
       </section>
     );
-  }
+  },
 );

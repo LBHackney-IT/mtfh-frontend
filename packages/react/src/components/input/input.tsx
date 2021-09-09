@@ -11,7 +11,7 @@ export interface InputProps extends ComponentPropsWithoutRef<"input"> {
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   { error, className, override, ...props },
-  ref
+  ref,
 ) {
   const inputClasses = classNames(
     styles.govukInput,
@@ -20,7 +20,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       [styles.govukInputError]: error,
     },
     widthOverrides(override),
-    className
+    className,
   );
 
   return <input ref={ref} className={inputClasses} {...props} />;

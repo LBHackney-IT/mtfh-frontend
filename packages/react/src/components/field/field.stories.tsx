@@ -1,14 +1,14 @@
-import React from "react"
-import { Formik } from "formik"
+import React from "react";
+import { Formik } from "formik";
 
-import { Input } from "../input"
-import { Radio, RadioGroup } from "../radios"
-import { Field } from "./field"
+import { Input } from "../input";
+import { Radio, RadioGroup } from "../radios";
+import { Field } from "./field";
 
 export default {
   title: "Formik/Field",
   component: Field,
-}
+};
 
 export const Base = () => {
   return (
@@ -17,8 +17,8 @@ export const Base = () => {
         <Input />
       </Field>
     </Formik>
-  )
-}
+  );
+};
 
 export const FieldWithRadioGroup = () => {
   return (
@@ -37,5 +37,5 @@ export const FieldWithRadioGroup = () => {
         </RadioGroup>
       </Field>
     </Formik>
-  )
-}
+  );
+};

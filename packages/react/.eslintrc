@@ -8,11 +8,7 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": [
-          "**/*/rollup.config.js",
-          "**/*.test.ts",
-          "**/*.test.tsx"
-        ]
+        "devDependencies": ["**/*/rollup.config.js", "**/*.test.ts", "**/*.test.tsx"]
       }
     ],
     "jsx-a11y/anchor-is-valid": [
@@ -23,15 +19,5 @@
       }
     ],
     "jsx-a11y/label-has-associated-control": "off"
-    // "jsx-a11y/label-has-associated-control": [
-    //   2,
-    //   {
-    //     "labelComponents": ["Label"],
-    //     "labelAttributes": ["label"],
-    //     "controlComponents": ["Input"],
-    //     "assert": "htmlFor",
-    //     "depth": 3
-    //   }
-    // ]
   }
 }

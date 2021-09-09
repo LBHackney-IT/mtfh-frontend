@@ -14,30 +14,24 @@ export type ErrorMessageComponent = Polymorphic.ForwardRefComponent<
   ErrorMessageProps
 >;
 
-export const ErrorMessage: ErrorMessageComponent = forwardRef(
-  function ErrorMessage(
-    {
-      as: ErrorMessageComp = "span",
-      assistiveText = "Error",
-      className,
-      children,
-      ...props
-    },
-    ref
-  ) {
-    return (
-      <ErrorMessageComp
-        ref={ref}
-        className={cn(
-          styles.govukErrorMessage,
-          styles.lbhErrorMessage,
-          className
-        )}
-        {...props}
-      >
-        {assistiveText && <VisuallyHidden>{assistiveText}:</VisuallyHidden>}
-        {children}
-      </ErrorMessageComp>
-    );
-  }
-);
+export const ErrorMessage: ErrorMessageComponent = forwardRef(function ErrorMessage(
+  {
+    as: ErrorMessageComp = "span",
+    assistiveText = "Error",
+    className,
+    children,
+    ...props
+  },
+  ref,
+) {
+  return (
+    <ErrorMessageComp
+      ref={ref}
+      className={cn(styles.govukErrorMessage, styles.lbhErrorMessage, className)}
+      {...props}
+    >
+      {assistiveText && <VisuallyHidden>{assistiveText}:</VisuallyHidden>}
+      {children}
+    </ErrorMessageComp>
+  );
+});

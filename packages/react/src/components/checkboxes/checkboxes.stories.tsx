@@ -44,9 +44,7 @@ export const Conditionals = () => {
       <Checkbox id="checkbox-group-6" aria-controls="conditional">
         Checkbox 2 with Conditional
       </Checkbox>
-      <CheckboxConditional id="conditional">
-        This is a conditional
-      </CheckboxConditional>
+      <CheckboxConditional id="conditional">This is a conditional</CheckboxConditional>
     </CheckboxGroup>
   );
 };

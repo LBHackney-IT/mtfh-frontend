@@ -1,13 +1,13 @@
-import React from "react"
-import { Formik } from "formik"
+import React from "react";
+import { Formik } from "formik";
 
-import { Input } from "../input"
-import { InlineField } from "./field"
+import { Input } from "../input";
+import { InlineField } from "./field";
 
 export default {
   title: "Formik/Inline Field",
   component: InlineField,
-}
+};
 
 export const Base = () => {
   return (
@@ -16,5 +16,5 @@ export const Base = () => {
         <Input />
       </InlineField>
     </Formik>
-  )
-}
+  );
+};

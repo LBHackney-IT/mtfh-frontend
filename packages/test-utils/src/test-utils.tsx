@@ -1,46 +1,42 @@
-import React, { isValidElement } from "react"
-import { queries } from "@hackney/mtfh-system"
-import {
-  RenderOptions,
-  RenderResult,
-  render as rtlRender,
-} from "@testing-library/react"
-import { RunOptions } from "axe-core"
-import { MemoryHistory, createMemoryHistory } from "history"
-import { axe, toHaveNoViolations } from "jest-axe"
-import MatchMediaMock from "jest-matchmedia-mock"
-import { rest } from "msw"
-import { setupServer } from "msw/node"
-import { Route, Router } from "react-router-dom"
+import React, { isValidElement } from "react";
+import { queries } from "@hackney/mtfh-system";
+import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
+import { RunOptions } from "axe-core";
+import { MemoryHistory, createMemoryHistory } from "history";
+import { axe, toHaveNoViolations } from "jest-axe";
+import MatchMediaMock from "jest-matchmedia-mock";
+import { rest } from "msw";
+import { setupServer } from "msw/node";
+import { Route, Router } from "react-router-dom";
 
-expect.extend(toHaveNoViolations)
+expect.extend(toHaveNoViolations);
 
-export const server = setupServer()
-let matchMedia: MatchMediaMock
+export const server = setupServer();
+let matchMedia: MatchMediaMock;
 
 beforeAll(() => {
-  matchMedia = new MatchMediaMock()
+  matchMedia = new MatchMediaMock();
   server.listen({
     onUnhandledRequest: "warn",
-  })
-})
+  });
+});
 
 afterEach(async () => {
-  matchMedia.clear()
-  server.resetHandlers()
-})
+  matchMedia.clear();
+  server.resetHandlers();
+});
 
 afterAll(() => {
-  server.close()
-})
+  server.close();
+});
 
-type UI = Parameters<typeof rtlRender>[0]
-type TestA11YOptions = RenderOptions & { axeOptions?: RunOptions }
+type UI = Parameters<typeof rtlRender>[0];
+type TestA11YOptions = RenderOptions & { axeOptions?: RunOptions };
 
 interface RouteRenderConfig {
-  url: string
-  path: string
-  query: keyof typeof queries
+  url: string;
+  path: string;
+  query: keyof typeof queries;
 }
 
 export const render = (
@@ -52,12 +48,12 @@ export const render = (
     path: "/",
     query: "lg",
     ...options,
-  }
+  };
 
-  matchMedia.useMediaQuery(`(min-width: 0px)`)
-  const history = createMemoryHistory<unknown>()
-  history.push(config.url)
-  matchMedia.useMediaQuery(queries[config.query])
+  matchMedia.useMediaQuery(`(min-width: 0px)`);
+  const history = createMemoryHistory<unknown>();
+  history.push(config.url);
+  matchMedia.useMediaQuery(queries[config.query]);
 
   return {
     render: rtlRender(
@@ -66,26 +62,26 @@ export const render = (
       </Router>,
     ),
     history,
-  }
-}
+  };
+};
 
 export const testA11y = async (
   ui: UI | Element,
   { axeOptions, ...options }: TestA11YOptions = {},
 ): Promise<void> => {
-  const container = isValidElement(ui) ? rtlRender(ui, options).container : ui
+  const container = isValidElement(ui) ? rtlRender(ui, options).container : ui;
 
-  const results = await axe(container, axeOptions)
+  const results = await axe(container, axeOptions);
 
-  expect(results).toHaveNoViolations()
-}
+  expect(results).toHaveNoViolations();
+};
 
 type RestRequest = {
-  method?: keyof typeof rest
-  path: string
-  data: unknown
-  code?: number
-}
+  method?: keyof typeof rest;
+  path: string;
+  data: unknown;
+  code?: number;
+};
 
 export const request = ({
   method = "get",
@@ -95,20 +91,18 @@ export const request = ({
 }: RestRequest): void => {
   server.use(
     rest[method](path, (req, res, ctx) => {
-      return res.once(ctx.status(code), ctx.json(data))
+      return res.once(ctx.status(code), ctx.json(data));
     }),
-  )
-}
+  );
+};
 
 export const networkFailure = ({
   method = "get",
   path,
 }: Omit<RestRequest, "data" | "code">): void => {
-  server.use(
-    rest[method](path, (req, res) => res.networkError("FAILED TO CONNECT")),
-  )
-}
+  server.use(rest[method](path, (req, res) => res.networkError("FAILED TO CONNECT")));
+};
 
-window.HTMLElement.prototype.scrollIntoView = jest.fn()
+window.HTMLElement.prototype.scrollIntoView = jest.fn();
 
-export { axe }
+export { axe };

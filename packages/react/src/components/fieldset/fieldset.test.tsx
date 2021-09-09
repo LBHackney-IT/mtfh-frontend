@@ -1,9 +1,9 @@
-import React from "react"
-import { testA11y } from "@hackney/mtfh-test-utils"
-import { render } from "@testing-library/react"
+import React from "react";
+import { testA11y } from "@hackney/mtfh-test-utils";
+import { render } from "@testing-library/react";
 
-import { FormGroup, Input } from ".."
-import { Fieldset } from "./fieldset"
+import { FormGroup, Input } from "..";
+import { Fieldset } from "./fieldset";
 
 test("it renders correctly", async () => {
   const { container } = render(
@@ -12,10 +12,10 @@ test("it renders correctly", async () => {
         <Input />
       </FormGroup>
     </Fieldset>,
-  )
-  expect(container).toMatchSnapshot()
-  await testA11y(container)
-})
+  );
+  expect(container).toMatchSnapshot();
+  await testA11y(container);
+});
 
 test("it renders correctly with an h tag", async () => {
   const { container } = render(
@@ -24,10 +24,10 @@ test("it renders correctly with an h tag", async () => {
         <Input />
       </FormGroup>
     </Fieldset>,
-  )
-  expect(container).toMatchSnapshot()
-  await testA11y(container)
-})
+  );
+  expect(container).toMatchSnapshot();
+  await testA11y(container);
+});
 
 test("it applies the correct variant styling", () => {
   const { container } = render(
@@ -36,9 +36,9 @@ test("it applies the correct variant styling", () => {
         <Input />
       </FormGroup>
     </Fieldset>,
-  )
-  expect(container).toMatchSnapshot()
-})
+  );
+  expect(container).toMatchSnapshot();
+});
 
 test("it applies aria-hidden to legend with variant hidden", () => {
   const { container } = render(
@@ -47,10 +47,10 @@ test("it applies aria-hidden to legend with variant hidden", () => {
         <Input />
       </FormGroup>
     </Fieldset>,
-  )
+  );
 
-  expect(container).toMatchSnapshot()
-})
+  expect(container).toMatchSnapshot();
+});
 
 test("it applies an error", async () => {
   const { container } = render(
@@ -59,7 +59,7 @@ test("it applies an error", async () => {
         <Input />
       </FormGroup>
     </Fieldset>,
-  )
-  expect(container).toMatchSnapshot()
-  await testA11y(container)
-})
+  );
+  expect(container).toMatchSnapshot();
+  await testA11y(container);
+});

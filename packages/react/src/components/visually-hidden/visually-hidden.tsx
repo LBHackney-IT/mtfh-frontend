@@ -6,17 +6,15 @@ import styles from "./styles.module.scss";
 
 export type VisuallyHiddenComponent = Polymorphic.ForwardRefComponent<"span">;
 
-export const VisuallyHidden: VisuallyHiddenComponent = forwardRef(
-  function VisuallyHidden(
-    { as: VisuallyHiddenComp = "span", className, ...props },
-    ref
-  ) {
-    return (
-      <VisuallyHiddenComp
-        ref={ref}
-        className={cn(styles.visuallyHidden, className)}
-        {...props}
-      />
-    );
-  }
-);
+export const VisuallyHidden: VisuallyHiddenComponent = forwardRef(function VisuallyHidden(
+  { as: VisuallyHiddenComp = "span", className, ...props },
+  ref,
+) {
+  return (
+    <VisuallyHiddenComp
+      ref={ref}
+      className={cn(styles.visuallyHidden, className)}
+      {...props}
+    />
+  );
+});
