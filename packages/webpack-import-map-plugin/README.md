@@ -5,26 +5,33 @@ Import Map Webpack Plugin will produce an import-map of built files.
 ## Usage
 
 ```js
-const { ImportMapWebpackPlugin } = require('@hackney/webpack-import-map-plugin');
+const { ImportMapWebpackPlugin } = require("@hackney/webpack-import-map-plugin");
 
 const webpackConfig = {
-    plugins: [
-        entry: {
-            main: './src/index.js'
-        },
-        output: {
-            filename: '[name].[contenthash:8].js',
-        },
-        new ImportMapWebpackPlugin({
-            basePath: process.env.CDN_URL || 'http://localhost:8000',
-            mapFilenameToNamespace: (filename) => {
-                if (/main\..*\.js/.test(filename)) {
-                    return '@org/project';
-                }
-            },
-            outputFilename: `import-map.${process.env.APP_ENV || "development"}`
-        })
-    ]
+  entry: {
+    main: "./src/index.js",
+  },
+  output: {
+    filename: "[name].[contenthash:8].js",
+  },
+  plugins: [
+    new ImportMapWebpackPlugin({
+      basePath: process.env.CDN_URL || "http://localhost:8000",
+      namespace: "@mtfh",
+      outputFilename: `import-map.${process.env.APP_ENV || "development"}`,
+    }),
+  ],
+};
+```
+
+The above will produce an import-map with the following output:
+
+```json
+// dist/import-map.development.json
+{
+  "imports": {
+    "@mtfh/main": "http://localhost:8000/main.74284023.js"
+  }
 }
 ```
 
@@ -34,10 +41,9 @@ const webpackConfig = {
 
 Must be a valid URL domain
 
-### mapFilenameToNamespace \*
+### namespace \*
 
-A fuction that recieves the built asset filename. If the function returns a
-string it will be included in the import-map, otherwise ignored.
+The namespace the outputted files belong to. e.g. `@mtfh`
 
 ### outputFilename
 

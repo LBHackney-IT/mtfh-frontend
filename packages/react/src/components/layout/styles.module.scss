@@ -1,7 +1,7 @@
-@import '~lbh-frontend/lbh/base';
-@import '~govuk-frontend/govuk/helpers/media-queries';
+@import "~lbh-frontend/lbh/base";
+@import "~govuk-frontend/govuk/helpers/media-queries";
 
-.mtfh-layout {
+.layout {
   @include govuk-media-query($from: desktop) {
     &__container {
       display: grid;
@@ -11,7 +11,7 @@
       grid-template-columns: 310px 1fr;
     }
 
-    &--narrow .mtfh-layout__container {
+    &--narrow .layout__container {
       grid-template-columns: 1fr;
     }
 
@@ -22,7 +22,7 @@
     &__main {
       margin-top: 0;
 
-      .mtfh-layout:not(.mtfh-layout--narrow) & {
+      .layout:not(.layout--narrow) & {
         grid-area: 1 / 2 / 2 / 3;
       }
     }

@@ -50,6 +50,7 @@ jobs:
         run: yarn build
 
       - name: Publish packages
+        id: changesets
         uses: changesets/action@master
         with:
           publish: yarn release

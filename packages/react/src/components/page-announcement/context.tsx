@@ -42,7 +42,7 @@ export const usePageAnnouncement = (): UsePageAnnouncementValue => {
 
   if (!context) {
     const error = new Error(
-      "usePageAnnouncementContext: `context` is undefined. Seems you forgot to wrap component within the Provider"
+      "usePageAnnouncementContext: `context` is undefined. Seems you forgot to wrap component within the Provider",
     );
     Error.captureStackTrace?.(error, usePageAnnouncement);
     throw error;
@@ -69,10 +69,10 @@ export const PageAnnouncementProvider: FC<PageAnnouncementProviderProps> = ({
   sessionKey,
   children,
 }): JSX.Element => {
-  const reducer: Reducer<
-    PageAnnouncementState | undefined,
-    PageAnnouncementActions
-  > = (state, action) => {
+  const reducer: Reducer<PageAnnouncementState | undefined, PageAnnouncementActions> = (
+    state,
+    action,
+  ) => {
     switch (action.type) {
       case "ADD":
         return action.payload;
@@ -88,10 +88,9 @@ export const PageAnnouncementProvider: FC<PageAnnouncementProviderProps> = ({
         heading: window.sessionStorage.getItem(`${sessionKey}:heading`) || "",
         variant:
           (window.sessionStorage.getItem(
-            `${sessionKey}:variant`
+            `${sessionKey}:variant`,
           ) as PageAnnouncementState["variant"]) || "success",
-        description:
-          window.sessionStorage.getItem(`${sessionKey}:description`) || "",
+        description: window.sessionStorage.getItem(`${sessionKey}:description`) || "",
       };
 
       if (data.heading) {

@@ -15,11 +15,7 @@ export const Base = () => {
   return (
     <>
       <Button onClick={() => setOpen(true)}>Open Dialog</Button>
-      <Dialog
-        isOpen={open}
-        onDismiss={() => setOpen(false)}
-        title="Announcement"
-      >
+      <Dialog isOpen={open} onDismiss={() => setOpen(false)} title="Announcement">
         <Text>This is a dialog</Text>
       </Dialog>
     </>
@@ -31,11 +27,7 @@ export const DialogWithActions = () => {
   return (
     <>
       <Button onClick={() => setOpen(true)}>Open Dialog</Button>
-      <Dialog
-        isOpen={open}
-        onDismiss={() => setOpen(false)}
-        title="Are you sure?"
-      >
+      <Dialog isOpen={open} onDismiss={() => setOpen(false)} title="Are you sure?">
         <Text>Confirmation is required.</Text>
         <DialogActions>
           <Button>Yes</Button>

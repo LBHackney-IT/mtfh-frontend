@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 const babel = {
   presets: [
@@ -12,6 +12,6 @@ const babel = {
     ],
     "@babel/preset-typescript",
   ],
-}
+};
 
-module.exports = babel
+module.exports = babel;

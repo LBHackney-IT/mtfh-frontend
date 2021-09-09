@@ -31,19 +31,13 @@ export const SummaryListWithActions = () => {
     <SummaryList variant="border" overrides={[1 / 2, 1 / 2]}>
       <SummaryListItem
         title="Name"
-        actions={[
-          <Link href="/edit">Edit</Link>,
-          <Link as="button">Delete</Link>,
-        ]}
+        actions={[<Link href="/edit">Edit</Link>, <Link as="button">Delete</Link>]}
       >
         John Smith
       </SummaryListItem>
       <SummaryListItem
         title="Date of birth"
-        actions={[
-          <Link href="/edit">Edit</Link>,
-          <Link as="button">Delete</Link>,
-        ]}
+        actions={[<Link href="/edit">Edit</Link>, <Link as="button">Delete</Link>]}
       >
         12/08/1980
       </SummaryListItem>

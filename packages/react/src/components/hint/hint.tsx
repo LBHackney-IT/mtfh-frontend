@@ -8,7 +8,7 @@ export type HintComponent = Polymorphic.ForwardRefComponent<"span">;
 
 export const Hint: HintComponent = forwardRef(function Hint(
   { as: HintComp = "span", className, ...props },
-  ref
+  ref,
 ) {
   return (
     <HintComp

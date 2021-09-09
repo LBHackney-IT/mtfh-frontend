@@ -1,12 +1,12 @@
-import React from "react"
-import { render, testA11y } from "@hackney/mtfh-test-utils"
-import { screen } from "@testing-library/react"
+import React from "react";
+import { render, testA11y } from "@hackney/mtfh-test-utils";
+import { screen, waitFor } from "@testing-library/react";
 
-import { SideBar, SideBarSection } from "./side-bar"
+import { SideBar, SideBarSection } from "./side-bar";
 
 test("it renders correctly on desktop", async () => {
   const {
-    render: { container },
+    result: { container },
   } = render(
     <SideBar id="sidebar">
       <SideBarSection id="section-1" title="More Details">
@@ -14,14 +14,16 @@ test("it renders correctly on desktop", async () => {
       </SideBarSection>
     </SideBar>,
     { query: "lg" },
-  )
-  expect(container).toMatchSnapshot()
-  await testA11y(container)
-})
+  );
+
+  await waitFor(() => expect(screen.queryByRole("button")).not.toBeInTheDocument());
+  expect(container).toMatchSnapshot();
+  await testA11y(container);
+});
 
 test("it renders correctly on mobile", async () => {
   const {
-    render: { container },
+    result: { container },
   } = render(
     <SideBar id="sidebar">
       <SideBarSection id="section-1" title="More Details">
@@ -29,14 +31,16 @@ test("it renders correctly on mobile", async () => {
       </SideBarSection>
     </SideBar>,
     { query: "base" },
-  )
-  expect(container).toMatchSnapshot()
-  await testA11y(container)
-})
+  );
+
+  await waitFor(() => expect(screen.queryAllByRole("button")).toHaveLength(2));
+  expect(container).toMatchSnapshot();
+  await testA11y(container);
+});
 
 test("it renders a heading on desktop", async () => {
   const {
-    render: { container },
+    result: { container },
   } = render(
     <SideBar id="sidebar">
       <SideBarSection id="section-1" title="More Details" heading="A Heading">
@@ -44,14 +48,15 @@ test("it renders a heading on desktop", async () => {
       </SideBarSection>
     </SideBar>,
     { query: "lg" },
-  )
-  expect(screen.getByRole("heading")).toHaveTextContent("A Heading")
-  await testA11y(container)
-})
+  );
+  await waitFor(() => expect(screen.queryByRole("button")).not.toBeInTheDocument());
+  expect(screen.getByRole("heading")).toHaveTextContent("A Heading");
+  await testA11y(container);
+});
 
 test("it does not renders a heading on mobile", async () => {
   const {
-    render: { container },
+    result: { container },
   } = render(
     <SideBar id="sidebar">
       <SideBarSection id="section-1" title="More Details" heading="A Heading">
@@ -59,30 +64,28 @@ test("it does not renders a heading on mobile", async () => {
       </SideBarSection>
     </SideBar>,
     { query: "base" },
-  )
-  expect(screen.queryByText("A Heading")).toBe(null)
-  await testA11y(container)
-})
+  );
+  await waitFor(() => expect(screen.queryAllByRole("button")).toHaveLength(2));
+  expect(screen.queryByText("A Heading")).toBe(null);
+  await testA11y(container);
+});
 
-test("accepts and ignores a null child", () => {
+test("accepts and ignores a null child", async () => {
   const {
-    render: { container },
+    result: { container },
   } = render(
     <SideBar id="sidebar">
       <SideBarSection id="section-1" title="More Details" heading="A Heading">
         <div>Content</div>
       </SideBarSection>
       {null}
-      <SideBarSection
-        id="section-2"
-        title="More Details 2"
-        heading="A Heading 2"
-      >
+      <SideBarSection id="section-2" title="More Details 2" heading="A Heading 2">
         <div>Content 2</div>
       </SideBarSection>
       {null}
     </SideBar>,
     { query: "base" },
-  )
-  expect(container).toMatchSnapshot()
-})
+  );
+  await waitFor(() => expect(screen.queryAllByRole("button")).toHaveLength(3));
+  expect(container).toMatchSnapshot();
+});

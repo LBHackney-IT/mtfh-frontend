@@ -1,9 +1,9 @@
-import React from "react"
-import { testA11y } from "@hackney/mtfh-test-utils"
-import { render } from "@testing-library/react"
+import React from "react";
+import { testA11y } from "@hackney/mtfh-test-utils";
+import { render } from "@testing-library/react";
 
-import { FormGroup } from "../form-group"
-import { Select } from "./select"
+import { FormGroup } from "../form-group";
+import { Select } from "./select";
 
 test("it passes a11y", async () => {
   const { container } = render(
@@ -12,17 +12,17 @@ test("it passes a11y", async () => {
         <option value="name">Name</option>
       </Select>
     </FormGroup>,
-  )
-  expect(container).toMatchSnapshot()
-  await testA11y(container)
-})
+  );
+  expect(container).toMatchSnapshot();
+  await testA11y(container);
+});
 
 test("it renders correctly", () => {
-  const { container } = render(<Select />)
-  expect(container).toMatchSnapshot()
-})
+  const { container } = render(<Select />);
+  expect(container).toMatchSnapshot();
+});
 
 test("it renders correctly with error", () => {
-  const { container } = render(<Select error />)
-  expect(container).toMatchSnapshot()
-})
+  const { container } = render(<Select error />);
+  expect(container).toMatchSnapshot();
+});

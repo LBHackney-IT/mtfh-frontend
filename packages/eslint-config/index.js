@@ -59,6 +59,7 @@ module.exports = {
         devDependencies: [
           "**/*.+(test|spec).+(j|t)s?(x)",
           "test?(s)/**/*.+(j|t)s?(x)",
+          "**/*.config.js",
         ],
       },
     ],
@@ -139,4 +140,4 @@ module.exports = {
       },
     },
   },
-}
+};

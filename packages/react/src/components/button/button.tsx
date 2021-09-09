@@ -13,10 +13,7 @@ export interface ButtonProps {
   override?: number;
 }
 
-export type ButtonComponent = Polymorphic.ForwardRefComponent<
-  "button",
-  ButtonProps
->;
+export type ButtonComponent = Polymorphic.ForwardRefComponent<"button", ButtonProps>;
 
 export const Button: ButtonComponent = forwardRef(function Button(
   {
@@ -30,7 +27,7 @@ export const Button: ButtonComponent = forwardRef(function Button(
     override,
     ...props
   },
-  ref
+  ref,
 ) {
   const buttonClasses = cn(
     styles.govukButton,
@@ -41,7 +38,7 @@ export const Button: ButtonComponent = forwardRef(function Button(
       [`${styles.govukButtonDisabled} ${styles.lbhButtonDisabled}`]: isDisabled,
     },
     widthOverrides(override),
-    className
+    className,
   );
 
   const disabled = isDisabled || isLoading || undefined;

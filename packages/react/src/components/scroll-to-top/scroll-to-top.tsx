@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useEffect, useRef } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 
 export const ScrollToTop = (): null => {
   const { pathname } = useLocation();
@@ -7,7 +7,7 @@ export const ScrollToTop = (): null => {
   const { action } = useHistory();
 
   useEffect(() => {
-    if (action !== 'POP' && pathname !== prevPathname.current) {
+    if (action !== "POP" && pathname !== prevPathname.current) {
       window.scrollTo(0, 0);
     }
     prevPathname.current = pathname;

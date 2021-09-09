@@ -1,13 +1,13 @@
-import React from "react"
+import React from "react";
 
-import { Center } from "../center"
-import { Link } from "../link"
-import { LinkBox, LinkOverlay } from "./link-box"
+import { Center } from "../center";
+import { Link } from "../link";
+import { LinkBox, LinkOverlay } from "./link-box";
 
 export default {
   title: "LinkBox",
   component: LinkBox,
-}
+};
 
 export const Base = () => {
   return (
@@ -28,5 +28,5 @@ export const Base = () => {
         </Link>
       </Center>
     </LinkBox>
-  )
-}
+  );
+};

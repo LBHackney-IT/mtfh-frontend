@@ -1,7 +1,5 @@
-const baseConfig = require("../../jest.config")
-
-baseConfig.setupFilesAfterEnv.push("<rootDir>/jest.setup.ts")
+const baseConfig = require("../../jest.config");
 
 module.exports = {
   ...baseConfig,
-}
+};

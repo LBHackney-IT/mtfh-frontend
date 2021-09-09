@@ -4,13 +4,13 @@ import React, {
   cloneElement,
   forwardRef,
   isValidElement,
-} from 'react';
-import type * as Polymorphic from '@radix-ui/react-polymorphic';
-import cn from 'classnames';
+} from "react";
+import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import cn from "classnames";
 
-import { useBreakpoint } from '../../hooks';
-import { Accordion, AccordionItem, AccordionItemProps } from '../accordion';
-import './styles.scss';
+import { useBreakpoint } from "../../hooks";
+import { Accordion, AccordionItem, AccordionItemProps } from "../accordion";
+import "./styles.module.scss";
 
 export interface SideBarSectionProps extends AccordionItemProps {
   isCollapsed?: boolean;
@@ -18,35 +18,29 @@ export interface SideBarSectionProps extends AccordionItemProps {
 }
 
 export type SideBarSectionComponent = Polymorphic.ForwardRefComponent<
-  'div',
+  "div",
   SideBarSectionProps
 >;
 
-export const SideBarSection: SideBarSectionComponent = forwardRef(
-  function SideBarSection(
-    { children, heading, className, isCollapsed = false, ...props },
-    ref
-  ) {
-    if (isCollapsed) {
-      return (
-        <AccordionItem ref={ref} {...props}>
-          {children}
-        </AccordionItem>
-      );
-    }
-
+export const SideBarSection: SideBarSectionComponent = forwardRef(function SideBarSection(
+  { children, heading, className, isCollapsed = false, ...props },
+  ref,
+) {
+  if (isCollapsed) {
     return (
-      <div
-        ref={ref}
-        className={cn('mtfh-sidebar-section', className)}
-        {...props}
-      >
-        {heading ? <h2 className="lbh-heading-h2">{heading}</h2> : undefined}
+      <AccordionItem ref={ref} {...props}>
         {children}
-      </div>
+      </AccordionItem>
     );
   }
-);
+
+  return (
+    <div ref={ref} className={cn("mtfh-sidebar-section", className)} {...props}>
+      {heading ? <h2 className="lbh-heading-h2">{heading}</h2> : undefined}
+      {children}
+    </div>
+  );
+});
 
 export interface SideBarProps {
   id: string;
@@ -57,17 +51,14 @@ export interface SideBarProps {
     | Array<ReactElement<SideBarSectionProps> | null>;
 }
 
-export type SideBarComponent = Polymorphic.ForwardRefComponent<
-  'div',
-  SideBarProps
->;
+export type SideBarComponent = Polymorphic.ForwardRefComponent<"div", SideBarProps>;
 
 export const SideBar: SideBarComponent = forwardRef(function SideBar(
-  { as: SideBarComp = 'div', id, top, children, className, ...props },
-  ref
+  { as: SideBarComp = "div", id, top, children, className, ...props },
+  ref,
 ) {
-  const isDesktop = useBreakpoint('md');
-  const sidebarClasses = cn('mtfh-sidebar', className);
+  const isDesktop = useBreakpoint("md");
+  const sidebarClasses = cn("mtfh-sidebar", className);
 
   return (
     <SideBarComp ref={ref} className={sidebarClasses} {...props}>
@@ -82,7 +73,7 @@ export const SideBar: SideBarComponent = forwardRef(function SideBar(
               ? cloneElement(child, {
                   isCollapsed: true,
                 })
-              : undefined
+              : undefined,
           )}
         </Accordion>
       ) : (

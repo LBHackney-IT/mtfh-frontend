@@ -1,1 +1,1 @@
-export * from './simple-pagination';
+export * from "./simple-pagination";

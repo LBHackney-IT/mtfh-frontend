@@ -12,7 +12,7 @@ export type ListComponent = Polymorphic.ForwardRefComponent<"ul", ListProps>;
 
 export const List: ListComponent = forwardRef(function List(
   { as: ListComp = "ul", variant = "base", className, ...props },
-  ref
+  ref,
 ) {
   return (
     <ListComp
@@ -23,7 +23,7 @@ export const List: ListComponent = forwardRef(function List(
           [styles.lbhListBullet]: variant === "bullet",
           [styles.lbhListNumber]: variant === "number",
         },
-        className
+        className,
       )}
       {...props}
     />

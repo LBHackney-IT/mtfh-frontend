@@ -8,36 +8,32 @@ export interface PaginationProps extends ComponentPropsWithoutRef<"nav"> {
   variant?: "base" | "center";
 }
 
-export const Pagination = forwardRef<HTMLElement, PaginationProps>(
-  function Pagination({ className, variant = "base", ...props }, ref) {
-    return (
-      <nav
-        ref={ref}
-        className={cn(
-          styles.lbhPagination,
-          { [styles.lbhPaginationCenter]: variant === "center" },
-          className
-        )}
-        {...props}
-      />
-    );
-  }
-);
+export const Pagination = forwardRef<HTMLElement, PaginationProps>(function Pagination(
+  { className, variant = "base", ...props },
+  ref,
+) {
+  return (
+    <nav
+      ref={ref}
+      className={cn(
+        styles.lbhPagination,
+        { [styles.lbhPaginationCenter]: variant === "center" },
+        className,
+      )}
+      {...props}
+    />
+  );
+});
 
 export const PaginationControls = forwardRef<
   HTMLUListElement,
   ComponentPropsWithoutRef<"ul">
 >(function PaginationControls({ className, children, ...props }, ref) {
   return (
-    <ul
-      ref={ref}
-      className={cn(styles.lbhPaginationList, className)}
-      {...props}
-    >
+    <ul ref={ref} className={cn(styles.lbhPaginationList, className)} {...props}>
       {Children.map(
         children,
-        (child) =>
-          child && <li className={styles.lbhPaginationItem}>{child}</li>
+        (child) => child && <li className={styles.lbhPaginationItem}>{child}</li>,
       )}
     </ul>
   );
@@ -48,11 +44,7 @@ export const PaginationSummary = forwardRef<
   ComponentPropsWithoutRef<"div">
 >(function PaginationSummary({ className, ...props }, ref) {
   return (
-    <div
-      ref={ref}
-      className={cn(styles.lbhPaginationSummary, className)}
-      {...props}
-    />
+    <div ref={ref} className={cn(styles.lbhPaginationSummary, className)} {...props} />
   );
 });
 
@@ -76,7 +68,7 @@ export const PaginationButton: PaginationButtonComponent = forwardRef(
       children,
       ...props
     },
-    ref
+    ref,
   ) {
     return (
       <PaginationComp
@@ -87,7 +79,7 @@ export const PaginationButton: PaginationButtonComponent = forwardRef(
             [styles.lbhPaginationLinkNext]: variant === "next",
             [styles.lbhPaginationLinkCurrent]: variant === "base" && active,
           },
-          className
+          className,
         )}
         {...props}
       >
@@ -105,5 +97,5 @@ export const PaginationButton: PaginationButtonComponent = forwardRef(
         ) : null}
       </PaginationComp>
     );
-  }
+  },
 );

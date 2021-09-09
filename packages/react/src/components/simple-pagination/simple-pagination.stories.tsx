@@ -31,11 +31,7 @@ export const SimplePaginationWithSingleButton = () => {
 export const PolymorphicSimplePaginationButton = () => {
   return (
     <SimplePagination>
-      <SimplePaginationButton
-        as="button"
-        title="Blog Post 1"
-        variant="previous"
-      >
+      <SimplePaginationButton as="button" title="Blog Post 1" variant="previous">
         Previous
       </SimplePaginationButton>
       <SimplePaginationButton as="button" title="Blog Post 2" variant="next">

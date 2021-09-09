@@ -10,7 +10,7 @@
   ],
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "dist/esm/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/cjs/index.js",
@@ -30,26 +30,30 @@
     "test": "jest --passWithNoTests",
     "test:ci": "jest --runInBand",
     "lint": "eslint src --ext js,jsx,ts,tsx",
-    "build": "rollup -c"
+    "build": "concurrently yarn:build:*",
+    "build:js": "rollup -c",
+    "build:types": "tsc --noEmit false --emitDeclarationOnly --declaration --declarationDir dist/types --excludeFiles **/*.test.ts?x,**/*.stories.tsx,jest.setup.ts"
   },
   "bugs": {
     "url": "https://github.com/LBHackney-IT/mtfh-frontend/issues"
   },
   "devDependencies": {
     "@hackney/eslint-config": "^1.0.1",
-    "@rollup/plugin-commonjs": "^19.0.0",
-    "@rollup/plugin-node-resolve": "^13.0.0",
-    "@rollup/plugin-typescript": "^8.2.1",
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-multi-entry": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-typescript": "^8.2.5",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.1.9",
     "axe-core": "^4.2.3",
-    "axios": "^0.21.1",
     "jest": "^27.0.6",
     "jest-axe": "^5.0.1",
     "jest-matchmedia-mock": "^1.1.0",
     "node-sass": "^6.0.1",
     "postcss": "^8.3.5",
+    "postcss-import": "^14.0.2",
+    "postcss-omit-import-tilde": "^1.0.1",
     "rollup": "^2.52.8",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.0"
@@ -57,22 +61,18 @@
   "dependencies": {
     "@hackney/mtfh-system": "^1.0.1",
     "@hackney/mtfh-test-utils": "^1.0.1",
-    "@mtfh/common": "https://github.com/LBHackney-IT/mtfh-frontend-common.git",
     "@radix-ui/react-polymorphic": "^0.0.12",
-    "@reach/accordion": "^0.15.3",
     "@reach/dialog": "^0.15.3",
     "@testing-library/react-hooks": "^7.0.1",
-    "@types/lbh-frontend": "^1.0.0",
     "classnames": "^2.3.1",
     "formik": "^2.2.9",
     "generic-names": "^3.0.0",
     "govuk-frontend": "^3.13.0",
-    "lbh-frontend": "^3.5.3",
+    "lbh-frontend": "^3.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-merge-refs": "^1.1.0",
     "react-router-dom": "^5.2.0",
-    "swr": "^0.5.6",
     "use-breakpoint": "^2.0.1"
   },
   "peerDependencies": {

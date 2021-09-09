@@ -1,12 +1,12 @@
-import React from "react"
-import { Formik } from "formik"
+import React from "react";
+import { Formik } from "formik";
 
-import { DateField } from "./field"
+import { DateField } from "./field";
 
 export default {
   title: "Formik/Date Field",
   component: DateField,
-}
+};
 
 export const Base = () => {
   return (
@@ -19,5 +19,5 @@ export const Base = () => {
         yearProps={{ name: "dobYear" }}
       />
     </Formik>
-  )
-}
+  );
+};

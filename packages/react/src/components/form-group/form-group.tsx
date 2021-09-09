@@ -1,34 +1,25 @@
-import React, {
-  Children,
-  ReactElement,
-  cloneElement,
-  forwardRef,
-  useMemo,
-} from "react"
-import type * as Polymorphic from "@radix-ui/react-polymorphic"
-import classNames from "classnames"
+import React, { Children, ReactElement, cloneElement, forwardRef, useMemo } from "react";
+import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import classNames from "classnames";
 
-import { widthOverrides } from "../../utils"
-import { ErrorMessage } from "../error-message"
-import { Hint } from "../hint"
-import { Label } from "../label"
-import styles from "./styles.module.scss"
+import { widthOverrides } from "../../utils";
+import { ErrorMessage } from "../error-message";
+import { Hint } from "../hint";
+import { Label } from "../label";
+import styles from "./styles.module.scss";
 
 export interface FormGroupProps {
-  id: string
-  label?: string
-  name?: string
-  hint?: string
-  error?: string | false
-  required?: boolean
-  children: ReactElement
-  override?: number
+  id: string;
+  label?: string;
+  name?: string;
+  hint?: string;
+  error?: string | false;
+  required?: boolean;
+  children: ReactElement;
+  override?: number;
 }
 
-export type FormGroupComponent = Polymorphic.ForwardRefComponent<
-  "div",
-  FormGroupProps
->
+export type FormGroupComponent = Polymorphic.ForwardRefComponent<"div", FormGroupProps>;
 
 export const FormGroup: FormGroupComponent = forwardRef(function FormGroup(
   {
@@ -54,24 +45,23 @@ export const FormGroup: FormGroupComponent = forwardRef(function FormGroup(
     styles.lbhFormGroup,
     widthOverrides(override),
     className,
-  )
+  );
 
   const describedBy = useMemo(() => {
-    const ids: string[] = []
+    const ids: string[] = [];
     if (hint) {
-      ids.push(`${id}-hint`)
+      ids.push(`${id}-hint`);
     }
     if (error) {
-      ids.push(`${id}-error`)
+      ids.push(`${id}-error`);
     }
-    return ids.join(" ") || undefined
-  }, [id, hint, error])
+    return ids.join(" ") || undefined;
+  }, [id, hint, error]);
 
   const labelComp =
-    typeof FormGroupComp === "string" &&
-    (FormGroupComp as string) === "fieldset"
+    typeof FormGroupComp === "string" && (FormGroupComp as string) === "fieldset"
       ? "legend"
-      : "label"
+      : "label";
 
   return (
     <FormGroupComp
@@ -82,10 +72,7 @@ export const FormGroup: FormGroupComponent = forwardRef(function FormGroup(
       {...props}
     >
       {!!label && (
-        <Label
-          as={labelComp}
-          htmlFor={labelComp === "label" ? `${id}-field` : undefined}
-        >
+        <Label as={labelComp} htmlFor={labelComp === "label" ? `${id}-field` : undefined}>
           {label}
           {required ? <sup aria-hidden="true">*</sup> : ""}
         </Label>
@@ -104,5 +91,5 @@ export const FormGroup: FormGroupComponent = forwardRef(function FormGroup(
           }),
         )}
     </FormGroupComp>
-  )
-})
+  );
+});

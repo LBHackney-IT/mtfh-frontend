@@ -11,10 +11,7 @@ export interface CenterProps {
   override?: number;
 }
 
-export type CenterComponent = Polymorphic.ForwardRefComponent<
-  "div",
-  CenterProps
->;
+export type CenterComponent = Polymorphic.ForwardRefComponent<"div", CenterProps>;
 
 export const Center: CenterComponent = forwardRef(function Center(
   {
@@ -25,7 +22,7 @@ export const Center: CenterComponent = forwardRef(function Center(
     override,
     ...props
   },
-  ref
+  ref,
 ) {
   return (
     <CenterComp
@@ -37,7 +34,7 @@ export const Center: CenterComponent = forwardRef(function Center(
           [styles.centerVertical]: vertically,
         },
         widthOverrides(override),
-        className
+        className,
       )}
       {...props}
     />

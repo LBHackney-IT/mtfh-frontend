@@ -1,5 +1,5 @@
-@import '../../../node_modules/lbh-frontend/lbh/base';
-@import '../../../node_modules/govuk-frontend/govuk/helpers/visually-hidden';
+@import "~lbh-frontend/lbh/base";
+@import "~govuk-frontend/govuk/helpers/visually-hidden";
 
 .mtfh-sidebar {
   .lbh-summary-list {
@@ -10,7 +10,7 @@
     }
 
     .govuk-summary-list__value {
-      color: lbh-colour('lbh-grey-1');
+      color: lbh-colour("lbh-grey-1");
     }
   }
 

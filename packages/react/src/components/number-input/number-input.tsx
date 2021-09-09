@@ -25,7 +25,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
       type = "number",
       ...props
     },
-    ref
+    ref,
   ) {
     const parser = useCallback(
       (num: string | number) => {
@@ -36,7 +36,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
 
         return numString;
       },
-      [maxLength]
+      [maxLength],
     );
 
     const formatter = useCallback(
@@ -53,7 +53,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
 
         return String(numInt).padStart(padStart, "0");
       },
-      [min, max, padStart]
+      [min, max, padStart],
     );
 
     const [output, setOutput] = useState(parser(defaultValue ?? value ?? ""));
@@ -97,5 +97,5 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
         {...props}
       />
     );
-  }
+  },
 );
