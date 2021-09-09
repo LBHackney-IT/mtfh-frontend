@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.0.2
+
+### Patch Changes
+
+- 81442c9: Returns result instead of render to avoid conflicts
+
 ## 1.0.1
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@hackney/mtfh-react",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "LBH React Design System for LBH Modern Tools for Housing",
   "author": "https://hackney.gov.uk/",
   "homepage": "https://github.com/LBHackney-IT/mtfh-frontend",
@@ -38,7 +38,7 @@
     "url": "https://github.com/LBHackney-IT/mtfh-frontend/issues"
   },
   "devDependencies": {
-    "@hackney/eslint-config": "^1.0.1",
+    "@hackney/eslint-config": "^1.1.0",
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-multi-entry": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
@@ -60,7 +60,7 @@
   },
   "dependencies": {
     "@hackney/mtfh-system": "^1.0.1",
-    "@hackney/mtfh-test-utils": "^1.0.1",
+    "@hackney/mtfh-test-utils": "^1.0.2",
     "@radix-ui/react-polymorphic": "^0.0.12",
     "@reach/dialog": "^0.15.3",
     "@testing-library/react-hooks": "^7.0.1",
