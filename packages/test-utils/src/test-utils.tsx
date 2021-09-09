@@ -42,7 +42,7 @@ interface RouteRenderConfig {
 export const render = (
   ui: UI | Element,
   options?: Partial<RouteRenderConfig>,
-): { render: RenderResult; history: MemoryHistory } => {
+): { result: RenderResult; history: MemoryHistory } => {
   const config: RouteRenderConfig = {
     url: "/",
     path: "/",
@@ -56,7 +56,7 @@ export const render = (
   matchMedia.useMediaQuery(queries[config.query]);
 
   return {
-    render: rtlRender(
+    result: rtlRender(
       <Router history={history}>
         <Route path={config.path}>{ui}</Route>
       </Router>,

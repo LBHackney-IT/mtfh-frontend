@@ -1,12 +1,14 @@
 import React from "react";
-import { testA11y } from "@hackney/mtfh-test-utils";
-import { render } from "@testing-library/react";
+import { render, testA11y } from "@hackney/mtfh-test-utils";
+import { screen, waitFor } from "@testing-library/react";
 
 import { FormGroup } from "../form-group";
 import { Checkbox, CheckboxConditional, CheckboxGroup } from "./checkboxes";
 
 test("it passes a11y on single checkbox", async () => {
-  const { container } = render(
+  const {
+    result: { container },
+  } = render(
     <FormGroup id="test" name="test" label="Checkbox Test">
       <Checkbox id="radio">Label</Checkbox>
     </FormGroup>,
@@ -16,7 +18,9 @@ test("it passes a11y on single checkbox", async () => {
 });
 
 test("it passes a11y on checkbox group", async () => {
-  const { container } = render(
+  const {
+    result: { container },
+  } = render(
     <FormGroup id="test" label="Checkbox Test">
       <CheckboxGroup>
         <Checkbox id="checkbox-1" name="test-1">
@@ -33,12 +37,16 @@ test("it passes a11y on checkbox group", async () => {
 });
 
 test("it renders a checkbox", () => {
-  const { container } = render(<Checkbox id="test">Label</Checkbox>);
+  const {
+    result: { container },
+  } = render(<Checkbox id="test">Label</Checkbox>);
   expect(container).toMatchSnapshot();
 });
 
 test("it renders a checkbox with a hint", () => {
-  const { container } = render(
+  const {
+    result: { container },
+  } = render(
     <Checkbox id="test" hint="A short description">
       Label
     </Checkbox>,
@@ -47,7 +55,9 @@ test("it renders a checkbox with a hint", () => {
 });
 
 test("it renders a group of checkboxes", () => {
-  const { container } = render(
+  const {
+    result: { container },
+  } = render(
     <CheckboxGroup>
       <Checkbox id="test">Label</Checkbox>
       <Checkbox id="test2">Label2</Checkbox>
@@ -56,15 +66,21 @@ test("it renders a group of checkboxes", () => {
   expect(container).toMatchSnapshot();
 });
 
-test("it renders a group of checkboxes with a conditional", () => {
-  const { container } = render(
+test("it renders a group of checkboxes with a conditional", async () => {
+  const {
+    result: { container },
+  } = render(
     <CheckboxGroup>
-      <Checkbox id="test" conditionalId="conditional">
+      <Checkbox id="test" conditionalId="conditional" data-testid="primary">
         Label
       </Checkbox>
       <CheckboxConditional id="conditional">Hello</CheckboxConditional>
       <Checkbox id="test2">Label2</Checkbox>
     </CheckboxGroup>,
+  );
+
+  await waitFor(() =>
+    expect(screen.getByTestId("primary")).not.toHaveAttribute("data-aria-controls"),
   );
   expect(container).toMatchSnapshot();
 });

@@ -138,6 +138,7 @@ exports[`it renders a group of radios with a conditional 1`] = `
         aria-controls="conditional"
         aria-expanded="false"
         class="govukRadiosInput"
+        data-testid="primary"
         id="test"
         type="radio"
       />

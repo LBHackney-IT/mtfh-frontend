@@ -3,7 +3,7 @@
 exports[`it renders correctly 1`] = `
 <div>
   <svg
-    class="mtfh-icon"
+    class="icon"
     focusable="false"
     height="50"
     stroke="#00703c"
