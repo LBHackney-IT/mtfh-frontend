@@ -38,10 +38,7 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": [
-          "**/*.+(test|spec).+(j|t)s?(x)",
-          "test?(s)/**/*.+(j|t)s?(x)"
-        ]
+        "devDependencies": ["**/*.+(test|spec).+(j|t)s?(x)", "test?(s)/**/*.+(j|t)s?(x)"]
       }
     ],
     "import/order": [
