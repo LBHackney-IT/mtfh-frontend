@@ -1,1 +1,1 @@
-yarn test --coverage
+yarn test
