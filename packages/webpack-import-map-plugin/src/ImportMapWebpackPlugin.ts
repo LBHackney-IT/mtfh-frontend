@@ -57,7 +57,7 @@ export default class ImportMapWebpackPlugin {
         (assets) => {
           const files = Object.keys(assets);
           const collection = files.reduce((accum, file) => {
-            if (!file.endsWith(".map")) {
+            if (file.endsWith(".js")) {
               const name = file.split(".")[0];
               const project = `${this.options.namespace}/${name}`;
               if (project) {
