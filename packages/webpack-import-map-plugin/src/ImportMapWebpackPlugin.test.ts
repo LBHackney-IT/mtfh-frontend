@@ -87,6 +87,7 @@ test("it compiles with complex webpack config", async () => {
       add: path.join(__dirname, "..", "test", "fixtures", "index.js"),
       "math/add": path.join(__dirname, "..", "test", "fixtures", "index.js"),
     },
+    devtool: "source-map",
     plugins: [
       new ImportMapWebpackPlugin({
         basePath: "http://localhost",
