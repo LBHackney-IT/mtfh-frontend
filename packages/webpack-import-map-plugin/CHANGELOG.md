@@ -1,5 +1,11 @@
 # @hackney/webpack-import-map-plugin
 
+## 1.1.2
+
+### Patch Changes
+
+- a04d9c4: Only allow js files to be included in import-map
+
 ## 1.1.1
 
 ### Patch Changes
