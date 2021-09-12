@@ -1,5 +1,11 @@
 # @hackney/webpack-import-map-plugin
 
+## 1.1.1
+
+### Patch Changes
+
+- 44f5268: Ignore generated source-maps
+
 ## 1.1.0
 
 ### Minor Changes
