@@ -1,5 +1,11 @@
 # @hackney/eslint-config
 
+## 1.1.1
+
+### Patch Changes
+
+- 3c66806: Remove Preserve Modules in Rollup, but still support Tree Shaking
+
 ## 1.1.0
 
 ### Minor Changes
