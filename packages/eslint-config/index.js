@@ -6,6 +6,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
+    extraFileExtensions: [".mjs"],
   },
   extends: [
     "plugin:import/recommended",
@@ -59,7 +60,7 @@ module.exports = {
         devDependencies: [
           "**/*.+(test|spec).+(j|t)s?(x)",
           "test?(s)/**/*.+(j|t)s?(x)",
-          "**/*.config.js",
+          "**/*.config.?(m)js",
         ],
       },
     ],
@@ -113,13 +114,13 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["*.js", "*.ts", "*.tsx"],
+      files: ["*.js", "*.ts", "*.tsx", "*.mjs"],
       parserOptions: {
         project: ["./tsconfig.json"],
       },
     },
     {
-      files: ["*.js"],
+      files: ["*.js", "*.mjs"],
       rules: {
         "@typescript-eslint/no-var-requires": "off",
       },
@@ -136,7 +137,7 @@ module.exports = {
     "import/resolver": {
       typescript: {},
       node: {
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
+        extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
       },
     },
   },
