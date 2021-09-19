@@ -1,5 +1,11 @@
 # @hackney/webpack-import-map-plugin
 
+## 1.1.3
+
+### Patch Changes
+
+- 1eba404: Ignore hot-update generated files
+
 ## 1.1.2
 
 ### Patch Changes
