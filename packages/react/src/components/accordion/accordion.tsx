@@ -88,6 +88,7 @@ export const Accordion: AccordionComponent = forwardRef(function Accordion(
       acc.sectionExpandedClass = styles.govukAccordionSectionExpanded;
       acc.init();
     };
+    /* istanbul ignore else */
     if (localRef.current && window !== undefined && document !== undefined) {
       init(localRef.current);
     }

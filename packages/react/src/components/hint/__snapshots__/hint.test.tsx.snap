@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders the hint 1`] = `
+<div>
+  <span
+    class="govukHint lbhHint"
+  >
+    Hint
+  </span>
+</div>
+`;

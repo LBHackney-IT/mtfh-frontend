@@ -1,6 +1,5 @@
 import React from "react";
-import { testA11y } from "@hackney/mtfh-test-utils";
-import { render } from "@testing-library/react";
+import { render, testA11y } from "@hackney/mtfh-test-utils";
 
 import { FormGroup, Input } from "..";
 import { Fieldset } from "./fieldset";

@@ -5,35 +5,48 @@
   "author": "Gareth Cozens <gareth.cozens@amido.com>",
   "homepage": "https://github.com/LBHackney-IT/mtfh-frontend",
   "license": "MIT",
-  "main": "index.ts",
+  "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://cloudratha@github.com/LBHackney-IT/mtfh-frontend.git",
     "directory": "packages/test-utils"
   },
-  "scripts": {},
+  "scripts": {
+    "build": "rollup -c"
+  },
   "bugs": {
     "url": "https://github.com/LBHackney-IT/mtfh-frontend/issues"
   },
   "dependencies": {
     "@hackney/mtfh-system": "^1.0.1",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/react-hooks": "^7.0.1",
-    "@testing-library/user-event": "^13.1.9",
-    "@types/jest-axe": "^3.5.2",
+    "date-fns": "^2.24.0",
+    "faker": "^5.5.3",
     "jest-axe": "^5.0.1",
-    "jest-matchmedia-mock": "^1.1.0",
-    "msw": "^0.30.1",
-    "react-router-dom": "^5.2.0"
+    "jest-matchmedia-mock": "^1.1.0"
   },
   "devDependencies": {
+    "@mtfh/common": "https://github.com/LBHackney-IT/mtfh-common.git",
+    "@testing-library/jest-dom": "5.14.1",
+    "@testing-library/react": "12.1.0",
+    "@types/faker": "^5.5.8",
     "@types/history": "^4.7.9",
+    "@types/jest-axe": "^3.5.2",
     "@types/react-router-dom": "5.1.7",
-    "react": "^17.0.2"
+    "msw": "^0.35.0",
+    "react": "^17.0.2",
+    "react-router-dom": "^5.2.0",
+    "swr": "1.0.1"
   },
   "peerDependencies": {
+    "@mtfh/common": "0.0.1",
+    "@testing-library/react": "12.1.0",
+    "msw": "^0.35.0",
     "react": "^17.0.2",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "swr": "1.0.1"
   }
 }

@@ -56,6 +56,7 @@ export const ErrorSummary: ErrorSummaryComponent = forwardRef(function ErrorSumm
       summary.init();
       ref.scrollIntoView(true);
     };
+    /* istanbul ignore else */
     if (localRef.current && window !== undefined && document !== undefined) {
       init(localRef.current);
     }

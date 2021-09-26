@@ -1,6 +1,6 @@
 import React from "react";
-import { testA11y } from "@hackney/mtfh-test-utils";
-import { render, screen } from "@testing-library/react";
+import { render, testA11y } from "@hackney/mtfh-test-utils";
+import { screen } from "@testing-library/react";
 
 import { Button } from "./button";
 

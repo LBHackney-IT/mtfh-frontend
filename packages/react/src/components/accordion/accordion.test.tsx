@@ -5,9 +5,7 @@ import { screen, waitFor } from "@testing-library/react";
 import { Accordion, AccordionItem } from "./accordion";
 
 test("it passes a11y", async () => {
-  const {
-    result: { container },
-  } = render(
+  const { container } = render(
     <Accordion id="test">
       <AccordionItem id="test-1" title="Test">
         Hello

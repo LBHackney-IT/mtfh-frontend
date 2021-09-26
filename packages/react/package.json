@@ -27,7 +27,7 @@
     "directory": "packages/react"
   },
   "scripts": {
-    "test": "jest --passWithNoTests",
+    "test": "jest --passWithNoTests --runInBand",
     "test:ci": "jest --runInBand",
     "lint": "eslint src --ext js,jsx,ts,tsx",
     "build": "concurrently yarn:build:*",
@@ -47,6 +47,7 @@
     "@testing-library/user-event": "^13.1.9",
     "axe-core": "^4.2.3",
     "globby": "^12.0.2",
+    "history": "^4.10.0",
     "jest": "^27.0.6",
     "jest-axe": "^5.0.1",
     "jest-matchmedia-mock": "^1.1.0",

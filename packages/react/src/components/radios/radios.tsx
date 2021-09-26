@@ -98,7 +98,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(function R
       const radios = new LBHRadios(ref);
       radios.init();
     };
-
+    /* istanbul ignore else */
     if (localRef.current && window !== undefined) {
       init(localRef.current);
     }

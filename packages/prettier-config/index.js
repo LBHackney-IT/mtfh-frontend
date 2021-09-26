@@ -8,7 +8,7 @@ module.exports = {
   proseWrap: "always",
   quoteProps: "as-needed",
   requirePragma: false,
-  jsxBracketSameLine: false,
+  bracketSameLine: false,
   jsxSingleQuote: false,
   htmlWhitespaceSensitivity: "css",
 };

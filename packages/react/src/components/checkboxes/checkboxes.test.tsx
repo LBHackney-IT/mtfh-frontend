@@ -6,9 +6,7 @@ import { FormGroup } from "../form-group";
 import { Checkbox, CheckboxConditional, CheckboxGroup } from "./checkboxes";
 
 test("it passes a11y on single checkbox", async () => {
-  const {
-    result: { container },
-  } = render(
+  const { container } = render(
     <FormGroup id="test" name="test" label="Checkbox Test">
       <Checkbox id="radio">Label</Checkbox>
     </FormGroup>,
@@ -18,9 +16,7 @@ test("it passes a11y on single checkbox", async () => {
 });
 
 test("it passes a11y on checkbox group", async () => {
-  const {
-    result: { container },
-  } = render(
+  const { container } = render(
     <FormGroup id="test" label="Checkbox Test">
       <CheckboxGroup>
         <Checkbox id="checkbox-1" name="test-1">
@@ -37,16 +33,12 @@ test("it passes a11y on checkbox group", async () => {
 });
 
 test("it renders a checkbox", () => {
-  const {
-    result: { container },
-  } = render(<Checkbox id="test">Label</Checkbox>);
+  const { container } = render(<Checkbox id="test">Label</Checkbox>);
   expect(container).toMatchSnapshot();
 });
 
 test("it renders a checkbox with a hint", () => {
-  const {
-    result: { container },
-  } = render(
+  const { container } = render(
     <Checkbox id="test" hint="A short description">
       Label
     </Checkbox>,
@@ -55,9 +47,7 @@ test("it renders a checkbox with a hint", () => {
 });
 
 test("it renders a group of checkboxes", () => {
-  const {
-    result: { container },
-  } = render(
+  const { container } = render(
     <CheckboxGroup>
       <Checkbox id="test">Label</Checkbox>
       <Checkbox id="test2">Label2</Checkbox>
@@ -67,9 +57,7 @@ test("it renders a group of checkboxes", () => {
 });
 
 test("it renders a group of checkboxes with a conditional", async () => {
-  const {
-    result: { container },
-  } = render(
+  const { container } = render(
     <CheckboxGroup>
       <Checkbox id="test" conditionalId="conditional" data-testid="primary">
         Label

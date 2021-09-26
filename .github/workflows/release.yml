@@ -43,11 +43,11 @@ jobs:
           git config --global user.email "ci@hackney.gov.uk"
           git config --global user.name "lbhackney-automation"
 
-      - name: Run tests
-        run: yarn test:ci
-
       - name: Build packages
         run: yarn build
+
+      - name: Run tests
+        run: yarn test:ci
 
       - name: Publish packages
         id: changesets

@@ -25,7 +25,7 @@
     "prestart": "yarn && yarn bootstrap",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "postinstall": "husky install",
-    "build": "lerna run build --ignore @hackney/mtfh-test-utils --no-private --stream"
+    "build": "lerna run build --no-private --stream"
   },
   "repository": {
     "type": "git",
