@@ -59,7 +59,7 @@
     "rollup-plugin-postcss": "^4.0.0"
   },
   "dependencies": {
-    "@hackney/mtfh-system": "^1.0.1",
+    "@hackney/mtfh-system": "^1.0.2",
     "@hackney/mtfh-test-utils": "^1.0.2",
     "@radix-ui/react-polymorphic": "^0.0.12",
     "@reach/dialog": "^0.15.3",
