@@ -1,13 +1,15 @@
 import React, { isValidElement } from "react";
 import { queries } from "@hackney/mtfh-system";
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
-import { RunOptions } from "axe-core";
-import { MemoryHistory, createMemoryHistory } from "history";
-import { axe, toHaveNoViolations } from "jest-axe";
+import { JestAxeConfigureOptions, axe, toHaveNoViolations } from "jest-axe";
 import MatchMediaMock from "jest-matchmedia-mock";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
-import { Route, Router } from "react-router-dom";
+import { Route } from "react-router-dom";
+import { SWRConfig } from "swr";
+import { ConfirmationRouter } from "@mtfh/common/lib/components/confirmation-router";
+
+export * from "./mocks";
 
 expect.extend(toHaveNoViolations);
 
@@ -31,7 +33,7 @@ afterAll(() => {
 });
 
 type UI = Parameters<typeof rtlRender>[0];
-type TestA11YOptions = RenderOptions & { axeOptions?: RunOptions };
+type TestA11YOptions = RenderOptions & { axeOptions?: JestAxeConfigureOptions };
 
 interface RouteRenderConfig {
   url: string;
@@ -42,7 +44,7 @@ interface RouteRenderConfig {
 export const render = (
   ui: UI | Element,
   options?: Partial<RouteRenderConfig>,
-): { result: RenderResult; history: MemoryHistory } => {
+): RenderResult => {
   const config: RouteRenderConfig = {
     url: "/",
     path: "/",
@@ -50,19 +52,22 @@ export const render = (
     ...options,
   };
 
-  matchMedia.useMediaQuery(`(min-width: 0px)`);
-  const history = createMemoryHistory<unknown>();
-  history.push(config.url);
   matchMedia.useMediaQuery(queries[config.query]);
+  window.history.pushState(null, "", config.url);
 
-  return {
-    result: rtlRender(
-      <Router history={history}>
+  return rtlRender(
+    <SWRConfig
+      value={{
+        provider: () => new Map(),
+        dedupingInterval: 0,
+        errorRetryInterval: 0,
+      }}
+    >
+      <ConfirmationRouter>
         <Route path={config.path}>{ui}</Route>
-      </Router>,
-    ),
-    history,
-  };
+      </ConfirmationRouter>
+    </SWRConfig>,
+  );
 };
 
 export const testA11y = async (
@@ -70,13 +75,12 @@ export const testA11y = async (
   { axeOptions, ...options }: TestA11YOptions = {},
 ): Promise<void> => {
   const container = isValidElement(ui) ? rtlRender(ui, options).container : ui;
-
   const results = await axe(container, axeOptions);
 
   expect(results).toHaveNoViolations();
 };
 
-type RestRequest = {
+export type RestRequest = {
   method?: keyof typeof rest;
   path: string;
   data: unknown;
@@ -104,5 +108,6 @@ export const networkFailure = ({
 };
 
 window.HTMLElement.prototype.scrollIntoView = jest.fn();
+window.scrollTo = jest.fn();
 
 export { axe };
