@@ -1,5 +1,13 @@
 # @hackney/mtfh-react
 
+## 1.1.2
+
+### Patch Changes
+
+- 74fb3c0: Bump dependency of @hackney/mtfh-system
+- Updated dependencies [74fb3c0]
+  - @hackney/mtfh-test-utils@1.1.2
+
 ## 1.1.1
 
 ### Patch Changes
