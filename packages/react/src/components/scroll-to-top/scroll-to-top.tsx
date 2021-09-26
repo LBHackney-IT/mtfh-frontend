@@ -8,7 +8,6 @@ export const ScrollToTop = (): null => {
 
   useEffect(() => {
     if (action !== "POP" && pathname !== prevPathname.current) {
-      console.log(Math.random().toString().slice(5), action, pathname);
       window.scrollTo(0, 0);
     }
     prevPathname.current = pathname;
