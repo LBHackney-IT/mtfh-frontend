@@ -22,7 +22,7 @@
     "url": "https://github.com/LBHackney-IT/mtfh-frontend/issues"
   },
   "dependencies": {
-    "@hackney/mtfh-system": "^1.0.1",
+    "@hackney/mtfh-system": "^1.0.2",
     "date-fns": "^2.24.0",
     "faker": "^5.5.3",
     "jest-axe": "^5.0.1",
