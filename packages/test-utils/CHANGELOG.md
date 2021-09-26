@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.1.0
+
+### Minor Changes
+
+- 58dacb9: Add mock data and handlers for notes, person, and tenure apis.
+
 ## 1.0.2
 
 ### Patch Changes
