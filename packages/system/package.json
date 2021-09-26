@@ -5,14 +5,20 @@
   "author": "Gareth Cozens <gareth.cozens@amido.com>",
   "homepage": "https://github.com/LBHackney-IT/mtfh-frontend",
   "license": "MIT",
-  "main": "index.ts",
+  "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "git+https://cloudratha@github.com/LBHackney-IT/mtfh-frontend.git",
+    "url": "git+https://github.com/LBHackney-IT/mtfh-frontend.git",
     "directory": "packages/system"
   },
-  "scripts": {},
+  "scripts": {
+    "build": "rollup -c"
+  },
   "bugs": {
     "url": "https://github.com/LBHackney-IT/mtfh-frontend/issues"
   }
