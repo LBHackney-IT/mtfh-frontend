@@ -1,6 +1,6 @@
 {
   "name": "@hackney/prettier-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Prettier config for LBH Modern Tools for Housing",
   "author": "Gareth Cozens <gareth.cozens@amido.com>",
   "homepage": "https://github.com/LBHackney-IT/mtfh-frontend",
