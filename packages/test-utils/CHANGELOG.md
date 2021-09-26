@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.1.2
+
+### Patch Changes
+
+- 74fb3c0: Bump dependency of @hackney/mtfh-system
+
 ## 1.1.1
 
 ### Patch Changes
