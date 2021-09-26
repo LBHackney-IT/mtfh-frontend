@@ -6,9 +6,7 @@ import { FormGroup } from "../form-group";
 import { Radio, RadioConditional, RadioDivider, RadioGroup } from "./radios";
 
 test("it passes a11y on single radio", async () => {
-  const {
-    result: { container },
-  } = render(
+  const { container } = render(
     <FormGroup id="test" name="test" label="Radio Test">
       <Radio id="radio">Label</Radio>
     </FormGroup>,
@@ -18,9 +16,7 @@ test("it passes a11y on single radio", async () => {
 });
 
 test("it passes a11y on radio group", async () => {
-  const {
-    result: { container },
-  } = render(
+  const { container } = render(
     <FormGroup id="test" name="test" label="Radios Test">
       <RadioGroup>
         <Radio id="radio-1">Label</Radio>
@@ -33,16 +29,12 @@ test("it passes a11y on radio group", async () => {
 });
 
 test("it renders a radio", () => {
-  const {
-    result: { container },
-  } = render(<Radio id="test">Label</Radio>);
+  const { container } = render(<Radio id="test">Label</Radio>);
   expect(container).toMatchSnapshot();
 });
 
 test("it renders a radio with a hint", () => {
-  const {
-    result: { container },
-  } = render(
+  const { container } = render(
     <Radio id="test" hint="A short description">
       Label
     </Radio>,
@@ -51,9 +43,7 @@ test("it renders a radio with a hint", () => {
 });
 
 test("it renders a group of radios", () => {
-  const {
-    result: { container },
-  } = render(
+  const { container } = render(
     <RadioGroup>
       <Radio id="test">Label</Radio>
       <Radio id="test2">Label2</Radio>
@@ -63,9 +53,7 @@ test("it renders a group of radios", () => {
 });
 
 test("it renders a group of radios with a divider", () => {
-  const {
-    result: { container },
-  } = render(
+  const { container } = render(
     <RadioGroup>
       <Radio id="test">Label</Radio>
       <RadioDivider>Or</RadioDivider>
@@ -76,9 +64,7 @@ test("it renders a group of radios with a divider", () => {
 });
 
 test("it renders a group of radios with a conditional", async () => {
-  const {
-    result: { container },
-  } = render(
+  const { container } = render(
     <RadioGroup>
       <Radio id="test" conditionalId="conditional" data-testid="primary">
         Label

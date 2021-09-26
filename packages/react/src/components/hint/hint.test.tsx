@@ -1,10 +1,10 @@
 import React from "react";
 import { render, testA11y } from "@hackney/mtfh-test-utils";
 
-import { Text } from "./text";
+import { Hint } from "./hint";
 
-test("it renders the text", async () => {
-  const { container } = render(<Text>Text</Text>);
+test("it renders the hint", async () => {
+  const { container } = render(<Hint>Hint</Hint>);
   expect(container).toMatchSnapshot();
   await testA11y(container);
 });

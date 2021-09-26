@@ -5,9 +5,7 @@ import { screen, waitFor } from "@testing-library/react";
 import { SideBar, SideBarSection } from "./side-bar";
 
 test("it renders correctly on desktop", async () => {
-  const {
-    result: { container },
-  } = render(
+  const { container } = render(
     <SideBar id="sidebar">
       <SideBarSection id="section-1" title="More Details">
         <div>Content</div>
@@ -22,9 +20,7 @@ test("it renders correctly on desktop", async () => {
 });
 
 test("it renders correctly on mobile", async () => {
-  const {
-    result: { container },
-  } = render(
+  const { container } = render(
     <SideBar id="sidebar">
       <SideBarSection id="section-1" title="More Details">
         <div>Content</div>
@@ -39,9 +35,7 @@ test("it renders correctly on mobile", async () => {
 });
 
 test("it renders a heading on desktop", async () => {
-  const {
-    result: { container },
-  } = render(
+  const { container } = render(
     <SideBar id="sidebar">
       <SideBarSection id="section-1" title="More Details" heading="A Heading">
         <div>Content</div>
@@ -55,9 +49,7 @@ test("it renders a heading on desktop", async () => {
 });
 
 test("it does not renders a heading on mobile", async () => {
-  const {
-    result: { container },
-  } = render(
+  const { container } = render(
     <SideBar id="sidebar">
       <SideBarSection id="section-1" title="More Details" heading="A Heading">
         <div>Content</div>
@@ -71,9 +63,7 @@ test("it does not renders a heading on mobile", async () => {
 });
 
 test("accepts and ignores a null child", async () => {
-  const {
-    result: { container },
-  } = render(
+  const { container } = render(
     <SideBar id="sidebar">
       <SideBarSection id="section-1" title="More Details" heading="A Heading">
         <div>Content</div>
