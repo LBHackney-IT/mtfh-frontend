@@ -95,7 +95,7 @@ export const request = ({
 }: RestRequest): void => {
   server.use(
     rest[method](path, (req, res, ctx) => {
-      return res.once(ctx.status(code), ctx.json(data));
+      return res(ctx.status(code), ctx.json(data));
     }),
   );
 };

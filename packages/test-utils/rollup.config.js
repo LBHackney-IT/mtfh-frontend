@@ -12,7 +12,7 @@ export default [
       sourcemap: true,
     },
     plugins: [
-      peerDepsExternal(),
+      peerDepsExternal({ includeDependencies: true }),
       resolve(),
       typescript({
         tsconfig: "./tsconfig.json",
