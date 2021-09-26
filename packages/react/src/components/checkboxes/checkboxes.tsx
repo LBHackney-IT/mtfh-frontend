@@ -84,6 +84,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
         const checkboxes = new LBHCheckboxes(ref);
         checkboxes.init();
       };
+      /* istanbul ignore else */
       if (localRef.current && window !== undefined) {
         init(localRef.current);
       }

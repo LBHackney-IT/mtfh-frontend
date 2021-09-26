@@ -16,7 +16,7 @@ export default [
       resolve(),
       typescript({
         tsconfig: "./tsconfig.json",
-        exclude: ["**/*.test.ts?x", "**/*.stories.tsx", "jest.setup.ts"],
+        exclude: ["**/*.test.ts?x", "**/*.stories.tsx"],
       }),
       commonjs({
         ignoreGlobal: true,
