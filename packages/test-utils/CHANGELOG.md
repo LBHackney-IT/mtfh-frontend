@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.1.1
+
+### Patch Changes
+
+- 0222761: Remove res.once from request handler
+
 ## 1.1.0
 
 ### Minor Changes
