@@ -1,5 +1,12 @@
 # @hackney/mtfh-test-utils
 
+## 1.1.3
+
+### Patch Changes
+
+- 76c44c4: Adds version to the url of the person handlers
+- c84ad46: Added referenceData mock generator and api handler
+
 ## 1.1.2
 
 ### Patch Changes
