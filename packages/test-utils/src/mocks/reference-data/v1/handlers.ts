@@ -17,9 +17,8 @@ export const getReferenceDataV1 = (data: any[], code = 200) => {
 
       return accum;
     }, {} as Record<string, ReferenceData[]>);
-
-    return rest.get("/api/v1/reference-data", (req, res, ctx) => {
-      return res(ctx.status(code), ctx.json(response));
-    });
   }
+  return rest.get("/api/v1/reference-data", (req, res, ctx) => {
+    return res(ctx.status(code), ctx.json(response));
+  });
 };
