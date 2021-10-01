@@ -23,14 +23,13 @@
   },
   "dependencies": {
     "@hackney/mtfh-system": "^1.0.2",
-    "@mtfh/common": "https://github.com/LBHackney-IT/mtfh-common.git",
     "date-fns": "^2.24.0",
     "faker": "^5.5.3",
     "jest-axe": "^5.0.1",
     "jest-matchmedia-mock": "^1.1.0"
   },
   "devDependencies": {
-    "@mtfh/common": "https://github.com/LBHackney-IT/mtfh-common.git",
+    "@mtfh/common": "file:.yalc/@mtfh/common",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "12.1.0",
     "@types/faker": "^5.5.8",
