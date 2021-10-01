@@ -75,6 +75,10 @@ const reducer: Reducer<AppState[], Action> = (state, action) => {
 
 const exec = (command: string, options: SpawnOptionsWithoutStdio = {}) => {
   const [program, ...args] = command.split(" ");
+  if (!program) {
+    console.log(chalk.red(`Unable to exec command: "${command}"`));
+    process.exit();
+  }
   return child.spawn(program, args, { ...options, shell: true });
 };
 
