@@ -5,6 +5,9 @@
   "author": "Gareth Cozens <gareth.cozens@amido.com>",
   "homepage": "https://github.com/LBHackney-IT/mtfh-frontend",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "files": [
@@ -23,7 +26,6 @@
   },
   "dependencies": {
     "@hackney/mtfh-system": "^1.0.2",
-    "@mtfh/common": "https://github.com/LBHackney-IT/mtfh-common.git",
     "date-fns": "^2.24.0",
     "faker": "^5.5.3",
     "jest-axe": "^5.0.1",

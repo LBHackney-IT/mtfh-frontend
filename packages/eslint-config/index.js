@@ -61,6 +61,7 @@ module.exports = {
           "**/*.+(test|spec).+(j|t)s?(x)",
           "test?(s)/**/*.+(j|t)s?(x)",
           "**/*.config.?(m)js",
+          "test-utils.ts?(x)",
         ],
       },
     ],
