@@ -1,6 +1,6 @@
 {
   "name": "@hackney/generator-mfe",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A scaffolding tool to generate micro-frontend apps",
   "main": "generators/main/index.js",
   "repository": "https://github.com/LBHackney-IT/mtfh-frontend",

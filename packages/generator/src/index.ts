@@ -2,6 +2,7 @@ import path from "path";
 import chalk from "chalk";
 import Generator from "yeoman-generator";
 
+import packageJson from "../package.json";
 import Application from "./application";
 import Upgrade from "./upgrade";
 
@@ -24,11 +25,7 @@ export default class HackneyGenerator extends Generator<HackneyGeneratorOptions>
   }
 
   public initializing() {
-    this.log(
-      `${chalk.bgGreen.black(
-        ` ${this.rootGeneratorName()} `,
-      )} ${this.rootGeneratorVersion()}`,
-    );
+    this.log(`${chalk.bgGreen.black(` ${packageJson.name} `)} ${packageJson.version}`);
 
     try {
       const { stdout } = this.spawnCommandSync(
@@ -39,7 +36,7 @@ export default class HackneyGenerator extends Generator<HackneyGeneratorOptions>
 
       const remoteVersion = stdout && stdout.toString && stdout.toString("utf8").trim();
 
-      if (remoteVersion !== this.rootGeneratorVersion()) {
+      if (remoteVersion !== packageJson.version) {
         this.log(
           `${chalk.bgYellow.black(
             " Update available: ",

@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.1.4
+
+### Patch Changes
+
+- cdea5c8: Remove duplicate common dependency
+
 ## 1.1.3
 
 ### Patch Changes

@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useMemo, useReducer, Reducer } from "react";
-import { Text } from "ink";
+import { Box, Text } from "ink";
 import child, { SpawnOptionsWithoutStdio } from "child_process";
 import fs from "fs";
 import path from "path";
@@ -75,10 +75,11 @@ const reducer: Reducer<AppState[], Action> = (state, action) => {
 
 const exec = (command: string, options: SpawnOptionsWithoutStdio = {}) => {
   const [program, ...args] = command.split(" ");
-  if (program) {
-    return child.spawn(program, args, options);
+  if (!program) {
+    console.log(chalk.red(`Unable to exec command: "${command}"`));
+    process.exit();
   }
-  return child.spawn("yarn", ["start"], options);
+  return child.spawn(program, args, { ...options, shell: true });
 };
 
 interface AppProps {
@@ -87,6 +88,14 @@ interface AppProps {
 
 const App: FC<AppProps> = ({ scope = [] }) => {
   const activeApps = useMemo(() => {
+    Object.keys(apps).forEach((key) => {
+      const app = apps[key];
+
+      if (app && !fs.existsSync(app.path)) {
+        delete apps[key];
+      }
+    });
+
     if (scope.length) {
       Object.keys(apps).forEach((key) => {
         const app = apps[key];
@@ -94,6 +103,12 @@ const App: FC<AppProps> = ({ scope = [] }) => {
           delete apps[key];
         }
       });
+
+      const missingApps = scope.filter((name) => !Object.keys(apps).includes(name));
+      if (missingApps.length) {
+        console.log(chalk.red(`Cannot find apps ${missingApps}`));
+        process.exit(1);
+      }
     }
 
     return Object.entries(apps).map(([key, value]) => ({
@@ -131,13 +146,13 @@ const App: FC<AppProps> = ({ scope = [] }) => {
           dispatch({
             type: "URL",
             index,
-            payload: url[0].replace("Loopback:", ""),
+            payload: url[0].replace("Loopback: ", ""),
           });
         }
 
         const error = output.match(/ERROR in (.*)$/gm);
         if (error) {
-          errorHandler(error[0]);
+          errorHandler(error[0].replace("ERROR in ", ""));
         }
 
         const addressInUse = output.indexOf("Error: listen EADDRINUSE");
@@ -166,33 +181,38 @@ const App: FC<AppProps> = ({ scope = [] }) => {
   }, []);
 
   return (
-    <>
+    <Box flexDirection="column" width={110}>
+      <Box justifyContent="space-between" width="100%">
+        <Box borderStyle="classic" width="25%" justifyContent="center">
+          <Text>Name</Text>
+        </Box>
+        <Box borderStyle="classic" width="25%" justifyContent="center">
+          <Text>URL</Text>
+        </Box>
+        <Box borderStyle="classic" width="50%" justifyContent="center">
+          <Text>Info</Text>
+        </Box>
+      </Box>
       {state.map((app, idx) => {
-        if (app.status === "start") {
-          return (
-            <Text key={idx} color={colours.start}>
-              {app.name}: {app.url || app.status}
-            </Text>
-          );
-        }
-        if (app.status === "error") {
-          return (
-            <Text key={idx} color={colours.error}>
-              {app.name}: {app.error || app.status}
-            </Text>
-          );
-        }
-
-        if (app.status === "live") {
-          return (
-            <Text key={idx} color={colours.live}>
-              {app.name}: {app.url || app.status}
-            </Text>
-          );
-        }
-        return null;
+        return (
+          <Box key={idx} width="100%" margin={0}>
+            <Box width="25%" margin={0} paddingLeft={2}>
+              <Text color={colours[app.status as keyof typeof colours]}>{app.name}</Text>
+            </Box>
+            <Box width="25%" margin={0} paddingLeft={2}>
+              <Text color={colours[app.status as keyof typeof colours]}>
+                {app.url || ""}
+              </Text>
+            </Box>
+            <Box width="50%" margin={0} paddingLeft={2}>
+              <Text color={colours[app.status as keyof typeof colours]}>
+                {app.error || app.status}
+              </Text>
+            </Box>
+          </Box>
+        );
       })}
-    </>
+    </Box>
   );
 };
 
