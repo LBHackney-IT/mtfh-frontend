@@ -1,0 +1,32 @@
+{
+  "name": "@hackney/generator-mfe",
+  "version": "0.0.0",
+  "description": "A scaffolding tool to generate micro-frontend apps",
+  "main": "generators/main/index.js",
+  "repository": "https://github.com/LBHackney-IT/mtfh-frontend",
+  "author": "Gareth Cozens <gareth.cozens@hackney.gov.uk>",
+  "license": "MIT",
+  "private": false,
+  "files": [
+    "generators"
+  ],
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "dependencies": {
+    "@hackney/eslint-config": "^1.0.1",
+    "chalk": "^4.1.2",
+    "change-case": "^4.1.2",
+    "ejs": "^3.1.6",
+    "yeoman-generator": "^5.4.2"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-multi-entry": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-typescript": "^8.2.5",
+    "@types/yeoman-generator": "^5.2.4",
+    "rollup-plugin-copy": "^3.4.0"
+  }
+}

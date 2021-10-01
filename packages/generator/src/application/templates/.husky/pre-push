@@ -1,0 +1,1 @@
+<%= packageManagerRun %> test --coverage
