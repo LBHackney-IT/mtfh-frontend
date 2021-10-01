@@ -75,10 +75,7 @@ const reducer: Reducer<AppState[], Action> = (state, action) => {
 
 const exec = (command: string, options: SpawnOptionsWithoutStdio = {}) => {
   const [program, ...args] = command.split(" ");
-  if (program) {
-    return child.spawn(program, args, options);
-  }
-  return child.spawn("yarn", ["start"], options);
+  return child.spawn(program, args, { ...options, shell: true });
 };
 
 interface AppProps {
