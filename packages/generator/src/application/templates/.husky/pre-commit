@@ -1,0 +1,4 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+<%= packageManagerRun %> format-staged && <%= packageManagerRun %> concurrently <%= packageManager %>:test <%= packageManager %>:lint
