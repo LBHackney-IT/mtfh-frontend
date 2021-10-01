@@ -1,5 +1,11 @@
 # @hackney/mtfh-cli
 
+## 1.0.2
+
+### Patch Changes
+
+- a9a45cb: Fix child processes spawning on Windows OS
+
 ## 1.0.1
 
 ### Patch Changes
