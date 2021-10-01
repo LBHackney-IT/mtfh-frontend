@@ -1,5 +1,11 @@
 # @hackney/create-mfe
 
+## 1.1.6
+
+### Patch Changes
+
+- 8c79f71: Actually bump the dependency
+
 ## 1.1.5
 
 ### Patch Changes
