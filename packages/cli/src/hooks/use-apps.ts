@@ -29,7 +29,6 @@ const register = (projects: { name: string; path: string }[]) => {
     accum[project.name] = { ...project, required: requiredApps.includes(project.name) };
     return accum;
   }, {});
-  console.log("writing", Object.keys(update));
   $apps.next({ ...apps, ...update });
 };
 

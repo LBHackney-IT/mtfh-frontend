@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import React from "react";
+import chalk from "chalk";
 import { render } from "ink";
 import meow from "meow";
 
@@ -12,22 +13,29 @@ import RunCommand from "./commands/run";
 const cli = meow(
   `
 	Usage
-    $ mtfh-cli <command>
+    $ mtfh-cli ${chalk.gray("<command>")}
     
   Commands
     - install
-    - new [directory]
-    - run [...apps]
+    - new ${chalk.gray("[directory]")}
+    - run ${chalk.gray("[...apps]")}
+    - register ${chalk.gray("[directory]")}
 
 	Examples
 	  $ mtfh-cli new mtfh-frontend-project
-      - Starts the scaffolding in a new folder in cwd called mtfh-frontend-project
-    $ mtfh-cli run
-      - Starts only the required apps
-    $ mtfh-cli run search tenure
-      - Starts the required apps, plus mtfh-frontend-search and mtfh-frontend-tenure
-    $ mtfh-cli run mtfh
-      - Starts the required apps, plus all apps prefixed with mtfh (most if not all)
+   ${chalk.gray(
+     "- Starts the scaffolding in a new folder in cwd called mtfh-frontend-project",
+   )}
+   $ mtfh-cli run
+   ${chalk.gray("- Starts only the required apps")}
+   $ mtfh-cli run search tenure
+   ${chalk.gray(
+     "- Starts the required apps, plus mtfh-frontend-search and mtfh-frontend-tenure",
+   )}
+   $ mtfh-cli run mtfh
+   ${chalk.gray(
+     "- Starts the required apps, plus all apps prefixed with mtfh (most if not all)",
+   )}
 `,
 );
 
