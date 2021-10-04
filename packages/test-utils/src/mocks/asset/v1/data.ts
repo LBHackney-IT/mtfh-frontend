@@ -4,14 +4,18 @@ import { Asset, AssetTenure } from "@mtfh/common/lib/api/asset/v1";
 import { TENURE_TYPES } from "../../../constants";
 
 export const generateMockAssetTenureV1 = (
-  data: Partial<AssetTenure> = {},
+  partialAsset: Partial<AssetTenure> = {},
 ): AssetTenure => {
-  const type =
-    data.type || faker.random.arrayElement(TENURE_TYPES.map(({ value }) => value));
-  const isActive = data.isActive !== undefined ? data.isActive : faker.datatype.boolean();
-  const startOfTenureDate = data.startOfTenureDate
-    ? parseISO(data.startOfTenureDate)
+  const {
+    isActive: isActiveParam,
+    startOfTenureDate: startOfTenureDateParam,
+    ...partialAssetDataLeft
+  } = partialAsset;
+  const isActive = isActiveParam !== undefined ? isActiveParam : faker.datatype.boolean();
+  const startOfTenureDate = startOfTenureDateParam
+    ? parseISO(startOfTenureDateParam)
     : faker.date.between("2010-01-01", "2020-01-01");
+
   return {
     id: faker.datatype.uuid(),
     paymentReference: faker.random.alphaNumeric(10),
@@ -19,16 +23,16 @@ export const generateMockAssetTenureV1 = (
     endOfTenureDate: !isActive
       ? addYears(startOfTenureDate, 1).toISOString()
       : addYears(startOfTenureDate, 100).toISOString(),
-    type,
+    type: faker.random.arrayElement(TENURE_TYPES.map(({ value }) => value)),
     isActive,
+    ...partialAssetDataLeft,
   };
 };
 
-export const generateMockAssetV1 = (data: Partial<Asset> = {}): Asset => ({
+export const generateMockAssetV1 = (partialAsset: Partial<Asset> = {}): Asset => ({
   id: faker.datatype.uuid(),
   assetId: faker.datatype.uuid(),
-  assetType:
-    data.assetType || faker.random.arrayElement(["Dwelling", "LettableNonDwelling"]),
+  assetType: faker.random.arrayElement(["Dwelling", "LettableNonDwelling"]),
   assetLocation: {
     floorNo: faker.datatype.number(100),
     totalBlockFloors: faker.datatype.number(4),
@@ -68,4 +72,5 @@ export const generateMockAssetV1 = (data: Partial<Asset> = {}): Asset => ({
   tenure: generateMockAssetTenureV1({ isActive: true }),
   rootAsset: faker.datatype.uuid(),
   parentAssetIds: `${faker.datatype.uuid()}#${faker.datatype.uuid()}#${faker.datatype.uuid()}`,
+  ...partialAsset,
 });
