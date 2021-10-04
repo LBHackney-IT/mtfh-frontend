@@ -1,26 +1,48 @@
 #!/usr/bin/env node
+
 import React from "react";
 import { render } from "ink";
 import meow from "meow";
-import App from "./ui";
+
+import Install from "./commands/install";
+import NewCommand from "./commands/new";
+import RegisterCommand from "./commands/register";
+import RunCommand from "./commands/run";
 
 const cli = meow(
   `
 	Usage
-    $ mtfh-cli
-    Starts all Micro-frontends
+    $ mtfh-cli <command>
+    
+  Commands
+    - install
+    - new [directory]
+    - run [...apps]
 
-	Usage
-	  $ mtfh-cli search person
-    Starts all required and named Micro-frontends
+	Examples
+	  $ mtfh-cli new mtfh-frontend-project
+      - Starts the scaffolding in a new folder in cwd called mtfh-frontend-project
+    $ mtfh-cli run
+      - Starts only the required apps
+    $ mtfh-cli run search tenure
+      - Starts the required apps, plus mtfh-frontend-search and mtfh-frontend-tenure
+    $ mtfh-cli run mtfh
+      - Starts the required apps, plus all apps prefixed with mtfh (most if not all)
 `,
-  {
-    flags: {
-      name: {
-        type: "string",
-      },
-    },
-  },
 );
 
-render(<App scope={cli.input} />);
+const [command, ...args] = cli.input;
+
+if (command === "install") {
+  render(<Install />);
+} else if (command === "new") {
+  render(<NewCommand dir={args[0]} />);
+} else if (command === "run") {
+  render(<RunCommand scopes={args} />);
+} else if (command === "register") {
+  render(<RegisterCommand dir={args[0]} />);
+} else {
+  cli.showHelp();
+}
+
+// render(<App scope={cli.input} />);

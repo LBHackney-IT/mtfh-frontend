@@ -1,8 +1,10 @@
 {
-  "extends": "@sindresorhus/tsconfig",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
     "jsx": "react",
+    "target": "ES2019",
+    "lib": ["ES2019", "ES2020.String", "DOM", "DOM.Iterable"],
     "esModuleInterop": true,
     "outDir": "dist"
   },
