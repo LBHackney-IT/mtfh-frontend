@@ -1,3 +1,4 @@
+import path from "path";
 import chalk from "chalk";
 import { paramCase, pascalCase } from "change-case";
 import Generator from "yeoman-generator";
@@ -9,6 +10,8 @@ interface ApplicationGeneratorOptions {
   projectName: string;
   port: number;
   awsStream: string;
+  dir: string;
+  folder: string;
 }
 
 export default class ApplicationGenerator extends Generator<ApplicationGeneratorOptions> {
@@ -20,10 +23,54 @@ export default class ApplicationGenerator extends Generator<ApplicationGenerator
     this.option("projectName", { type: String });
     this.option("port", { type: Number });
     this.option("awsStream", { type: String });
+    this.option("dir", { type: String });
+
+    if (args.length > 0 && !this.options.dir) {
+      this.options.dir = args[0];
+    }
   }
 
   public initializing() {
     this.log("Generating React application micro-frontend ⚡️");
+  }
+
+  async chooseDestinationDir() {
+    if (!this.options.dir) {
+      const response = await this.prompt([
+        {
+          type: "input",
+          name: "dir",
+          message: "Directory for project",
+          default: ".",
+        },
+      ]);
+
+      this.options.dir = response.dir;
+    }
+    this.options.dir = path.isAbsolute(this.options.dir)
+      ? this.options.dir
+      : path.resolve(process.cwd(), this.options.dir);
+
+    this.destinationRoot(this.options.dir);
+    this.env.cwd = this.options.dir;
+
+    const dir = this.options.dir.match(/([^\/]*)\/*$/);
+
+    if (dir) {
+      this.options.folder = dir[1];
+    }
+
+    if (this.options.folder && this.options.folder.indexOf("mtfh-frontend-") !== 0) {
+      this.log(
+        chalk.red("The destination folder should be prefixed with `mtfh-frontend-*`."),
+      );
+      process.exit();
+    }
+
+    if (this.fs.exists(this.destinationPath("package.json"))) {
+      this.log(chalk.red("The destination folder already contains a package.json file."));
+      process.exit(1);
+    }
   }
 
   async packageManger() {
@@ -89,7 +136,7 @@ export default class ApplicationGenerator extends Generator<ApplicationGenerator
         name: "port",
         message: "Port application should be served from (locally)",
         when: !this.options.port,
-        default: 8000,
+        default: 9000,
       },
       {
         type: "input",
@@ -144,14 +191,16 @@ export default class ApplicationGenerator extends Generator<ApplicationGenerator
   }
 
   async setupGit() {
+    this.log(`[SYSTEM] "${this.options.folder}" ${this.options.dir}`);
+
     if (!this.fs.exists(this.destinationPath(".git"))) {
       const childGitInitProcess = this.spawnCommandSync("git", ["init"]);
       if (childGitInitProcess.error) {
-        console.log(chalk.red("\n************"));
-        console.log(chalk.red("Cannot initialise git repository"));
-        console.log(chalk.red("************\n"));
+        this.log(chalk.red("\n************"));
+        this.log(chalk.red("Cannot initialise git repository"));
+        this.log(chalk.red("************\n"));
       } else {
-        console.log(chalk.green("\nInitialised git repository\n"));
+        this.log(chalk.green("\nInitialised git repository\n"));
       }
     }
   }

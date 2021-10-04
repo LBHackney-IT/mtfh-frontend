@@ -1,0 +1,6 @@
+{
+  "extends": "@hackney/eslint-config",
+  "parserOptions": {
+    "project": "tsconfig.json"
+  }
+}
