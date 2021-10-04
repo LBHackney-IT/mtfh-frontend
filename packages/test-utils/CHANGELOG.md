@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.2.1
+
+### Patch Changes
+
+- ca3b9f0: removes common from dependencies
+
 ## 1.2.0
 
 ### Minor Changes
