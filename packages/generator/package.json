@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "A scaffolding tool to generate micro-frontend apps",
   "main": "generators/main/index.js",
+  "types": "generators/types/index.d.ts",
   "repository": "https://github.com/LBHackney-IT/mtfh-frontend",
   "author": "Gareth Cozens <gareth.cozens@hackney.gov.uk>",
   "license": "MIT",
