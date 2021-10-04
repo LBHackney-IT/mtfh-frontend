@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.2.0
+
+### Minor Changes
+
+- 3db7f1e: adds mocks for asset
+
 ## 1.1.4
 
 ### Patch Changes
