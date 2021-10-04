@@ -3,7 +3,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Box, Text } from "ink";
 
 import { useApps, useParallel } from "../hooks";
-import { getPackageManager } from "../utils";
 
 interface StartTask {
   name: string;
@@ -52,10 +51,7 @@ const RunCommand = ({ scopes }: RunCommandProps) => {
   const { tasks } = useParallel(
     activeApps.map((app) => ({
       ctx: app,
-      command: () => {
-        const packageManager = getPackageManager(app.path);
-        return packageManager === "yarn" ? `yarn start` : "npm run start";
-      },
+      command: "npm run start",
       spawnOptions: {
         cwd: app.path,
       },

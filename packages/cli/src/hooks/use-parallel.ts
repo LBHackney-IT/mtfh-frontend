@@ -1,11 +1,11 @@
 import { ChildProcess, SpawnOptions } from "child_process";
-import { Reducer, useEffect, useReducer } from "react";
+import { Reducer, useMemo, useReducer } from "react";
 import chalk from "chalk";
 
 import { exec } from "../utils";
 
 interface ParralelItem<T extends any> {
-  command: string | ((ctx: T) => string);
+  command: string;
   spawnOptions: SpawnOptions;
   ctx: T;
 }
@@ -23,6 +23,26 @@ type ParallelAction = { index: number } & (
 );
 
 export const useParallel = <T extends any>(items: ParralelItem<T>[]) => {
+  const children = useMemo(
+    () =>
+      items.map((item, index) => {
+        const child = exec(item.command, item.spawnOptions);
+        child.on("close", (code) => {
+          if (code !== 0) {
+            console.warn(chalk.red(`"${item.command}" exited with code: ${code}`));
+          }
+          dispatch({ type: "STATUS", index, payload: "end" });
+        });
+        return {
+          ...item,
+          status: "ready" as Status,
+          child,
+        };
+      }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
+
   const reducer: Reducer<ParallelTask<T>[], ParallelAction> = (state, action) => {
     return state.map((item, index) => {
       if (index !== action.index) {
@@ -40,30 +60,7 @@ export const useParallel = <T extends any>(items: ParralelItem<T>[]) => {
     });
   };
 
-  const [state, dispatch] = useReducer(
-    reducer,
-    items.map((item) => ({
-      ...item,
-      status: "ready" as Status,
-      child: exec(
-        typeof item.command === "function" ? item.command(item.ctx) : item.command,
-        item.spawnOptions,
-      ),
-    })),
-  );
-
-  useEffect(() => {
-    state.forEach((task, index) => {
-      task.child.on("close", (code) => {
-        if (code !== 0) {
-          console.warn(chalk.red(`"${task.command}" exited with code: ${code}`));
-        }
-        dispatch({ type: "STATUS", index, payload: "end" });
-      });
-    });
-    // We only need to listen once
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const [state, dispatch] = useReducer(reducer, children);
 
   return { tasks: state };
 };
