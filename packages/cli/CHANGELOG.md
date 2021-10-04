@@ -1,5 +1,12 @@
 # @hackney/mtfh-cli
 
+## 2.0.1
+
+### Patch Changes
+
+- 36bb8be: Remove memory leak is useParallel where child process were spawned multiple
+  times.
+
 ## 2.0.0
 
 ### Major Changes
