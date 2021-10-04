@@ -1,6 +1,6 @@
 {
   "name": "@hackney/mtfh-cli",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "license": "MIT",
   "bin": "dist/cli.js",
   "engines": {
@@ -14,7 +14,7 @@
     "dist"
   ],
   "dependencies": {
-    "@hackney/generator-mfe": "^1.0.1",
+    "@hackney/generator-mfe": "^1.1.7",
     "@octokit/plugin-throttling": "^3.5.2",
     "@octokit/request-error": "^2.1.0",
     "@octokit/rest": "^18.11.4",

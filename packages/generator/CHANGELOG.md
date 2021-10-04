@@ -1,5 +1,11 @@
 # @hackney/generator-mfe
 
+## 1.1.7
+
+### Patch Changes
+
+- a95e9cb: Update application generator for mtfh-cli v2
+
 ## 1.0.1
 
 ### Patch Changes
