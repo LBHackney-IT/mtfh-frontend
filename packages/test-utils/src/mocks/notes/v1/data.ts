@@ -16,6 +16,7 @@ export const generateMockCommentV1 = (data: Partial<Comment> = {}): Comment => {
       description: faker.lorem.word(),
     },
     author: {
+      id: faker.datatype.uuid(),
       fullName: [faker.name.firstName(), faker.name.lastName()].join(" "),
       email: faker.internet.email(),
     },

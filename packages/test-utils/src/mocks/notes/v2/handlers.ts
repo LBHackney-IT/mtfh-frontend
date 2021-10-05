@@ -1,4 +1,5 @@
-import { rest } from "msw";
+import { RestRequest, rest } from "msw";
+import type { Comment } from "@mtfh/common/lib/api/comments/v2";
 import { dynamoDbQuery } from "../../../utils/dynamo-db-query";
 import { generateMockCommentV2 } from "./data";
 
@@ -14,7 +15,10 @@ export const getCommentV2 = (data: any = mockCommentsV2, code = 200) =>
     return res(ctx.status(code), ctx.json(result));
   });
 
-export const postCommentV2 = (data: any = mockCommentsV2, code = 200) =>
+const mockPostResponse = (req: RestRequest) =>
+  generateMockCommentV2(req.body as Partial<Comment>);
+
+export const postCommentV2 = (data: any = mockPostResponse, code = 200) =>
   rest.post("/api/v2/notes", (req, res, ctx) => {
-    return res(ctx.status(code), ctx.json(data));
+    return res(ctx.status(code), ctx.json(typeof data === "function" ? data(req) : data));
   });

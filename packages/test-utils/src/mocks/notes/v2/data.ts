@@ -18,6 +18,7 @@ export const generateMockCommentV2 = (data: Partial<Comment> = {}): Comment => {
     },
     highlight: faker.datatype.boolean(),
     author: {
+      id: faker.datatype.uuid(),
       fullName: [faker.name.firstName(), faker.name.lastName()].join(" "),
       email: faker.internet.email(),
     },
