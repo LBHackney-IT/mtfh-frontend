@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.2.2
+
+### Patch Changes
+
+- 7336b62: Fix postCommentV1 and adding postCommentV2
+
 ## 1.2.1
 
 ### Patch Changes
