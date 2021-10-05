@@ -16,6 +16,7 @@ export const generateMockCommentV2 = (data: Partial<Comment> = {}): Comment => {
       subCategory: faker.datatype.boolean() ? faker.lorem.sentence() : "",
       description: faker.lorem.word(),
     },
+    highlight: faker.datatype.boolean(),
     author: {
       fullName: [faker.name.firstName(), faker.name.lastName()].join(" "),
       email: faker.internet.email(),

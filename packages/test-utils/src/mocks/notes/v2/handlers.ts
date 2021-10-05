@@ -13,3 +13,8 @@ export const getCommentV2 = (data: any = mockCommentsV2, code = 200) =>
     const result = code === 200 ? dynamoDbQuery(req, data) : data;
     return res(ctx.status(code), ctx.json(result));
   });
+
+export const postCommentV2 = (data: any = mockCommentsV2, code = 200) =>
+  rest.post("/api/v2/notes", (req, res, ctx) => {
+    return res(ctx.status(code), ctx.json(data));
+  });

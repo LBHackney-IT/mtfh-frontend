@@ -15,6 +15,6 @@ export const getCommentV1 = (data: any = mockCommentsV1, code = 200) =>
   });
 
 export const postCommentV1 = (data: any = mockCommentsV1, code = 200) =>
-  rest.get("/api/v1/notes", (req, res, ctx) => {
+  rest.post("/api/v1/notes", (req, res, ctx) => {
     return res(ctx.status(code), ctx.json(data));
   });
