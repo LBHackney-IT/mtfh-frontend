@@ -1,5 +1,5 @@
 import React, { Children, ReactElement, cloneElement, forwardRef, useMemo } from "react";
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+
 import classNames from "classnames";
 
 import { widthOverrides } from "../../utils";
@@ -7,6 +7,8 @@ import { ErrorMessage } from "../error-message";
 import { Hint } from "../hint";
 import { Label } from "../label";
 import styles from "./styles.module.scss";
+
+import type * as Polymorphic from "@radix-ui/react-polymorphic";
 
 export interface FormGroupProps {
   id: string;

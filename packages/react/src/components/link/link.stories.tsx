@@ -1,6 +1,6 @@
 import React from "react";
-import { Text } from "../text";
 
+import { Text } from "../text";
 import { Link } from "./link";
 
 export default {

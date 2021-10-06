@@ -1,4 +1,5 @@
 import path from "path";
+
 import chalk from "chalk";
 import Generator from "yeoman-generator";
 

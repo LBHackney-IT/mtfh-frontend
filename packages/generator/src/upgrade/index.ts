@@ -41,6 +41,14 @@ export default class ApplicationGenerator extends Generator<UpgradeGeneratorOpti
   }
 
   async checkDependencies() {
+    const getLatestVersion = (packageName: string) => {
+      const { stdout } = this.spawnCommandSync(
+        "npm",
+        ["view", `${packageName}@latest`, "version"],
+        { stdio: "pipe" },
+      );
+      return stdout;
+    };
     const current = this.fs.readJSON(this.destinationPath("package.json")) as Record<
       string,
       any
@@ -49,8 +57,8 @@ export default class ApplicationGenerator extends Generator<UpgradeGeneratorOpti
     const all = {
       dependencies: {},
       devDependencies: {
-        "@hackney/eslint-config": "^1.1.1",
-        "@hackney/prettier-config": "^1.0.1",
+        "@hackney/eslint-config": "latest",
+        "@hackney/prettier-config": "latest",
         "@typescript-eslint/eslint-plugin": "^4.29.3",
         eslint: "^7.30.0",
         "eslint-config-airbnb-typescript": "^12.3.1",
@@ -70,8 +78,8 @@ export default class ApplicationGenerator extends Generator<UpgradeGeneratorOpti
 
     const mfe = {
       devDependencies: {
-        "@hackney/mtfh-test-utils": "^1.1.2",
-        "@hackney/webpack-import-map-plugin": "^1.1.3",
+        "@hackney/mtfh-test-utils": "latest",
+        "@hackney/webpack-import-map-plugin": "latest",
         "@testing-library/jest-dom": "^5.14.1",
         "@testing-library/react": "^12.0.0",
         "@types/jest": "26.0.16",
@@ -107,7 +115,11 @@ export default class ApplicationGenerator extends Generator<UpgradeGeneratorOpti
     const isMFE = Object.keys(current?.dependencies).includes("react");
 
     const mapToUpdateArray = (deps: Record<string, string>, optional: boolean) =>
-      Object.entries(deps).map(([library, version]) => ({ library, version, optional }));
+      Object.entries(deps).map(([library, version]) => ({
+        library,
+        version: version === "latest" ? `^${getLatestVersion(library)}` : version,
+        optional,
+      }));
 
     const packageDeps: DependencyUpdate = {
       dependencies: [

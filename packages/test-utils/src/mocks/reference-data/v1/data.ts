@@ -1,4 +1,5 @@
 import faker from "faker";
+
 import { ReferenceData } from "@mtfh/common/lib/api/reference-data/v1";
 
 faker.seed(1);

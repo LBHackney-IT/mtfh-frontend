@@ -1,12 +1,15 @@
 import fs from "fs";
 import path from "path";
+
 import React, { useState } from "react";
+
 import chalk from "chalk";
 import { Box, Text } from "ink";
 
 import { useApps, useSeries } from "../../hooks";
-import type { Repo } from "../../types";
 import { TextInput } from "../text-input";
+
+import type { Repo } from "../../types";
 
 interface CloneReposProps {
   repos: Repo[];
