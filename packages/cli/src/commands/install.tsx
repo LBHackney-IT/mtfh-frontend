@@ -1,9 +1,13 @@
 import fs from "fs";
+
 import React, { useEffect, useMemo, useState } from "react";
+
 import { Box, Newline, Text } from "ink";
+
 import { CloneRepos, MultiSelect, TextInput } from "../components";
 import { InstallDependencies } from "../components/install-dependencies/install-dependencies";
 import { useApps, useGithub, useToken } from "../hooks";
+
 import type { Repo } from "../types";
 
 const Install = () => {

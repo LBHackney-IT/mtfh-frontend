@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import chalk from "chalk";
 import { Text, useInput } from "ink";
 

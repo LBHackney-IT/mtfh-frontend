@@ -1,8 +1,9 @@
 import { addYears, parseISO } from "date-fns";
-
 import faker from "faker";
-import { HouseholdMember, Tenure } from "@mtfh/common/lib/api/tenure/v1";
+
 import { TENURE_TYPES } from "../../../constants";
+
+import { HouseholdMember, Tenure } from "@mtfh/common/lib/api/tenure/v1";
 
 export const generateMockHouseholdMemberV1 = (
   data: Partial<HouseholdMember> = {},

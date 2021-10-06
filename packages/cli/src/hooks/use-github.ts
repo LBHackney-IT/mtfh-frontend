@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+
 import { throttling } from "@octokit/plugin-throttling";
 import { RequestError } from "@octokit/request-error";
 import { Octokit } from "@octokit/rest";
+
 import type { Repo } from "../types";
 
 Octokit.plugin(throttling);

@@ -1,9 +1,11 @@
 import React, { forwardRef } from "react";
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+
 import cn from "classnames";
 
 import { widthOverrides } from "../../utils";
 import styles from "./styles.module.scss";
+
+import type * as Polymorphic from "@radix-ui/react-polymorphic";
 
 export interface CenterProps {
   horizontally?: boolean;

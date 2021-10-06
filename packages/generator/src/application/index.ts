@@ -1,7 +1,9 @@
 import path from "path";
+
 import chalk from "chalk";
 import { paramCase, pascalCase } from "change-case";
 import Generator from "yeoman-generator";
+
 import validate from "../validate-name";
 
 interface ApplicationGeneratorOptions {
@@ -54,7 +56,7 @@ export default class ApplicationGenerator extends Generator<ApplicationGenerator
     this.destinationRoot(this.options.dir);
     this.env.cwd = this.options.dir;
 
-    const dir = this.options.dir.match(/([^\/]*)\/*$/);
+    const dir = this.options.dir.match(/([^/]*)\/*$/);
 
     if (dir) {
       this.options.folder = dir[1];

@@ -1,8 +1,10 @@
 import React, { forwardRef } from "react";
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+
 import cn from "classnames";
 
 import styles from "./styles.module.scss";
+
+import type * as Polymorphic from "@radix-ui/react-polymorphic";
 
 export interface LabelProps {
   variant?: "base" | "sm" | "md" | "lg" | "xl";

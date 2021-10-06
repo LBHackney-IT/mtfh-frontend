@@ -1,8 +1,11 @@
 import fs from "fs";
+
 import chalk from "chalk";
 import { BehaviorSubject } from "rxjs";
-import type { Config } from "../types";
+
 import { getSystemFile } from "../utils";
+
+import type { Config } from "../types";
 
 const configJsonPath = getSystemFile("config.json");
 

@@ -1,7 +1,8 @@
 import React from "react";
+import { Router } from "react-router-dom";
+
 import { render, waitFor } from "@testing-library/react";
 import { createMemoryHistory } from "history";
-import { Router } from "react-router-dom";
 
 import { ScrollToTop } from "./scroll-to-top";
 

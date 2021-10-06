@@ -1,7 +1,9 @@
 import { addYears, parseISO } from "date-fns";
 import faker from "faker";
-import { Asset, AssetTenure } from "@mtfh/common/lib/api/asset/v1";
+
 import { TENURE_TYPES } from "../../../constants";
+
+import { Asset, AssetTenure } from "@mtfh/common/lib/api/asset/v1";
 
 export const generateMockAssetTenureV1 = (
   partialAsset: Partial<AssetTenure> = {},

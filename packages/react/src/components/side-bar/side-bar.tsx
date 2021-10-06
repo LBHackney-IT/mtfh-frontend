@@ -5,11 +5,13 @@ import React, {
   forwardRef,
   isValidElement,
 } from "react";
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+
 import cn from "classnames";
 
 import { useBreakpoint } from "../../hooks";
 import { Accordion, AccordionItem, AccordionItemProps } from "../accordion";
+
+import type * as Polymorphic from "@radix-ui/react-polymorphic";
 import "./styles.module.scss";
 
 export interface SideBarSectionProps extends AccordionItemProps {
