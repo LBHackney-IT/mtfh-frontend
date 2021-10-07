@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.3.0
+
+### Minor Changes
+
+- 15ae6e6: adds mocks and handlers for personal details
+
 ## 1.2.2
 
 ### Patch Changes
