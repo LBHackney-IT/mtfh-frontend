@@ -7,7 +7,7 @@ import { config } from "@mtfh/common/lib/config";
 
 export const mockReferenceDataV1 = generateMockReferenceDataV1();
 
-export const getReferenceDataV1 = (data: any[], code = 200) => {
+export const getReferenceDataV1 = (data: any, code = 200) => {
   let response = data;
 
   if (Array.isArray(data)) {
