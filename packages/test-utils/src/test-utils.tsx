@@ -85,14 +85,14 @@ export const testA11y = async (
 export type RestRequest = {
   method?: keyof typeof rest;
   path: string;
-  data: unknown;
+  data?: unknown;
   code?: number;
 };
 
 export const request = ({
   method = "get",
   path,
-  data,
+  data = {},
   code = 200,
 }: RestRequest): void => {
   server.use(

@@ -3,6 +3,7 @@ import { rest } from "msw";
 import { generateMockAssetTenureV1, generateMockAssetV1 } from "./data";
 
 import { Asset } from "@mtfh/common/lib/api/asset/v1";
+import { config } from "@mtfh/common/lib/config";
 
 export const mockAssetV1 = generateMockAssetV1();
 const mockInactiveTenureV1 = generateMockAssetTenureV1({ isActive: false });
@@ -20,7 +21,7 @@ export const mockAssetInvalidAssetTypeV1: Asset = {
 };
 
 export const getAssetV1 = (data: any = mockAssetV1, code = 200) => {
-  return rest.get("/api/v1/assets/:id", (req, res, ctx) =>
+  return rest.get(`${config.assetApiUrlV1}/assets/:id`, (req, res, ctx) =>
     res(ctx.status(code), ctx.json(data)),
   );
 };
