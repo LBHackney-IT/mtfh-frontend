@@ -1,9 +1,11 @@
 import fs from "fs";
+
 import chalk from "chalk";
 import { BehaviorSubject } from "rxjs";
 
-import type { AppConfig } from "../types";
 import { getSystemFile } from "../utils";
+
+import type { AppConfig } from "../types";
 
 const appJsonPath = getSystemFile("app.json");
 

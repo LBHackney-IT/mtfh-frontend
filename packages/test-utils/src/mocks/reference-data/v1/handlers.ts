@@ -1,8 +1,9 @@
 import { rest } from "msw";
-import { ReferenceData } from "@mtfh/common/lib/api/reference-data/v1";
 
 import { config } from "@mtfh/common/lib/config";
 import { generateMockReferenceDataV1 } from "./data";
+
+import { ReferenceData } from "@mtfh/common/lib/api/reference-data/v1";
 
 export const mockReferenceDataV1 = generateMockReferenceDataV1();
 

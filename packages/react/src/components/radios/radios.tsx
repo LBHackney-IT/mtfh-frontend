@@ -9,8 +9,9 @@ import React, {
   useMemo,
   useRef,
 } from "react";
-import cn from "classnames";
 import mergeRefs from "react-merge-refs";
+
+import cn from "classnames";
 
 import { Hint } from "../hint";
 import { Label } from "../label";

@@ -1,10 +1,12 @@
 import React, { ReactElement, forwardRef } from "react";
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+
 import cn from "classnames";
 
 import { widthOverrides } from "../../utils";
 import { LinkProps } from "../link";
 import styles from "./styles.module.scss";
+
+import type * as Polymorphic from "@radix-ui/react-polymorphic";
 
 export interface LinkOverlayProps {
   children: ReactElement<LinkProps>;

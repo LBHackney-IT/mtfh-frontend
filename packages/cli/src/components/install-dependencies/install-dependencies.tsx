@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+
 import { Box, Text } from "ink";
 
 import { useApps, useSeries } from "../../hooks";
-import type { Repo } from "../../types";
 import { getPackageManager } from "../../utils";
 import { TextInput } from "../text-input";
+
+import type { Repo } from "../../types";
 
 interface InstallDependenciesProps {
   repos: Repo[];

@@ -6,12 +6,12 @@ import React, {
   useMemo,
   useState,
 } from "react";
+
 import classNames from "classnames";
 
 import { pluralize, widthOverrides } from "../../utils";
 import { ErrorMessage } from "../error-message";
 import { Hint } from "../hint";
-
 import styles from "./styles.module.scss";
 
 export interface TextAreaProps extends ComponentPropsWithoutRef<"textarea"> {

@@ -1,8 +1,10 @@
 import { RestRequest, rest } from "msw";
-import type { Comment } from "@mtfh/common/lib/api/comments/v2";
-import { config } from "@mtfh/common/lib/config";
+
 import { dynamoDbQuery } from "../../../utils/dynamo-db-query";
 import { generateMockCommentV2 } from "./data";
+
+import type { Comment } from "@mtfh/common/lib/api/comments/v2";
+import { config } from "@mtfh/common/lib/config";
 
 export const mockCommentV2 = generateMockCommentV2();
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import React from "react";
+
 import chalk from "chalk";
 import { render } from "ink";
 import meow from "meow";

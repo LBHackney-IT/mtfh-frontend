@@ -19,7 +19,8 @@
     "directory": "packages/test-utils"
   },
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "lint": "eslint src --ext js,jsx,ts,tsx"
   },
   "bugs": {
     "url": "https://github.com/LBHackney-IT/mtfh-frontend/issues"

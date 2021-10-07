@@ -1,5 +1,7 @@
 import fs from "fs";
+
 import React, { useEffect, useMemo, useState } from "react";
+
 import { Box, Text } from "ink";
 
 import { useApps, useParallel } from "../hooks";

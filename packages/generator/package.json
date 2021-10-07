@@ -12,7 +12,8 @@
     "generators"
   ],
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "lint": "eslint src --ext js,jsx,ts,tsx"
   },
   "dependencies": {
     "@hackney/eslint-config": "^1.0.1",

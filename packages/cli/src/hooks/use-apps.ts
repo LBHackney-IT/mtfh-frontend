@@ -1,6 +1,9 @@
 import path from "path";
+
 import { useEffect, useState } from "react";
+
 import { $apps } from "../store";
+
 import type { AppConfig, Repo } from "../types";
 
 const requiredApps = [

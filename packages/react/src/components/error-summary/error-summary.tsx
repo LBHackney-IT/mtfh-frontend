@@ -6,13 +6,15 @@ import React, {
   useEffect,
   useRef,
 } from "react";
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
-import cn from "classnames";
 import mergeRefs from "react-merge-refs";
+
+import cn from "classnames";
 
 import { widthOverrides } from "../../utils";
 import { List } from "../list";
 import styles from "./styles.module.scss";
+
+import type * as Polymorphic from "@radix-ui/react-polymorphic";
 
 export interface ErrorSummaryProps {
   id: string;

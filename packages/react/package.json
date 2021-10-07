@@ -5,6 +5,9 @@
   "author": "https://hackney.gov.uk/",
   "homepage": "https://github.com/LBHackney-IT/mtfh-frontend",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "sideEffects": [
     "*.css"
   ],

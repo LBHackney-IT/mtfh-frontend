@@ -1,5 +1,11 @@
 # @hackney/eslint-config
 
+## 1.2.0
+
+### Minor Changes
+
+- 7b85ee1: Refactor internal overrides to apply the correct rules for file types
+
 ## 1.1.1
 
 ### Patch Changes
