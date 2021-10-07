@@ -11,6 +11,11 @@ import { TENURE_TYPES } from "../../../constants";
 
 faker.seed(1);
 
+const personTitlesEnumKey = Object.getOwnPropertyNames(PersonTitle);
+export const personTitles = Object.values(PersonTitle).filter(
+  (title) => !personTitlesEnumKey.includes(title),
+);
+
 export const generateMockTenureSummaryV1 = (
   data: Partial<TenureSummary> = {},
 ): TenureSummary => {
@@ -36,14 +41,14 @@ export const generateMockTenureSummaryV1 = (
 export const generateMockPersonV1 = (data: Partial<Person> = {}): Person => ({
   id: faker.datatype.uuid(),
   title: faker.helpers.replaceSymbolWithNumber(
-    faker.random.arrayElement(Object.getOwnPropertyNames(PersonTitle)),
+    faker.random.arrayElement(personTitles),
   ) as PersonTitle,
   firstName: faker.name.firstName(),
   middleName: faker.datatype.boolean() ? faker.name.middleName() : null,
   surname: faker.name.lastName(),
   preferredTitle: faker.datatype.boolean()
     ? (faker.helpers.replaceSymbolWithNumber(
-        faker.random.arrayElement(Object.getOwnPropertyNames(PersonTitle)),
+        faker.random.arrayElement(personTitles),
       ) as PersonTitle)
     : null,
   preferredFirstName: faker.datatype.boolean() ? faker.name.firstName() : null,
