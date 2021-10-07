@@ -1,6 +1,6 @@
 import faker from "faker";
 import { rest } from "msw";
-import { config } from "@mtfh/common/lib/config";
+
 import {
   generateMockContactDetailCorrespondenceAddressV1,
   generateMockContactDetailEmailV1,
@@ -8,6 +8,8 @@ import {
   generateMockContactDetailV1,
   generateMockContactDetailsV1,
 } from "./data";
+
+import { config } from "@mtfh/common/lib/config";
 
 export const mockContactDetailV1 = generateMockContactDetailV1();
 export const mockContactDetailEmailV1 = generateMockContactDetailEmailV1();
