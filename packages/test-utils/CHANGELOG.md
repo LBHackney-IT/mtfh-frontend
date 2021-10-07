@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.3.1
+
+### Patch Changes
+
+- 671844e: fix(reference data): allows other types on getReferenceDataV1
+
 ## 1.3.0
 
 ### Minor Changes
