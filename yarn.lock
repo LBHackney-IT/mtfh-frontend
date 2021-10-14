@@ -2847,9 +2847,8 @@
     outvariant "^1.2.0"
     strict-event-emitter "^0.2.0"
 
-"@mtfh/common@https://github.com/LBHackney-IT/mtfh-common.git":
+"@mtfh/common@file:packages/test-utils/.yalc/@mtfh/common":
   version "0.0.1"
-  resolved "https://github.com/LBHackney-IT/mtfh-common.git#c35e9e068e75ebe96036e2e0abeb6b7eb153a0dd"
   dependencies:
     "@babel/preset-react" "^7.13.13"
     "@radix-ui/react-polymorphic" "^0.0.12"
