@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.4.0
+
+### Minor Changes
+
+- 51d2dc6: allows functions on handlers for testing
+
 ## 1.3.2
 
 ### Patch Changes
