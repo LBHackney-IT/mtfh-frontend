@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.3.2
+
+### Patch Changes
+
+- 36a37cf: moves property reference inside tenuredAsset
+
 ## 1.3.1
 
 ### Patch Changes
