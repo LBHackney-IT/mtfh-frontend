@@ -10,7 +10,7 @@ export const deleteContactDetailV1 = (data: any = {}, code = 200) =>
         id: req.url.searchParams.get("id"),
         targetId: req.url.searchParams.get("targetId"),
         isActive: false,
-        ...data,
+        ...(typeof data === "function" ? data(req) : data),
       }),
     );
   });
