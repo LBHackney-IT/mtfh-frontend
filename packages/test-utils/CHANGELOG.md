@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.4.1
+
+### Patch Changes
+
+- 377c295: allows function on delete handler for contact details
+
 ## 1.4.0
 
 ### Minor Changes
