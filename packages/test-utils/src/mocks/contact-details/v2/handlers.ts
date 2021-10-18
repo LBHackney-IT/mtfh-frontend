@@ -9,7 +9,7 @@ import {
   generateMockContactDetailsV2,
 } from "./data";
 
-// import { config } from "@mtfh/common/lib/config";
+import { config } from "@mtfh/common/lib/config";
 
 export const mockContactDetailV2 = generateMockContactDetailV2();
 export const mockContactDetailEmailV2 = generateMockContactDetailEmailV2();
@@ -23,12 +23,12 @@ export const mockContactDetailsV2 = generateMockContactDetailsV2(
 );
 
 export const getContactDetailsV2 = (data: any = mockContactDetailsV2, code = 200) =>
-  rest.get(`/api/v2/contactDetails`, (req, res, ctx) => {
+  rest.get(`${config.contactDetailsApiUrlV2}/contactDetails`, (req, res, ctx) => {
     return res(ctx.status(code), ctx.json(typeof data === "function" ? data(req) : data));
   });
 
 export const postContactDetailV2 = (responseData: any = {}, code = 200) =>
-  rest.post(`/api/v2/contactDetails`, (req, res, ctx) => {
+  rest.post(`${config.contactDetailsApiUrlV2}/contactDetails`, (req, res, ctx) => {
     const data = req.body as Record<string, any>;
     return res(
       ctx.status(code),

@@ -8,7 +8,7 @@ import {
   ContactDetailsPhoneTypes,
   ContactInformation,
   ContactInformationContactTypes,
-} from "@mtfh/common/lib/api/contact-details/v1";
+} from "@mtfh/common/lib/api/contact-details/v2";
 
 faker.seed(1);
 
