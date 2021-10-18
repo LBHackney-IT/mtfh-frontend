@@ -1,5 +1,12 @@
 # @hackney/mtfh-test-utils
 
+## 1.4.2
+
+### Patch Changes
+
+- d1daa3e: changes mocks to v2 types
+- d1daa3e: allows function on delete handler for contact details
+
 ## 1.4.1
 
 ### Patch Changes
