@@ -39,7 +39,6 @@ export const generateMockTenureV1 = (data: Partial<Tenure> = {}): Tenure => {
   return {
     id: faker.datatype.uuid(),
     paymentReference: faker.random.alphaNumeric(10),
-    propertyReference: faker.random.alphaNumeric(10),
     householdMembers: [
       ...Array.from({
         length: faker.datatype.number({ min: 1, max: 4 }),
@@ -58,6 +57,7 @@ export const generateMockTenureV1 = (data: Partial<Tenure> = {}): Tenure => {
       type: faker.random.arrayElement(["Dwelling", "LettableNonDwelling"]),
       fullAddress: [faker.address.streetAddress(), faker.address.zipCode()].join(", "),
       uprn: faker.random.alphaNumeric(10),
+      propertyReference: faker.random.alphaNumeric(10),
     },
     startOfTenureDate: startOfTenureDate.toISOString(),
     endOfTenureDate: !isActive ? addYears(startOfTenureDate, 1).toISOString() : null,
