@@ -9,7 +9,7 @@ import {
   generateMockContactDetailsV2,
 } from "./data";
 
-import { config } from "@mtfh/common/lib/config";
+// import { config } from "@mtfh/common/lib/config";
 
 export const mockContactDetailV2 = generateMockContactDetailV2();
 export const mockContactDetailEmailV2 = generateMockContactDetailEmailV2();
