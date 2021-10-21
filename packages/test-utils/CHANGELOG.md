@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.5.0
+
+### Minor Changes
+
+- bc93ac7: adds mocks for addresses API
+
 ## 1.4.2
 
 ### Patch Changes
