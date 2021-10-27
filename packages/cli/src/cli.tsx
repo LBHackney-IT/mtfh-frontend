@@ -10,6 +10,7 @@ import Install from "./commands/install";
 import NewCommand from "./commands/new";
 import RegisterCommand from "./commands/register";
 import RunCommand from "./commands/run";
+import UpgradeCommand from "./commands/upgrade";
 
 const cli = meow(
   `
@@ -21,6 +22,7 @@ const cli = meow(
     - new ${chalk.gray("[directory]")}
     - run ${chalk.gray("[...apps]")}
     - register ${chalk.gray("[directory]")}
+    - upgrade
 
 	Examples
 	  $ mtfh-cli new mtfh-frontend-project
@@ -50,6 +52,8 @@ if (command === "install") {
   render(<RunCommand scopes={args} />);
 } else if (command === "register") {
   render(<RegisterCommand dir={args[0]} />);
+} else if (command === "upgrade") {
+  render(<UpgradeCommand />);
 } else {
   cli.showHelp();
 }
