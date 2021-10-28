@@ -11,7 +11,7 @@ terraform {
   }
 }
 resource "aws_s3_bucket" "frontend-bucket-development" {
-  bucket = "<%= awsStream %>-<%= projectName %>-frontend-development.hackney.gov.uk"
+  bucket = "lbh-<%= awsStream %>-<%= projectName %>-frontend-development.hackney.gov.uk"
   acl    = "private"
   versioning {
     enabled = true
