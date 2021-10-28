@@ -11,7 +11,7 @@ npx @hackney/create-mfe
 Alternatively with yarn:
 
 ```bash
-yarn create @hackeny/mfe
+yarn create @hackney/mfe
 ```
 
 The script will accept a path argument for the intialising directory:

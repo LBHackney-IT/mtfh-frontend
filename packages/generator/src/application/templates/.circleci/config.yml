@@ -107,7 +107,7 @@ jobs:
           command: <%= packageManagerRun %> lint
       - run:
           name: Run unit lint-and-test
-          command: <%= packageManagerRun %> test:ci
+          command: <%= packageManagerRun %> test
           environment:
             NODE_OPTIONS: --max_old_space_size=4096
   build-deploy-development:
