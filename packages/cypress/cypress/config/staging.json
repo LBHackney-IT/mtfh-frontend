@@ -1,0 +1,5 @@
+{
+  "env": {
+    "AUTH_TOKEN": "staging-token"
+  }
+}
