@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.7.0
+
+### Minor Changes
+
+- b6ab855: adds mocks for equality information
+
 ## 1.6.0
 
 ### Minor Changes
