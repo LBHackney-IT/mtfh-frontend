@@ -1,5 +1,11 @@
 # @hackney/generator-mfe
 
+## 1.2.0
+
+### Minor Changes
+
+- da69d96: Update generator dependencies and include in cli
+
 ## 1.1.7
 
 ### Patch Changes

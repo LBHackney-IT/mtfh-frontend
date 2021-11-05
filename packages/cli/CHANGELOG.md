@@ -1,5 +1,11 @@
 # @hackney/mtfh-cli
 
+## 2.1.0
+
+### Minor Changes
+
+- da69d96: Update generator dependencies and include in cli
+
 ## 2.0.1
 
 ### Patch Changes
