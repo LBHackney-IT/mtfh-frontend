@@ -27,7 +27,10 @@ describe("skipOnEnv skips", () => {
     cy.skipOnEnv("development");
   });
   it("skips the test", () => {
-    throw new Error("Test should be skipped");
+    expect(false).to.equal(true);
+  });
+  it("skips another test", () => {
+    expect(false).to.equal(true);
   });
 });
 
@@ -60,8 +63,8 @@ describe("visits", () => {
     cy.getCookie("hackneyToken").should("have.property", "value", "development-token");
   });
 
-  it("removes hackneyToken with unauthVisit", () => {
-    cy.unauthVisit("/");
+  it("removes hackneyToken with guestVisit", () => {
+    cy.guestVisit("/");
     cy.getCookie("hackneyToken").should("be.null");
   });
 });

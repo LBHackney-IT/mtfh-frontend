@@ -80,8 +80,6 @@ cy.authVisit("/", options);
 cy.guestVisit("/", options);
 // Get the value of a feature toggle
 cy.hasToggle("MMH.CreateTenure").then((bool) => {});
-// Skip test
-cy.skip();
 // Skip test on ENVIRONMENT env
 cy.skipOnEnv("development");
 // Skip test on Feature Toggle
@@ -92,7 +90,7 @@ To skip a collection of tests encapsulate the tests in a `describe`
 
 ```js
 describe('Collection of tests', () => {
-  beforeAll(() => {
+  before(() => {
     cy.skipOnToggle('MMH.CreateTenure', true);
   })
 
@@ -101,3 +99,26 @@ describe('Collection of tests', () => {
   })
 })
 ```
+
+## Configuration
+
+The config plugin will override a few `cypress.json` defaults that align to the
+requirements more closely.
+
+Such as:
+
+```js
+{
+  "retries": {
+    "runMode": 2,
+    "openMode": 0,
+  },
+  "chromeWebSecurity": false,
+  "defaultCommandTimeout": 10000,
+  "video": false,
+}
+```
+
+The config recieved by the plugin is hydrated with defaults which are impossible to know
+are intended. To override this behaviour you have an opportunity to set additional
+configuration in the config environment files.

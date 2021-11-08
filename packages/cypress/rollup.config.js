@@ -1,4 +1,5 @@
 import commonjs from "@rollup/plugin-commonjs";
+import json from "@rollup/plugin-json";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
@@ -11,14 +12,16 @@ export default [
       format: "cjs",
       sourcemap: true,
     },
+    external: ["@testing-library/cypress"],
     plugins: [
+      commonjs(),
       peerDepsExternal({ includeDependencies: true }),
-      resolve(),
+      resolve({ preferBuiltins: true }),
+      json(),
       typescript({
         tsconfig: "./tsconfig.json",
         exclude: ["**/*.test.ts"],
       }),
-      commonjs(),
     ],
   },
 ];

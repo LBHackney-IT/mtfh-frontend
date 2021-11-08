@@ -17,9 +17,10 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "cypress": "cypress run",
+    "cypress:run": "cypress run",
+    "cypress:open": "cypress open",
     "serve": "node tests/server.js",
-    "test": "start-server-and-test serve 3000 cypress",
+    "test": "start-server-and-test serve 3000 cypress:run",
     "test:ci": "yarn test",
     "lint": "eslint src --ext js,jsx,ts,tsx"
   },
@@ -27,7 +28,6 @@
     "url": "https://github.com/LBHackney-IT/mtfh-frontend/issues"
   },
   "devDependencies": {
-    "@cypress/code-coverage": "^3.9.11",
     "cypress": "^8.5.0",
     "express": "^4.17.1",
     "start-server-and-test": "^1.14.0"
@@ -36,6 +36,7 @@
     "cypress": "^8.5.0"
   },
   "dependencies": {
-    "@testing-library/cypress": "^8.0.1"
+    "@testing-library/cypress": "^8.0.1",
+    "cypress-audit": "^1.1.0"
   }
 }

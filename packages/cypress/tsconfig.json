@@ -3,6 +3,9 @@
   "include": ["src/**/*"],
   "compilerOptions": {
     "declarationDir": "dist/types",
-    "importHelpers": true
+    "importHelpers": false,
+    "target": "ES5",
+    "types": ["node", "cypress"],
+    "typeRoots": ["node_modules/@types", "src/types"]
   }
 }

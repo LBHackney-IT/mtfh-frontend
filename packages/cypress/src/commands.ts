@@ -1,17 +1,67 @@
-/// <reference types="cypress" />
-/// <reference types="@testing-library/cypress" />
-
 declare global {
   namespace Cypress {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     interface cy {
-      skip: typeof skip;
       skipOnToggle: typeof skipOnToggle;
       skipOnEnv: typeof skipOnEnv;
     }
-    interface Chainable {
-      guestVisit(url: string, options?: Cypress.VisitOptions): Cypress.Chainable<any>;
-      authVisit(url: string, options?: Cypress.VisitOptions): Cypress.Chainable<any>;
+    interface Options {
+      actions?: string[];
+      headers?: object;
+      hideElements?: string;
+      ignore?: string[];
+      ignoreUrl?: boolean;
+      includeNotices?: boolean;
+      includeWarnings?: boolean;
+      level?: string;
+      method?: string;
+      postData?: string;
+      reporter?: string;
+      rootElement?: string;
+      runners?: string[];
+      rules?: string[];
+      screenCapture?: string;
+      standard?: AccessibilityStandard;
+      threshold?: number;
+      timeout?: number;
+      userAgent?: string;
+      wait?: number;
+    }
+
+    interface LighthouseThresholds {
+      performance?: number;
+      accessibility?: number;
+      "best-practices"?: number;
+      seo?: number;
+      pwa?: number;
+      "first-contentful-paint"?: number;
+      "largest-contentful-paint"?: number;
+      "first-meaningful-paint"?: number;
+      "load-fast-enough-for-pwa"?: number;
+      "speed-index"?: number;
+      "estimated-input-latency"?: number;
+      "max-potential-fid"?: number;
+      "server-response-time"?: number;
+      "first-cpu-idle"?: number;
+      interactive?: number;
+      "mainthread-work-breakdown"?: number;
+      "bootup-time"?: number;
+      "network-rtt"?: number;
+      "network-server-latency"?: number;
+      metrics?: number;
+      "uses-long-cache-ttl"?: number;
+      "total-byte-weight"?: number;
+      "dom-size"?: number;
+    }
+    interface Chainable<Subject> {
+      pa11y(opts?: Options): Cypress.Chainable<Subject>;
+      lighthouse(
+        thresholds?: LighthouseThresholds,
+        opts?: any,
+        config?: any,
+      ): Cypress.Chainable<Subject>;
+      guestVisit(url: string, options?: Cypress.VisitOptions): Cypress.Chainable<Subject>;
+      authVisit(url: string, options?: Cypress.VisitOptions): Cypress.Chainable<Subject>;
       hasToggle(toggle: string): Cypress.Chainable<boolean>;
     }
   }
@@ -47,18 +97,22 @@ const hasToggle = (toggle: string) => {
   });
 };
 
+// @ts-ignore "cy.state" is not in the "cy" type
+const getContext = () => cy.state("runnable");
 const skip = () => {
-  // @ts-ignore "cy.state" is not in the "cy" type
-  const ctx = cy.state("runnable").ctx;
-  ctx.skip();
+  const ctx = getContext();
+  try {
+    ctx.skip();
+  } catch {
+    // no-op
+  }
 };
 
 const skipOnToggle = (toggle: string, expect: boolean) => {
   hasToggle(toggle).then((bool) => {
     if (bool === expect) {
       cy.log(`Skipping test with ${toggle}`);
-      // @ts-ignore "cy.state" is not in the "cy" type
-      cy.skip();
+      return skip();
     }
   });
 };
@@ -66,14 +120,14 @@ const skipOnToggle = (toggle: string, expect: boolean) => {
 const skipOnEnv = (target: string) => {
   const env = Cypress.env("ENVIRONMENT") || "development";
   if (env === target) {
-    cy.skip();
+    cy.log(`Skipping test with ${env}`);
+    return skip();
   }
 };
 
 Cypress.Commands.add("authVisit", authVisit);
 Cypress.Commands.add("guestVisit", guestVisit);
 Cypress.Commands.add("hasToggle", hasToggle);
-Cypress.Commands.add("skip", skip);
 Cypress.Commands.add("skipOnEnv", skipOnEnv);
 Cypress.Commands.add("skipOnToggle", skipOnToggle);
 
