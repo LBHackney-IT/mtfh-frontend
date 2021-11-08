@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.7.1
+
+### Patch Changes
+
+- d9a875d: Adding tenure person handlers
+
 ## 1.7.0
 
 ### Minor Changes
