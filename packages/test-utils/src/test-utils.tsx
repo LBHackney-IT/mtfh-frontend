@@ -35,6 +35,10 @@ afterAll(() => {
   server.close();
 });
 
+export const setMediaQuery = (query: keyof typeof queries | string) => {
+  return matchMedia.useMediaQuery(queries[query] || query);
+};
+
 type UI = Parameters<typeof rtlRender>[0];
 type TestA11YOptions = RenderOptions & { axeOptions?: JestAxeConfigureOptions };
 
@@ -55,7 +59,7 @@ export const render = (
     ...options,
   };
 
-  matchMedia.useMediaQuery(queries[config.query]);
+  setMediaQuery(config.query);
   window.history.pushState(null, "", config.url);
 
   return rtlRender(

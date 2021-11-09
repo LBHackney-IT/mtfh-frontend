@@ -1,28 +1,17 @@
-import { queries } from "@hackney/mtfh-system";
+import { setMediaQuery } from "@hackney/mtfh-test-utils";
 import { renderHook } from "@testing-library/react-hooks";
-import MatchMediaMock from "jest-matchmedia-mock";
 
 import { BreakpointKey, useBreakpoint, useBreakpointValue } from "../use-breakpoint";
 
-let matchMedia: MatchMediaMock;
-
-beforeAll(() => {
-  matchMedia = new MatchMediaMock();
-});
-
-afterEach(() => {
-  matchMedia.clear();
-});
-
 describe("useBreakpoint", () => {
   test("it returns undefined with no matching breakpoint", () => {
-    matchMedia.useMediaQuery(`(min-width: 0px)`);
+    setMediaQuery("(min-width: 0px)");
     const { result } = renderHook(() => useBreakpoint("test" as BreakpointKey));
     expect(result.current).toBe(undefined);
   });
 
   test("it returns a true on the matching breakpoint", () => {
-    matchMedia.useMediaQuery(queries.base);
+    setMediaQuery("base");
     const { result } = renderHook(() => useBreakpoint("base"));
     expect(result.current).toBe(true);
   });
@@ -30,7 +19,7 @@ describe("useBreakpoint", () => {
 
 describe("useBreakpointValue", () => {
   test("it returns matching value on breakpoint", () => {
-    matchMedia.useMediaQuery(queries.base);
+    setMediaQuery("base");
     const { result } = renderHook(() =>
       useBreakpointValue({ base: "hello", lg: "world" }),
     );
@@ -38,7 +27,7 @@ describe("useBreakpointValue", () => {
   });
 
   test("it returns best matching value on breakpoint", () => {
-    matchMedia.useMediaQuery(queries.md);
+    setMediaQuery("md");
     const { result } = renderHook(() =>
       useBreakpointValue({ base: "hello", lg: "world" }),
     );
@@ -46,7 +35,7 @@ describe("useBreakpointValue", () => {
   });
 
   test("it returns undefined if there is no matching breakpoint", () => {
-    matchMedia.useMediaQuery(queries.lg);
+    setMediaQuery("lg");
     const { result } = renderHook(() =>
       useBreakpointValue({ test: "hello" } as Partial<Record<BreakpointKey, string>>),
     );
