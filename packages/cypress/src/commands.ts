@@ -2,8 +2,11 @@ declare global {
   namespace Cypress {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     interface cy {
-      skipOnToggle: typeof skipOnToggle;
+      authVisit: typeof authVisit;
+      guestVisit: typeof guestVisit;
+      hasToggle: typeof hasToggle;
       skipOnEnv: typeof skipOnEnv;
+      skipOnToggle: typeof skipOnToggle;
     }
     interface Options {
       actions?: string[];
