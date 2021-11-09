@@ -1,4 +1,4 @@
-import faker from "faker";
+import faker from "faker/locale/en";
 
 import { Comment } from "@mtfh/common/lib/api/comments/v1";
 

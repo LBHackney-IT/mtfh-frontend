@@ -1,4 +1,4 @@
-import faker from "faker";
+import faker from "faker/locale/en";
 
 import { Address } from "@mtfh/common/lib/api/address/v1";
 
