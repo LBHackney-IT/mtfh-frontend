@@ -48,7 +48,7 @@ export const generateMockTenureV1 = (data: Partial<Tenure> = {}): Tenure => {
           personTenureType: namedTenureHolderType,
         }),
       ),
-      ...Array.from({ length: faker.datatype.number({ min: 0, max: 8 }) }).map(() =>
+      ...Array.from({ length: faker.datatype.number({ min: 1, max: 8 }) }).map(() =>
         generateMockHouseholdMemberV1({ isResponsible: false }),
       ),
     ],
