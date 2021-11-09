@@ -18,7 +18,6 @@ const webpackConfig = {
     new ImportMapWebpackPlugin({
       basePath: process.env.CDN_URL || "http://localhost:8000",
       namespace: "@mtfh",
-      outputFilename: `import-map.${process.env.APP_ENV || "development"}`,
     }),
   ],
 };
