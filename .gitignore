@@ -3,6 +3,7 @@ node_modules
 packages/*/coverage
 packages/*/dist
 packages/*/node_modules
+packages/cypress/cypress/fixtures/feature-toggles.json
 storybook-static
 
 packages/*/tsconfig.tsbuildinfo
