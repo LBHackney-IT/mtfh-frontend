@@ -1,5 +1,16 @@
 # @hackney/mtfh-test-utils
 
+## 1.8.0
+
+### Minor Changes
+
+- 6c8e8b0: extends get reference data so that it returns data based on category and
+  subcategory
+
+### Patch Changes
+
+- 1ddb896: Export setMediaQuery utility
+
 ## 1.7.1
 
 ### Patch Changes
