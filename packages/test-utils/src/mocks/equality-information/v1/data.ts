@@ -1,4 +1,4 @@
-import faker from "faker";
+import faker from "faker/locale/en";
 
 import { EqualityData } from "@mtfh/common/lib/api/equality-information/v1";
 import { formatDate } from "@mtfh/common/lib/utils";

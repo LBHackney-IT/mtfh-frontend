@@ -1,5 +1,5 @@
 import { addYears, parseISO } from "date-fns";
-import faker from "faker";
+import faker from "faker/locale/en";
 
 import { TENURE_TYPES } from "../../../constants";
 
