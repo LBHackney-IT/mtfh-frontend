@@ -17,8 +17,9 @@ export const generateMockReferenceDataV1 = (
       "person",
       "asset",
       "equality-information",
+      "comment",
     ]),
-    subCategory: faker.random.arrayElement(["mmh", "type"]),
+    subCategory: faker.random.arrayElement(["mmh", "type", "category"]),
     code: faker.datatype.string(),
     value: faker.lorem.sentence(),
     description: faker.lorem.sentence(),
@@ -29,7 +30,70 @@ export const generateMockReferenceDataV1 = (
   };
 };
 
-export const mockTenureTypeReferencesV1: ReferenceData[] = TENURE_TYPES.map(
+const comment = [
+  {
+    code: "appointments",
+    value: "Appointments",
+  },
+  {
+    code: "estateManagement",
+    value: "Estate management",
+  },
+  {
+    code: "evictions",
+    value: "Evictions",
+  },
+  {
+    code: "parking",
+    value: "Parking",
+  },
+  {
+    code: "plannedMaintenance",
+    value: "Planned maintenance",
+  },
+  {
+    code: "rehousing",
+    value: "Rehousing",
+  },
+  {
+    code: "rents",
+    value: "Rents",
+  },
+  {
+    code: "repairs",
+    value: "Repairs",
+  },
+  {
+    code: "serviceCharge",
+    value: "Service charge",
+  },
+  {
+    code: "temporaryDecant",
+    value: "Temporary decant",
+  },
+  {
+    code: "tenureBreaches",
+    value: "Tenure breaches",
+  },
+  {
+    code: "tenureManagement",
+    value: "Tenure management",
+  },
+  {
+    code: "voids",
+    value: "Voids",
+  },
+];
+
+export const mockCommentReferenceDataV1: ReferenceData[] = comment.map((data) =>
+  generateMockReferenceDataV1({
+    category: "comment",
+    subCategory: "category",
+    ...data,
+  }),
+);
+
+export const mockTenureTypeReferenceDataV1: ReferenceData[] = TENURE_TYPES.map(
   (referenceType) =>
     generateMockReferenceDataV1({
       category: "tenure",
