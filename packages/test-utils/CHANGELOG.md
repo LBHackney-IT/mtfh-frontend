@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.8.2
+
+### Patch Changes
+
+- 22dd07a: Adding repairs work orders mocks/handler
+
 ## 1.8.1
 
 ### Patch Changes
