@@ -1,6 +1,20 @@
 import faker from "faker/locale/en";
 
-import { Repair } from "@mtfh/common/lib/api/repair/v1";
+export interface Repair {
+  id: string;
+  dateRaised: string;
+  description: string;
+  lastUpdated: string | null;
+  owner: string;
+  priority: string;
+  property: string;
+  propertyPostCode: string | null;
+  propertyReference: string;
+  reference: number;
+  status: string;
+  tradeCode: string;
+  tradeDescription: string;
+}
 
 export const generateMockRepairWorkOrdersV1 = (data: Partial<Repair> = {}): Repair => ({
   id: faker.datatype.uuid(),
