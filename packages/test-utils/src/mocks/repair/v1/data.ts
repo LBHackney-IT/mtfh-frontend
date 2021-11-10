@@ -19,8 +19,8 @@ export interface Repair {
 export const generateMockRepairWorkOrdersV1 = (data: Partial<Repair> = {}): Repair => ({
   id: faker.datatype.uuid(),
   reference: faker.datatype.number(123456789),
-  dateRaised: faker.date.past().toISOString(),
-  lastUpdated: faker.date.past().toISOString(),
+  dateRaised: faker.date.between("2000-01-01", "2020-01-01").toISOString(),
+  lastUpdated: faker.date.between("2000-01-01", "2020-01-01").toISOString(),
   priority: faker.lorem.word(),
   property: faker.address.streetAddress(),
   propertyPostCode: faker.address.zipCode(),
