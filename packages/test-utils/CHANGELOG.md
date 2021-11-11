@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.8.3
+
+### Patch Changes
+
+- 8e9ba80: Updating work orders api to use v2
+
 ## 1.8.2
 
 ### Patch Changes
