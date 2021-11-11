@@ -1,22 +1,8 @@
 import faker from "faker/locale/en";
 
-export interface Repair {
-  id: string;
-  dateRaised: string;
-  description: string;
-  lastUpdated: string | null;
-  owner: string;
-  priority: string;
-  property: string;
-  propertyPostCode: string | null;
-  propertyReference: string;
-  reference: number;
-  status: string;
-  tradeCode: string;
-  tradeDescription: string;
-}
+import { WorkOrder } from "@mtfh/common/lib/api/w";
 
-export const generateMockRepairWorkOrdersV1 = (data: Partial<Repair> = {}): Repair => ({
+export const generateMockWorkOrdersV2 = (data: Partial<WorkOrder> = {}): WorkOrder => ({
   id: faker.datatype.uuid(),
   reference: faker.datatype.number(123456789),
   dateRaised: faker.date.between("2000-01-01", "2020-01-01").toISOString(),
@@ -33,6 +19,6 @@ export const generateMockRepairWorkOrdersV1 = (data: Partial<Repair> = {}): Repa
   ...data,
 });
 
-export const mockRepairWorkOrders = Array.from({ length: 12 }).map(() =>
-  generateMockRepairWorkOrdersV1(),
+export const mockWorkOrders = Array.from({ length: 12 }).map(() =>
+  generateMockWorkOrdersV2(),
 );

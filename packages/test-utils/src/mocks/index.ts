@@ -6,4 +6,4 @@ export * from "./asset";
 export * from "./contact-details";
 export * from "./address";
 export * from "./equality-information";
-export * from "./repair";
+export * from "./work-order";
