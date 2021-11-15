@@ -2,7 +2,7 @@
   "extends": "ts-config-single-spa",
   "compilerOptions": {
     "strict": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "declaration": true,
     "declarationDir": "dist",
     "baseUrl": "src",

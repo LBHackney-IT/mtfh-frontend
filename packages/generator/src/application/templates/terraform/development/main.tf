@@ -37,10 +37,12 @@ module "cloudfront-development" {
   orginin_access_identity_desc = "<%= awsStream %> <%= projectName %> frontend cloudfront identity"
   cname_aliases = []
   environment_name = "development"
-  cost_code= "B0811"
-  project_name= "<%= orgName %> <%= awsStream %>"
+  cost_code = "B0811"
+  project_name = "<%= orgName %> <%= awsStream %>"
   use_cloudfront_cert = true
+  compress = true
 }
+
 resource "aws_ssm_parameter" "cdn" {
   name  = "/<%= awsStream %>/development/<%= projectName %>-app-url"
   type  = "String"
