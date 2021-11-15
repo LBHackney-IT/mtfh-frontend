@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.8.4
+
+### Patch Changes
+
+- 3e75374: corrects equality info get response and some fields on the reference data
+
 ## 1.8.3
 
 ### Patch Changes
