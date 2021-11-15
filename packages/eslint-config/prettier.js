@@ -25,7 +25,7 @@ module.exports = {
           "test?(s)/**/*.+(j|t)s?(x)",
           "cypress/**/*.+(j|t)s",
           "**/*.config.?(m)js",
-          "test-utils.ts?(x)",
+          "**/test-utils.ts?(x)",
         ],
       },
     ],
