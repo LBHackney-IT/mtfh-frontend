@@ -1,5 +1,13 @@
 # @hackney/generator-mfe
 
+## 1.2.2
+
+### Patch Changes
+
+- c2c51af: Bump eslint patch
+- Updated dependencies [c2c51af]
+  - @hackney/eslint-config@1.3.1
+
 ## 1.2.1
 
 ### Patch Changes

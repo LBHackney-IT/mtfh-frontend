@@ -1,5 +1,11 @@
 # @hackney/eslint-config
 
+## 1.3.1
+
+### Patch Changes
+
+- c2c51af: Fix test-utils path for import/no-extraneous-dependencies
+
 ## 1.3.0
 
 ### Minor Changes
