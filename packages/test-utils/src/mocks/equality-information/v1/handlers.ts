@@ -1,11 +1,11 @@
 import faker from "faker/locale/en";
 import { rest } from "msw";
 
-import { mockEqualityDataV1 } from "./data";
+import { generateMockEqualityDataV1 } from "./data";
 
 import { config } from "@mtfh/common/lib/config";
 
-export const mockEqualityInformationV1 = { equalityData: mockEqualityDataV1 };
+export const mockEqualityInformationV1 = generateMockEqualityDataV1();
 
 export const getEqualityInformationV1 = (
   data: any = mockEqualityInformationV1,
@@ -22,7 +22,7 @@ export const getEqualityInformationV1 = (
   );
 
 export const getEqualityInformationByIdV1 = (
-  data: any = mockEqualityDataV1[0],
+  data: any = mockEqualityInformationV1,
   code = 200,
 ) =>
   rest.get(
