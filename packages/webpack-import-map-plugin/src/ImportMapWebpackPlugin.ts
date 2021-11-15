@@ -1,4 +1,5 @@
 import { URL } from "url";
+
 import { Compilation, Compiler } from "webpack";
 
 export interface ImportMapWebpackPluginOptions {
