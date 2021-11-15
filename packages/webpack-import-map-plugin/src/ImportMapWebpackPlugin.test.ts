@@ -1,6 +1,8 @@
 import path from "path";
+
 import { IFs, Volume, createFsFromVolume } from "memfs";
 import webpack, { Configuration } from "webpack";
+
 import ImportMapWebpackPlugin, {
   ImportMapWebpackPluginOptions,
 } from "./ImportMapWebpackPlugin";
