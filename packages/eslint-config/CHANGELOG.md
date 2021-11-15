@@ -1,5 +1,11 @@
 # @hackney/eslint-config
 
+## 1.3.0
+
+### Minor Changes
+
+- d094cbb: Rewrite internals to use separate configs instead of overrides.
+
 ## 1.2.0
 
 ### Minor Changes
