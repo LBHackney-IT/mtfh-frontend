@@ -1,22 +1,11 @@
 import faker from "faker/locale/en";
 
 import { EqualityData } from "@mtfh/common/lib/api/equality-information/v1";
-import { formatDate } from "@mtfh/common/lib/utils";
 
 export const generateMockEqualityDataV1 = (): EqualityData => ({
   id: faker.datatype.uuid(),
   targetId: faker.datatype.uuid(),
-  ageGroup: faker.random.arrayElement([
-    "underSixteen",
-    "sixteenToSeventeen",
-    "eighteenToTwentyFour",
-    "twentyFiveToThirtyFour",
-    "thirtyFiveToFortyFour",
-    "fortyFiveToFiftyFour",
-    "fiftyFiveToSixtyFour",
-    "sixtyFiveToEightyFour",
-    "eightyFiveAndPlus",
-  ]),
+  ageGroup: faker.random.arrayElement(["underSixteen", "eightyFiveandPlus"]),
   gender: {
     genderValue: faker.random.arrayElement(["m", "f", "o"]),
     genderValueIfOther: faker.random.arrayElement(["gender fluid", "alien", ""]),
@@ -25,36 +14,23 @@ export const generateMockEqualityDataV1 = (): EqualityData => ({
   nationality: faker.random.arrayElement(["british", "spanish"]),
   ethnicity: {
     ethnicGroupValue: faker.random.arrayElement([
-      "whiteBritish",
-      "gypsyOrIrishTraveller",
-      "whiteItalian",
-      "indian",
-      "pakistani",
+      "mixedBackground",
+      "other",
+      "whiteOrWhiteBritish",
       "other",
     ]),
     ethnicGroupValueIfOther: faker.random.arrayElement(["fremen", "naboo", ""]),
   },
   religionOrBelief: {
-    religionOrBeliefValue: faker.random.arrayElement([
-      "atheistOrNoReligiousBelief",
-      "christian",
-      "muslim",
-      "buddhist",
-      "hindu",
-      "secularBeliefs",
-      "charedi",
-      "jewish",
-      "sikh",
-      "other",
-    ]),
+    religionOrBeliefValue: faker.random.arrayElement(["other", "secularBeliefs", "sikh"]),
     religionOrBeliefValueIfOther: faker.random.arrayElement(["Jediism", ""]),
   },
   sexualOrientation: {
     sexualOrientationValue: faker.random.arrayElement([
       "bisexual",
-      "lesbianOrGayWoman",
-      "gayMan",
       "heterosexual",
+      "gayMan",
+      "lesbianOrGayWoman",
       "other",
     ]),
     sexualOrientationValueIfOther: faker.random.arrayElement(["queer", ""]),
@@ -65,8 +41,8 @@ export const generateMockEqualityDataV1 = (): EqualityData => ({
   },
   pregnancyOrMaternity: [
     {
-      pregnancyDate: formatDate(new Date().toISOString()),
-      pregnancyValidUntil: formatDate(new Date().toISOString()),
+      pregnancyDate: faker.date.between("2010-01-01", "2020-01-01").toISOString(),
+      pregnancyValidUntil: faker.date.between("2010-01-01", "2021-01-01").toISOString(),
     },
   ],
   nationalInsuranceNumber: `${faker.datatype.string(2)}${faker.datatype.number(
@@ -125,7 +101,3 @@ export const generateMockEqualityDataV1 = (): EqualityData => ({
     "formerMemberOfTheArmedForces",
   ]),
 });
-
-export const mockEqualityDataV1 = Array.from({ length: 3 }).map(() =>
-  generateMockEqualityDataV1(),
-);
