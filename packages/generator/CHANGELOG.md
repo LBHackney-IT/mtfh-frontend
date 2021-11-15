@@ -1,5 +1,13 @@
 # @hackney/generator-mfe
 
+## 1.2.1
+
+### Patch Changes
+
+- d094cbb: Bump eslint dependencies
+- Updated dependencies [d094cbb]
+  - @hackney/eslint-config@1.3.0
+
 ## 1.2.0
 
 ### Minor Changes
