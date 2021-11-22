@@ -6,6 +6,12 @@ interface UpgradeGeneratorOptions {
   packageManager: "yarn" | "npm";
 }
 
+type PackageJson = {
+  dependencies?: { [key: string]: string };
+  devDependencies?: { [key: string]: string };
+  version: string;
+};
+
 type Dependency = { library: string; version: string; optional: boolean };
 
 type DependencyUpdate = Record<"dependencies" | "devDependencies", Dependency[]>;
@@ -49,21 +55,18 @@ export default class ApplicationGenerator extends Generator<UpgradeGeneratorOpti
       );
       return stdout;
     };
-    const current = this.fs.readJSON(this.destinationPath("package.json")) as Record<
-      string,
-      any
-    >;
+    const current = this.fs.readJSON(this.destinationPath("package.json")) as PackageJson;
 
     const all = {
       dependencies: {},
       devDependencies: {
         "@hackney/eslint-config": "latest",
         "@hackney/prettier-config": "latest",
-        "@typescript-eslint/eslint-plugin": "5.3.0",
+        "@typescript-eslint/eslint-plugin": "5.4.0",
         eslint: "7.32.0",
-        "eslint-config-airbnb-typescript": "12.3.1",
+        "eslint-config-airbnb-typescript": "16.0.0",
         "eslint-config-prettier": "8.3.0",
-        "eslint-plugin-import": "2.25.2",
+        "eslint-plugin-import": "2.25.3",
         "eslint-plugin-prettier": "3.4.0",
         prettier: "^2.3.2",
         webpack: "5.53.0",
@@ -84,10 +87,11 @@ export default class ApplicationGenerator extends Generator<UpgradeGeneratorOpti
         "@types/react": "17.0.20",
         "@types/react-dom": "17.0.9",
         "@types/react-router-dom": "5.1.9",
+        "eslint-config-airbnb": "19.0.0",
         "eslint-config-react": "1.1.7",
-        "eslint-plugin-jsx-a11y": "6.4.1",
-        "eslint-plugin-react": "7.24.0",
-        "eslint-plugin-react-hooks": "4.2.0",
+        "eslint-plugin-jsx-a11y": "6.5.1",
+        "eslint-plugin-react": "7.27.0",
+        "eslint-plugin-react-hooks": "4.3.0",
         "eslint-plugin-testing-library": "4.9.0",
         jest: "26.6.3",
         "jest-cli": "26.6.3",
@@ -96,7 +100,7 @@ export default class ApplicationGenerator extends Generator<UpgradeGeneratorOpti
         "webpack-config-single-spa-react-ts": "4.0.2",
       },
       dependencies: {
-        "lbh-frontend": "^3.6.1",
+        "lbh-frontend": "latest",
         react: "17.0.2",
         "react-dom": "17.0.2",
         "react-router-dom": "5.2.0",
@@ -112,7 +116,7 @@ export default class ApplicationGenerator extends Generator<UpgradeGeneratorOpti
       },
     };
 
-    const isMFE = Object.keys(current?.dependencies).includes("react");
+    const isReact = Object.keys(current?.dependencies || []).includes("react");
 
     const mapToUpdateArray = (deps: Record<string, string>, optional: boolean) =>
       Object.entries(deps).map(([library, version]) => ({
@@ -124,10 +128,12 @@ export default class ApplicationGenerator extends Generator<UpgradeGeneratorOpti
     const packageDeps: DependencyUpdate = {
       dependencies: [
         ...mapToUpdateArray(conditional.dependencies, true),
-        ...mapToUpdateArray(isMFE ? mfe.dependencies : all.dependencies, false),
+        ...mapToUpdateArray(isReact ? mfe.dependencies : all.dependencies, false),
       ],
       devDependencies: mapToUpdateArray(
-        isMFE ? { ...all.devDependencies, ...mfe.devDependencies } : all.devDependencies,
+        isReact
+          ? { ...all.devDependencies, ...mfe.devDependencies }
+          : all.devDependencies,
         true,
       ),
     };
@@ -143,13 +149,15 @@ export default class ApplicationGenerator extends Generator<UpgradeGeneratorOpti
         this.log(`${sentenceCase(type)} Updates:`);
       }
       collection.forEach(({ library, version, optional }) => {
-        if (current[type] && current[type][library]) {
-          if (version !== current[type][library]) {
-            packages[type] = { ...packages[type], [library]: version };
+        const list = current[`${type}`];
+        if (list && list[`${library}`]) {
+          const libVersion = list[`${library}`];
+          if (version !== libVersion) {
+            packages[`${type}`] = { ...packages[`${type}`], [library]: version };
             this.log(`${chalk.yellow("Updating")} ${library}@${version}`);
           }
         } else if (!optional) {
-          packages[type] = { ...packages[type], [library]: version };
+          packages[`${type}`] = { ...packages[`${type}`], [library]: version };
           this.log(`${chalk.green("Adding")} ${library}@${version}`);
         }
       });

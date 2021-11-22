@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { throttling } from "@octokit/plugin-throttling";
 import { RequestError } from "@octokit/request-error";
 import { Octokit } from "@octokit/rest";
+import { RequestOptions } from "@octokit/types";
 
 import type { Repo } from "../types";
 
@@ -12,7 +13,10 @@ const createOctokit = (token: string) =>
   new Octokit({
     auth: token,
     throttle: {
-      onRateLimit: (retryAfter: number, options: any) => {
+      onRateLimit: (
+        retryAfter: number,
+        options: RequestOptions & { request: { retryCount: number } },
+      ) => {
         console.log(
           `Request quota exhausted for request ${options.method} ${options.url}`,
         );
@@ -23,7 +27,7 @@ const createOctokit = (token: string) =>
           return true;
         }
       },
-      onAbuseLimit: (retryAfter: number, options: any) => {
+      onAbuseLimit: (retryAfter: number, options: RequestOptions) => {
         // does not retry, only logs a warning
         console.log(`Abuse detected for request ${options.method} ${options.url}`);
         console.log(`Retryable in ${retryAfter}`);

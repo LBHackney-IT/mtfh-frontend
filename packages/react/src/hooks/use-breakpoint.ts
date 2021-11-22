@@ -15,7 +15,7 @@ export const useBreakpoint = (
   return undefined;
 };
 
-export const useBreakpointValue = <T extends any>(
+export const useBreakpointValue = <T>(
   breakpointRecord: Partial<Record<BreakpointKey, T>>,
   defaultBreakpoint?: BreakpointKey,
 ): T | undefined => {

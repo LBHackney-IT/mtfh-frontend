@@ -185,7 +185,7 @@ export default class ApplicationGenerator extends Generator<ApplicationGenerator
           Object.keys(templateLiterals).reduce((accum, literal) => {
             return accum.replace(
               new RegExp(`\\[${literal}\\]`, "g"),
-              templateLiterals[literal],
+              templateLiterals[`${literal}`],
             );
           }, path),
       },

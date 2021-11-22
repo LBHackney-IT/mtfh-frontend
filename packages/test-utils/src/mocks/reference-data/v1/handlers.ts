@@ -15,8 +15,12 @@ export const getReferenceDataV1 = (
     // If the data is an array, it could contain multiple categories and subCategories
     if (Array.isArray(data)) {
       response = data.reduce((accum, ref) => {
-        if (ref.category !== category) return accum;
-        if (subCategory && subCategory !== ref.subCategory) return accum;
+        if (ref.category !== category) {
+          return accum;
+        }
+        if (subCategory && subCategory !== ref.subCategory) {
+          return accum;
+        }
         if (!accum[ref.subCategory]) {
           accum[ref.subCategory] = [];
         }
@@ -27,7 +31,9 @@ export const getReferenceDataV1 = (
       // If the data is a single object, it should only have a single category
     } else if (subCategory) {
       response = Object.entries(data).reduce((accum, [subKey, refs]) => {
-        if (subKey !== subCategory) return accum;
+        if (subKey !== subCategory) {
+          return accum;
+        }
         accum[subCategory] = refs;
         return accum;
       }, {} as Record<string, ReferenceData[]>);

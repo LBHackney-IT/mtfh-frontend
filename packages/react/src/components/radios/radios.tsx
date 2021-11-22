@@ -92,11 +92,11 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(function R
   const localRef = useRef<HTMLDivElement>();
 
   useEffect(() => {
-    const init = async (ref: HTMLElement) => {
+    const init = async (element: HTMLElement) => {
       const { default: LBHRadios } = await import(
         "lbh-frontend/lbh/components/lbh-radios/radios"
       );
-      const radios = new LBHRadios(ref);
+      const radios = new LBHRadios(element);
       radios.init();
     };
     /* istanbul ignore else */

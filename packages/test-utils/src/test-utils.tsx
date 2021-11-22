@@ -67,7 +67,7 @@ export const render = (
       value={{
         provider: () => new Map(),
         dedupingInterval: 0,
-        errorRetryInterval: 0,
+        errorRetryCount: 0,
       }}
     >
       <ConfirmationRouter>

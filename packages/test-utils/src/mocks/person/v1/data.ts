@@ -1,14 +1,14 @@
 import { addYears, parseISO } from "date-fns";
 import faker from "faker/locale/en";
 
-import { TENURE_TYPES } from "../../../constants";
-
 import {
   Person,
   PersonTitle,
   PersonType,
   TenureSummary,
 } from "@mtfh/common/lib/api/person/v1";
+
+import { TENURE_TYPES } from "../../../constants";
 
 faker.seed(1);
 

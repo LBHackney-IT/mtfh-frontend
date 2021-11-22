@@ -50,13 +50,13 @@ export const ErrorSummary: ErrorSummaryComponent = forwardRef(function ErrorSumm
   const localRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const init = async (ref: HTMLElement) => {
+    const init = async (element: HTMLElement) => {
       const { default: LBHErrorSummary } = await import(
         "lbh-frontend/lbh/components/lbh-error-summary/error-summary"
       );
-      const summary = new LBHErrorSummary(ref);
+      const summary = new LBHErrorSummary(element);
       summary.init();
-      ref.scrollIntoView(true);
+      element.scrollIntoView(true);
     };
     /* istanbul ignore else */
     if (localRef.current && window !== undefined && document !== undefined) {

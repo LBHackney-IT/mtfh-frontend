@@ -7,9 +7,9 @@ A configuration for prettier, to create consistancy across Hackney projects.
 Install package as a dev dependency:
 
 ```
-npm install --save-dev @hackney/prettier-config
+npm install @hackney/prettier-config -D
 // or
-yarn add -D @hackney/prettier-config
+yarn add @hackney/prettier-config -D
 ```
 
 Create a `.prettierrc.js` file in the root of your project.

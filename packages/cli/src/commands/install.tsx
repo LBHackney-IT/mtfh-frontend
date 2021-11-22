@@ -31,7 +31,7 @@ const Install = () => {
   const { installed, available } = useMemo(() => {
     return repos.reduce(
       (accum, repo) => {
-        const app = Object.values(apps).find((app) => repo.name === app.name);
+        const app = Object.values(apps).find((targetApp) => repo.name === targetApp.name);
         const appExists = !!app && fs.existsSync(app.path);
         if (appExists) {
           accum.installed.push(repo);
@@ -101,8 +101,8 @@ const Install = () => {
     return (
       <CloneRepos
         repos={activeRepos}
-        onComplete={(repos) => {
-          setActiveRepos(repos);
+        onComplete={(clonedRepos) => {
+          setActiveRepos(clonedRepos);
           setInstall(true);
           setClone(false);
         }}

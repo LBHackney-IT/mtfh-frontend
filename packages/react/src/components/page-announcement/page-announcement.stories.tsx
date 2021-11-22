@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import { Button } from "../button";
 import { PageAnnouncementProvider, usePageAnnouncement } from "./context";
@@ -39,8 +39,8 @@ export const PageAnnouncementInfo = () => {
 };
 
 export const PageAnnouncementWithProvider = () => {
-  const Action = () => {
-    const { addAnnouncement, clearAnnouncement } = usePageAnnouncement();
+  const { addAnnouncement, clearAnnouncement } = usePageAnnouncement();
+  const Action = useCallback(() => {
     return (
       <>
         <div>
@@ -53,7 +53,7 @@ export const PageAnnouncementWithProvider = () => {
         </div>
       </>
     );
-  };
+  }, [addAnnouncement, clearAnnouncement]);
 
   return (
     <PageAnnouncementProvider sessionKey="person">

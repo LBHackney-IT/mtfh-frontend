@@ -1,8 +1,8 @@
 import { rest } from "msw";
 
-import { generateMockTenureV1 } from "./data";
-
 import { config } from "@mtfh/common/lib/config";
+
+import { generateMockTenureV1 } from "./data";
 
 export const mockActiveTenureV1 = generateMockTenureV1({ isActive: true });
 export const mockInactiveTenureV1 = generateMockTenureV1({ isActive: false });

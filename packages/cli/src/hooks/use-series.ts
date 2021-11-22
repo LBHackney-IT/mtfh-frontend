@@ -6,7 +6,7 @@ import chalk from "chalk";
 
 import { exec, series } from "../utils";
 
-interface SeriesItem<T extends any> {
+interface SeriesItem<T> {
   command: string | ((ctx: T) => string);
   spawnOptions: SpawnOptions;
   ctx: T;
@@ -17,7 +17,7 @@ interface SeriesOptions<T> {
   onComplete: (success: T[]) => void;
 }
 
-export const useSeries = <T extends any>(
+export const useSeries = <T>(
   items: SeriesItem<T>[] | null,
   { onClose, onComplete }: SeriesOptions<T>,
 ) => {
@@ -34,7 +34,9 @@ export const useSeries = <T extends any>(
   }, [items]);
 
   useEffect(() => {
-    if (!itemsRef) return;
+    if (!itemsRef) {
+      return;
+    }
     let running: ChildProcess | null = null;
     const actions = itemsRef.map(({ command, ctx, spawnOptions }) => async () => {
       return new Promise<void>((resolve) => {
