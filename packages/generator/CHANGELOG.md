@@ -1,5 +1,13 @@
 # @hackney/generator-mfe
 
+## 1.2.3
+
+### Patch Changes
+
+- f5d1479: Refactor eslint dependencies
+- Updated dependencies [f5d1479]
+  - @hackney/eslint-config@1.4.0
+
 ## 1.2.2
 
 ### Patch Changes

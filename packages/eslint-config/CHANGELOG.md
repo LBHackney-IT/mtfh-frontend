@@ -1,5 +1,11 @@
 # @hackney/eslint-config
 
+## 1.4.0
+
+### Minor Changes
+
+- f5d1479: Refactor eslint dependencies
+
 ## 1.3.1
 
 ### Patch Changes

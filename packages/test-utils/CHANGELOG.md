@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.8.5
+
+### Patch Changes
+
+- f5d1479: Fix import path on work order
+
 ## 1.8.4
 
 ### Patch Changes

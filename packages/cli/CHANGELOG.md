@@ -1,5 +1,11 @@
 # @hackney/mtfh-cli
 
+## 2.1.1
+
+### Patch Changes
+
+- f5d1479: Eslint improvements
+
 ## 2.1.0
 
 ### Minor Changes
