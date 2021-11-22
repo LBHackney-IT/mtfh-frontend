@@ -1,9 +1,9 @@
 import faker from "faker/locale/en";
 import { rest } from "msw";
 
-import { generateMockEqualityDataV1 } from "./data";
-
 import { config } from "@mtfh/common/lib/config";
+
+import { generateMockEqualityDataV1 } from "./data";
 
 export const mockEqualityInformationV1 = generateMockEqualityDataV1();
 

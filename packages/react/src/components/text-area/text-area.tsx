@@ -89,9 +89,9 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function 
         onChange={onChangeHandler}
         {...props}
       />
-      {maxLength !== undefined && exceedingValue !== false && (
-        <>
-          {exceedingValue >= 0 ? (
+      {maxLength !== undefined &&
+        exceedingValue !== false && [
+          exceedingValue >= 0 ? (
             <Hint className={messageClasses} aria-live="polite">
               You have {exceedingValue} {pluralize("character", exceedingValue)} remaining
             </Hint>
@@ -100,9 +100,8 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function 
               You have {Math.abs(exceedingValue)} {pluralize("character", exceedingValue)}{" "}
               too many
             </ErrorMessage>
-          )}
-        </>
-      )}
+          ),
+        ]}
     </>
   );
 

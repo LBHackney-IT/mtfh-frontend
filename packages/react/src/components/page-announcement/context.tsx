@@ -104,8 +104,9 @@ export const PageAnnouncementProvider: FC<PageAnnouncementProviderProps> = ({
   }, [sessionKey]);
 
   const [state, dispatch] = useReducer(reducer, initialData);
+  const value = useMemo(() => ({ state, dispatch }), [state, dispatch]);
   return (
-    <PageAnnouncementContext.Provider value={{ state, dispatch }}>
+    <PageAnnouncementContext.Provider value={value}>
       {children}
     </PageAnnouncementContext.Provider>
   );

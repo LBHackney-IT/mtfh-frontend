@@ -1,8 +1,8 @@
 import { rest } from "msw";
 
-import { generateMockPersonV1 } from "./data";
-
 import { config } from "@mtfh/common/lib/config";
+
+import { generateMockPersonV1 } from "./data";
 
 export const mockPersonV1 = generateMockPersonV1();
 

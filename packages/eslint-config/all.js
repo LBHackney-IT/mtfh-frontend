@@ -1,5 +1,11 @@
 module.exports = {
-  extends: ["plugin:prettier/recommended"],
+  extends: ["plugin:jest/recommended", "plugin:prettier/recommended"],
+  plugins: ["jest", "prettier"],
+  settings: {
+    jest: {
+      version: 26,
+    },
+  },
   rules: {
     "no-param-reassign": "off",
     "no-console": "off",
@@ -10,7 +16,6 @@ module.exports = {
     "guard-for-in": "off",
     "operator-assignment": "off",
     "prefer-destructuring": "off",
-    "react/no-children-prop": "off",
     "consistent-return": "off",
     "no-restricted-syntax": "off",
     "no-continue": "off",
@@ -32,7 +37,14 @@ module.exports = {
     "import/order": [
       "error",
       {
-        groups: ["builtin", "external", ["sibling", "parent"], "index", "type"],
+        groups: [
+          "builtin",
+          "external",
+          "internal",
+          ["sibling", "parent"],
+          "index",
+          "type",
+        ],
         alphabetize: {
           order: "asc",
           caseInsensitive: true,
@@ -61,9 +73,9 @@ module.exports = {
       },
     ],
     "no-alert": "off",
-
     "import/no-named-as-default": "off",
     "prefer-object-spread": "off",
     "arrow-body-style": "off",
+    curly: ["error", "all"],
   },
 };

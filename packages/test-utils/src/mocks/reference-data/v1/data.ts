@@ -1,8 +1,8 @@
 import faker from "faker/locale/en";
 
-import { TENURE_TYPES } from "../../../constants";
-
 import { ReferenceData } from "@mtfh/common/lib/api/reference-data/v1";
+
+import { TENURE_TYPES } from "../../../constants";
 
 faker.seed(1);
 

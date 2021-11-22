@@ -122,7 +122,7 @@ test("inline field renders correctly", async () => {
   });
 });
 
-test("inline field renders correctly", async () => {
+test("date field renders correctly", async () => {
   const onSubmit = jest.fn();
   render(
     <Formik initialValues={{ day: "", month: "", year: "" }} onSubmit={onSubmit}>

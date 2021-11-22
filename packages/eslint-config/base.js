@@ -12,10 +12,11 @@ module.exports = {
   },
   plugins: ["@typescript-eslint"],
   extends: [
+    "plugin:@typescript-eslint/recommended",
     "plugin:import/recommended",
     "plugin:import/typescript",
+    "airbnb-base",
     "airbnb-typescript/base",
-    "./prettier.js",
   ],
   rules: {
     "@typescript-eslint/lines-between-class-members": "off",
@@ -24,6 +25,7 @@ module.exports = {
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-use-before-define": "off",
   },
+  overrides: [{ files: ["*"], extends: "./all" }],
   settings: {
     "import/resolver": {
       typescript: {},

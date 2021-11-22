@@ -1,6 +1,6 @@
 import faker from "faker/locale/en";
 
-import { WorkOrder } from "@mtfh/common/lib/api/w";
+import { WorkOrder } from "@mtfh/common/lib/api/work-order/v2";
 
 export const generateMockWorkOrdersV2 = (data: Partial<WorkOrder> = {}): WorkOrder => ({
   id: faker.datatype.uuid(),

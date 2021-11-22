@@ -20,13 +20,11 @@ export const Base = () => {
 
 export const PolymorphicText = () => {
   return (
-    <>
-      <Text>
-        Inline component{" "}
-        <Text as="span" variant="lg">
-          as span
-        </Text>
+    <Text>
+      Inline component{" "}
+      <Text as="span" variant="lg">
+        as span
       </Text>
-    </>
+    </Text>
   );
 };

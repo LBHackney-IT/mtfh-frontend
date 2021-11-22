@@ -90,7 +90,7 @@ const hasToggle = (toggle: string) => {
     const pathArray = toggle.match(/([^[.\]])+/g);
     const result =
       pathArray?.reduce((prevObj, key): any => {
-        if (prevObj && prevObj[key]) {
+        if (prevObj && prevObj[`${key}`]) {
           return prevObj[`${key}`];
         }
         return false;

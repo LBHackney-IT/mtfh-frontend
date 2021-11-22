@@ -37,7 +37,7 @@ before(() => {
             featureToggles,
           }: { type: string; featureToggles: Record<string, boolean> },
         ) => {
-          accum[type] = featureToggles;
+          accum[`${type}`] = featureToggles;
           return accum;
         },
         {} as FeatureToggles,

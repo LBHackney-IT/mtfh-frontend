@@ -62,7 +62,7 @@ export default class ImportMapWebpackPlugin {
               const name = file.split(".")[0];
               const project = `${this.options.namespace}/${name}`;
               if (project) {
-                accum[project] = new URL(file, this.options.basePath).href;
+                accum[`${project}`] = new URL(file, this.options.basePath).href;
               }
             }
             return accum;
@@ -84,5 +84,3 @@ export default class ImportMapWebpackPlugin {
     });
   }
 }
-
-module.exports = ImportMapWebpackPlugin;
