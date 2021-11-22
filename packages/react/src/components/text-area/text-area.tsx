@@ -89,19 +89,19 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function 
         onChange={onChangeHandler}
         {...props}
       />
-      {maxLength !== undefined &&
-        exceedingValue !== false && [
-          exceedingValue >= 0 ? (
-            <Hint className={messageClasses} aria-live="polite">
-              You have {exceedingValue} {pluralize("character", exceedingValue)} remaining
-            </Hint>
-          ) : (
-            <ErrorMessage className={messageClasses} aria-live="polite">
-              You have {Math.abs(exceedingValue)} {pluralize("character", exceedingValue)}{" "}
-              too many
-            </ErrorMessage>
-          ),
-        ]}
+      {/* eslint-disable-next-line no-nested-ternary */}
+      {maxLength !== undefined && exceedingValue !== false ? (
+        exceedingValue >= 0 ? (
+          <Hint className={messageClasses} aria-live="polite">
+            You have {exceedingValue} {pluralize("character", exceedingValue)} remaining
+          </Hint>
+        ) : (
+          <ErrorMessage className={messageClasses} aria-live="polite">
+            You have {Math.abs(exceedingValue)} {pluralize("character", exceedingValue)}{" "}
+            too many
+          </ErrorMessage>
+        )
+      ) : null}
     </>
   );
 

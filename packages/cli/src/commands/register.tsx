@@ -59,7 +59,7 @@ const RegisterCommand = ({ dir }: RegisterCommandProps) => {
       <Box flexDirection="column">
         <Text>Please enter the directory to register:</Text>
         <MultiSelect
-          items={folders.map((dir) => ({ value: dir, label: dir }))}
+          items={folders.map((folderDir) => ({ value: folderDir, label: folderDir }))}
           onSubmit={setProjects}
         />
       </Box>

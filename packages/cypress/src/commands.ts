@@ -1,4 +1,5 @@
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Cypress {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     interface cy {
@@ -60,8 +61,8 @@ declare global {
       pa11y(opts?: Options): Cypress.Chainable<Subject>;
       lighthouse(
         thresholds?: LighthouseThresholds,
-        opts?: any,
-        config?: any,
+        opts?: object,
+        config?: object,
       ): Cypress.Chainable<Subject>;
       guestVisit(url: string, options?: Cypress.VisitOptions): Cypress.Chainable<Subject>;
       authVisit(url: string, options?: Cypress.VisitOptions): Cypress.Chainable<Subject>;
@@ -89,7 +90,7 @@ const hasToggle = (toggle: string) => {
     cy.log("toggles", toggles);
     const pathArray = toggle.match(/([^[.\]])+/g);
     const result =
-      pathArray?.reduce((prevObj, key): any => {
+      pathArray?.reduce((prevObj, key) => {
         if (prevObj && prevObj[`${key}`]) {
           return prevObj[`${key}`];
         }

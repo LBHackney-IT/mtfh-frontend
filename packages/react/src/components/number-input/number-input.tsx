@@ -41,7 +41,9 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
 
     const formatter = useCallback(
       (num: string | number) => {
-        if (num === "") return "";
+        if (num === "") {
+          return "";
+        }
         let numInt = parseInt(String(num), 10);
         if (max !== undefined && numInt > max) {
           numInt = max;

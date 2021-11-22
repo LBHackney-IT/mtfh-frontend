@@ -12,7 +12,7 @@ const createOctokit = (token: string) =>
   new Octokit({
     auth: token,
     throttle: {
-      onRateLimit: (retryAfter: number, options: any) => {
+      onRateLimit: (retryAfter: number, options) => {
         console.log(
           `Request quota exhausted for request ${options.method} ${options.url}`,
         );
@@ -23,7 +23,7 @@ const createOctokit = (token: string) =>
           return true;
         }
       },
-      onAbuseLimit: (retryAfter: number, options: any) => {
+      onAbuseLimit: (retryAfter: number, options) => {
         // does not retry, only logs a warning
         console.log(`Abuse detected for request ${options.method} ${options.url}`);
         console.log(`Retryable in ${retryAfter}`);

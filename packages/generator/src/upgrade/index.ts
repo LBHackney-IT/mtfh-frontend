@@ -6,6 +6,12 @@ interface UpgradeGeneratorOptions {
   packageManager: "yarn" | "npm";
 }
 
+type PackageJson = {
+  dependencies?: { [key: string]: string };
+  devDependencies?: { [key: string]: string };
+  version: string;
+};
+
 type Dependency = { library: string; version: string; optional: boolean };
 
 type DependencyUpdate = Record<"dependencies" | "devDependencies", Dependency[]>;
@@ -49,10 +55,7 @@ export default class ApplicationGenerator extends Generator<UpgradeGeneratorOpti
       );
       return stdout;
     };
-    const current = this.fs.readJSON(this.destinationPath("package.json")) as Record<
-      string,
-      any
-    >;
+    const current = this.fs.readJSON(this.destinationPath("package.json")) as PackageJson;
 
     const all = {
       dependencies: {},
@@ -113,7 +116,7 @@ export default class ApplicationGenerator extends Generator<UpgradeGeneratorOpti
       },
     };
 
-    const isMFE = Object.keys(current?.dependencies).includes("react");
+    const isReact = Object.keys(current?.dependencies || []).includes("react");
 
     const mapToUpdateArray = (deps: Record<string, string>, optional: boolean) =>
       Object.entries(deps).map(([library, version]) => ({
@@ -125,10 +128,12 @@ export default class ApplicationGenerator extends Generator<UpgradeGeneratorOpti
     const packageDeps: DependencyUpdate = {
       dependencies: [
         ...mapToUpdateArray(conditional.dependencies, true),
-        ...mapToUpdateArray(isMFE ? mfe.dependencies : all.dependencies, false),
+        ...mapToUpdateArray(isReact ? mfe.dependencies : all.dependencies, false),
       ],
       devDependencies: mapToUpdateArray(
-        isMFE ? { ...all.devDependencies, ...mfe.devDependencies } : all.devDependencies,
+        isReact
+          ? { ...all.devDependencies, ...mfe.devDependencies }
+          : all.devDependencies,
         true,
       ),
     };

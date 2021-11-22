@@ -31,7 +31,9 @@ export const CloneRepos = ({ repos, onComplete }: CloneReposProps) => {
       : null,
     {
       onComplete: (completedRepos) => {
-        if (!cwd) return;
+        if (!cwd) {
+          return;
+        }
         add(completedRepos, cwd);
         onComplete(repos);
       },
