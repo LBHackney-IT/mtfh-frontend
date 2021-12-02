@@ -6,27 +6,33 @@ const getScope = (key: string) => {
   return `${org}/${project}`;
 };
 
-beforeEach(() => {
-  // Get the import-map.json file from the local running webpackDevServer
-  // then create an intercept for import maps to replace the calling MFE
-  cy.request(`${Cypress.env("DEV_URL")}/import-map.json`).then((data) => {
-    const importMap = data.body;
-    if (!importMap.imports) {
-      return;
-    }
-    const scope = getScope(Object.keys(importMap.imports)[0]);
-    cy.log(`Identified MFE scope: ${scope}`);
-    cy.intercept(`/import-map.json`, { middleware: true }, (req) => {
-      req.continue((res) => {
-        if (res.body.imports && getScope(Object.keys(res.body.imports)[0]) === scope) {
-          res.send(importMap);
+const clearSw = () => {
+  cy.window().then((win) => {
+    if ("serviceWorker" in win.navigator) {
+      win.navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (const registration of registrations) {
+          registration.unregister();
         }
       });
-    });
+    }
   });
+};
+
+beforeEach(() => {
+  clearSw();
+});
+
+afterEach(() => {
+  clearSw();
 });
 
 before(() => {
+  // Disable the service worker. Cypress support for service workers is limited.
+  // We have to investigate an optimal solution to support a SW.
+  cy.intercept(`/sw.js`, { middleware: true }, (req) => {
+    req.destroy();
+  });
+
   let toggles: FeatureToggles = {};
   // Collect the feature toggles and place in a store
   cy.intercept(
@@ -50,8 +56,9 @@ before(() => {
           );
           toggles = update;
         } catch (e) {
-          console.log(req.url);
-          console.log(res.body);
+          if (e instanceof Error) {
+            console.warn("Middleware", e.message);
+          }
         }
         res.send(res.body);
       });
@@ -71,4 +78,22 @@ before(() => {
         "utf-8",
       );
     });
+
+  // Get the import-map.json file from the local running webpackDevServer
+  // then create an intercept for import maps to replace the calling MFE
+  cy.request(`${Cypress.env("DEV_URL")}/import-map.json`).then((data) => {
+    const importMap = data.body;
+    if (!importMap.imports) {
+      return;
+    }
+    const scope = getScope(Object.keys(importMap.imports)[0]);
+    cy.log(`Identified MFE scope: ${scope}`);
+    cy.intercept(`/import-map.json`, { middleware: true }, (req) => {
+      req.continue((res) => {
+        if (res.body.imports && getScope(Object.keys(res.body.imports)[0]) === scope) {
+          res.send(importMap);
+        }
+      });
+    }).as("importMaps");
+  });
 });

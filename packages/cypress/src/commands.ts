@@ -75,6 +75,7 @@ const authVisit = (url: string, options?: Cypress.VisitOptions) => {
   const token = Cypress.env("AUTH_TOKEN");
   cy.setCookie("hackneyToken", token);
   cy.getCookie("hackneyToken").should("have.property", "value", token);
+
   cy.visit(url, options);
   cy.get(".container-max-width").should("not.be.empty");
 };
