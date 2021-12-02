@@ -20,6 +20,24 @@ const clearSw = () => {
 
 beforeEach(() => {
   clearSw();
+
+  // Get the import-map.json file from the local running webpackDevServer
+  // then create an intercept for import maps to replace the calling MFE
+  cy.request(`${Cypress.env("DEV_URL")}/import-map.json`).then((data) => {
+    const importMap = data.body;
+    if (!importMap.imports) {
+      return;
+    }
+    const scope = getScope(Object.keys(importMap.imports)[0]);
+    cy.log(`Identified MFE scope: ${scope}`);
+    cy.intercept(`/import-map.json`, { middleware: true }, (req) => {
+      req.continue((res) => {
+        if (res.body.imports && getScope(Object.keys(res.body.imports)[0]) === scope) {
+          res.send(importMap);
+        }
+      });
+    }).as("importMaps");
+  });
 });
 
 afterEach(() => {
@@ -78,22 +96,4 @@ before(() => {
         "utf-8",
       );
     });
-
-  // Get the import-map.json file from the local running webpackDevServer
-  // then create an intercept for import maps to replace the calling MFE
-  cy.request(`${Cypress.env("DEV_URL")}/import-map.json`).then((data) => {
-    const importMap = data.body;
-    if (!importMap.imports) {
-      return;
-    }
-    const scope = getScope(Object.keys(importMap.imports)[0]);
-    cy.log(`Identified MFE scope: ${scope}`);
-    cy.intercept(`/import-map.json`, { middleware: true }, (req) => {
-      req.continue((res) => {
-        if (res.body.imports && getScope(Object.keys(res.body.imports)[0]) === scope) {
-          res.send(importMap);
-        }
-      });
-    }).as("importMaps");
-  });
 });
