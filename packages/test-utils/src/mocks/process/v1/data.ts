@@ -1,8 +1,8 @@
 import faker from "faker/locale/en";
 
-faker.seed(1);
-
 import { Process, ProcessState } from "@mtfh/common/lib/api/process/v1";
+
+faker.seed(1);
 
 export const generateMockProcessStateV1 = (
   data: Partial<ProcessState> = {},
