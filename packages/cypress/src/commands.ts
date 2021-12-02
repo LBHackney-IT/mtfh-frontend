@@ -64,6 +64,10 @@ declare global {
         opts?: object,
         config?: object,
       ): Cypress.Chainable<Subject>;
+      lighthouseDesktop(
+        thresholds?: LighthouseThresholds,
+        opts?: object,
+      ): Cypress.Chainable<Subject>;
       guestVisit(url: string, options?: Cypress.VisitOptions): Cypress.Chainable<Subject>;
       authVisit(url: string, options?: Cypress.VisitOptions): Cypress.Chainable<Subject>;
       hasToggle(toggle: string): Cypress.Chainable<boolean>;
@@ -130,10 +134,31 @@ const skipOnEnv = (target: string) => {
   }
 };
 
+const lighthouseDesktop = (thresholds?: Cypress.LighthouseThresholds) => {
+  cy.lighthouse(thresholds, {
+    throttling: {
+      rttMs: 40,
+      throughputKbps: 10 * 1024,
+      cpuSlowdownMultiplier: 1,
+      requestLatencyMs: 0,
+      downloadThroughputKbps: 0,
+      uploadThroughputKbps: 0,
+    },
+    formFactor: "desktop",
+    screenEmulation: {
+      mobile: false,
+      width: 1350,
+      height: 940,
+      deviceScaleFactor: 1,
+      disabled: false,
+    },
+  });
+};
+
 Cypress.Commands.add("authVisit", authVisit);
 Cypress.Commands.add("guestVisit", guestVisit);
 Cypress.Commands.add("hasToggle", hasToggle);
 Cypress.Commands.add("skipOnEnv", skipOnEnv);
 Cypress.Commands.add("skipOnToggle", skipOnToggle);
-
+Cypress.Commands.add("lighthouseDesktop", lighthouseDesktop);
 export {};
