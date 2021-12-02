@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.8.7
+
+### Patch Changes
+
+- e18423d: updating method / adding get
+
 ## 1.8.6
 
 ### Patch Changes
