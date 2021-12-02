@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.8.6
+
+### Patch Changes
+
+- c7c56ba: adding mocked process api
+
 ## 1.8.5
 
 ### Patch Changes
