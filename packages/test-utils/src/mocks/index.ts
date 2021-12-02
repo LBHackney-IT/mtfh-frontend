@@ -7,3 +7,4 @@ export * from "./contact-details";
 export * from "./address";
 export * from "./equality-information";
 export * from "./work-order";
+export * from "./process";
