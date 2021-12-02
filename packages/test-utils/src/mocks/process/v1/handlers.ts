@@ -12,7 +12,10 @@ export const postProcessV1 = (data: any = mockProcessV1, code = 200) => {
 };
 
 export const patchProcessV1 = (data: any = mockProcessV1, code = 200) =>
-  rest.patch(`${config.processApiUrlV1}/process/:id`, (req, res, ctx) => {
-    const payload = req.body as Record<string, any>;
-    return res(ctx.status(code), ctx.json({ ...data, ...payload }));
-  });
+  rest.patch(
+    `${config.processApiUrlV1}/process/:processName/:id/:processTrigger`,
+    (req, res, ctx) => {
+      const payload = req.body as Record<string, any>;
+      return res(ctx.status(code), ctx.json({ ...data, ...payload }));
+    },
+  );
