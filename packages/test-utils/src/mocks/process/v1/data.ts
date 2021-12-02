@@ -4,26 +4,6 @@ faker.seed(1);
 
 import { Process, ProcessState } from "@mtfh/common/lib/api/process/v1";
 
-export const generateMockProcessV1 = (data: Partial<Process> = {}): Process => {
-  return {
-    id: faker.datatype.uuid(),
-    targetID: faker.datatype.uuid(),
-    relatedEntities: Array.from({
-      length: faker.datatype.number({ min: 1, max: 4 }),
-    }).map(() => faker.lorem.word()),
-    formData: {},
-    documents: Array.from({ length: faker.datatype.number({ min: 1, max: 4 }) }).map(() =>
-      faker.datatype.uuid(),
-    ),
-    processName: faker.lorem.word(),
-    currentState: generateMockProcessStateV1(),
-    previousStates: Array.from({
-      length: faker.datatype.number({ min: 1, max: 4 }),
-    }).map(() => generateMockProcessStateV1()),
-    ...data,
-  };
-};
-
 export const generateMockProcessStateV1 = (
   data: Partial<ProcessState> = {},
 ): ProcessState => {
@@ -41,6 +21,26 @@ export const generateMockProcessStateV1 = (
     },
     createdAt: faker.date.past().toISOString(),
     updatedAt: faker.date.past().toISOString(),
+    ...data,
+  };
+};
+
+export const generateMockProcessV1 = (data: Partial<Process> = {}): Process => {
+  return {
+    id: faker.datatype.uuid(),
+    targetID: faker.datatype.uuid(),
+    relatedEntities: Array.from({
+      length: faker.datatype.number({ min: 1, max: 4 }),
+    }).map(() => faker.lorem.word()),
+    formData: {},
+    documents: Array.from({ length: faker.datatype.number({ min: 1, max: 4 }) }).map(() =>
+      faker.datatype.uuid(),
+    ),
+    processName: faker.lorem.word(),
+    currentState: generateMockProcessStateV1(),
+    previousStates: Array.from({
+      length: faker.datatype.number({ min: 1, max: 4 }),
+    }).map(() => generateMockProcessStateV1()),
     ...data,
   };
 };
