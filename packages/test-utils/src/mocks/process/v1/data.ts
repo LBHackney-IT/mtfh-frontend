@@ -28,7 +28,7 @@ export const generateMockProcessStateV1 = (
 export const generateMockProcessV1 = (data: Partial<Process> = {}): Process => {
   return {
     id: faker.datatype.uuid(),
-    targetID: faker.datatype.uuid(),
+    targetId: faker.datatype.uuid(),
     relatedEntities: Array.from({
       length: faker.datatype.number({ min: 1, max: 4 }),
     }).map(() => faker.lorem.word()),
