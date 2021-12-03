@@ -1,5 +1,10 @@
 {
+  "baseUrl": "http://localhost:3000",
+  "video": false,
+  "screenshotOnRunFailure": false,
   "env": {
-    "DEV_URL": "http://localhost:3000"
+    "DEV_URL": "http://localhost:3000",
+    "ENVIRONMENT": "development",
+    "AUTH_TOKEN": "development-token"
   }
 }
