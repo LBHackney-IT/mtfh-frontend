@@ -1,5 +1,12 @@
 # @hackney/eslint-config
 
+## 1.4.1
+
+### Patch Changes
+
+- 5ebdc87: Update jest to only activate on .spec.ts?x or .test.ts?x files, in anticipation
+  for cypress.
+
 ## 1.4.0
 
 ### Minor Changes

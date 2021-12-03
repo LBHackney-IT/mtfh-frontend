@@ -1,6 +1,6 @@
 {
   "name": "@hackney/eslint-config",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Eslint config for LBH Modern Tools for Housing",
   "main": "index.js",
   "repository": {
