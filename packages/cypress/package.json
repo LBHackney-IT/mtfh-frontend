@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@testing-library/cypress": "^8.0.1",
-    "cypress-audit": "^1.1.0"
+    "cypress-audit": "^1.1.0",
+    "cypress-terminal-report": "^3.4.0"
   }
 }

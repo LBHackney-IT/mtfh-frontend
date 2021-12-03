@@ -1,11 +1,6 @@
 module.exports = {
-  extends: ["plugin:jest/recommended", "plugin:prettier/recommended"],
-  plugins: ["jest", "prettier"],
-  settings: {
-    jest: {
-      version: 26,
-    },
-  },
+  extends: ["plugin:prettier/recommended"],
+  plugins: ["prettier"],
   rules: {
     "no-param-reassign": "off",
     "no-console": "off",

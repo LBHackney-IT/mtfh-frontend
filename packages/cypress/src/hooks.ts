@@ -6,7 +6,21 @@ const getScope = (key: string) => {
   return `${org}/${project}`;
 };
 
+const clearSw = () => {
+  cy.window().then((win) => {
+    if ("serviceWorker" in win.navigator) {
+      win.navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (const registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  });
+};
+
 beforeEach(() => {
+  clearSw();
+
   // Get the import-map.json file from the local running webpackDevServer
   // then create an intercept for import maps to replace the calling MFE
   cy.request(`${Cypress.env("DEV_URL")}/import-map.json`).then((data) => {
@@ -22,11 +36,21 @@ beforeEach(() => {
           res.send(importMap);
         }
       });
-    });
+    }).as("importMaps");
   });
 });
 
+afterEach(() => {
+  clearSw();
+});
+
 before(() => {
+  // Disable the service worker. Cypress support for service workers is limited.
+  // We have to investigate an optimal solution to support a SW.
+  cy.intercept(`/sw.js`, { middleware: true }, (req) => {
+    req.destroy();
+  });
+
   let toggles: FeatureToggles = {};
   // Collect the feature toggles and place in a store
   cy.intercept(
@@ -50,8 +74,9 @@ before(() => {
           );
           toggles = update;
         } catch (e) {
-          console.log(req.url);
-          console.log(res.body);
+          if (e instanceof Error) {
+            console.warn("Middleware", e.message);
+          }
         }
         res.send(res.body);
       });

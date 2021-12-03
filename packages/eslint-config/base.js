@@ -5,6 +5,7 @@ module.exports = {
     jest: true,
   },
   parser: "@typescript-eslint/parser",
+  ignorePatterns: ["*.config.js"],
   parserOptions: {
     ecmaVersion: 10,
     extraFileExtensions: [".mjs"],
@@ -25,13 +26,29 @@ module.exports = {
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-use-before-define": "off",
   },
-  overrides: [{ files: ["*"], extends: "./all" }],
+  overrides: [
+    {
+      files: ["*.(test|spec).ts?(x)"],
+      plugins: ["jest"],
+      extends: ["plugin:jest/recommended"],
+    },
+    {
+      files: ["*.js"],
+      rules: {
+        "@typescript-eslint/no-var-requires": "off",
+      },
+    },
+    { files: ["*"], extends: "./all" },
+  ],
   settings: {
     "import/resolver": {
       typescript: {},
       node: {
         extensions: [".mjs", ".js", ".ts"],
       },
+    },
+    jest: {
+      version: 26,
     },
   },
 };
