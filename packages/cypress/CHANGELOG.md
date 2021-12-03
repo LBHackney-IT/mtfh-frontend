@@ -1,5 +1,11 @@
 # @hackney/mtfh-cypress
 
+## 1.1.0
+
+### Minor Changes
+
+- 5ebdc87: Include cypress-terminal-report and service worker unregistration.
+
 ## 1.0.0
 
 ### Major Changes
