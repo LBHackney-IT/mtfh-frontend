@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 1.8.8
+
+### Patch Changes
+
+- 33a622f: updating casing of targetId
+
 ## 1.8.7
 
 ### Patch Changes
