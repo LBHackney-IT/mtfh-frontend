@@ -39,8 +39,8 @@ export const configPlugin: Cypress.PluginConfig = (on, config) => {
   installLogsPrinter(on);
 
   on("task", {
-    lighthouse: lighthouse(console.log),
-    pa11y: pa11y(console.log),
+    lighthouse: lighthouse(),
+    pa11y: pa11y(),
   });
 
   return config;
