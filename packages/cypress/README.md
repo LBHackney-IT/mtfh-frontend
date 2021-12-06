@@ -13,7 +13,18 @@ Lifecycle:
 3. Before Each hook will intercept all import-map.json requests and determine which
    import-map to stub with the DEV_URL payload.
 
+## Installation
+
+```
+yarn add @hackney/mtfh-cli
+yarn add dotenv cypress -D
+```
+
 ## Usage
+
+This library provides both a configuration plugin as well as a collection of hooks and
+commands. Plugins run in the node context within cypress and commands run in the browser,
+so we have to wire them up separately.
 
 ### Plugin
 
@@ -28,26 +39,16 @@ module.exports = (on, config) => {
 };
 ```
 
-Create a folder with relevant environment json files
+Create a `.env` file in the root of your project.
 
 ```
-cypress
-└── config
-    ├── development.json
-    ├── staging.json
-    └── production.json
+CYPRESS_ENVIRONMENT=development
+CYPRESS_BASE_URL=https://manage-my-home-development.hackney.gov.uk
+CYPRESS_AUTH_TOKEN=token
 ```
 
-With a minimal config, e.g. `cypress/config/development.json`:
-
-```js
-{
-  "baseUrl": "https://manage-my-home-development.hackney.gov.uk",
-  "env": {
-    "AUTH_TOKEN": "..."
-  }
-}
-```
+You'll want to configure these variables in your circle ci pipeline to match your
+environment.
 
 In `cypress.json`
 
@@ -55,7 +56,6 @@ In `cypress.json`
 {
   "env": {
     "DEV_URL": "http://localhost:9000",
-    "ENVIRONMENT": "development"
   }
 }
 ```
@@ -100,6 +100,46 @@ describe('Collection of tests', () => {
 })
 ```
 
+## Audits
+
+We provide commands for testing performance as well as accessibility.
+
+```js
+// Equalvalent of testing for mobile
+cy.lighthouse({
+  seo: 0,
+  "best-practices": 100,
+  accessibility: 100,
+  performance: 80,
+});
+
+// Runs lighthouse with the desktop config
+cy.lighthouseDesktop({
+  seo: 0,
+  "best-practices": 100,
+  accessibility: 100,
+  performance: 80,
+});
+
+// Runs accessibility testing, using pa11y
+cy.pa11y({ actions: ["wait for element h1 to be added"] });
+```
+
+NB: It's important to note that Lighthouse's performance metrics can't really be taken as
+an indication of the actual report. This plugin is intended to run a local version of the
+micro-frontend so we can test against it before deploying. Ie. we will be testing against
+an app that isn't served by our architecture. You can however use it as a quality gate to
+ensure new changes don't reduce the scores. We recommend manual performance testing in
+live environments to get real world values.
+
+## Additions
+
+This library comes with the following preconfigured:
+
+- @testing-libray/cypress
+- cypress-audit
+- cypress-terminal-report
+
 ## Configuration
 
 The config plugin will override a few `cypress.json` defaults that align to the
@@ -115,10 +155,5 @@ Such as:
   },
   "chromeWebSecurity": false,
   "defaultCommandTimeout": 10000,
-  "video": false,
 }
 ```
-
-The config recieved by the plugin is hydrated with defaults which are impossible to know
-are intended. To override this behaviour you have an opportunity to set additional
-configuration in the config environment files.
