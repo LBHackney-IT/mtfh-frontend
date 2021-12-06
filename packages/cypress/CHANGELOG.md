@@ -1,5 +1,11 @@
 # @hackney/mtfh-cypress
 
+## 1.2.0
+
+### Minor Changes
+
+- 24738e4: Remove dependency on config files in favour of env vars
+
 ## 1.1.0
 
 ### Minor Changes
