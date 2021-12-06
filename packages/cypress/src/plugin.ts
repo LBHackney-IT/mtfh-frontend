@@ -1,43 +1,29 @@
-import fs from "fs";
-import path from "path";
-
 import { lighthouse, pa11y, prepareAudit } from "cypress-audit";
 import installLogsPrinter from "cypress-terminal-report/src/installLogsPrinter";
+import dotenv from "dotenv";
 
 export const configPlugin: Cypress.PluginConfig = (on, config) => {
-  const version = config.env.ENVIRONMENT || "development";
+  dotenv.config();
+  const stage =
+    process.env.CYPRESS_ENVIRONMENT || config.env.ENVIRONMENT || "development";
+  const auth = process.env.CYPRESS_AUTH_TOKEN || config.env.AUTH_TOKEN;
+  const baseUrl = process.env.CYPRESS_BASE_URL || config.baseUrl;
 
-  try {
-    const envConfigJSON = fs.readFileSync(
-      path.resolve(config.supportFolder, "..", "config", `${version}.json`),
-      "utf-8",
-    );
-    const envConfig = JSON.parse(envConfigJSON);
-    config = {
-      lighthouse: {
-        performance: 40,
-        accessibility: 90,
-        "best-practices": 80,
-        seo: 0,
-        pwa: 0,
-      },
-      ...config,
-      retries: {
-        runMode: 2,
-        openMode: 0,
-      },
-      chromeWebSecurity: false,
-      defaultCommandTimeout: 10000,
-      video: false,
-      ...envConfig,
-      env: {
-        ...config.env,
-        ...envConfig.env,
-      },
-    };
-  } catch {
-    throw new Error(`Unable to parse config/${version}.json`);
-  }
+  config = {
+    ...config,
+    env: {
+      ...config.env,
+      ENVIRONMENT: stage,
+      AUTH_TOKEN: auth,
+    },
+    baseUrl,
+    retries: {
+      runMode: 2,
+      openMode: 0,
+    },
+    chromeWebSecurity: false,
+    defaultCommandTimeout: 10000,
+  };
 
   on("before:browser:launch", (browser, launchOptions) => {
     if (browser.name === "chrome") {
