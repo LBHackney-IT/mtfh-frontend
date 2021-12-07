@@ -1,5 +1,11 @@
 # @hackney/mtfh-cypress
 
+## 1.2.1
+
+### Patch Changes
+
+- 2f9501e: Remove console log from cypress tasks
+
 ## 1.2.0
 
 ### Minor Changes
