@@ -46,24 +46,18 @@ export const useGithub = (token?: string | false) => {
     }
     const octokit = createOctokit(token);
     const fetchApps = async (page = 1) => {
-      // Fetch repos sorted name in asc order
-      const res = await octokit.rest.repos.listForOrg({
-        org: "LBHackney-IT",
-        sort: "full_name",
+      const res = await octokit.rest.search.repos({
+        q: "org:LBHackney-IT mtfh-frontend-",
         per_page: 40,
-        direction: "asc",
-        page,
+        page: 1,
       });
 
       // Only looking for mtfh-frontend- prefixed repos
-      const mtfhRepos = res.data.filter(
+      const mtfhRepos = res.data.items.filter(
         ({ name }) => name.toLowerCase().indexOf("mtfh-frontend-") === 0,
       );
 
-      // Check if we should continue paging results
-      const [lastRepo] = res.data.slice(-1);
-
-      if (res.data.length === 40 && lastRepo.name[0].toLowerCase() <= "m") {
+      if (res.data.total_count > page * 40) {
         mtfhRepos.push(...(await fetchApps(page + 1)));
       }
       return mtfhRepos;
