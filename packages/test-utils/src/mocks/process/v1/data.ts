@@ -8,7 +8,7 @@ export const generateMockProcessStateV1 = (
   data: Partial<ProcessState> = {},
 ): ProcessState => {
   return {
-    stateName: faker.lorem.word(),
+    state: faker.lorem.word(),
     permittedTriggers: Array.from({
       length: faker.datatype.number({ min: 1, max: 4 }),
     }).map(() => faker.lorem.word()),
