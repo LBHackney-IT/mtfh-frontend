@@ -1,5 +1,11 @@
 # @hackney/mtfh-test-utils
 
+## 2.0.0
+
+### Major Changes
+
+- 372cd7c: Added the Mock alerts and getAlert methods
+
 ## 1.8.9
 
 ### Patch Changes
