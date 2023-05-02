@@ -24,9 +24,9 @@ export const mockAlertV1 = {
   ],
 };
 
-export const getAlertsV1 = (data: any = mockAlertV1, code = 200) => {
+export const getAlertsByAlertIdV1 = (data: any = mockAlertV1, code = 200) => {
   return rest.get(
-    `${config.cautionaryApiUrlV1}/cautionary-alerts/properties-new/:id`,
+    `${config.cautionaryApiUrlV1}/cautionary-alerts/alert/:cautionaryAlertId`,
     (req, res, ctx) => res(ctx.status(code), ctx.json(data)),
   );
 };
