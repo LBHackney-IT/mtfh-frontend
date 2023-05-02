@@ -19,7 +19,7 @@ export const mockAlertV1 = {
       personName: "FAKE_Alice FAKE_Rowe",
       personId: null,
       alertId: "445091a6-71bf-492c-b5c5-04816a6ae491",
-      isActive: true
+      isActive: true,
     },
   ],
 };
