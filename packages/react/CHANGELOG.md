@@ -1,5 +1,12 @@
 # @hackney/mtfh-react
 
+## 1.1.3
+
+### Patch Changes
+
+- Updated dependencies [372cd7c]
+  - @hackney/mtfh-test-utils@2.0.0
+
 ## 1.1.2
 
 ### Patch Changes
