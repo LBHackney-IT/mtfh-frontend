@@ -1,5 +1,11 @@
 # @hackney/mtfh-react
 
+## 1.2.0
+
+### Minor Changes
+
+- e45b3ef: Mock Alerts update
+
 ## 1.1.3
 
 ### Patch Changes
