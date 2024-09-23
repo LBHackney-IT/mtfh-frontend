@@ -18,14 +18,14 @@
     "index.js"
   ],
   "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": "5.4.0",
+    "@typescript-eslint/eslint-plugin": ">=5.4.0 <7.0.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^19.0.0",
-    "eslint-config-airbnb-typescript": "^16.0.0",
+    "eslint-config-airbnb-typescript": ">=16.0.0 <18.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-react": "^1.1.7",
     "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jest": "^25.2.4",
+    "eslint-plugin-jest": ">=25.2.4 <29.0.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.27.0",
@@ -34,7 +34,7 @@
     "prettier": "2.2.1"
   },
   "dependencies": {
-    "@typescript-eslint/parser": "5.4.0",
+    "@typescript-eslint/parser": ">=5.4.0 <7.0.0",
     "eslint-import-resolver-typescript": "^2.4.0"
   }
 }
