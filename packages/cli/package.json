@@ -4,11 +4,11 @@
   "license": "MIT",
   "bin": "dist/cli.js",
   "engines": {
-    "node": ">=10"
+    "node": ">=24"
   },
   "scripts": {
     "build": "tsc",
-    "start": "yarn build && dist/cli.js",
+    "start": "npm run build && node dist/cli.js",
     "lint": "eslint src --ext js,jsx,ts,tsx"
   },
   "files": [

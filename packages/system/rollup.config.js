@@ -14,6 +14,7 @@ export default [
       resolve(),
       typescript({
         tsconfig: "./tsconfig.json",
+        include: ["**/*.ts", "**/*.tsx"],
       }),
       commonjs({
         ignoreGlobal: true,

@@ -32,7 +32,8 @@ export default [
       resolve(),
       typescript({
         tsconfig: "./tsconfig.json",
-        exclude: ["**/*.test.ts?x", "**/*.stories.tsx", "jest.setup.ts"],
+        include: ["**/*.ts", "**/*.tsx"],
+        exclude: ["**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx", "jest.setup.ts"],
       }),
       commonjs({
         exclude: "node_modules",

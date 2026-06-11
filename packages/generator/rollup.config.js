@@ -21,12 +21,13 @@ export default {
   external: Object.keys(packageJson.dependencies),
   plugins: [
     json(),
-    commonjs({
-      exclude: ["node_modules/"],
-    }),
     resolve({ preferBuiltins: true }),
     typescript({
       tsconfig: "./tsconfig.json",
+      include: ["**/*.ts", "**/*.tsx"],
+    }),
+    commonjs({
+      exclude: ["node_modules/"],
     }),
     copy({
       targets: [

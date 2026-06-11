@@ -21,7 +21,7 @@
     "cypress:open": "cypress open",
     "serve": "node tests/server.js",
     "test": "start-server-and-test serve 3000 cypress:run",
-    "test:ci": "yarn test",
+    "test:ci": "npm test",
     "lint": "eslint src --ext js,jsx,ts,tsx"
   },
   "bugs": {

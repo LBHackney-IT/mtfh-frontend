@@ -1,5 +1,6 @@
 {
-  "includes": ["src"],
+  "extends": "../../tsconfig.json",
+  "include": ["src"],
   "exclude": ["dist"],
   "compilerOptions": {
     "target": "esnext",
@@ -11,6 +12,8 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["node"],
+    "declarationDir": "dist/types"
   }
 }
