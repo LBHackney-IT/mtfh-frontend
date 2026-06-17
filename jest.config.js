@@ -17,6 +17,7 @@ module.exports = {
     "\\.(css|scss)$": "identity-obj-proxy",
     "^react-router-dom$": path.join(__dirname, "node_modules/react-router-dom"),
     "^react-router$": path.join(__dirname, "node_modules/react-router"),
+    "^react-dom/client$": path.join(__dirname, "node_modules/react-dom/client.js"),
     "^msw/node$": path.join(__dirname, "node_modules/msw/lib/node/index.js"),
     "^@mswjs/interceptors/ClientRequest$": path.join(
       interceptorsRoot,
