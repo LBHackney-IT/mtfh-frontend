@@ -1,6 +1,9 @@
-import { lighthouse, pa11y, prepareAudit } from "cypress-audit";
 import installLogsPrinter from "cypress-terminal-report/src/installLogsPrinter";
 import dotenv from "dotenv";
+
+import { lighthouse } from "./audit/lighthouse-task";
+import { pa11y } from "./audit/pa11y-task";
+import { prepareAudit } from "./audit/prepare-audit";
 
 export const configPlugin: Cypress.PluginConfig = (on, config) => {
   dotenv.config();
