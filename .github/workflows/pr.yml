@@ -72,7 +72,7 @@ jobs:
 
       - name: Override React version
         run: |
-          npm install --no-save react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }}
+          npm install --no-save -ws react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }}
 
       - name: Build packages
         run: npm run build
