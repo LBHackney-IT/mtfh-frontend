@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm test
+npx lerna run test --scope=@hackney/webpack-import-map-plugin --scope=@hackney/mtfh-react --stream --concurrency=1
