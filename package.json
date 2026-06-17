@@ -19,7 +19,7 @@
     "lint": "lerna run lint --no-private --stream",
     "storybook": "storybook dev -p 6006 --ci",
     "build-storybook": "storybook build",
-    "prepare": "husky install && node scripts/link-react-deps.js",
+    "prepare": "husky && node scripts/link-react-deps.js",
     "build": "lerna run build --no-private --stream"
   },
   "repository": {
