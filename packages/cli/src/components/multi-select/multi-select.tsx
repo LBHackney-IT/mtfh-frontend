@@ -28,7 +28,7 @@ const Checkbox = ({ checked = false }) => (
 
 export const MultiSelect = ({ items, onSubmit }: MultiSelectProps) => {
   const [cursor, setCursor] = useState(0);
-  const [selected, setSelected] = useState<typeof items[0]["value"][]>([]);
+  const [selected, setSelected] = useState<Array<(typeof items)[number]["value"]>>([]);
 
   useInput((input, key) => {
     if (key.upArrow) {

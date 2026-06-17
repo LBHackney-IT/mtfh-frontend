@@ -2,8 +2,8 @@ import React, { forwardRef } from "react";
 
 import cn from "classnames";
 
-import { widthOverrides } from "../../utils";
 import styles from "./styles.module.scss";
+import { widthOverrides } from "../../utils";
 
 import type * as Polymorphic from "@radix-ui/react-polymorphic";
 
@@ -22,7 +22,7 @@ export interface LinkProps {
 
 export type LinkComponent = Polymorphic.ForwardRefComponent<"a", LinkProps>;
 
-export const Link: LinkComponent = forwardRef(function Link(
+export const Link = forwardRef(function Link(
   {
     as: LinkComp = "a",
     variant = "link",
@@ -56,4 +56,4 @@ export const Link: LinkComponent = forwardRef(function Link(
       {...props}
     />
   );
-});
+}) as LinkComponent;

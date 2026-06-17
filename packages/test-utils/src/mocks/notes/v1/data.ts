@@ -1,4 +1,4 @@
-import faker from "faker/locale/en";
+import { faker } from "@faker-js/faker/locale/en";
 
 import { Comment } from "@mtfh/common/lib/api/comments/v1";
 
@@ -6,9 +6,9 @@ faker.seed(1);
 
 export const generateMockCommentV1 = (data: Partial<Comment> = {}): Comment => {
   return {
-    id: faker.datatype.uuid(),
-    targetType: faker.random.arrayElement(["person", "tenure"]),
-    targetId: faker.datatype.uuid(),
+    id: faker.string.uuid(),
+    targetType: faker.helpers.arrayElement(["person", "tenure"]),
+    targetId: faker.string.uuid(),
     description: faker.lorem.paragraph(),
     createdAt: faker.date.past().toISOString(),
     categorisation: {
@@ -17,8 +17,8 @@ export const generateMockCommentV1 = (data: Partial<Comment> = {}): Comment => {
       description: faker.lorem.word(),
     },
     author: {
-      id: faker.datatype.uuid(),
-      fullName: [faker.name.firstName(), faker.name.lastName()].join(" "),
+      id: faker.string.uuid(),
+      fullName: [faker.person.firstName(), faker.person.lastName()].join(" "),
       email: faker.internet.email(),
     },
     ...data,

@@ -24,7 +24,7 @@ export type SideBarSectionComponent = Polymorphic.ForwardRefComponent<
   SideBarSectionProps
 >;
 
-export const SideBarSection: SideBarSectionComponent = forwardRef(function SideBarSection(
+export const SideBarSection = forwardRef(function SideBarSection(
   { children, heading, className, isCollapsed = false, ...props },
   ref,
 ) {
@@ -42,7 +42,7 @@ export const SideBarSection: SideBarSectionComponent = forwardRef(function SideB
       {children}
     </div>
   );
-});
+}) as SideBarSectionComponent;
 
 export interface SideBarProps {
   id: string;
@@ -55,7 +55,7 @@ export interface SideBarProps {
 
 export type SideBarComponent = Polymorphic.ForwardRefComponent<"div", SideBarProps>;
 
-export const SideBar: SideBarComponent = forwardRef(function SideBar(
+export const SideBar = forwardRef(function SideBar(
   { as: SideBarComp = "div", id, top, children, className, ...props },
   ref,
 ) {
@@ -83,4 +83,4 @@ export const SideBar: SideBarComponent = forwardRef(function SideBar(
       )}
     </SideBarComp>
   );
-});
+}) as SideBarComponent;

@@ -11,8 +11,8 @@ const decryptToken = (password: string) => {
   if (!config.token || !config.iv) {
     return false;
   }
-  const key = crypto.scryptSync(password, process.env.SALT || "salt", 24);
-  const iv = Buffer.from(config.iv, "hex");
+  const key = new Uint8Array(crypto.scryptSync(password, process.env.SALT || "salt", 24));
+  const iv = Uint8Array.from(Buffer.from(config.iv, "hex"));
   const decipher = crypto.createDecipheriv(algorithm, key, iv);
   try {
     const decrypted =
@@ -24,8 +24,8 @@ const decryptToken = (password: string) => {
 };
 
 const updateToken = (token: string, password: string) => {
-  const key = crypto.scryptSync(password, process.env.SALT || "salt", 24);
-  const iv = crypto.randomBytes(16);
+  const key = new Uint8Array(crypto.scryptSync(password, process.env.SALT || "salt", 24));
+  const iv = new Uint8Array(crypto.randomBytes(16));
   const cipher = crypto.createCipheriv(algorithm, key, iv);
   const encrypted = cipher.update(token, "utf-8", "hex") + cipher.final("hex");
 

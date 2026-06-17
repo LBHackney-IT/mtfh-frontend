@@ -1,5 +1,5 @@
-import faker from "faker/locale/en";
-import { rest } from "msw";
+import { faker } from "@faker-js/faker/locale/en";
+import { HttpResponse, http } from "msw";
 
 import { config } from "@mtfh/common/lib/config";
 
@@ -23,26 +23,28 @@ export const mockContactDetailsV2 = generateMockContactDetailsV2(
 );
 
 export const getContactDetailsV2 = (data: any = mockContactDetailsV2, code = 200) =>
-  rest.get(`${config.contactDetailsApiUrlV2}/contactDetails`, (req, res, ctx) => {
-    return res(ctx.status(code), ctx.json(typeof data === "function" ? data(req) : data));
+  http.get(`${config.contactDetailsApiUrlV2}/contactDetails`, ({ request }) => {
+    return HttpResponse.json(typeof data === "function" ? data(request) : data, {
+      status: code,
+    });
   });
 
 export const postContactDetailV2 = (responseData: any = {}, code = 200) =>
-  rest.post(`${config.contactDetailsApiUrlV2}/contactDetails`, (req, res, ctx) => {
-    const data = req.body as Record<string, any>;
-    return res(
-      ctx.status(code),
-      ctx.json({
-        ...data,
-        id: faker.datatype.uuid(),
+  http.post(`${config.contactDetailsApiUrlV2}/contactDetails`, async ({ request }) => {
+    const body = (await request.json()) as Record<string, any>;
+    return HttpResponse.json(
+      {
+        ...body,
+        id: faker.string.uuid(),
         isActive: true,
         createdBy: {
           createdBy: new Date().toISOString(),
-          id: faker.datatype.uuid(),
-          fullName: faker.name.firstName(),
-          email: faker.internet.email,
+          id: faker.string.uuid(),
+          fullName: faker.person.firstName(),
+          email: faker.internet.email(),
         },
-        ...(typeof responseData === "function" ? responseData(req) : responseData),
-      }),
+        ...(typeof responseData === "function" ? responseData(request) : responseData),
+      },
+      { status: code },
     );
   });

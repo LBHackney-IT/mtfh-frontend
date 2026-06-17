@@ -1,5 +1,5 @@
-import faker from "faker/locale/en";
-import { rest } from "msw";
+import { faker } from "@faker-js/faker/locale/en";
+import { HttpResponse, http } from "msw";
 
 import { config } from "@mtfh/common/lib/config";
 
@@ -11,13 +11,12 @@ export const getEqualityInformationV1 = (
   data: any = mockEqualityInformationV1,
   code = 200,
 ) =>
-  rest.get(
+  http.get(
     `${config.equalityInformationApiUrlV1}/equality-information`,
-    (req, res, ctx) => {
-      return res(
-        ctx.status(code),
-        ctx.json(typeof data === "function" ? data(req) : data),
-      );
+    ({ request }) => {
+      return HttpResponse.json(typeof data === "function" ? data(request) : data, {
+        status: code,
+      });
     },
   );
 
@@ -25,43 +24,42 @@ export const getEqualityInformationByIdV1 = (
   data: any = mockEqualityInformationV1,
   code = 200,
 ) =>
-  rest.get(
+  http.get(
     `${config.equalityInformationApiUrlV1}/equality-information/:id`,
-    (req, res, ctx) => {
-      return res(
-        ctx.status(code),
-        ctx.json(typeof data === "function" ? data(req) : data),
-      );
+    ({ request }) => {
+      return HttpResponse.json(typeof data === "function" ? data(request) : data, {
+        status: code,
+      });
     },
   );
 
 export const postEqualityInformationV1 = (responseData: any = {}, code = 200) =>
-  rest.post(
+  http.post(
     `${config.equalityInformationApiUrlV1}/equality-information`,
-    (req, res, ctx) => {
-      const data = req.body as Record<string, any>;
-      return res(
-        ctx.status(code),
-        ctx.json({
-          ...data,
-          id: faker.datatype.uuid(),
-          ...(typeof responseData === "function" ? responseData(req) : responseData),
-        }),
+    async ({ request }) => {
+      const body = (await request.json()) as Record<string, any>;
+      return HttpResponse.json(
+        {
+          ...body,
+          id: faker.string.uuid(),
+          ...(typeof responseData === "function" ? responseData(request) : responseData),
+        },
+        { status: code },
       );
     },
   );
 
 export const patchEqualityInformationV1 = (responseData: any = {}, code = 200) =>
-  rest.patch(
+  http.patch(
     `${config.equalityInformationApiUrlV1}/equality-information/:id`,
-    (req, res, ctx) => {
-      const data = req.body as Record<string, any>;
-      return res(
-        ctx.status(code),
-        ctx.json({
-          ...data,
-          ...(typeof responseData === "function" ? responseData(req) : responseData),
-        }),
+    async ({ request }) => {
+      const body = (await request.json()) as Record<string, any>;
+      return HttpResponse.json(
+        {
+          ...body,
+          ...(typeof responseData === "function" ? responseData(request) : responseData),
+        },
+        { status: code },
       );
     },
   );

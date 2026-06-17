@@ -1,5 +1,5 @@
+import { faker } from "@faker-js/faker/locale/en";
 import { addYears, parseISO } from "date-fns";
-import faker from "faker/locale/en";
 
 import { Asset, AssetTenure } from "@mtfh/common/lib/api/asset/v1";
 
@@ -16,63 +16,63 @@ export const generateMockAssetTenureV1 = (
   const isActive = isActiveParam !== undefined ? isActiveParam : faker.datatype.boolean();
   const startOfTenureDate = startOfTenureDateParam
     ? parseISO(startOfTenureDateParam)
-    : faker.date.between("2010-01-01", "2020-01-01");
+    : faker.date.between({ from: "2010-01-01", to: "2020-01-01" });
 
   return {
-    id: faker.datatype.uuid(),
-    paymentReference: faker.random.alphaNumeric(10),
+    id: faker.string.uuid(),
+    paymentReference: faker.string.alphanumeric(10),
     startOfTenureDate: startOfTenureDate.toISOString(),
     endOfTenureDate: !isActive
       ? addYears(startOfTenureDate, 1).toISOString()
       : addYears(startOfTenureDate, 100).toISOString(),
-    type: faker.random.arrayElement(TENURE_TYPES.map(({ value }) => value)),
+    type: faker.helpers.arrayElement(TENURE_TYPES.map(({ value }) => value)),
     isActive,
     ...partialAssetDataLeft,
   };
 };
 
 export const generateMockAssetV1 = (partialAsset: Partial<Asset> = {}): Asset => ({
-  id: faker.datatype.uuid(),
-  assetId: faker.datatype.uuid(),
-  assetType: faker.random.arrayElement(["Dwelling", "LettableNonDwelling"]),
+  id: faker.string.uuid(),
+  assetId: faker.string.uuid(),
+  assetType: faker.helpers.arrayElement(["Dwelling", "LettableNonDwelling"]),
   assetLocation: {
-    floorNo: faker.datatype.number(100),
-    totalBlockFloors: faker.datatype.number(4),
+    floorNo: faker.number.int({ max: 100 }),
+    totalBlockFloors: faker.number.int({ max: 4 }),
     parentAssets: [
       {
         type: "block",
-        id: faker.datatype.uuid(),
-        name: faker.company.companyName(),
+        id: faker.string.uuid(),
+        name: faker.company.name(),
       },
     ],
   },
   assetAddress: {
-    uprn: `${faker.datatype.number(100021065786)}`,
-    addressLine1: faker.address.streetAddress(),
-    addressLine2: faker.address.county(),
-    addressLine3: faker.address.city(),
-    addressLine4: faker.address.country(),
-    postCode: faker.address.zipCode("PN NEE"),
+    uprn: `${faker.number.int({ max: 100021065786 })}`,
+    addressLine1: faker.location.streetAddress(),
+    addressLine2: faker.location.county(),
+    addressLine3: faker.location.city(),
+    addressLine4: faker.location.country(),
+    postCode: faker.location.zipCode("PN NEE"),
     postPreamble: "1 Newcome House",
   },
   assetManagement: {
     agent: "HAH",
-    areaOfficeName: faker.company.companyName(),
+    areaOfficeName: faker.company.name(),
     isCouncilProperty: faker.datatype.boolean(),
     managingOrganisation: "LBH",
-    managingOrganisationId: faker.datatype.uuid(),
-    owner: faker.address.county(),
+    managingOrganisationId: faker.string.uuid(),
+    owner: faker.location.county(),
     isTMOManaged: faker.datatype.boolean(),
   },
   assetCharacteristics: {
-    numberOfBedrooms: faker.datatype.number(8),
-    numberOfLifts: faker.datatype.number(4),
-    numberOfLivingRooms: faker.datatype.number(2),
+    numberOfBedrooms: faker.number.int({ max: 8 }),
+    numberOfLifts: faker.number.int({ max: 4 }),
+    numberOfLivingRooms: faker.number.int({ max: 2 }),
     windowType: "DBL",
-    yearConstructed: `${faker.datatype.number({ min: 1500, max: 2100 })}`,
+    yearConstructed: `${faker.number.int({ min: 1500, max: 2100 })}`,
   },
   tenure: generateMockAssetTenureV1({ isActive: true }),
-  rootAsset: faker.datatype.uuid(),
-  parentAssetIds: `${faker.datatype.uuid()}#${faker.datatype.uuid()}#${faker.datatype.uuid()}`,
+  rootAsset: faker.string.uuid(),
+  parentAssetIds: `${faker.string.uuid()}#${faker.string.uuid()}#${faker.string.uuid()}`,
   ...partialAsset,
 });

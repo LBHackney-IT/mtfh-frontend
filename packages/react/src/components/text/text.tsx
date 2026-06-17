@@ -12,7 +12,7 @@ export interface TextProps {
 
 export type TextComponent = Polymorphic.ForwardRefComponent<"p", TextProps>;
 
-export const Text: TextComponent = forwardRef(function Heading(
+export const Text = forwardRef(function Heading(
   { as: TextComp = "p", variant = "md", className, ...props },
   ref,
 ) {
@@ -31,4 +31,4 @@ export const Text: TextComponent = forwardRef(function Heading(
       {...props}
     />
   );
-});
+}) as TextComponent;

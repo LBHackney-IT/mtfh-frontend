@@ -12,7 +12,7 @@ export interface ListProps {
 
 export type ListComponent = Polymorphic.ForwardRefComponent<"ul", ListProps>;
 
-export const List: ListComponent = forwardRef(function List(
+export const List = forwardRef(function List(
   { as: ListComp = "ul", variant = "base", className, ...props },
   ref,
 ) {
@@ -30,4 +30,4 @@ export const List: ListComponent = forwardRef(function List(
       {...props}
     />
   );
-});
+}) as ListComponent;

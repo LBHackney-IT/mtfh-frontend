@@ -23,8 +23,8 @@ test("field renders correctly", async () => {
   );
 
   const input = screen.getByLabelText("Text") as HTMLInputElement;
-  userEvent.type(input, "Hello");
-  userEvent.click(screen.getByRole("button"));
+  await userEvent.type(input, "Hello");
+  await userEvent.click(screen.getByRole("button"));
 
   await waitFor(() => {
     expect(onSubmit).toHaveBeenCalledWith(
@@ -65,8 +65,8 @@ test("field renders correctly as radios", async () => {
   );
 
   const input = screen.getByLabelText("Choice 2") as HTMLInputElement;
-  userEvent.click(input);
-  userEvent.click(screen.getByRole("button"));
+  await userEvent.click(input);
+  await userEvent.click(screen.getByRole("button"));
 
   await waitFor(() => {
     expect(onSubmit).toHaveBeenCalledWith(
@@ -101,8 +101,8 @@ test("inline field renders correctly", async () => {
   );
 
   const input = screen.getByLabelText("Text") as HTMLInputElement;
-  userEvent.type(input, "Hello");
-  userEvent.click(screen.getByRole("button"));
+  await userEvent.type(input, "Hello");
+  await userEvent.click(screen.getByRole("button"));
 
   await waitFor(() => {
     expect(onSubmit).toHaveBeenCalledWith(
@@ -143,11 +143,11 @@ test("date field renders correctly", async () => {
   const month = screen.getByLabelText("Month");
   const year = screen.getByLabelText("Year");
 
-  userEvent.type(day, "1");
-  userEvent.type(month, "12");
-  userEvent.type(year, "1998");
+  await userEvent.type(day, "1");
+  await userEvent.type(month, "12");
+  await userEvent.type(year, "1998");
 
-  userEvent.click(screen.getByRole("button"));
+  await userEvent.click(screen.getByRole("button"));
 
   await waitFor(() => {
     expect(onSubmit).toHaveBeenCalledWith(

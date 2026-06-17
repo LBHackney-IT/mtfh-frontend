@@ -6,7 +6,7 @@ import userEvent from "@testing-library/user-event";
 
 import { Dialog, DialogActions } from "./dialog";
 
-const Component: FC = ({ children }) => {
+const Component: FC<{ children?: React.ReactNode }> = ({ children }) => {
   const [isOpen, setOpen] = useState(false);
   return (
     <>
@@ -21,6 +21,7 @@ const Component: FC = ({ children }) => {
 };
 
 test("it renders correctly", async () => {
+  const user = userEvent.setup();
   const { container } = render(
     <Component>
       <p>Content</p>
@@ -29,14 +30,14 @@ test("it renders correctly", async () => {
   expect(container).toMatchSnapshot();
   await testA11y(container);
 
-  const toggle = screen.getByText("Toggle") as HTMLButtonElement;
-  userEvent.click(toggle);
+  await user.click(screen.getByText("Toggle"));
 
   expect(container).toMatchSnapshot();
   await testA11y(container);
 });
 
 test("it renders correctly with actions", async () => {
+  const user = userEvent.setup();
   const { container } = render(
     <Component>
       <p>Content</p>
@@ -47,8 +48,7 @@ test("it renders correctly with actions", async () => {
     </Component>,
   );
 
-  const toggle = screen.getByText("Toggle") as HTMLButtonElement;
-  userEvent.click(toggle);
+  await user.click(screen.getByText("Toggle"));
 
   expect(container).toMatchSnapshot();
   await testA11y(container);

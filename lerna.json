@@ -2,10 +2,11 @@
   "packages": ["packages/*"],
   "version": "independent",
   "npmClient": "npm",
-  "useWorkspaces": true,
-  "registry": "https://registry.npmjs.org/",
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "command": {
-    "version": { "exact": true },
+    "version": {
+      "exact": true
+    },
     "publish": {
       "conventionalCommits": true,
       "message": "chore(release): publish",

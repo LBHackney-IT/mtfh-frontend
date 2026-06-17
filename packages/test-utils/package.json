@@ -26,30 +26,32 @@
     "url": "https://github.com/LBHackney-IT/mtfh-frontend/issues"
   },
   "dependencies": {
+    "@faker-js/faker": "^9.0.0",
     "@hackney/mtfh-system": "^1.0.2",
     "date-fns": "^2.24.0",
-    "faker": "^5.5.3",
     "jest-axe": "^5.0.1",
     "jest-matchmedia-mock": "^1.1.0"
   },
   "devDependencies": {
     "@mtfh/common": "https://github.com/LBHackney-IT/mtfh-frontend-common.git",
-    "@testing-library/jest-dom": "5.14.1",
-    "@testing-library/react": "12.1.0",
-    "@types/faker": "^5.5.8",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
     "@types/history": "^4.7.9",
     "@types/jest-axe": "^3.5.2",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "@types/react-router-dom": "5.1.7",
-    "msw": "^0.35.0",
-    "react": "^17.0.2",
+    "msw": "^2.6.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-router-dom": "^5.2.0",
     "swr": "1.0.1"
   },
   "peerDependencies": {
     "@mtfh/common": "0.0.1",
-    "@testing-library/react": "12.1.0",
-    "msw": "^0.35.0",
-    "react": "^17.0.2",
+    "@testing-library/react": "^12 || ^13 || ^14 || ^15 || ^16",
+    "msw": "^2.6.0",
+    "react": "^17 || ^18 || ^19",
     "react-router-dom": "^5.2.0",
     "swr": "1.0.1"
   }

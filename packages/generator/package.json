@@ -11,6 +11,9 @@
   "files": [
     "generators"
   ],
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "build": "rollup -c",
     "lint": "eslint src --ext js,jsx,ts,tsx"

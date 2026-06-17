@@ -39,7 +39,6 @@ exports[`it applies an error 1`] = `
           for="test-field"
         >
           Test
-          
         </label>
         <input
           class="govukInput lbhInput"
@@ -78,7 +77,6 @@ exports[`it applies aria-hidden to legend with variant hidden 1`] = `
           for="test-field"
         >
           Test
-          
         </label>
         <input
           class="govukInput lbhInput"
@@ -117,7 +115,6 @@ exports[`it applies the correct variant styling 1`] = `
           for="test-field"
         >
           Test
-          
         </label>
         <input
           class="govukInput lbhInput"
@@ -152,7 +149,6 @@ exports[`it renders correctly 1`] = `
           for="test-field"
         >
           Test
-          
         </label>
         <input
           class="govukInput lbhInput"
@@ -191,7 +187,6 @@ exports[`it renders correctly with an h tag 1`] = `
           for="test-field"
         >
           Test
-          
         </label>
         <input
           class="govukInput lbhInput"

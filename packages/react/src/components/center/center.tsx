@@ -2,8 +2,8 @@ import React, { forwardRef } from "react";
 
 import cn from "classnames";
 
-import { widthOverrides } from "../../utils";
 import styles from "./styles.module.scss";
+import { widthOverrides } from "../../utils";
 
 import type * as Polymorphic from "@radix-ui/react-polymorphic";
 
@@ -15,7 +15,7 @@ export interface CenterProps {
 
 export type CenterComponent = Polymorphic.ForwardRefComponent<"div", CenterProps>;
 
-export const Center: CenterComponent = forwardRef(function Center(
+export const Center = forwardRef(function Center(
   {
     as: CenterComp = "div",
     horizontally = true,
@@ -41,4 +41,4 @@ export const Center: CenterComponent = forwardRef(function Center(
       {...props}
     />
   );
-});
+}) as CenterComponent;

@@ -31,7 +31,7 @@ const register = (projects: { name: string; path: string }[]) => {
   const update = projects.reduce((accum, project) => {
     accum[project.name] = { ...project, required: requiredApps.includes(project.name) };
     return accum;
-  }, {});
+  }, {} as AppConfig);
   $apps.next({ ...apps, ...update });
 };
 

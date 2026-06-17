@@ -1,4 +1,4 @@
-import { rest } from "msw";
+import { HttpResponse, http } from "msw";
 
 import { config } from "@mtfh/common/lib/config";
 
@@ -12,32 +12,32 @@ export const mockPendingTenureV1 = generateMockTenureV1({
 });
 
 export const getTenureV1 = (data: any = mockActiveTenureV1, code = 200) =>
-  rest.get(`${config.tenureApiUrlV1}/tenures/:id`, (req, res, ctx) => {
-    return res(ctx.status(code), ctx.json(data));
+  http.get(`${config.tenureApiUrlV1}/tenures/:id`, () => {
+    return HttpResponse.json(data, { status: code });
   });
 
 export const patchTenure = (data: any = {}, code = 200) =>
-  rest.patch(`${config.tenureApiUrlV1}/tenures/:id`, (req, res, ctx) => {
-    const payload = req.body as Record<string, any>;
-    return res(ctx.status(code), ctx.json({ ...data, ...payload }));
+  http.patch(`${config.tenureApiUrlV1}/tenures/:id`, async ({ request }) => {
+    const payload = (await request.json()) as Record<string, any>;
+    return HttpResponse.json({ ...data, ...payload }, { status: code });
   });
 
 export const postTenure = (data: any = mockActiveTenureV1, code = 200) =>
-  rest.post(`${config.tenureApiUrlV1}/tenures`, (req, res, ctx) => {
-    const payload = req.body as Record<string, any>;
-    return res(ctx.status(code), ctx.json({ ...data, ...payload }));
+  http.post(`${config.tenureApiUrlV1}/tenures`, async ({ request }) => {
+    const payload = (await request.json()) as Record<string, any>;
+    return HttpResponse.json({ ...data, ...payload }, { status: code });
   });
 
 export const patchTenurePersonV1 = (data: any = {}, code = 200) =>
-  rest.patch(`${config.tenureApiUrlV1}/tenures/:id/person/:personId`, (req, res, ctx) => {
-    const payload = req.body as Record<string, any>;
-    return res(ctx.status(code), ctx.json({ ...data, ...payload }));
-  });
-
-export const deleteTenurePersonV1 = (code = 200) =>
-  rest.delete(
+  http.patch(
     `${config.tenureApiUrlV1}/tenures/:id/person/:personId`,
-    (req, res, ctx) => {
-      return res(ctx.status(code));
+    async ({ request }) => {
+      const payload = (await request.json()) as Record<string, any>;
+      return HttpResponse.json({ ...data, ...payload }, { status: code });
     },
   );
+
+export const deleteTenurePersonV1 = (code = 200) =>
+  http.delete(`${config.tenureApiUrlV1}/tenures/:id/person/:personId`, () => {
+    return new HttpResponse(null, { status: code });
+  });

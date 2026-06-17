@@ -8,7 +8,7 @@ import type * as Polymorphic from "@radix-ui/react-polymorphic";
 
 export type HintComponent = Polymorphic.ForwardRefComponent<"span">;
 
-export const Hint: HintComponent = forwardRef(function Hint(
+export const Hint = forwardRef(function Hint(
   { as: HintComp = "span", className, ...props },
   ref,
 ) {
@@ -19,4 +19,4 @@ export const Hint: HintComponent = forwardRef(function Hint(
       {...props}
     />
   );
-});
+}) as HintComponent;

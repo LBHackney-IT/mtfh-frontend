@@ -60,44 +60,42 @@ export type PaginationButtonComponent = Polymorphic.ForwardRefComponent<
   PaginationButtonProps
 >;
 
-export const PaginationButton: PaginationButtonComponent = forwardRef(
-  function PaginationButton(
-    {
-      as: PaginationComp = "a",
-      variant = "base",
-      active = false,
-      className,
-      children,
-      ...props
-    },
-    ref,
-  ) {
-    return (
-      <PaginationComp
-        ref={ref}
-        className={cn(
-          styles.lbhPaginationLink,
-          {
-            [styles.lbhPaginationLinkNext]: variant === "next",
-            [styles.lbhPaginationLinkCurrent]: variant === "base" && active,
-          },
-          className,
-        )}
-        {...props}
-      >
-        {variant === "previous" ? (
-          <span aria-hidden="true" role="presentation">
-            &laquo;{" "}
-          </span>
-        ) : null}
-        {children}
-        {variant === "next" ? (
-          <span aria-hidden="true" role="presentation">
-            {" "}
-            &raquo;
-          </span>
-        ) : null}
-      </PaginationComp>
-    );
+export const PaginationButton = forwardRef(function PaginationButton(
+  {
+    as: PaginationComp = "a",
+    variant = "base",
+    active = false,
+    className,
+    children,
+    ...props
   },
-);
+  ref,
+) {
+  return (
+    <PaginationComp
+      ref={ref}
+      className={cn(
+        styles.lbhPaginationLink,
+        {
+          [styles.lbhPaginationLinkNext]: variant === "next",
+          [styles.lbhPaginationLinkCurrent]: variant === "base" && active,
+        },
+        className,
+      )}
+      {...props}
+    >
+      {variant === "previous" ? (
+        <span aria-hidden="true" role="presentation">
+          &laquo;{" "}
+        </span>
+      ) : null}
+      {children}
+      {variant === "next" ? (
+        <span aria-hidden="true" role="presentation">
+          {" "}
+          &raquo;
+        </span>
+      ) : null}
+    </PaginationComp>
+  );
+}) as PaginationButtonComponent;

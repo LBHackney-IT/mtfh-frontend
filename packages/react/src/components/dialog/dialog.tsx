@@ -1,8 +1,7 @@
 import React, { ComponentPropsWithoutRef, forwardRef } from "react";
 
-import { Dialog as ReachDialog } from "@reach/dialog";
+import * as RadixDialog from "@radix-ui/react-dialog";
 import cn from "classnames";
-import "@reach/dialog/styles.css";
 
 import { Heading } from "../heading";
 import { VisuallyHidden } from "../visually-hidden";
@@ -20,33 +19,40 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
   ref,
 ) {
   return (
-    <ReachDialog
-      ref={ref}
-      isOpen={isOpen}
-      onDismiss={onDismiss}
-      className={cn(styles.lbhDialog, className)}
-      aria-label={title}
-      {...props}
-    >
-      <Heading variant="h2" className={styles.lbhDialogTitle}>
-        {title}
-      </Heading>
-      <button type="button" onClick={onDismiss} className={styles.lbhDialogClose}>
-        <VisuallyHidden>{dismissText}</VisuallyHidden>
+    <RadixDialog.Root open={isOpen} onOpenChange={(open) => !open && onDismiss()}>
+      <RadixDialog.Portal>
+        <RadixDialog.Overlay className={styles.lbhDialogOverlay} />
+        <RadixDialog.Content
+          ref={ref}
+          className={cn(styles.lbhDialog, className)}
+          aria-label={title}
+          {...props}
+        >
+          <RadixDialog.Title asChild>
+            <Heading variant="h2" className={styles.lbhDialogTitle}>
+              {title}
+            </Heading>
+          </RadixDialog.Title>
+          <RadixDialog.Close asChild>
+            <button type="button" onClick={onDismiss} className={styles.lbhDialogClose}>
+              <VisuallyHidden>{dismissText}</VisuallyHidden>
 
-        <svg width="18" height="18" viewBox="0 0 13 13" fill="none">
-          <path
-            d="M-0.0501709 1.36379L1.36404 -0.050415L12.6778 11.2633L11.2635 12.6775L-0.0501709 1.36379Z"
-            fill="#0B0C0C"
-          />
-          <path
-            d="M11.2635 -0.050293L12.6778 1.36392L1.36404 12.6776L-0.0501709 11.2634L11.2635 -0.050293Z"
-            fill="#0B0C0C"
-          />
-        </svg>
-      </button>
-      {children}
-    </ReachDialog>
+              <svg width="18" height="18" viewBox="0 0 13 13" fill="none">
+                <path
+                  d="M-0.0501709 1.36379L1.36404 -0.050415L12.6778 11.2633L11.2635 12.6775L-0.0501709 1.36379Z"
+                  fill="#0B0C0C"
+                />
+                <path
+                  d="M11.2635 -0.050293L12.6778 1.36392L1.36404 12.6776L-0.0501709 11.2634L11.2635 -0.050293Z"
+                  fill="#0B0C0C"
+                />
+              </svg>
+            </button>
+          </RadixDialog.Close>
+          {children}
+        </RadixDialog.Content>
+      </RadixDialog.Portal>
+    </RadixDialog.Root>
   );
 });
 

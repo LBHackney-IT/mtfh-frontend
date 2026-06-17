@@ -5,7 +5,7 @@ import { queries } from "@hackney/mtfh-system";
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { JestAxeConfigureOptions, axe, toHaveNoViolations } from "jest-axe";
 import MatchMediaMock from "jest-matchmedia-mock";
-import { rest } from "msw";
+import { HttpResponse, http } from "msw";
 import { setupServer } from "msw/node";
 import { SWRConfig } from "swr";
 
@@ -36,7 +36,12 @@ afterAll(() => {
 });
 
 export const setMediaQuery = (query: keyof typeof queries | string) => {
-  return matchMedia.useMediaQuery(queries[query] || query);
+  const mediaQuery =
+    typeof query === "string" && query in queries
+      ? queries[query as keyof typeof queries]
+      : query;
+
+  return matchMedia.useMediaQuery(mediaQuery);
 };
 
 type UI = Parameters<typeof rtlRender>[0];
@@ -48,10 +53,14 @@ interface RouteRenderConfig {
   query: keyof typeof queries;
 }
 
-export const render = (
-  ui: UI | Element,
-  options?: Partial<RouteRenderConfig>,
-): RenderResult => {
+type PropsWithChildren = { children?: React.ReactNode };
+
+const SWRConfigProvider = SWRConfig as React.FC<
+  React.ComponentProps<typeof SWRConfig> & PropsWithChildren
+>;
+const AppRouter = ConfirmationRouter as React.FC<PropsWithChildren>;
+
+export const render = (ui: UI, options?: Partial<RouteRenderConfig>): RenderResult => {
   const config: RouteRenderConfig = {
     url: "/",
     path: "/",
@@ -63,34 +72,34 @@ export const render = (
   window.history.pushState(null, "", config.url);
 
   return rtlRender(
-    <SWRConfig
+    <SWRConfigProvider
       value={{
         provider: () => new Map(),
         dedupingInterval: 0,
         errorRetryCount: 0,
       }}
     >
-      <ConfirmationRouter>
-        <Route path={config.path}>{ui}</Route>
-      </ConfirmationRouter>
-    </SWRConfig>,
+      <AppRouter>
+        <Route path={config.path}>{ui as React.ReactNode}</Route>
+      </AppRouter>
+    </SWRConfigProvider>,
   );
 };
 
 export const testA11y = async (
-  ui: UI | Element,
+  ui: UI,
   { axeOptions, ...options }: TestA11YOptions = {},
 ): Promise<void> => {
   const container = isValidElement(ui) ? rtlRender(ui, options).container : ui;
-  const results = await axe(container, axeOptions);
+  const results = await axe(container as HTMLElement, axeOptions);
 
   expect(results).toHaveNoViolations();
 };
 
 export type RestRequest = {
-  method?: keyof typeof rest;
+  method?: keyof typeof http;
   path: string;
-  data?: unknown;
+  data?: Record<string, unknown>;
   code?: number;
 };
 
@@ -101,8 +110,8 @@ export const request = ({
   code = 200,
 }: RestRequest): void => {
   server.use(
-    rest[method](path, (req, res, ctx) => {
-      return res(ctx.status(code), ctx.json(data));
+    http[method](path, () => {
+      return HttpResponse.json(data, { status: code });
     }),
   );
 };
@@ -111,7 +120,7 @@ export const networkFailure = ({
   method = "get",
   path,
 }: Omit<RestRequest, "data" | "code">): void => {
-  server.use(rest[method](path, (req, res) => res.networkError("FAILED TO CONNECT")));
+  server.use(http[method](path, () => HttpResponse.error()));
 };
 
 window.HTMLElement.prototype.scrollIntoView = jest.fn();

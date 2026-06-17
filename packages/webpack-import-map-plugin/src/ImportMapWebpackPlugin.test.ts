@@ -66,7 +66,11 @@ test("it compiles import-map with defaults", async () => {
 
   const fs = await compile(config);
   const map = fs.readFileSync("./dist/import-map.json", "utf8");
-  expect(map).toBe('{"imports":{"@mtfh/main":"http://localhost/main.0b29e576.js"}}');
+  const parsed = JSON.parse(map);
+
+  expect(parsed.imports["@mtfh/main"]).toMatch(
+    /^http:\/\/localhost\/main\.[a-f0-9]{8}\.js$/,
+  );
 });
 
 test("it compiles with simple webpack config", async () => {

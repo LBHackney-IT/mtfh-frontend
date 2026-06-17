@@ -1,8 +1,11 @@
 @import "~lbh-frontend/lbh/base";
 @import "~lbh-frontend/lbh/components/lbh-dialog/_dialog.scss";
 
-[data-reach-dialog-overlay] {
+.lbhDialogOverlay {
   z-index: 100;
+  background: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  inset: 0;
 }
 
 .lbh-dialog__close {

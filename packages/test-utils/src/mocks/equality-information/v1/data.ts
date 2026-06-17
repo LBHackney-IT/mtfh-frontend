@@ -1,62 +1,74 @@
-import faker from "faker/locale/en";
+import { faker } from "@faker-js/faker/locale/en";
 
 import { EqualityData } from "@mtfh/common/lib/api/equality-information/v1";
 
 export const generateMockEqualityDataV1 = (): EqualityData => ({
-  id: faker.datatype.uuid(),
-  targetId: faker.datatype.uuid(),
-  ageGroup: faker.random.arrayElement(["underSixteen", "eightyFiveandPlus"]),
+  id: faker.string.uuid(),
+  targetId: faker.string.uuid(),
+  ageGroup: faker.helpers.arrayElement(["underSixteen", "eightyFiveandPlus"]),
   gender: {
-    genderValue: faker.random.arrayElement(["m", "f", "o"]),
-    genderValueIfOther: faker.random.arrayElement(["gender fluid", "alien", ""]),
-    genderDifferentToBirthSex: faker.random.arrayElement(["yes", "no", "preferNotToSay"]),
+    genderValue: faker.helpers.arrayElement(["m", "f", "o"]),
+    genderValueIfOther: faker.helpers.arrayElement(["gender fluid", "alien", ""]),
+    genderDifferentToBirthSex: faker.helpers.arrayElement([
+      "yes",
+      "no",
+      "preferNotToSay",
+    ]),
   },
-  nationality: faker.random.arrayElement(["british", "spanish"]),
+  nationality: faker.helpers.arrayElement(["british", "spanish"]),
   ethnicity: {
-    ethnicGroupValue: faker.random.arrayElement([
+    ethnicGroupValue: faker.helpers.arrayElement([
       "mixedBackground",
       "other",
       "whiteOrWhiteBritish",
       "other",
     ]),
-    ethnicGroupValueIfOther: faker.random.arrayElement(["fremen", "naboo", ""]),
+    ethnicGroupValueIfOther: faker.helpers.arrayElement(["fremen", "naboo", ""]),
   },
   religionOrBelief: {
-    religionOrBeliefValue: faker.random.arrayElement(["other", "secularBeliefs", "sikh"]),
-    religionOrBeliefValueIfOther: faker.random.arrayElement(["Jediism", ""]),
+    religionOrBeliefValue: faker.helpers.arrayElement([
+      "other",
+      "secularBeliefs",
+      "sikh",
+    ]),
+    religionOrBeliefValueIfOther: faker.helpers.arrayElement(["Jediism", ""]),
   },
   sexualOrientation: {
-    sexualOrientationValue: faker.random.arrayElement([
+    sexualOrientationValue: faker.helpers.arrayElement([
       "bisexual",
       "heterosexual",
       "gayMan",
       "lesbianOrGayWoman",
       "other",
     ]),
-    sexualOrientationValueIfOther: faker.random.arrayElement(["queer", ""]),
+    sexualOrientationValueIfOther: faker.helpers.arrayElement(["queer", ""]),
   },
   marriageOrCivilPartnership: {
-    married: faker.random.arrayElement(["yes", "no", "preferNotToSay"]),
-    civilPartnership: faker.random.arrayElement(["yes", "no", "preferNotToSay"]),
+    married: faker.helpers.arrayElement(["yes", "no", "preferNotToSay"]),
+    civilPartnership: faker.helpers.arrayElement(["yes", "no", "preferNotToSay"]),
   },
   pregnancyOrMaternity: [
     {
-      pregnancyDate: faker.date.between("2010-01-01", "2020-01-01").toISOString(),
-      pregnancyValidUntil: faker.date.between("2010-01-01", "2021-01-01").toISOString(),
+      pregnancyDate: faker.date
+        .between({ from: "2010-01-01", to: "2020-01-01" })
+        .toISOString(),
+      pregnancyValidUntil: faker.date
+        .between({ from: "2010-01-01", to: "2021-01-01" })
+        .toISOString(),
     },
   ],
-  nationalInsuranceNumber: `${faker.datatype.string(2)}${faker.datatype.number(
+  nationalInsuranceNumber: `${faker.string.alpha(2)}${faker.number.int(
     99999,
-  )}${faker.datatype.string(1)}`,
+  )}${faker.string.alpha(1)}`,
   languages: [
     {
-      language: faker.random.arrayElement(["english", "spanish", "french", "indian"]),
+      language: faker.helpers.arrayElement(["english", "spanish", "french", "indian"]),
       isPrimary: faker.datatype.boolean(),
     },
   ],
   caringResponsibilities: {
-    provideUnpaidCare: faker.random.arrayElement(["yes", "no", "preferNotToSay"]),
-    hoursSpentProvidingUnpaidCare: faker.random.arrayElement([
+    provideUnpaidCare: faker.helpers.arrayElement(["yes", "no", "preferNotToSay"]),
+    hoursSpentProvidingUnpaidCare: faker.helpers.arrayElement([
       "zeroToFourHours",
       "fiveToNineHours",
       "tenToNineteenHours",
@@ -65,13 +77,13 @@ export const generateMockEqualityDataV1 = (): EqualityData => ({
       "overFiftyHours",
     ]),
   },
-  disabled: faker.random.arrayElement(["yes", "no", "preferNotToSay"]),
+  disabled: faker.helpers.arrayElement(["yes", "no", "preferNotToSay"]),
   communicationRequirements: [
-    faker.lorem.lines(faker.datatype.number(3)),
-    faker.lorem.lines(faker.datatype.number(3)),
+    faker.lorem.lines(faker.number.int(3)),
+    faker.lorem.lines(faker.number.int(3)),
   ],
   economicSituation: {
-    economicSituationValue: faker.random.arrayElement([
+    economicSituationValue: faker.helpers.arrayElement([
       "employedFullTime",
       "employedPartTime",
       "selfEmployedFullTime",
@@ -81,10 +93,10 @@ export const generateMockEqualityDataV1 = (): EqualityData => ({
       "retired",
       "other",
     ]),
-    economicSituationValueIfOther: faker.random.arrayElement(["normal", ""]),
+    economicSituationValueIfOther: faker.helpers.arrayElement(["normal", ""]),
   },
   homeSituation: {
-    homeSituationValue: faker.random.arrayElement([
+    homeSituationValue: faker.helpers.arrayElement([
       "ownerOccupier",
       "rentedFromHackneyCouncil",
       "TemporaryAccommodationPlacedByHackneyCouncil",
@@ -94,9 +106,9 @@ export const generateMockEqualityDataV1 = (): EqualityData => ({
       "residentialHome",
       "other",
     ]),
-    homeSituationValueIfOther: faker.random.arrayElement(["mansion", ""]),
+    homeSituationValueIfOther: faker.helpers.arrayElement(["mansion", ""]),
   },
-  armedForces: faker.random.arrayElement([
+  armedForces: faker.helpers.arrayElement([
     "servingMemberOfTheArmedForces",
     "formerMemberOfTheArmedForces",
   ]),

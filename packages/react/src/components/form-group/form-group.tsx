@@ -23,7 +23,7 @@ export interface FormGroupProps {
 
 export type FormGroupComponent = Polymorphic.ForwardRefComponent<"div", FormGroupProps>;
 
-export const FormGroup: FormGroupComponent = forwardRef(function FormGroup(
+export const FormGroup = forwardRef(function FormGroup(
   {
     as: FormGroupComp = "div",
     id,
@@ -94,4 +94,4 @@ export const FormGroup: FormGroupComponent = forwardRef(function FormGroup(
         )}
     </FormGroupComp>
   );
-});
+}) as FormGroupComponent;

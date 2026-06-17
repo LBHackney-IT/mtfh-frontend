@@ -12,7 +12,7 @@ export interface HeadingProps {
 
 export type HeadingComponent = Polymorphic.ForwardRefComponent<"h1", HeadingProps>;
 
-export const Heading: HeadingComponent = forwardRef(function Heading(
+export const Heading = forwardRef(function Heading(
   { as: HeadingComp, variant = "h1", className, ...props },
   ref,
 ) {
@@ -24,4 +24,4 @@ export const Heading: HeadingComponent = forwardRef(function Heading(
       {...props}
     />
   );
-});
+}) as HeadingComponent;

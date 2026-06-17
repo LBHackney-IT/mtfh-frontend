@@ -1,18 +1,18 @@
-import faker from "faker/locale/en";
+import { faker } from "@faker-js/faker/locale/en";
 
 import { WorkOrder } from "@mtfh/common/lib/api/work-order/v2";
 
 export const generateMockWorkOrdersV2 = (data: Partial<WorkOrder> = {}): WorkOrder => ({
-  id: faker.datatype.uuid(),
-  reference: faker.datatype.number(123456789),
-  dateRaised: faker.date.between("2000-01-01", "2020-01-01").toISOString(),
-  lastUpdated: faker.date.between("2000-01-01", "2020-01-01").toISOString(),
+  id: faker.string.uuid(),
+  reference: faker.number.int({ max: 123456789 }),
+  dateRaised: faker.date.between({ from: "2000-01-01", to: "2020-01-01" }).toISOString(),
+  lastUpdated: faker.date.between({ from: "2000-01-01", to: "2020-01-01" }).toISOString(),
   priority: faker.lorem.word(),
-  property: faker.address.streetAddress(),
-  propertyPostCode: faker.address.zipCode(),
+  property: faker.location.streetAddress(),
+  propertyPostCode: faker.location.zipCode(),
   owner: faker.lorem.word(),
   description: faker.lorem.sentence(),
-  propertyReference: faker.random.alphaNumeric(8),
+  propertyReference: faker.string.alphanumeric(8),
   tradeCode: faker.lorem.word(),
   tradeDescription: faker.lorem.word(),
   status: faker.lorem.word(),

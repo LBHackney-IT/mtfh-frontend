@@ -12,7 +12,7 @@ export interface LabelProps {
 
 export type LabelComponent = Polymorphic.ForwardRefComponent<"label", LabelProps>;
 
-export const Label: LabelComponent = forwardRef(function Label(
+export const Label = forwardRef(function Label(
   { as: LabelComp = "label", variant = "base", className, ...props },
   ref,
 ) {
@@ -33,4 +33,4 @@ export const Label: LabelComponent = forwardRef(function Label(
       {...props}
     />
   );
-});
+}) as LabelComponent;

@@ -16,7 +16,7 @@ export type ErrorMessageComponent = Polymorphic.ForwardRefComponent<
   ErrorMessageProps
 >;
 
-export const ErrorMessage: ErrorMessageComponent = forwardRef(function ErrorMessage(
+export const ErrorMessage = forwardRef(function ErrorMessage(
   {
     as: ErrorMessageComp = "span",
     assistiveText = "Error",
@@ -36,4 +36,4 @@ export const ErrorMessage: ErrorMessageComponent = forwardRef(function ErrorMess
       {children}
     </ErrorMessageComp>
   );
-});
+}) as ErrorMessageComponent;

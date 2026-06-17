@@ -33,7 +33,7 @@ export type ErrorSummaryComponent = Polymorphic.ForwardRefComponent<
   ErrorSummaryProps
 >;
 
-export const ErrorSummary: ErrorSummaryComponent = forwardRef(function ErrorSummary(
+export const ErrorSummary = forwardRef(function ErrorSummary(
   {
     as: ErrorSummaryComp = "div",
     id,
@@ -51,9 +51,8 @@ export const ErrorSummary: ErrorSummaryComponent = forwardRef(function ErrorSumm
 
   useEffect(() => {
     const init = async (element: HTMLElement) => {
-      const { default: LBHErrorSummary } = await import(
-        "lbh-frontend/lbh/components/lbh-error-summary/error-summary"
-      );
+      const { default: LBHErrorSummary } =
+        await import("lbh-frontend/lbh/components/lbh-error-summary/error-summary");
       const summary = new LBHErrorSummary(element);
       summary.init();
       element.scrollIntoView(true);
@@ -102,4 +101,4 @@ export const ErrorSummary: ErrorSummaryComponent = forwardRef(function ErrorSumm
       ) : null}
     </ErrorSummaryComp>
   );
-});
+}) as ErrorSummaryComponent;
