@@ -11,38 +11,40 @@ import cn from "classnames";
 import { useBreakpoint } from "../../hooks";
 import { Accordion, AccordionItem, AccordionItemProps } from "../accordion";
 
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import type { ForwardRefComponent } from "../../types/polymorphic";
 import "./styles.module.scss";
 
-export interface SideBarSectionProps extends AccordionItemProps {
+export interface SideBarSectionProps
+  extends
+    Omit<React.ComponentPropsWithoutRef<"div">, "id" | "title">,
+    AccordionItemProps {
   isCollapsed?: boolean;
   heading?: string;
 }
 
-export type SideBarSectionComponent = Polymorphic.ForwardRefComponent<
-  "div",
-  SideBarSectionProps
->;
+export type SideBarSectionComponent = ForwardRefComponent<"div", SideBarSectionProps>;
 
-export const SideBarSection = forwardRef(function SideBarSection(
-  { children, heading, className, isCollapsed = false, ...props },
-  ref,
-) {
-  if (isCollapsed) {
+export const SideBarSection = forwardRef<HTMLDivElement, SideBarSectionProps>(
+  function SideBarSection(
+    { children, heading, className, isCollapsed = false, ...props },
+    ref,
+  ) {
+    if (isCollapsed) {
+      return (
+        <AccordionItem ref={ref} {...props}>
+          {children}
+        </AccordionItem>
+      );
+    }
+
     return (
-      <AccordionItem ref={ref} {...props}>
+      <div ref={ref} className={cn("mtfh-sidebar-section", className)} {...props}>
+        {heading ? <h2 className="lbh-heading-h2">{heading}</h2> : undefined}
         {children}
-      </AccordionItem>
+      </div>
     );
-  }
-
-  return (
-    <div ref={ref} className={cn("mtfh-sidebar-section", className)} {...props}>
-      {heading ? <h2 className="lbh-heading-h2">{heading}</h2> : undefined}
-      {children}
-    </div>
-  );
-}) as SideBarSectionComponent;
+  },
+) as SideBarSectionComponent;
 
 export interface SideBarProps {
   id: string;
@@ -53,7 +55,7 @@ export interface SideBarProps {
     | Array<ReactElement<SideBarSectionProps> | null>;
 }
 
-export type SideBarComponent = Polymorphic.ForwardRefComponent<"div", SideBarProps>;
+export type SideBarComponent = ForwardRefComponent<"div", SideBarProps>;
 
 export const SideBar = forwardRef(function SideBar(
   { as: SideBarComp = "div", id, top, children, className, ...props },

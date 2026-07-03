@@ -4,13 +4,13 @@ import cn from "classnames";
 
 import styles from "./styles.module.scss";
 
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import type { ForwardRefComponent } from "../../types/polymorphic";
 
 export interface HeadingProps {
   variant?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
-export type HeadingComponent = Polymorphic.ForwardRefComponent<"h1", HeadingProps>;
+export type HeadingComponent = ForwardRefComponent<"h1", HeadingProps>;
 
 export const Heading = forwardRef(function Heading(
   { as: HeadingComp, variant = "h1", className, ...props },

@@ -8,7 +8,7 @@ import { Hint } from "../hint";
 import { Label } from "../label";
 import styles from "./styles.module.scss";
 
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import type { ForwardRefComponent } from "../../types/polymorphic";
 
 export interface FormGroupProps {
   id: string;
@@ -21,7 +21,7 @@ export interface FormGroupProps {
   override?: number;
 }
 
-export type FormGroupComponent = Polymorphic.ForwardRefComponent<"div", FormGroupProps>;
+export type FormGroupComponent = ForwardRefComponent<"div", FormGroupProps>;
 
 export const FormGroup = forwardRef(function FormGroup(
   {

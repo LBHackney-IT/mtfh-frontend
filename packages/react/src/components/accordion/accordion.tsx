@@ -7,17 +7,14 @@ import { widthOverrides } from "../../utils";
 import { Heading } from "../heading";
 import styles from "./styles.module.scss";
 
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import type { ForwardRefComponent } from "../../types/polymorphic";
 
 export interface AccordionItemProps {
   id: string;
   title: string;
 }
 
-export type AccordionItemComponent = Polymorphic.ForwardRefComponent<
-  "div",
-  AccordionItemProps
->;
+export type AccordionItemComponent = ForwardRefComponent<"div", AccordionItemProps>;
 
 export const AccordionItem = forwardRef(function AccordionItem(
   { as: AccordionItemComp = "div", children, className, id, title },
@@ -58,7 +55,7 @@ export interface AccordionProps {
   override?: number;
 }
 
-export type AccordionComponent = Polymorphic.ForwardRefComponent<"div", AccordionProps>;
+export type AccordionComponent = ForwardRefComponent<"div", AccordionProps>;
 
 export const Accordion = forwardRef(function Accordion(
   {
@@ -75,7 +72,7 @@ export const Accordion = forwardRef(function Accordion(
   useEffect(() => {
     const init = async (element: HTMLElement) => {
       const { default: LBHAccordion } =
-        await import("lbh-frontend/lbh/components/lbh-accordion/accordion");
+        await import("lbh-frontend/lbh/components/lbh-accordion/accordion.js");
       const acc = new LBHAccordion(element);
       acc.$sections = element.querySelectorAll(`.${styles.govukAccordionSection}`);
       acc.controlsClass = styles.govukAccordionControls;

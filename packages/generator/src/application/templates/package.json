@@ -82,7 +82,7 @@
     },
     "dependencies": {
         "@mtfh/common": "https://github.com/LBHackney-IT/mtfh-common.git",
-        "lbh-frontend": "3.6.1",
+        "lbh-frontend": "4.1.0",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "react-router-dom": "^5.2.0",

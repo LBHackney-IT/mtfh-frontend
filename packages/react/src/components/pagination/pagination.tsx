@@ -4,7 +4,7 @@ import cn from "classnames";
 
 import styles from "./styles.module.scss";
 
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import type { ForwardRefComponent } from "../../types/polymorphic";
 
 export interface PaginationProps extends ComponentPropsWithoutRef<"nav"> {
   variant?: "base" | "center";
@@ -55,10 +55,7 @@ export interface PaginationButtonProps {
   active?: boolean;
 }
 
-export type PaginationButtonComponent = Polymorphic.ForwardRefComponent<
-  "a",
-  PaginationButtonProps
->;
+export type PaginationButtonComponent = ForwardRefComponent<"a", PaginationButtonProps>;
 
 export const PaginationButton = forwardRef(function PaginationButton(
   {

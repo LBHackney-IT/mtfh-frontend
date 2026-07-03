@@ -80,7 +80,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
     useEffect(() => {
       const init = async (element: HTMLElement) => {
         const { default: LBHCheckboxes } =
-          await import("lbh-frontend/lbh/components/lbh-checkboxes/checkboxes");
+          await import("lbh-frontend/lbh/components/lbh-checkboxes/checkboxes.js");
         const checkboxes = new LBHCheckboxes(element);
         checkboxes.init();
       };

@@ -14,7 +14,7 @@ import { widthOverrides } from "../../utils";
 import { List } from "../list";
 import styles from "./styles.module.scss";
 
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import type { ForwardRefComponent } from "../../types/polymorphic";
 
 export interface ErrorSummaryProps {
   id: string;
@@ -28,10 +28,7 @@ export interface ErrorSummaryProps {
   override?: number;
 }
 
-export type ErrorSummaryComponent = Polymorphic.ForwardRefComponent<
-  "div",
-  ErrorSummaryProps
->;
+export type ErrorSummaryComponent = ForwardRefComponent<"div", ErrorSummaryProps>;
 
 export const ErrorSummary = forwardRef(function ErrorSummary(
   {
@@ -52,7 +49,7 @@ export const ErrorSummary = forwardRef(function ErrorSummary(
   useEffect(() => {
     const init = async (element: HTMLElement) => {
       const { default: LBHErrorSummary } =
-        await import("lbh-frontend/lbh/components/lbh-error-summary/error-summary");
+        await import("lbh-frontend/lbh/components/lbh-error-summary/error-summary.js");
       const summary = new LBHErrorSummary(element);
       summary.init();
       element.scrollIntoView(true);

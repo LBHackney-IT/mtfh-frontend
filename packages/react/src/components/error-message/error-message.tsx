@@ -5,16 +5,13 @@ import cn from "classnames";
 import { VisuallyHidden } from "../visually-hidden";
 import styles from "./styles.module.scss";
 
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import type { ForwardRefComponent } from "../../types/polymorphic";
 
 export interface ErrorMessageProps {
   assistiveText?: string;
 }
 
-export type ErrorMessageComponent = Polymorphic.ForwardRefComponent<
-  "span",
-  ErrorMessageProps
->;
+export type ErrorMessageComponent = ForwardRefComponent<"span", ErrorMessageProps>;
 
 export const ErrorMessage = forwardRef(function ErrorMessage(
   {

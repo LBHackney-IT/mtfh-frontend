@@ -4,9 +4,9 @@ import cn from "classnames";
 
 import styles from "./styles.module.scss";
 
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import type { ForwardRefComponent } from "../../types/polymorphic";
 
-export type HintComponent = Polymorphic.ForwardRefComponent<"span">;
+export type HintComponent = ForwardRefComponent<"span">;
 
 export const Hint = forwardRef(function Hint(
   { as: HintComp = "span", className, ...props },

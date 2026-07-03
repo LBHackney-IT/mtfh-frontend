@@ -19,12 +19,20 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
   ref,
 ) {
   return (
-    <RadixDialog.Root open={isOpen} onOpenChange={(open) => !open && onDismiss()}>
+    <RadixDialog.Root
+      open={isOpen}
+      onOpenChange={(open) => {
+        if (!open) {
+          onDismiss();
+        }
+      }}
+    >
       <RadixDialog.Portal>
         <RadixDialog.Overlay className={styles.lbhDialogOverlay} />
         <RadixDialog.Content
           ref={ref}
-          className={cn(styles.lbhDialog, className)}
+          className={cn(styles.lbhDialog, styles.lbhDialogRadix, className)}
+          aria-describedby={undefined}
           aria-label={title}
           {...props}
         >

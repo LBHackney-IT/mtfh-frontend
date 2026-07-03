@@ -5,7 +5,7 @@ import cn from "classnames";
 import styles from "./styles.module.scss";
 import { widthOverrides } from "../../utils";
 
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import type { ForwardRefComponent } from "../../types/polymorphic";
 
 export interface ButtonProps {
   variant?: "primary" | "secondary";
@@ -15,7 +15,7 @@ export interface ButtonProps {
   override?: number;
 }
 
-export type ButtonComponent = Polymorphic.ForwardRefComponent<"button", ButtonProps>;
+export type ButtonComponent = ForwardRefComponent<"button", ButtonProps>;
 
 export const Button = forwardRef(function Button(
   {

@@ -4,13 +4,13 @@ import cn from "classnames";
 
 import styles from "./styles.module.scss";
 
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import type { ForwardRefComponent } from "../../types/polymorphic";
 
 export interface ListProps {
   variant?: "bullet" | "number" | "base";
 }
 
-export type ListComponent = Polymorphic.ForwardRefComponent<"ul", ListProps>;
+export type ListComponent = ForwardRefComponent<"ul", ListProps>;
 
 export const List = forwardRef(function List(
   { as: ListComp = "ul", variant = "base", className, ...props },

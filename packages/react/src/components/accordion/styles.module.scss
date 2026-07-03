@@ -1,6 +1,6 @@
-@import "~lbh-frontend/lbh/base";
-@import "~lbh-frontend/lbh/components/lbh-accordion/accordion";
-@import "~govuk-frontend/govuk/helpers/visually-hidden";
+@import "lbh-frontend/lbh/base";
+@import "lbh-frontend/lbh/components/lbh-accordion/accordion";
+@import "govuk-frontend/govuk/helpers/visually-hidden";
 
 .visually-hidden {
   .govuk-accordion__open-all {

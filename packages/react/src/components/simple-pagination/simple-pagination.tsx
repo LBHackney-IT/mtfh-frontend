@@ -4,7 +4,7 @@ import cn from "classnames";
 
 import styles from "./styles.module.scss";
 
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import type { ForwardRefComponent } from "../../types/polymorphic";
 
 export const SimplePagination = forwardRef<HTMLElement, ComponentPropsWithoutRef<"nav">>(
   function SimplePagination({ className, ...props }, ref) {
@@ -19,7 +19,7 @@ export interface SimplePaginationButtonProps {
   variant: "previous" | "next";
 }
 
-export type SimplePaginationButtonComponent = Polymorphic.ForwardRefComponent<
+export type SimplePaginationButtonComponent = ForwardRefComponent<
   "a",
   SimplePaginationButtonProps
 >;

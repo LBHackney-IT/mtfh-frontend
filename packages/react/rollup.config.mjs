@@ -3,14 +3,30 @@ import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import genericNames from "generic-names";
 import { globbySync } from "globby";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const sassIncludePaths = [
+  path.resolve(__dirname, "node_modules"),
+  path.resolve(__dirname, "../../node_modules"),
+];
 
 const generate = genericNames("[hash:base64:5]", {
   context: process.cwd(),
 });
 
 const entryPoints = globbySync("src/**/*/index.ts");
+
+const sassLoader = [
+  "sass",
+  {
+    includePaths: sassIncludePaths,
+    loadPaths: sassIncludePaths,
+  },
+];
 
 export default [
   {
@@ -48,7 +64,7 @@ export default [
           },
         },
         extensions: [".css", ".scss"],
-        use: ["sass"],
+        use: [sassLoader],
       }),
     ],
   },
@@ -62,7 +78,7 @@ export default [
       postcss({
         extract: true,
         extensions: [".css", ".scss"],
-        use: ["sass"],
+        use: [sassLoader],
       }),
     ],
   },

@@ -6,7 +6,12 @@ const generate = genericNames("[local]-[hash:base64:5]", {
 });
 
 const projectRoot = path.resolve(__dirname, "..");
-const sassLoadPaths = [projectRoot, path.join(projectRoot, "packages/react")];
+const sassLoadPaths = [
+  projectRoot,
+  path.join(projectRoot, "packages/react"),
+  path.join(projectRoot, "node_modules"),
+  path.join(projectRoot, "packages/react/node_modules"),
+];
 
 const isScssRule = (rule) => {
   if (!rule?.test) {
@@ -39,13 +44,6 @@ const config = {
     options: {},
   },
   webpackFinal: async (webpackConfig) => {
-    webpackConfig.resolve = webpackConfig.resolve || {};
-    webpackConfig.resolve.alias = {
-      ...webpackConfig.resolve.alias,
-      "~lbh-frontend": path.join(projectRoot, "node_modules/lbh-frontend"),
-      "~govuk-frontend": path.join(projectRoot, "node_modules/govuk-frontend"),
-    };
-
     webpackConfig.module.rules = removeScssRules(webpackConfig.module.rules);
 
     webpackConfig.module.rules.push({

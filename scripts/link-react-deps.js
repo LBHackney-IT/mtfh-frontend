@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * Yarn previously nohoisted govuk-frontend and lbh-frontend into
- * packages/react/node_modules so lbh SCSS can resolve
- * `node_modules/govuk-frontend/...` from the react package root.
+ * npm workspaces hoist govuk-frontend and lbh-frontend to the repo root.
+ * Symlink them into packages/react/node_modules so lbh SCSS can resolve
+ * `govuk-frontend/...` imports from the react package root.
  */
 const fs = require("fs");
 const path = require("path");

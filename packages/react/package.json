@@ -61,13 +61,12 @@
   },
   "dependencies": {
     "@hackney/mtfh-system": "^1.0.2",
-    "@radix-ui/react-dialog": "^1.1.4",
-    "@radix-ui/react-polymorphic": "^0.0.12",
+    "@radix-ui/react-dialog": "^1.1.15",
     "classnames": "^2.3.1",
     "formik": "^2.4.6",
     "generic-names": "^3.0.0",
-    "govuk-frontend": "^3.13.0",
-    "lbh-frontend": "3.6.1",
+    "govuk-frontend": "^3.15.0",
+    "lbh-frontend": "4.1.0",
     "react-merge-refs": "^1.1.0",
     "react-router-dom": "^5.2.0",
     "use-breakpoint": "^2.0.1"
