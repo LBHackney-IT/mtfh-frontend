@@ -33,7 +33,7 @@
     "jest-matchmedia-mock": "^1.1.0"
   },
   "devDependencies": {
-    "@mtfh/common": "https://github.com/LBHackney-IT/mtfh-frontend-common.git",
+    "@mtfh/common": "https://github.com/LBHackney-IT/mtfh-frontend-common.git#edc52e4a3327ba005bce8c405c368467474fb354",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@types/history": "^4.7.9",
