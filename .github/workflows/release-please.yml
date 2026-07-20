@@ -34,8 +34,9 @@ jobs:
     needs: release-please
     if: ${{ needs.release-please.outputs.releases_created == 'true' }}
     runs-on: ubuntu-latest
+    # contents: write is required for JamesIves/github-pages-deploy-action to push gh-pages
     permissions:
-      contents: read
+      contents: write
     steps:
       - uses: actions/checkout@v6
         with:
