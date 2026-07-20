@@ -1,23 +1,38 @@
 # `@hackney/eslint-config`
 
-Eslint config for TS and React projects.
+ESLint config for TypeScript and React projects.
 
 ## Installation
 
 ```bash
-npm install @hackney/eslint-config -D
-yarn add @hackney/eslint-config -D
+npm install -D @hackney/eslint-config
 ```
 
-Add the library dependencies
+Install the peer dependencies (versions should satisfy the ranges declared by this
+package):
 
 ```bash
-yarn add @typescript-eslint/eslint-plugin eslint eslinit-config-airbnb eslint-config-airbnb-typescript eslint-config-prettier eslint-config-react eslint-plugin-import eslint-plugin-jest eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-testing-library prettier -D
+npm install -D \
+  eslint@^8.57.0 \
+  @typescript-eslint/eslint-plugin@^7.18.0 \
+  @typescript-eslint/parser@^7.18.0 \
+  eslint-config-airbnb@^19.0.4 \
+  eslint-config-airbnb-typescript@^18.0.0 \
+  eslint-config-prettier@^9.1.0 \
+  eslint-config-react@^1.1.7 \
+  eslint-plugin-import@^2.31.0 \
+  eslint-plugin-jest@^28.9.0 \
+  eslint-plugin-jsx-a11y@^6.10.2 \
+  eslint-plugin-prettier@^5.2.1 \
+  eslint-plugin-react@^7.37.2 \
+  eslint-plugin-react-hooks@^5.0.0 \
+  eslint-plugin-testing-library@^6.4.0 \
+  prettier@^3.4.0
 ```
 
 ## Usage
 
-For React based projects configure a `.eslintrc` file:
+For React-based projects, configure a `.eslintrc` file:
 
 ```json
 {
@@ -25,7 +40,7 @@ For React based projects configure a `.eslintrc` file:
 }
 ```
 
-For non React based TS projects:
+For non-React TypeScript projects:
 
 ```json
 {

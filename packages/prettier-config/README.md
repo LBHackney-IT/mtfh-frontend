@@ -1,18 +1,16 @@
 # `@hackney/prettier-config`
 
-A configuration for prettier, to create consistancy across Hackney projects.
+A configuration for Prettier, to create consistency across Hackney projects.
 
 ## Usage
 
-Install package as a dev dependency:
+Install the package as a dev dependency:
 
-```
-npm install @hackney/prettier-config -D
-// or
-yarn add @hackney/prettier-config -D
+```bash
+npm install -D @hackney/prettier-config
 ```
 
-Create a `.prettierrc.js` file in the root of your project.
+Create a `.prettierrc.js` file in the root of your project:
 
 ```js
 const prettierConfig = require("@hackney/prettier-config");
