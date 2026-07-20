@@ -92,7 +92,7 @@ mtfh-cli run mtfh
 
 ### Register
 
-If you manually create or clone a project they won't automatically be registered with the
+If you manually create or clone a project, it won't automatically be registered with the
 CLI. This command helps add it so it can be available in `run`.
 
 ### New
