@@ -1,5 +1,12 @@
 # @hackney/prettier-config
 
+## [1.1.0](https://github.com/LBHackney-IT/mtfh-frontend/compare/@hackney/prettier-config@1.0.1...@hackney/prettier-config-v1.1.0) (2026-07-20)
+
+
+### Features
+
+* update eslint dependencies and apply rules ([#89](https://github.com/LBHackney-IT/mtfh-frontend/issues/89)) ([f5d1479](https://github.com/LBHackney-IT/mtfh-frontend/commit/f5d14790c25405e803fb4cb0a51551caa201997b))
+
 ## 1.0.1
 
 ### Patch Changes
