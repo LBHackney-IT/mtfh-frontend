@@ -1,6 +1,8 @@
 # `test-utils`
 
-Testing utilities for Jest utilising the `@testing-library` and `mws` frameworks.
+Testing utilities for Jest utilising the `@testing-library` and `msw` frameworks.
+
+Supports React **17 | 18 | 19** and MSW **2**.
 
 ## Usage
 

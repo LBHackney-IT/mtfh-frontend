@@ -1,7 +1,7 @@
 # `mtfh-frontend`
 
-This monorepo contains various reusable packages, originally built to facilitate repition
-within MTFH's micro-frontend architecture.
+This monorepo contains various reusable packages, originally built to facilitate
+repetition within MTFH's micro-frontend architecture.
 
 ## Requirements
 
@@ -36,7 +36,7 @@ npm run build
 
 ## Exploring
 
-Look through the various `packages/*` in this monorepo and their detaild Readmes.
+Look through the various `packages/*` in this monorepo and their detailed Readmes.
 
 ## Contributing
 

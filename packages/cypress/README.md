@@ -1,13 +1,13 @@
 # `@hackney/mtfh-cypress`
 
-This package is intended to be used in conjuction with a live environment that uses
-import-maps to resolve micro-frontends. It will stub an import-map with the url defined in
+This package is intended to be used in conjunction with a live environment that uses
+import-maps to resolve micro-frontends. It will stub an import-map with the URL defined in
 the env. This allows us to test a local MFE against an environment without deploying,
 while having access to the entire environment.
 
 Lifecycle:
 
-1. Before All hook visits the baseURL as an authenticated hackney user to intercept
+1. Before All hook visits the baseURL as an authenticated Hackney user to intercept
    configuration (feature toggles) and store as a fixture.
 2. Do a request to `${DEV_URL}/import-map.json` and store the output.
 3. Before Each hook will intercept all import-map.json requests and determine which
@@ -15,31 +15,38 @@ Lifecycle:
 
 ## Installation
 
-```
-yarn add @hackney/mtfh-cli
-yarn add dotenv cypress -D
+```bash
+npm install @hackney/mtfh-cypress
+npm install -D dotenv cypress
 ```
 
 ## Usage
 
 This library provides both a configuration plugin as well as a collection of hooks and
-commands. Plugins run in the node context within cypress and commands run in the browser,
+commands. Plugins run in the Node context within Cypress and commands run in the browser,
 so we have to wire them up separately.
 
 ### Plugin
 
-In `cypress/plugins/index.js`
+In `cypress.config.js` (Cypress 10+):
 
 ```js
+const { defineConfig } = require("cypress");
 const { configPlugin } = require("@hackney/mtfh-cypress/plugin");
 
-module.exports = (on, config) => {
-  let mtfhConfig = configPlugin(on, config);
-  return mtfhConfig;
-};
+module.exports = defineConfig({
+  e2e: {
+    setupNodeEvents(on, config) {
+      return configPlugin(on, config);
+    },
+    env: {
+      DEV_URL: "http://localhost:9000",
+    },
+  },
+});
 ```
 
-Create a `.env` file in the root of your project.
+Create a `.env` file in the root of your project:
 
 ```
 CYPRESS_ENVIRONMENT=development
@@ -47,22 +54,11 @@ CYPRESS_BASE_URL=https://manage-my-home-development.hackney.gov.uk
 CYPRESS_AUTH_TOKEN=token
 ```
 
-You'll want to configure these variables in your circle ci pipeline to match your
-environment.
-
-In `cypress.json`
-
-```js
-{
-  "env": {
-    "DEV_URL": "http://localhost:9000",
-  }
-}
-```
+Configure these variables in your CI pipeline to match your environment.
 
 ### Hooks & Commands
 
-In `cypress/support/index.js`
+In `cypress/support/e2e.js` (or `cypress/support/index.js`):
 
 ```js
 import "@hackney/mtfh-cypress";
@@ -86,26 +82,27 @@ cy.skipOnEnv("development");
 cy.skipOnToggle("MMH.CreateTenure", true);
 ```
 
-To skip a collection of tests encapsulate the tests in a `describe`
+To skip a collection of tests encapsulate the tests in a `describe`:
 
 ```js
-describe('Collection of tests', () => {
+describe("Collection of tests", () => {
   before(() => {
-    cy.skipOnToggle('MMH.CreateTenure', true);
-  })
+    cy.skipOnToggle("MMH.CreateTenure", true);
+  });
 
-  it('creates a tenure', () => {
-    ...
-  })
-})
+  it("creates a tenure", () => {
+    // ...
+  });
+});
 ```
 
 ## Audits
 
-We provide commands for testing performance as well as accessibility.
+We provide commands for performance and accessibility testing using **Lighthouse** and
+**Pa11y** directly (no `@cypress-audit/*` packages).
 
 ```js
-// Equalvalent of testing for mobile
+// Equivalent of testing for mobile
 cy.lighthouse({
   seo: 0,
   "best-practices": 100,
@@ -125,35 +122,32 @@ cy.lighthouseDesktop({
 cy.pa11y({ actions: ["wait for element h1 to be added"] });
 ```
 
-NB: It's important to note that Lighthouse's performance metrics can't really be taken as
-an indication of the actual report. This plugin is intended to run a local version of the
-micro-frontend so we can test against it before deploying. Ie. we will be testing against
-an app that isn't served by our architecture. You can however use it as a quality gate to
-ensure new changes don't reduce the scores. We recommend manual performance testing in
-live environments to get real world values.
+NB: Lighthouse performance metrics from this plugin can't really be taken as an indication
+of the live report. This package is intended to run a local version of the micro-frontend
+so we can test against it before deploying — i.e. against an app that isn't served by our
+architecture. You can use it as a quality gate so new changes don't reduce the scores. We
+recommend manual performance testing in live environments for real-world values.
 
 ## Additions
 
 This library comes with the following preconfigured:
 
-- @testing-libray/cypress
-- cypress-audit
-- cypress-terminal-report
+- `@testing-library/cypress`
+- `lighthouse` and `pa11y` (via custom Cypress tasks)
+- `cypress-terminal-report`
 
 ## Configuration
 
-The config plugin will override a few `cypress.json` defaults that align to the
-requirements more closely.
-
-Such as:
+The config plugin overrides a few Cypress defaults that align to the requirements more
+closely, such as:
 
 ```js
 {
-  "retries": {
-    "runMode": 2,
-    "openMode": 0,
+  retries: {
+    runMode: 2,
+    openMode: 0,
   },
-  "chromeWebSecurity": false,
-  "defaultCommandTimeout": 10000,
+  chromeWebSecurity: false,
+  defaultCommandTimeout: 10000,
 }
 ```
