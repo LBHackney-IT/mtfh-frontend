@@ -1,5 +1,12 @@
 # @hackney/create-mfe
 
+## [1.2.4](https://github.com/LBHackney-IT/mtfh-frontend/compare/@hackney/create-mfe@1.1.6...@hackney/create-mfe-v1.2.4) (2026-07-20)
+
+
+### Miscellaneous Chores
+
+* **@hackney/create-mfe:** Synchronize mfe-scaffolding versions
+
 ## 1.1.6
 
 ### Patch Changes

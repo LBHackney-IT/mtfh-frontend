@@ -1,5 +1,12 @@
 # @hackney/generator-mfe
 
+## [1.2.4](https://github.com/LBHackney-IT/mtfh-frontend/compare/@hackney/generator-mfe@1.2.3...@hackney/generator-mfe-v1.2.4) (2026-07-20)
+
+
+### Bug Fixes
+
+* change to props as object to meet lint ([fbb30e5](https://github.com/LBHackney-IT/mtfh-frontend/commit/fbb30e5539c0ea0471072625469fa60acd7bfb83))
+
 ## 1.2.3
 
 ### Patch Changes
