@@ -16,7 +16,7 @@
     "dist"
   ],
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=24"
   },
   "publishConfig": {
     "access": "public"
@@ -29,9 +29,9 @@
     "test": "jest --passWithNoTests",
     "test:ci": "jest --runInBand",
     "lint": "eslint src --ext js,ts",
-    "build": "concurrently yarn:build:*",
+    "build": "concurrently \"npm run build:src\" \"npm run build:types\"",
     "build:src": "babel src -d dist --verbose --extensions .ts --ignore */**/*.d.ts,**/**/*.test.ts --source-maps",
-    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types"
+    "build:types": "tsc -p tsconfig.build.json --emitDeclarationOnly"
   },
   "bugs": {
     "url": "https://github.com/LBHackney-IT/mtfh-frontend/issues"

@@ -1,17 +1,52 @@
-const genericNames = require("generic-names")
+const genericNames = require("generic-names");
+const path = require("path");
 
 const generate = genericNames("[local]-[hash:base64:5]", {
   context: process.cwd(),
-})
+});
 
-module.exports = {
-  core: {
-    builder: "webpack5",
-  },
+const projectRoot = path.resolve(__dirname, "..");
+const sassLoadPaths = [
+  projectRoot,
+  path.join(projectRoot, "packages/react"),
+  path.join(projectRoot, "node_modules"),
+  path.join(projectRoot, "packages/react/node_modules"),
+];
+
+const isScssRule = (rule) => {
+  if (!rule?.test) {
+    return false;
+  }
+
+  const test = rule.test.toString();
+  return test.includes("scss") || test.includes("sass");
+};
+
+const removeScssRules = (rules = []) =>
+  rules.filter((rule) => {
+    if (rule.oneOf) {
+      rule.oneOf = removeScssRules(rule.oneOf);
+    }
+
+    if (rule.rules) {
+      rule.rules = removeScssRules(rule.rules);
+    }
+
+    return !isScssRule(rule);
+  });
+
+/** @type { import('@storybook/react-webpack5').StorybookConfig } */
+const config = {
   stories: ["../packages/react/src/components/**/*.stories.tsx"],
-  addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
-  webpackFinal: async (config) => {
-    config.module.rules.push({
+  addons: ["@storybook/addon-links", "@storybook/addon-webpack5-compiler-babel"],
+  framework: {
+    name: "@storybook/react-webpack5",
+    options: {},
+  },
+  webpackFinal: async (webpackConfig) => {
+    webpackConfig.module.rules = removeScssRules(webpackConfig.module.rules);
+
+    webpackConfig.module.rules.push({
       test: /\.scss$/,
       exclude: /\.module\.scss$/,
       use: [
@@ -21,14 +56,15 @@ module.exports = {
           loader: "sass-loader",
           options: {
             sassOptions: {
-              includePaths: ["packages/react"],
+              includePaths: sassLoadPaths,
+              loadPaths: sassLoadPaths,
             },
           },
         },
       ],
-    })
+    });
 
-    config.module.rules.push({
+    webpackConfig.module.rules.push({
       test: /\.module\.scss$/,
       use: [
         "style-loader",
@@ -38,11 +74,9 @@ module.exports = {
             importLoaders: 1,
             modules: {
               mode: "local",
-              // localIdentName: "[local]",
+              namedExport: false,
               getLocalIdent: (ctx, local, name) => {
-                return name === "js-enabled"
-                  ? name
-                  : generate(name, ctx.resourcePath)
+                return name === "js-enabled" ? name : generate(name, ctx.resourcePath);
               },
               exportLocalsConvention: "camelCase",
             },
@@ -52,13 +86,16 @@ module.exports = {
           loader: "sass-loader",
           options: {
             sassOptions: {
-              includePaths: ["packages/react"],
+              includePaths: sassLoadPaths,
+              loadPaths: sassLoadPaths,
             },
           },
         },
       ],
-    })
+    });
 
-    return config
+    return webpackConfig;
   },
-}
+};
+
+module.exports = config;

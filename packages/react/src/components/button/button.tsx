@@ -2,10 +2,10 @@ import React, { forwardRef } from "react";
 
 import cn from "classnames";
 
-import { widthOverrides } from "../../utils";
 import styles from "./styles.module.scss";
+import { widthOverrides } from "../../utils";
 
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import type { ForwardRefComponent } from "../../types/polymorphic";
 
 export interface ButtonProps {
   variant?: "primary" | "secondary";
@@ -15,9 +15,9 @@ export interface ButtonProps {
   override?: number;
 }
 
-export type ButtonComponent = Polymorphic.ForwardRefComponent<"button", ButtonProps>;
+export type ButtonComponent = ForwardRefComponent<"button", ButtonProps>;
 
-export const Button: ButtonComponent = forwardRef(function Button(
+export const Button = forwardRef(function Button(
   {
     as: ButtonComp = "button",
     variant = "primary",
@@ -62,4 +62,4 @@ export const Button: ButtonComponent = forwardRef(function Button(
       {isLoading && loadingText ? loadingText : children}
     </ButtonComp>
   );
-});
+}) as ButtonComponent;

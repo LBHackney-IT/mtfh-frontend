@@ -2,6 +2,8 @@
 
 A cli to help manage micro-frontend orchestration for MTFH.
 
+Requires **Node.js 24+**.
+
 ## Install
 
 ```bash

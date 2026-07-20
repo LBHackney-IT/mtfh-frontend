@@ -1,4 +1,4 @@
-import faker from "faker/locale/en";
+import { faker } from "@faker-js/faker/locale/en";
 
 import { Process, ProcessState } from "@mtfh/common/lib/api/process/v1";
 
@@ -10,14 +10,14 @@ export const generateMockProcessStateV1 = (
   return {
     state: faker.lorem.word(),
     permittedTriggers: Array.from({
-      length: faker.datatype.number({ min: 1, max: 4 }),
+      length: faker.number.int({ min: 1, max: 4 }),
     }).map(() => faker.lorem.word()),
     assignment: faker.lorem.word(),
     processData: {
       formData: {},
       documents: Array.from({
-        length: faker.datatype.number({ min: 1, max: 4 }),
-      }).map(() => faker.datatype.uuid()),
+        length: faker.number.int({ min: 1, max: 4 }),
+      }).map(() => faker.string.uuid()),
     },
     createdAt: faker.date.past().toISOString(),
     updatedAt: faker.date.past().toISOString(),
@@ -27,19 +27,20 @@ export const generateMockProcessStateV1 = (
 
 export const generateMockProcessV1 = (data: Partial<Process> = {}): Process => {
   return {
-    id: faker.datatype.uuid(),
-    targetId: faker.datatype.uuid(),
+    id: faker.string.uuid(),
+    targetId: faker.string.uuid(),
+    targetType: faker.lorem.word(),
     relatedEntities: Array.from({
-      length: faker.datatype.number({ min: 1, max: 4 }),
+      length: faker.number.int({ min: 1, max: 4 }),
     }).map(() => faker.lorem.word()),
     formData: {},
-    documents: Array.from({ length: faker.datatype.number({ min: 1, max: 4 }) }).map(() =>
-      faker.datatype.uuid(),
+    documents: Array.from({ length: faker.number.int({ min: 1, max: 4 }) }).map(() =>
+      faker.string.uuid(),
     ),
     processName: faker.lorem.word(),
     currentState: generateMockProcessStateV1(),
     previousStates: Array.from({
-      length: faker.datatype.number({ min: 1, max: 4 }),
+      length: faker.number.int({ min: 1, max: 4 }),
     }).map(() => generateMockProcessStateV1()),
     ...data,
   };

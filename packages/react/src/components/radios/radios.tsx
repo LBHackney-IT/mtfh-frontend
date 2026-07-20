@@ -93,9 +93,8 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(function R
 
   useEffect(() => {
     const init = async (element: HTMLElement) => {
-      const { default: LBHRadios } = await import(
-        "lbh-frontend/lbh/components/lbh-radios/radios"
-      );
+      const { default: LBHRadios } =
+        await import("lbh-frontend/lbh/components/lbh-radios/radios.js");
       const radios = new LBHRadios(element);
       radios.init();
     };

@@ -11,6 +11,9 @@
   "files": [
     "generators"
   ],
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "build": "rollup -c",
     "lint": "eslint src --ext js,jsx,ts,tsx"
@@ -20,7 +23,7 @@
     "chalk": "^4.1.2",
     "change-case": "^4.1.2",
     "ejs": "^3.1.6",
-    "yeoman-generator": "^5.4.2"
+    "yeoman-generator": "^7.5.1"
   },
   "devDependencies": {
     "@types/yeoman-generator": "^5.2.4",

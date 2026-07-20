@@ -4,11 +4,11 @@ import cn from "classnames";
 
 import styles from "./styles.module.scss";
 
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import type { ForwardRefComponent } from "../../types/polymorphic";
 
-export type VisuallyHiddenComponent = Polymorphic.ForwardRefComponent<"span">;
+export type VisuallyHiddenComponent = ForwardRefComponent<"span">;
 
-export const VisuallyHidden: VisuallyHiddenComponent = forwardRef(function VisuallyHidden(
+export const VisuallyHidden = forwardRef(function VisuallyHidden(
   { as: VisuallyHiddenComp = "span", className, ...props },
   ref,
 ) {
@@ -19,4 +19,4 @@ export const VisuallyHidden: VisuallyHiddenComponent = forwardRef(function Visua
       {...props}
     />
   );
-});
+}) as VisuallyHiddenComponent;

@@ -1,5 +1,5 @@
+import { faker } from "@faker-js/faker/locale/en";
 import { addYears, parseISO } from "date-fns";
-import faker from "faker/locale/en";
 
 import { HouseholdMember, Tenure } from "@mtfh/common/lib/api/tenure/v1";
 
@@ -11,15 +11,17 @@ export const generateMockHouseholdMemberV1 = (
   const isResponsible =
     data.isResponsible !== undefined ? data.isResponsible : faker.datatype.boolean();
   return {
-    id: faker.datatype.uuid(),
+    id: faker.string.uuid(),
     type: "Person",
-    fullName: [faker.name.title(), faker.name.firstName(), faker.name.lastName()].join(
-      " ",
-    ),
+    fullName: [
+      faker.person.prefix(),
+      faker.person.firstName(),
+      faker.person.lastName(),
+    ].join(" "),
     isResponsible,
     dateOfBirth: faker.date.past().toISOString(),
     personTenureType: isResponsible
-      ? faker.random.arrayElement(["Tenant", "Leaseholder", "Freeholder"])
+      ? faker.helpers.arrayElement(["Tenant", "Leaseholder", "Freeholder"])
       : "HouseholdMember",
     ...data,
   };
@@ -28,36 +30,36 @@ export const generateMockHouseholdMemberV1 = (
 export const generateMockTenureV1 = (data: Partial<Tenure> = {}): Tenure => {
   const tenureType =
     data.tenureType ||
-    faker.random.arrayElement(
+    faker.helpers.arrayElement(
       TENURE_TYPES.map(({ code, value }) => ({ code, description: value })),
     );
   const namedTenureHolderType = "Tenant";
   const isActive = data.isActive !== undefined ? data.isActive : faker.datatype.boolean();
   const startOfTenureDate = data.startOfTenureDate
     ? parseISO(data.startOfTenureDate)
-    : faker.date.between("2010-01-01", "2020-01-01");
+    : faker.date.between({ from: "2010-01-01", to: "2020-01-01" });
   return {
-    id: faker.datatype.uuid(),
-    paymentReference: faker.random.alphaNumeric(10),
+    id: faker.string.uuid(),
+    paymentReference: faker.string.alphanumeric(10),
     householdMembers: [
       ...Array.from({
-        length: faker.datatype.number({ min: 1, max: 4 }),
+        length: faker.number.int({ min: 1, max: 4 }),
       }).map(() =>
         generateMockHouseholdMemberV1({
           isResponsible: true,
           personTenureType: namedTenureHolderType,
         }),
       ),
-      ...Array.from({ length: faker.datatype.number({ min: 1, max: 8 }) }).map(() =>
+      ...Array.from({ length: faker.number.int({ min: 1, max: 8 }) }).map(() =>
         generateMockHouseholdMemberV1({ isResponsible: false }),
       ),
     ],
     tenuredAsset: {
-      id: faker.datatype.uuid(),
-      type: faker.random.arrayElement(["Dwelling", "LettableNonDwelling"]),
-      fullAddress: [faker.address.streetAddress(), faker.address.zipCode()].join(", "),
-      uprn: faker.random.alphaNumeric(10),
-      propertyReference: faker.random.alphaNumeric(10),
+      id: faker.string.uuid(),
+      type: faker.helpers.arrayElement(["Dwelling", "LettableNonDwelling"]),
+      fullAddress: [faker.location.streetAddress(), faker.location.zipCode()].join(", "),
+      uprn: faker.string.alphanumeric(10),
+      propertyReference: faker.string.alphanumeric(10),
     },
     startOfTenureDate: startOfTenureDate.toISOString(),
     endOfTenureDate: !isActive ? addYears(startOfTenureDate, 1).toISOString() : null,
@@ -90,6 +92,10 @@ export const generateMockTenureV1 = (data: Partial<Tenure> = {}): Tenure => {
       tenancyInsuranceCharge: 0,
       originalRentCharge: 0,
       originalServiceCharge: 0,
+      storageCharge: null,
+      rentAdjustment: null,
+      rentAdjustmentReason: null,
+      isSuspended: null,
     },
     notices: [
       {

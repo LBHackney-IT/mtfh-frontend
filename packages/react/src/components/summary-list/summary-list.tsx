@@ -10,8 +10,8 @@ import React, {
 
 import cn from "classnames";
 
-import { widthOverrides } from "../../utils";
 import styles from "./styles.module.scss";
+import { widthOverrides } from "../../utils";
 
 export interface SummaryListItemProps extends ComponentPropsWithoutRef<"div"> {
   title: string;

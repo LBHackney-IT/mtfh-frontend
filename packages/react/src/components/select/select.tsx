@@ -2,8 +2,8 @@ import React, { ComponentPropsWithoutRef, forwardRef } from "react";
 
 import classNames from "classnames";
 
-import { widthOverrides } from "../../utils";
 import styles from "./styles.module.scss";
+import { widthOverrides } from "../../utils";
 
 export interface SelectProps extends ComponentPropsWithoutRef<"select"> {
   error?: boolean;

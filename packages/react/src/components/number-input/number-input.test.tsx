@@ -7,9 +7,10 @@ import userEvent from "@testing-library/user-event";
 import { FormGroup } from "../form-group";
 import { NumberInput } from "./number-input";
 
-const type = (value: string) => {
+const type = async (value: string) => {
   const input = screen.getByRole("spinbutton") as HTMLInputElement;
-  userEvent.type(input, value);
+  const user = userEvent.setup();
+  await user.type(input, value);
   return input;
 };
 
@@ -28,21 +29,21 @@ test("it renders correctly", () => {
   expect(container).toMatchSnapshot();
 });
 
-test("it only accepts numbers", () => {
+test("it only accepts numbers", async () => {
   render(<NumberInput />);
-  const input = type("123wa4dv5ggg6");
+  const input = await type("123wa4dv5ggg6");
   expect(input.value).toBe("123456");
 });
 
-test("it wont allow characters beyond the maxLength", () => {
+test("it wont allow characters beyond the maxLength", async () => {
   render(<NumberInput maxLength={3} />);
-  const input = type("123456");
+  const input = await type("123456");
   expect(input.value).toBe("123");
 });
 
-test("it formats min on blur", () => {
+test("it formats min on blur", async () => {
   render(<NumberInput min={25} />);
-  const input = type("1");
+  const input = await type("1");
   expect(input.value).toBe("1");
   fireEvent.blur(input);
   expect(input.value).toBe("25");
@@ -55,23 +56,23 @@ test("it does not format an empty value", () => {
   expect(input.value).toBe("");
 });
 
-test("it formats max on blur", () => {
+test("it formats max on blur", async () => {
   render(<NumberInput min={25} max={50} />);
-  const input = type("60");
+  const input = await type("60");
   expect(input.value).toBe("60");
   fireEvent.blur(input);
   expect(input.value).toBe("50");
 });
 
-test("it pads the number with 0 on blur", () => {
-  render(<NumberInput padStart={4} />);
-  const input = type("60");
+test("it pads the number with 0 on blur", async () => {
+  render(<NumberInput padStart={4} type="text" />);
+  const input = await type("60");
   expect(input.value).toBe("60");
   fireEvent.blur(input);
   expect(input.value).toBe("0060");
 });
 
-test("it can be controlled", () => {
+test("it can be controlled", async () => {
   const Controlled = () => {
     const [value, setValue] = useState("100");
     const [didBlur, setBlur] = useState(false);
@@ -91,7 +92,7 @@ test("it can be controlled", () => {
   render(<Controlled />);
   const output = screen.getByTestId("output");
   expect(output).toHaveTextContent("100");
-  const input = type("3425");
+  const input = await type("3425");
   fireEvent.blur(input);
   const blur = screen.getByTestId("blur");
   expect(blur).toHaveTextContent("true");

@@ -63,6 +63,7 @@ export const usePageAnnouncement = (): UsePageAnnouncementValue => {
 
 export interface PageAnnouncementProviderProps {
   sessionKey?: string;
+  children?: React.ReactNode;
 }
 
 export const PageAnnouncementProvider: FC<PageAnnouncementProviderProps> = ({

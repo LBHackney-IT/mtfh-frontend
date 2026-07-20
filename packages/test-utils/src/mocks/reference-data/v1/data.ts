@@ -1,4 +1,4 @@
-import faker from "faker/locale/en";
+import { faker } from "@faker-js/faker/locale/en";
 
 import { ReferenceData } from "@mtfh/common/lib/api/reference-data/v1";
 
@@ -10,8 +10,8 @@ export const generateMockReferenceDataV1 = (
   data: Partial<ReferenceData> = {},
 ): ReferenceData => {
   return {
-    id: faker.datatype.uuid(),
-    category: faker.random.arrayElement([
+    id: faker.string.uuid(),
+    category: faker.helpers.arrayElement([
       "error-code",
       "tenure",
       "person",
@@ -19,8 +19,8 @@ export const generateMockReferenceDataV1 = (
       "equality-information",
       "comment",
     ]),
-    subCategory: faker.random.arrayElement(["mmh", "type", "category"]),
-    code: faker.datatype.string(),
+    subCategory: faker.helpers.arrayElement(["mmh", "type", "category"]),
+    code: faker.string.alphanumeric(8),
     value: faker.lorem.sentence(),
     description: faker.lorem.sentence(),
     isActive: faker.datatype.boolean(),

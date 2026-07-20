@@ -1,4 +1,4 @@
-import { rest } from "msw";
+import { HttpResponse, http } from "msw";
 
 import { Asset } from "@mtfh/common/lib/api/asset/v1";
 import { config } from "@mtfh/common/lib/config";
@@ -21,7 +21,7 @@ export const mockAssetInvalidAssetTypeV1: Asset = {
 };
 
 export const getAssetV1 = (data: any = mockAssetV1, code = 200) => {
-  return rest.get(`${config.assetApiUrlV1}/assets/:id`, (req, res, ctx) =>
-    res(ctx.status(code), ctx.json(data)),
+  return http.get(`${config.assetApiUrlV1}/assets/:id`, () =>
+    HttpResponse.json(data, { status: code }),
   );
 };

@@ -7,14 +7,19 @@ const getScope = (key: string) => {
 };
 
 const clearSw = () => {
-  cy.window().then((win) => {
-    if ("serviceWorker" in win.navigator) {
-      win.navigator.serviceWorker.getRegistrations().then((registrations) => {
-        for (const registration of registrations) {
-          registration.unregister();
-        }
-      });
+  cy.window({ log: false }).then((win) => {
+    if (!("serviceWorker" in win.navigator)) {
+      return;
     }
+
+    return win.navigator.serviceWorker
+      .getRegistrations()
+      .then((registrations) =>
+        Cypress.Promise.all(
+          registrations.map((registration) => registration.unregister()),
+        ),
+      )
+      .catch(() => undefined);
   });
 };
 

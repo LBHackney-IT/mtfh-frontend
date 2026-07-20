@@ -1,4 +1,4 @@
-import { rest } from "msw";
+import { HttpResponse, http } from "msw";
 
 import { config } from "@mtfh/common/lib/config";
 
@@ -25,8 +25,8 @@ export const mockAlertV1 = {
 };
 
 export const getAlertsByAlertIdV1 = (data: any = mockAlertV1, code = 200) => {
-  return rest.get(
+  return http.get(
     `${config.cautionaryApiUrlV1}/cautionary-alerts/alert/:cautionaryAlertId`,
-    (req, res, ctx) => res(ctx.status(code), ctx.json(data)),
+    () => HttpResponse.json(data, { status: code }),
   );
 };

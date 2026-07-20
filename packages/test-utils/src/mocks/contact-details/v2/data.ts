@@ -1,4 +1,4 @@
-import faker from "faker/locale/en";
+import { faker } from "@faker-js/faker/locale/en";
 
 import {
   ContactDetail,
@@ -13,14 +13,14 @@ import {
 faker.seed(1);
 
 export const generateAddressExtendedV2 = () => ({
-  uprn: faker.datatype.number(123456789).toString(),
+  uprn: faker.number.int({ max: 123456789 }).toString(),
   isOverseasAddress: faker.datatype.boolean(),
-  overseasAddress: faker.address.direction(),
-  addressLine1: faker.address.streetPrefix(),
-  addressLine2: faker.address.streetName(),
-  addressLine3: faker.address.county(),
-  addressLine4: faker.address.country(),
-  postCode: faker.address.zipCode("A0 AA00"),
+  overseasAddress: faker.location.direction(),
+  addressLine1: faker.location.street(),
+  addressLine2: faker.location.street(),
+  addressLine3: faker.location.county(),
+  addressLine4: faker.location.country(),
+  postCode: faker.location.zipCode("A0 AA00"),
 });
 
 export const generateContactInformationV2 = (data: Partial<ContactInformation> = {}) => ({
@@ -33,25 +33,24 @@ export const generateContactInformationV2 = (data: Partial<ContactInformation> =
 });
 
 export const generateMockContactDetailV2 = (data: Partial<ContactDetail> = {}) => ({
-  id: faker.datatype.uuid(),
-  targetId: faker.datatype.uuid(),
-  targetType: faker.random.arrayElement([
+  id: faker.string.uuid(),
+  targetId: faker.string.uuid(),
+  targetType: faker.helpers.arrayElement([
     ContactDetailTargetTypes.PERSON,
     ContactDetailTargetTypes.ORGANISATION,
   ]),
   contactInformation: {
-    contactType: faker.random.arrayElement([
+    contactType: faker.helpers.arrayElement([
       ContactInformationContactTypes.PHONE,
       ContactInformationContactTypes.ADDRESS,
       ContactInformationContactTypes.EMAIL,
     ]),
-    subType: faker.random.arrayElement([
-      ContactDetailsPhoneTypes.HOME,
-      ContactDetailsPhoneTypes.MOBILE,
-      ContactDetailsPhoneTypes.WORK,
+    subType: faker.helpers.arrayElement([
+      ContactDetailsPhoneTypes.MAIN_NUMBER,
+      ContactDetailsPhoneTypes.EMERGENCY_CONTACT,
       ContactDetailsPhoneTypes.OTHER,
     ]),
-    value: faker.random.arrayElement([faker.phone.phoneNumber(), faker.internet.email()]),
+    value: faker.helpers.arrayElement([faker.phone.number(), faker.internet.email()]),
     description: faker.lorem.sentence(),
     addressExtended: generateAddressExtendedV2(),
   },
@@ -63,8 +62,8 @@ export const generateMockContactDetailV2 = (data: Partial<ContactDetail> = {}) =
   isActive: faker.datatype.boolean(),
   createdBy: {
     createdBy: faker.date.recent().toISOString(),
-    id: faker.datatype.uuid(),
-    fullName: faker.name.firstName(),
+    id: faker.string.uuid(),
+    fullName: faker.person.firstName(),
     email: faker.internet.email(),
   },
   ...data,
@@ -83,15 +82,15 @@ export const generateMockContactDetailCorrespondenceAddressV2 = () =>
     contactInformation: generateContactInformationV2({
       contactType: ContactInformationContactTypes.ADDRESS,
       subType: ContactDetailsAddressTypes.CORRESPONDENCE_ADDRESS,
-      value: faker.address.direction(),
+      value: faker.location.direction(),
     }),
   });
 export const generateMockContactDetailPhoneV2 = () =>
   generateMockContactDetailV2({
     contactInformation: generateContactInformationV2({
       contactType: ContactInformationContactTypes.PHONE,
-      subType: ContactDetailsPhoneTypes.MOBILE,
-      value: faker.phone.phoneNumber("075949281"),
+      subType: ContactDetailsPhoneTypes.MAIN_NUMBER,
+      value: faker.phone.number(),
     }),
   });
 

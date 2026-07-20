@@ -4,7 +4,7 @@ import cn from "classnames";
 
 import styles from "./styles.module.scss";
 
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import type { ForwardRefComponent } from "../../types/polymorphic";
 
 export interface PaginationProps extends ComponentPropsWithoutRef<"nav"> {
   variant?: "base" | "center";
@@ -55,49 +55,44 @@ export interface PaginationButtonProps {
   active?: boolean;
 }
 
-export type PaginationButtonComponent = Polymorphic.ForwardRefComponent<
-  "a",
-  PaginationButtonProps
->;
+export type PaginationButtonComponent = ForwardRefComponent<"a", PaginationButtonProps>;
 
-export const PaginationButton: PaginationButtonComponent = forwardRef(
-  function PaginationButton(
-    {
-      as: PaginationComp = "a",
-      variant = "base",
-      active = false,
-      className,
-      children,
-      ...props
-    },
-    ref,
-  ) {
-    return (
-      <PaginationComp
-        ref={ref}
-        className={cn(
-          styles.lbhPaginationLink,
-          {
-            [styles.lbhPaginationLinkNext]: variant === "next",
-            [styles.lbhPaginationLinkCurrent]: variant === "base" && active,
-          },
-          className,
-        )}
-        {...props}
-      >
-        {variant === "previous" ? (
-          <span aria-hidden="true" role="presentation">
-            &laquo;{" "}
-          </span>
-        ) : null}
-        {children}
-        {variant === "next" ? (
-          <span aria-hidden="true" role="presentation">
-            {" "}
-            &raquo;
-          </span>
-        ) : null}
-      </PaginationComp>
-    );
+export const PaginationButton = forwardRef(function PaginationButton(
+  {
+    as: PaginationComp = "a",
+    variant = "base",
+    active = false,
+    className,
+    children,
+    ...props
   },
-);
+  ref,
+) {
+  return (
+    <PaginationComp
+      ref={ref}
+      className={cn(
+        styles.lbhPaginationLink,
+        {
+          [styles.lbhPaginationLinkNext]: variant === "next",
+          [styles.lbhPaginationLinkCurrent]: variant === "base" && active,
+        },
+        className,
+      )}
+      {...props}
+    >
+      {variant === "previous" ? (
+        <span aria-hidden="true" role="presentation">
+          &laquo;{" "}
+        </span>
+      ) : null}
+      {children}
+      {variant === "next" ? (
+        <span aria-hidden="true" role="presentation">
+          {" "}
+          &raquo;
+        </span>
+      ) : null}
+    </PaginationComp>
+  );
+}) as PaginationButtonComponent;

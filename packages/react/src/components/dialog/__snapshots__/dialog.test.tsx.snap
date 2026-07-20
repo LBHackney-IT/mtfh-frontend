@@ -13,6 +13,7 @@ exports[`it renders correctly 1`] = `
 exports[`it renders correctly 2`] = `
 <div
   aria-hidden="true"
+  data-aria-hidden="true"
 >
   <button
     type="button"
@@ -25,6 +26,7 @@ exports[`it renders correctly 2`] = `
 exports[`it renders correctly with actions 1`] = `
 <div
   aria-hidden="true"
+  data-aria-hidden="true"
 >
   <button
     type="button"

@@ -6,8 +6,7 @@ import { PageAnnouncementContext, PageAnnouncementState } from "./context";
 import styles from "./styles.module.scss";
 
 export interface PageAnnouncementProps
-  extends Partial<PageAnnouncementState>,
-    ComponentPropsWithoutRef<"section"> {}
+  extends Partial<PageAnnouncementState>, ComponentPropsWithoutRef<"section"> {}
 
 export const PageAnnouncement = forwardRef<HTMLElement, PageAnnouncementProps>(
   function PageAnnouncement({ className, ...props }, ref) {

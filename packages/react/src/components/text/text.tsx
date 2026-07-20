@@ -4,15 +4,15 @@ import cn from "classnames";
 
 import styles from "./styles.module.scss";
 
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import type { ForwardRefComponent } from "../../types/polymorphic";
 
 export interface TextProps {
   variant?: "xs" | "sm" | "md" | "lg";
 }
 
-export type TextComponent = Polymorphic.ForwardRefComponent<"p", TextProps>;
+export type TextComponent = ForwardRefComponent<"p", TextProps>;
 
-export const Text: TextComponent = forwardRef(function Heading(
+export const Text = forwardRef(function Heading(
   { as: TextComp = "p", variant = "md", className, ...props },
   ref,
 ) {
@@ -31,4 +31,4 @@ export const Text: TextComponent = forwardRef(function Heading(
       {...props}
     />
   );
-});
+}) as TextComponent;

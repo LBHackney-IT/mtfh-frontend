@@ -11,7 +11,6 @@ exports[`it passes a11y on radio group 1`] = `
       for="test-field"
     >
       Radios Test
-      
     </label>
     <div
       class="govukRadios lbhRadios"
@@ -65,7 +64,6 @@ exports[`it passes a11y on single radio 1`] = `
       for="test-field"
     >
       Radio Test
-      
     </label>
     <div
       class="govukRadiosItem"

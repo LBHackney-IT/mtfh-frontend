@@ -14,14 +14,15 @@ export default [
     },
     external: ["@testing-library/cypress"],
     plugins: [
-      commonjs(),
       peerDepsExternal({ includeDependencies: true }),
       resolve({ preferBuiltins: true }),
       json(),
       typescript({
         tsconfig: "./tsconfig.json",
-        exclude: ["**/*.test.ts"],
+        include: ["**/*.ts", "**/*.tsx"],
+        exclude: ["**/*.test.ts", "**/*.test.tsx"],
       }),
+      commonjs(),
     ],
   },
 ];

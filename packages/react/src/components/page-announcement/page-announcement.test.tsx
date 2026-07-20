@@ -1,8 +1,7 @@
 import React from "react";
 
 import { render, testA11y } from "@hackney/mtfh-test-utils";
-import { screen, waitFor } from "@testing-library/react";
-import { act, renderHook } from "@testing-library/react-hooks";
+import { act, renderHook, screen, waitFor } from "@testing-library/react";
 
 import { PageAnnouncementProvider, usePageAnnouncement } from "./context";
 import { PageAnnouncement } from "./page-announcement";
@@ -52,7 +51,7 @@ test("it wont render if session storage is empty", () => {
 });
 
 test("it can set the context with usePageAnnouncement", () => {
-  const wrapper: React.FC = ({ children }) => (
+  const wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <PageAnnouncementProvider>{children}</PageAnnouncementProvider>
   );
   const { result } = renderHook(() => usePageAnnouncement(), { wrapper });
@@ -77,10 +76,7 @@ test("it can set the context with usePageAnnouncement", () => {
 });
 
 test("it throws an error when using usePageAnnouncement outside of the provider", () => {
-  const { result } = renderHook(() => usePageAnnouncement());
-  expect(result.error).toEqual(
-    Error(
-      "usePageAnnouncementContext: `context` is undefined. Seems you forgot to wrap component within the Provider",
-    ),
+  expect(() => renderHook(() => usePageAnnouncement())).toThrow(
+    "usePageAnnouncementContext: `context` is undefined. Seems you forgot to wrap component within the Provider",
   );
 });

@@ -4,15 +4,15 @@ import cn from "classnames";
 
 import styles from "./styles.module.scss";
 
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import type { ForwardRefComponent } from "../../types/polymorphic";
 
 export interface LabelProps {
   variant?: "base" | "sm" | "md" | "lg" | "xl";
 }
 
-export type LabelComponent = Polymorphic.ForwardRefComponent<"label", LabelProps>;
+export type LabelComponent = ForwardRefComponent<"label", LabelProps>;
 
-export const Label: LabelComponent = forwardRef(function Label(
+export const Label = forwardRef(function Label(
   { as: LabelComp = "label", variant = "base", className, ...props },
   ref,
 ) {
@@ -33,4 +33,4 @@ export const Label: LabelComponent = forwardRef(function Label(
       {...props}
     />
   );
-});
+}) as LabelComponent;

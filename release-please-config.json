@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "packages": {
+    "packages/cli": {
+      "component": "@hackney/mtfh-cli",
+      "release-type": "node"
+    },
+    "packages/create-mfe": {
+      "component": "@hackney/create-mfe",
+      "release-type": "node"
+    },
+    "packages/cypress": {
+      "component": "@hackney/mtfh-cypress",
+      "release-type": "node"
+    },
+    "packages/eslint-config": {
+      "component": "@hackney/eslint-config",
+      "release-type": "node"
+    },
+    "packages/generator": {
+      "component": "@hackney/generator-mfe",
+      "release-type": "node"
+    },
+    "packages/prettier-config": {
+      "component": "@hackney/prettier-config",
+      "release-type": "node"
+    },
+    "packages/react": {
+      "component": "@hackney/mtfh-react",
+      "release-type": "node"
+    },
+    "packages/system": {
+      "component": "@hackney/mtfh-system",
+      "release-type": "node"
+    },
+    "packages/test-utils": {
+      "component": "@hackney/mtfh-test-utils",
+      "release-type": "node"
+    },
+    "packages/webpack-import-map-plugin": {
+      "component": "@hackney/webpack-import-map-plugin",
+      "release-type": "node"
+    }
+  },
+  "plugins": [
+    {
+      "type": "linked-versions",
+      "groupName": "mfe-scaffolding",
+      "components": ["@hackney/create-mfe", "@hackney/generator-mfe"]
+    }
+  ]
+}

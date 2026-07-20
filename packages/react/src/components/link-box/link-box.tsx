@@ -6,19 +6,16 @@ import { widthOverrides } from "../../utils";
 import { LinkProps } from "../link";
 import styles from "./styles.module.scss";
 
-import type * as Polymorphic from "@radix-ui/react-polymorphic";
+import type { ForwardRefComponent } from "../../types/polymorphic";
 
 export interface LinkOverlayProps {
   children: ReactElement<LinkProps>;
   override?: number;
 }
 
-export type LinkOverlayComponent = Polymorphic.ForwardRefComponent<
-  "div",
-  LinkOverlayProps
->;
+export type LinkOverlayComponent = ForwardRefComponent<"div", LinkOverlayProps>;
 
-export const LinkOverlay: LinkOverlayComponent = forwardRef(function LinkOverlay(
+export const LinkOverlay = forwardRef(function LinkOverlay(
   { as: LinkOverlayComp = "div", className, override, ...props },
   ref,
 ) {
@@ -29,15 +26,15 @@ export const LinkOverlay: LinkOverlayComponent = forwardRef(function LinkOverlay
       {...props}
     />
   );
-});
+}) as LinkOverlayComponent;
 
 export interface LinkBoxProps {
   override?: number;
 }
 
-export type LinkBoxComponent = Polymorphic.ForwardRefComponent<"div", LinkBoxProps>;
+export type LinkBoxComponent = ForwardRefComponent<"div", LinkBoxProps>;
 
-export const LinkBox: LinkBoxComponent = forwardRef(function LinkBox(
+export const LinkBox = forwardRef(function LinkBox(
   { as: LinkBoxComp = "div", className, override, ...props },
   ref,
 ) {
@@ -48,4 +45,4 @@ export const LinkBox: LinkBoxComponent = forwardRef(function LinkBox(
       {...props}
     />
   );
-});
+}) as LinkBoxComponent;
