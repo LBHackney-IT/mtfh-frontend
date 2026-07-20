@@ -1,5 +1,5 @@
 {
-  "packages/cli": "2.1.1",
+  "packages/cli": "2.1.2",
   "packages/create-mfe": "1.2.4",
   "packages/cypress": "1.2.1",
   "packages/eslint-config": "1.4.1",
