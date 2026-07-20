@@ -1,5 +1,13 @@
 # @hackney/mtfh-cli
 
+## [2.1.2](https://github.com/LBHackney-IT/mtfh-frontend/compare/@hackney/mtfh-cli@2.1.1...@hackney/mtfh-cli-v2.1.2) (2026-07-20)
+
+
+### Bug Fixes
+
+* **mtfh-cli:** correct subject-verb agreement in register docs ([dc64ab9](https://github.com/LBHackney-IT/mtfh-frontend/commit/dc64ab9ce45e3f80bfdae30d295e31e2caded301))
+* **mtfh-cli:** correct subject-verb agreement in register docs ([3a550ef](https://github.com/LBHackney-IT/mtfh-frontend/commit/3a550ef3444124c40419a51a8c7bd27356ea8041))
+
 ## 2.1.1
 
 ### Patch Changes
