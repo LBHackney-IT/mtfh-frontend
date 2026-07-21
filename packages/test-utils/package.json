@@ -27,13 +27,13 @@
   },
   "dependencies": {
     "@faker-js/faker": "^9.0.0",
-    "@hackney/mtfh-system": "^1.0.2",
+    "@hackney/mtfh-system": "^1.1.0",
     "date-fns": "^2.24.0",
     "jest-axe": "^5.0.1",
     "jest-matchmedia-mock": "^1.1.0"
   },
   "devDependencies": {
-    "@mtfh/common": "https://github.com/LBHackney-IT/mtfh-frontend-common.git#edc52e4a3327ba005bce8c405c368467474fb354",
+    "@mtfh/common": "https://github.com/LBHackney-IT/mtfh-frontend-common.git#6a9c56d655b70d7fd742c006326e2fed385eae3c",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@types/history": "^4.7.9",
