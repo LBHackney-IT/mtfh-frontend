@@ -2,6 +2,9 @@
 
 ESLint config for TypeScript and React projects.
 
+Requires **ESLint 8**, **typescript-eslint 7**, and **Prettier 3** peer dependencies (see
+Installation).
+
 ## Installation
 
 ```bash
