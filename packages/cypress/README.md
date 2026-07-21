@@ -5,6 +5,8 @@ import-maps to resolve micro-frontends. It will stub an import-map with the URL 
 the env. This allows us to test a local MFE against an environment without deploying,
 while having access to the entire environment.
 
+Requires **Cypress 13+** and **Node.js 24+**.
+
 Lifecycle:
 
 1. Before All hook visits the baseURL as an authenticated Hackney user to intercept
@@ -17,7 +19,7 @@ Lifecycle:
 
 ```bash
 npm install @hackney/mtfh-cypress
-npm install -D dotenv cypress
+npm install -D dotenv cypress@^13
 ```
 
 ## Usage
