@@ -3,14 +3,9 @@
   "include": ["src"],
   "exclude": ["**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx"],
   "compilerOptions": {
-    "baseUrl": ".",
     "rootDir": "src",
     "declaration": true,
     "declarationDir": "dist/types",
-    "declarationMap": true,
-    "paths": {
-      "@mtfh/common": ["./src/shims/mtfh-common"],
-      "@mtfh/common/*": ["./src/shims/mtfh-common"]
-    }
+    "declarationMap": true
   }
 }
