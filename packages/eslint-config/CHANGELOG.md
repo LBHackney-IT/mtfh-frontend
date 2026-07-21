@@ -1,5 +1,13 @@
 # @hackney/eslint-config
 
+## [1.5.0](https://github.com/LBHackney-IT/mtfh-frontend/compare/@hackney/eslint-config@1.4.1...@hackney/eslint-config-v1.5.0) (2026-07-21)
+
+
+### Features
+
+* **eslint-config:** require ESLint 8 and typescript-eslint 7 ([fc8b92f](https://github.com/LBHackney-IT/mtfh-frontend/commit/fc8b92fc2e31e7cbe9762cd76e7ff2a72f0c0db5))
+* release mtfh-cypress and eslint-config peer upgrades ([8d268a6](https://github.com/LBHackney-IT/mtfh-frontend/commit/8d268a6bb27d1871b6d8378216b7f798697b8ff5))
+
 ## 1.4.1
 
 ### Patch Changes
