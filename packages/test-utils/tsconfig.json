@@ -1,7 +1,16 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["src", "node_modules/@mtfh/common"],
+  "include": ["src"],
+  "exclude": ["**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx"],
   "compilerOptions": {
-    "declarationDir": "types"
+    "baseUrl": ".",
+    "rootDir": "src",
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "declarationMap": true,
+    "paths": {
+      "@mtfh/common": ["./src/shims/mtfh-common"],
+      "@mtfh/common/*": ["./src/shims/mtfh-common"]
+    }
   }
 }
