@@ -17,6 +17,7 @@ module.exports = {
   },
   moduleNameMapper: {
     "\\.(css|scss)$": "identity-obj-proxy",
+    "^@mtfh/common/lib/(.*)$": path.join(rootNodeModules, "@mtfh/common/build/$1"),
     "^react$": path.join(rootNodeModules, "react/index.js"),
     "^react/jsx-runtime$": path.join(rootNodeModules, "react/jsx-runtime.js"),
     "^react/jsx-dev-runtime$": path.join(rootNodeModules, "react/jsx-dev-runtime.js"),

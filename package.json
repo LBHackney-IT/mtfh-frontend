@@ -87,6 +87,13 @@
     "webpack": "^5.97.0"
   },
   "overrides": {
-    "is-plain-object": "^3.0.1"
+    "is-plain-object": "^3.0.1",
+    "tar": "^7.5.21",
+    "shell-quote": "^1.10.0",
+    "js-yaml@4": "4.3.0",
+    "axios": "^1.18.1",
+    "form-data": "^4.0.6",
+    "tmp": "^0.2.7",
+    "brace-expansion@5": "5.0.7"
   }
 }

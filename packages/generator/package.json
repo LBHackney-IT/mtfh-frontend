@@ -19,7 +19,7 @@
     "lint": "eslint src --ext js,jsx,ts,tsx"
   },
   "dependencies": {
-    "@hackney/eslint-config": "^1.4.0",
+    "@hackney/eslint-config": "^1.5.0",
     "chalk": "^4.1.2",
     "change-case": "^4.1.2",
     "ejs": "^3.1.6",
