@@ -1,5 +1,13 @@
 # @hackney/mtfh-cli
 
+## [2.1.4](https://github.com/LBHackney-IT/mtfh-frontend/compare/@hackney/mtfh-cli-v2.1.3...@hackney/mtfh-cli-v2.1.4) (2026-07-23)
+
+
+### Bug Fixes
+
+* **ci:** harden OIDC publish metadata and run publish once ([fdab486](https://github.com/LBHackney-IT/mtfh-frontend/commit/fdab486cfb3a171fe38e2b35c5010a236db2d945))
+* **ci:** harden OIDC publish metadata and run publish once ([20aaa3c](https://github.com/LBHackney-IT/mtfh-frontend/commit/20aaa3ca377640c418585b39d303571474c5ff37))
+
 ## [2.1.3](https://github.com/LBHackney-IT/mtfh-frontend/compare/@hackney/mtfh-cli-v2.1.2...@hackney/mtfh-cli-v2.1.3) (2026-07-23)
 
 
