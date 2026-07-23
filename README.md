@@ -49,10 +49,11 @@ Look through the various `packages/*` in this monorepo and their detailed Readme
    release PR with version bumps and `CHANGELOG.md` updates for affected packages.
 5. Release PRs are validated by
    [release-pr-build.yml](.github/workflows/release-pr-build.yml) (build, lint, test).
-6. Merge the release PR to `main`. Release Please creates GitHub Release(s); the
-   [Publish npm package](.github/workflows/publish-npm.yml) workflow builds packages and
-   publishes to npm using [trusted publishers](https://docs.npmjs.com/trusted-publishers)
-   (OIDC), then deploys Storybook to `gh-pages`.
+6. Merge the release PR to `main`. Release Please creates GitHub Release(s) and dispatches
+   a **single** [Publish npm package](.github/workflows/publish-npm.yml) run, which builds
+   packages and publishes to npm using
+   [trusted publishers](https://docs.npmjs.com/trusted-publishers) (OIDC), then deploys
+   Storybook to `gh-pages`.
 
 `@hackney/create-mfe` and `@hackney/generator-mfe` are versioned together (linked in
 `release-please-config.json`).
@@ -64,7 +65,7 @@ Publishing uses [npm trusted publishers](https://docs.npmjs.com/trusted-publishe
 `NPM_TOKEN`.
 
 Manual / hotfix republish: **Actions → Publish npm package → Run workflow** with a tag or
-`main` ref.
+`main` ref (publishes any versions in `package.json` that are not yet on npm).
 
 ### Repository secrets
 

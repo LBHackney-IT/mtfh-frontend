@@ -16,7 +16,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LBHackney-IT/mtfh-frontend.git"
+    "url": "git+https://github.com/LBHackney-IT/mtfh-frontend.git",
+    "directory": "packages/create-mfe"
   },
   "bugs": {
     "url": "https://github.com/LBHackney-IT/mtfh-frontend/issues"

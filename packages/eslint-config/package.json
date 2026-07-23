@@ -5,7 +5,8 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LBHackney-IT/mtfh-frontend.git"
+    "url": "git+https://github.com/LBHackney-IT/mtfh-frontend.git",
+    "directory": "packages/eslint-config"
   },
   "author": "https://hackney.gov.uk/",
   "license": "MIT",

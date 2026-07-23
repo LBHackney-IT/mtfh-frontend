@@ -11,9 +11,13 @@
     "dist",
     "plugin.js"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LBHackney-IT/mtfh-frontend.git"
+    "url": "git+https://github.com/LBHackney-IT/mtfh-frontend.git",
+    "directory": "packages/cypress"
   },
   "scripts": {
     "build": "rollup -c",
