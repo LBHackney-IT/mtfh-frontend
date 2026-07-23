@@ -1,5 +1,13 @@
 # @hackney/eslint-config
 
+## [1.5.2](https://github.com/LBHackney-IT/mtfh-frontend/compare/@hackney/eslint-config-v1.5.1...@hackney/eslint-config-v1.5.2) (2026-07-23)
+
+
+### Bug Fixes
+
+* **ci:** harden OIDC publish metadata and run publish once ([fdab486](https://github.com/LBHackney-IT/mtfh-frontend/commit/fdab486cfb3a171fe38e2b35c5010a236db2d945))
+* **ci:** harden OIDC publish metadata and run publish once ([20aaa3c](https://github.com/LBHackney-IT/mtfh-frontend/commit/20aaa3ca377640c418585b39d303571474c5ff37))
+
 ## [1.5.1](https://github.com/LBHackney-IT/mtfh-frontend/compare/@hackney/eslint-config-v1.5.0...@hackney/eslint-config-v1.5.1) (2026-07-23)
 
 
