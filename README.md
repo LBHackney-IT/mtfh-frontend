@@ -65,8 +65,7 @@ Publishing uses [npm trusted publishers](https://docs.npmjs.com/trusted-publishe
 `NPM_TOKEN`.
 
 Manual / hotfix republish: **Actions → Publish npm package → Run workflow** with a tag or
-`main` ref. Already-published versions are skipped (avoids Sigstore TLOG `409` errors on
-retry).
+`main` ref (publishes any versions in `package.json` that are not yet on npm).
 
 ### Repository secrets
 
