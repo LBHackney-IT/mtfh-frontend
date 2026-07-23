@@ -1,10 +1,11 @@
 # Trusted publisher workflow (OIDC). Only this filename may be registered on npmjs.com
 # for each @hackney/* package that this monorepo publishes.
+#
+# Triggered once after Release Please (via workflow_dispatch from release-please.yml),
+# not on each GitHub Release — independent packages would otherwise spawn N publish runs.
 name: Publish npm package
 
 on:
-  release:
-    types: [published]
   workflow_dispatch:
     inputs:
       git_ref:
@@ -13,7 +14,6 @@ on:
         default: main
         type: string
 
-# Queue runs when Release Please creates multiple package releases from one merge.
 concurrency:
   group: publish-npm
   cancel-in-progress: false
@@ -27,18 +27,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: npm-release
     steps:
-      - name: Resolve publish target
-        id: target
-        run: |
-          if [ "${{ github.event_name }}" = "release" ]; then
-            echo "ref=${{ github.event.release.tag_name }}" >> "$GITHUB_OUTPUT"
-          else
-            echo "ref=${{ inputs.git_ref }}" >> "$GITHUB_OUTPUT"
-          fi
-
       - uses: actions/checkout@v6
         with:
-          ref: ${{ steps.target.outputs.ref }}
+          ref: ${{ inputs.git_ref }}
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -71,12 +62,11 @@ jobs:
 
       - name: Summary
         run: |
-          REF="${{ steps.target.outputs.ref }}"
           {
             echo "### Packages published (trusted publisher / OIDC)"
             echo ""
             echo "- **Dist-tag:** \`latest\`"
-            echo "- **Ref:** \`${REF}\`"
+            echo "- **Ref:** \`${{ inputs.git_ref }}\`"
             echo ""
             echo "Published via \`lerna publish from-package\` for versions not already on npm."
           } >> "$GITHUB_STEP_SUMMARY"
