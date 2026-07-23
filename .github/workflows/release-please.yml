@@ -11,8 +11,6 @@ permissions:
 jobs:
   release-please:
     runs-on: ubuntu-latest
-    outputs:
-      releases_created: ${{ steps.release.outputs.releases_created }}
     steps:
       - name: Generate token
         id: app-token
@@ -30,44 +28,5 @@ jobs:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
-  publish-npm:
-    needs: release-please
-    if: ${{ needs.release-please.outputs.releases_created == 'true' }}
-    runs-on: ubuntu-latest
-    # contents: write is required for JamesIves/github-pages-deploy-action to push gh-pages
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: ".nvmrc"
-          registry-url: https://registry.npmjs.org
-          cache: npm
-
-      - name: Install modules
-        run: npm ci
-
-      - name: Build packages
-        run: npm run build
-
-      - name: Run tests
-        run: npm run test:ci
-
-      - name: Publish packages
-        run: npx lerna publish from-package --yes
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Build Storybook
-        run: npm run build-storybook
-
-      - name: Deploy Storybook
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: storybook-static
+  # npm publish and Storybook deploy run in publish-npm.yml (trusted publisher)
+  # when GitHub Releases are created by Release Please.
