@@ -1,8 +1,7 @@
 # Trusted publisher workflow (OIDC). Only this filename may be registered on npmjs.com
 # for each @hackney/* package that this monorepo publishes.
 #
-# Triggered once after Release Please (via workflow_dispatch from release-please.yml),
-# not on each GitHub Release — independent packages would otherwise spawn N publish runs.
+# Triggered once after Release Please (via workflow_dispatch from release-please.yml)
 name: Publish npm package
 
 on:
