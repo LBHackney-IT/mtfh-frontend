@@ -63,15 +63,6 @@ Publishing uses [npm trusted publishers](https://docs.npmjs.com/trusted-publishe
 [publish-npm.yml](.github/workflows/publish-npm.yml). Do **not** use a long-lived
 `NPM_TOKEN`.
 
-One-time setup (maintainers):
-
-1. Create a GitHub Environment **`npm-release`** (optional required reviewers).
-2. On [npmjs.com](https://www.npmjs.com/) for **each** published `@hackney/*` package, add
-   a trusted publisher:
-   - **Repository:** `LBHackney-IT/mtfh-frontend`
-   - **Workflow:** `publish-npm.yml` (filename must match exactly)
-   - **Environment:** `npm-release`
-
 Manual / hotfix republish: **Actions → Publish npm package → Run workflow** with a tag or
 `main` ref.
 
