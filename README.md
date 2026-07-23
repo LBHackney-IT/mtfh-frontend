@@ -65,17 +65,15 @@ Publishing uses [npm trusted publishers](https://docs.npmjs.com/trusted-publishe
 
 One-time setup (maintainers):
 
-1. Create GitHub Environments **`npm-release`** and **`npm-prerelease`** (optional
-   required reviewers for production publishes).
+1. Create a GitHub Environment **`npm-release`** (optional required reviewers).
 2. On [npmjs.com](https://www.npmjs.com/) for **each** published `@hackney/*` package, add
    a trusted publisher:
    - **Repository:** `LBHackney-IT/mtfh-frontend`
    - **Workflow:** `publish-npm.yml` (filename must match exactly)
-   - **Environment:** `npm-release` (and separately `npm-prerelease` if you use `@next`)
+   - **Environment:** `npm-release`
 
-Manual / hotfix republish: **Actions → Publish npm package → Run workflow** with channel
-`latest` and a tag or `main` ref. For pre-release testing from a Release Please branch,
-use channel `next` (publishes unique `*-next.N` versions under the `next` tag).
+Manual / hotfix republish: **Actions → Publish npm package → Run workflow** with a tag or
+`main` ref.
 
 ### Repository secrets
 
