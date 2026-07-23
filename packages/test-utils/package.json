@@ -9,7 +9,7 @@
     "access": "public"
   },
   "main": "dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/types/packages/test-utils/src/index.d.ts",
   "files": [
     "dist"
   ],
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "^9.0.0",
-    "@hackney/mtfh-system": "^1.0.2",
+    "@hackney/mtfh-system": "^1.1.0",
     "date-fns": "^2.24.0",
     "jest-axe": "^5.0.1",
     "jest-matchmedia-mock": "^1.1.0"
