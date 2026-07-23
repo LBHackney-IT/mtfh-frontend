@@ -22,9 +22,8 @@ permissions:
   id-token: write
 
 jobs:
-  publish:
+  build-test:
     runs-on: ubuntu-latest
-    environment: npm-release
     steps:
       - uses: actions/checkout@v6
         with:
@@ -47,8 +46,116 @@ jobs:
       - name: Run tests
         run: npm run test:ci
 
+  publish:
+    needs: build-test
+    runs-on: ubuntu-latest
+    environment: npm-release
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.git_ref }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: ".nvmrc"
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+
+      - name: Install modules
+        run: npm ci
+
+      - name: Build packages
+        run: npm run build
+
+      - name: Resolve unpublished packages
+        id: unpublished
+        run: |
+          SCOPES=()
+          while IFS= read -r pkg_json; do
+            NAME=$(node -p "require('./${pkg_json}').name")
+            VERSION=$(node -p "require('./${pkg_json}').version")
+            PRIVATE=$(node -p "Boolean(require('./${pkg_json}').private)")
+            if [ "$PRIVATE" = "true" ]; then
+              continue
+            fi
+
+            if npm view "${NAME}@${VERSION}" version >/dev/null 2>&1; then
+              echo "Skip ${NAME}@${VERSION} (already on npm)"
+            else
+              echo "Queue ${NAME}@${VERSION}"
+              SCOPES+=("${NAME}")
+            fi
+          done < <(find packages -mindepth 2 -maxdepth 2 -name package.json | sort)
+
+          if [ "${#SCOPES[@]}" -eq 0 ]; then
+            echo "has_packages=false" >> "$GITHUB_OUTPUT"
+            echo "No unpublished package versions to publish."
+            exit 0
+          fi
+
+          {
+            echo "has_packages=true"
+            echo "scopes<<EOF"
+            printf '%s\n' "${SCOPES[@]}"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+          echo "Will publish: ${SCOPES[*]}"
+
       - name: Publish packages
-        run: npx lerna publish from-package --yes
+        if: ${{ steps.unpublished.outputs.has_packages == 'true' }}
+        env:
+          SCOPES: ${{ steps.unpublished.outputs.scopes }}
+        run: |
+          ARGS=()
+          while IFS= read -r name; do
+            [ -z "$name" ] && continue
+            ARGS+=(--scope "$name")
+          done <<< "$SCOPES"
+
+          npx lerna publish from-package --yes "${ARGS[@]}"
+
+      - name: Summary
+        run: |
+          {
+            echo "### Packages published (trusted publisher / OIDC)"
+            echo ""
+            echo "- **Dist-tag:** \`latest\`"
+            echo "- **Ref:** \`${{ inputs.git_ref }}\`"
+            echo "- **Queued scopes:**"
+            if [ "${{ steps.unpublished.outputs.has_packages }}" = "true" ]; then
+              echo '```'
+              echo "${{ steps.unpublished.outputs.scopes }}"
+              echo '```'
+            else
+              echo "_None — all package.json versions already on npm._"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  # Independent of publish success so a TLOG/retry failure cannot block gh-pages.
+  storybook:
+    needs: build-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.git_ref }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: ".nvmrc"
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+
+      - name: Install modules
+        run: npm ci
+
+      - name: Build packages
+        run: npm run build
 
       - name: Build Storybook
         run: npm run build-storybook
@@ -58,14 +165,3 @@ jobs:
         with:
           branch: gh-pages
           folder: storybook-static
-
-      - name: Summary
-        run: |
-          {
-            echo "### Packages published (trusted publisher / OIDC)"
-            echo ""
-            echo "- **Dist-tag:** \`latest\`"
-            echo "- **Ref:** \`${{ inputs.git_ref }}\`"
-            echo ""
-            echo "Published via \`lerna publish from-package\` for versions not already on npm."
-          } >> "$GITHUB_STEP_SUMMARY"
