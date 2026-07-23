@@ -41,8 +41,8 @@
     "url": "https://github.com/LBHackney-IT/mtfh-frontend/issues"
   },
   "devDependencies": {
-    "@hackney/eslint-config": "^1.5.0",
-    "@hackney/mtfh-test-utils": "^2.1.0",
+    "@hackney/eslint-config": "^1.1.1",
+    "@hackney/mtfh-test-utils": "^2.0.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
@@ -60,7 +60,7 @@
     "swr": "1.0.1"
   },
   "dependencies": {
-    "@hackney/mtfh-system": "^1.1.0",
+    "@hackney/mtfh-system": "^1.0.2",
     "@radix-ui/react-dialog": "^1.1.15",
     "classnames": "^2.3.1",
     "formik": "^2.4.6",

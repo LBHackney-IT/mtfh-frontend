@@ -22,7 +22,7 @@
     "url": "https://github.com/LBHackney-IT/mtfh-frontend/issues"
   },
   "dependencies": {
-    "@hackney/generator-mfe": "^1.2.4",
+    "@hackney/generator-mfe": "^1.0.1",
     "yargs": "^17.2.1",
     "yeoman-environment": "^6.1.0"
   }

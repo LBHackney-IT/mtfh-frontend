@@ -1,3 +1,5 @@
+node-24-upgrade-plan.md
+
 .changelog/
 node_modules
 packages/*/coverage
