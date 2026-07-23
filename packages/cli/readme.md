@@ -1,6 +1,6 @@
 # `@hackney/mtfh-cli`
 
-A CLI to help manage micro-frontend orchestration for MTFH.
+CLI for managing micro-frontend orchestration for Modern Tools for Housing.
 
 Requires **Node.js 24+**.
 

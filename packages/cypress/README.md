@@ -1,9 +1,8 @@
 # `@hackney/mtfh-cypress`
 
-This package is intended to be used in conjunction with a live environment that uses
-import-maps to resolve micro-frontends. It will stub an import-map with the URL defined in
-the env. This allows us to test a local MFE against an environment without deploying,
-while having access to the entire environment.
+Cypress helpers for Modern Tools for Housing. Intended for use with a live environment
+that resolves micro-frontends via import maps: it stubs the import map with the URL from
+the env so you can test a local MFE against that environment without deploying.
 
 Requires **Cypress 13+** and **Node.js 24+**.
 

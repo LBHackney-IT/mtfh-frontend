@@ -1,6 +1,6 @@
-# `test-utils`
+# `@hackney/mtfh-test-utils`
 
-Testing utilities for Jest utilising the `@testing-library` and `msw` frameworks.
+Shared Jest testing utilities built on `@testing-library` and `msw`.
 
 Supports React **17 | 18 | 19** and MSW **2**.
 

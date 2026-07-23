@@ -1,6 +1,6 @@
 # `@hackney/webpack-import-map-plugin`
 
-Import Map Webpack Plugin will produce an import-map of built files.
+Webpack plugin that emits an import map of built micro-frontend files.
 
 ## Usage
 

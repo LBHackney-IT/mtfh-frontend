@@ -1,6 +1,6 @@
 # `@hackney/generator-mfe`
 
-Yeoman generator for Hackney micro-frontend applications. Used by
+Yeoman generator that scaffolds Hackney micro-frontend applications. Used by
 [`@hackney/create-mfe`](../create-mfe) and `@hackney/mtfh-cli` (`new` / `upgrade`).
 
 Requires **Node.js 24+**.

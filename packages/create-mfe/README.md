@@ -1,6 +1,6 @@
 # `@hackney/create-mfe`
 
-Scaffolding utilities for Hackney micro-frontends.
+Scaffolding CLI for Hackney micro-frontend applications.
 
 Requires **Node.js 24+**.
 

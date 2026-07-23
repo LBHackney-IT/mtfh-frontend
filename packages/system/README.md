@@ -1,6 +1,6 @@
 # `@hackney/mtfh-system`
 
-Shared design tokens and breakpoint helpers for Modern Tools for Housing frontends.
+Shared design tokens and breakpoint helpers for Modern Tools for Housing front-ends.
 
 ## Installation
 
