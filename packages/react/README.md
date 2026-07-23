@@ -1,8 +1,8 @@
 # `@hackney/mtfh-react`
 
-LBH React design-system components for Modern Tools for Housing. Built on
-[lbh-frontend](https://github.com/LBHackney-IT/lbh-frontend) / GOV.UK Frontend styles and
-patterns.
+LBH React design-system components for Modern Tools for Housing, built on
+[lbh-frontend](https://github.com/LBHackney-IT/lbh-frontend) and GOV.UK Frontend styles
+and patterns.
 
 ## Installation
 

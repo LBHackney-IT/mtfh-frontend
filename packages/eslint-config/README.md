@@ -1,6 +1,6 @@
 # `@hackney/eslint-config`
 
-ESLint config for TypeScript and React projects.
+Shared ESLint configuration for Hackney TypeScript and React projects.
 
 Requires **ESLint 8**, **typescript-eslint 7**, and **Prettier 3** peer dependencies (see
 Installation).

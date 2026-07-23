@@ -1,6 +1,6 @@
 # `@hackney/prettier-config`
 
-A configuration for Prettier, to create consistency across Hackney projects.
+Shared Prettier configuration for Hackney front-end projects.
 
 ## Usage
 
