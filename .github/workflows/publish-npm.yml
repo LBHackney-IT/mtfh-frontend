@@ -109,8 +109,6 @@ jobs:
         env:
           SCOPES: ${{ steps.unpublished.outputs.scopes }}
         run: |
-          # Lerna 9 publish no longer supports --scope; publish each queued
-          # workspace package with npm (OIDC / trusted publisher still applies).
           failed=0
           while IFS= read -r name; do
             [ -z "$name" ] && continue
