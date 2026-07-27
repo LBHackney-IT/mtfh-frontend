@@ -5,7 +5,7 @@ import { queries } from "@hackney/mtfh-system";
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { JestAxeConfigureOptions, axe, toHaveNoViolations } from "jest-axe";
 import MatchMediaMock from "jest-matchmedia-mock";
-import { HttpResponse, http } from "msw";
+import { HttpResponse, type JsonBodyType, http } from "msw";
 import { setupServer } from "msw/node";
 import { SWRConfig } from "swr";
 
@@ -87,7 +87,7 @@ export const render = (ui: UI, options?: Partial<RouteRenderConfig>): RenderResu
 };
 
 export const testA11y = async (
-  ui: UI,
+  ui: UI | Element,
   { axeOptions, ...options }: TestA11YOptions = {},
 ): Promise<void> => {
   const container = isValidElement(ui) ? rtlRender(ui, options).container : ui;
@@ -99,7 +99,7 @@ export const testA11y = async (
 export type RestRequest = {
   method?: keyof typeof http;
   path: string;
-  data?: Record<string, unknown>;
+  data?: unknown;
   code?: number;
 };
 
@@ -111,7 +111,7 @@ export const request = ({
 }: RestRequest): void => {
   server.use(
     http[method](path, () => {
-      return HttpResponse.json(data, { status: code });
+      return HttpResponse.json(data as JsonBodyType, { status: code });
     }),
   );
 };
