@@ -109,13 +109,19 @@ jobs:
         env:
           SCOPES: ${{ steps.unpublished.outputs.scopes }}
         run: |
-          ARGS=()
+          failed=0
           while IFS= read -r name; do
             [ -z "$name" ] && continue
-            ARGS+=(--scope "$name")
+            echo "Publishing ${name}..."
+            if ! npm publish --workspace "${name}" --access public; then
+              echo "::error::Failed to publish ${name}"
+              failed=1
+            fi
           done <<< "$SCOPES"
 
-          npx lerna publish from-package --yes "${ARGS[@]}"
+          if [ "$failed" -ne 0 ]; then
+            exit 1
+          fi
 
       - name: Summary
         run: |
@@ -132,6 +138,7 @@ jobs:
             else
               echo "_None — all package.json versions already on npm._"
             fi
+            echo "Published via \`npm publish --workspace\` for versions not already on npm."
           } >> "$GITHUB_STEP_SUMMARY"
 
   # Independent of publish success so a TLOG/retry failure cannot block gh-pages.
