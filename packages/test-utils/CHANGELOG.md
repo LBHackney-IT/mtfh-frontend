@@ -1,5 +1,13 @@
 # @hackney/mtfh-test-utils
 
+## [2.1.2](https://github.com/LBHackney-IT/mtfh-frontend/compare/@hackney/mtfh-test-utils-v2.1.1...@hackney/mtfh-test-utils-v2.1.2) (2026-07-27)
+
+
+### Bug Fixes
+
+* **mtfh-test-utils:** widen testA11y and RestRequest types ([1c57baa](https://github.com/LBHackney-IT/mtfh-frontend/commit/1c57baa16337029c1ea86173116ad538642ccf18))
+* **mtfh-test-utils:** widen testA11y and RestRequest types ([d5386db](https://github.com/LBHackney-IT/mtfh-frontend/commit/d5386db480c44f482b4f1ae1d1fe8ba93bf81d9e))
+
 ## [2.1.1](https://github.com/LBHackney-IT/mtfh-frontend/compare/@hackney/mtfh-test-utils-v2.1.0...@hackney/mtfh-test-utils-v2.1.1) (2026-07-23)
 
 
