@@ -1,5 +1,13 @@
 # @hackney/mtfh-test-utils
 
+## [2.1.3](https://github.com/LBHackney-IT/mtfh-frontend/compare/@hackney/mtfh-test-utils-v2.1.2...@hackney/mtfh-test-utils-v2.1.3) (2026-10-26)
+
+
+### Bug Fixes
+
+* vulnerability upgrades ([5de366a](https://github.com/LBHackney-IT/mtfh-frontend/commit/5de366ae8c7288a087977f3c5e925948249036ea))
+* vulnerability upgrades ([c23d254](https://github.com/LBHackney-IT/mtfh-frontend/commit/c23d254dded827fe8dc1c93debb9bb6614c3fe89))
+
 ## [2.1.2](https://github.com/LBHackney-IT/mtfh-frontend/compare/@hackney/mtfh-test-utils-v2.1.1...@hackney/mtfh-test-utils-v2.1.2) (2026-07-27)
 
 
