@@ -2,6 +2,8 @@ import chalk from "chalk";
 import { sentenceCase } from "change-case";
 import Generator from "yeoman-generator";
 
+type YeomanOptions = NonNullable<ConstructorParameters<typeof Generator>[1]>;
+
 interface UpgradeGeneratorOptions {
   packageManager: "yarn" | "npm";
 }
@@ -16,9 +18,13 @@ type Dependency = { library: string; version: string; optional: boolean };
 
 type DependencyUpdate = Record<"dependencies" | "devDependencies", Dependency[]>;
 
-export default class ApplicationGenerator extends Generator<UpgradeGeneratorOptions> {
-  constructor(args: string | string[], options: UpgradeGeneratorOptions) {
-    super(args, options);
+export default class ApplicationGenerator extends Generator {
+  private get opts(): UpgradeGeneratorOptions {
+    return this.options as unknown as UpgradeGeneratorOptions;
+  }
+
+  constructor(args: string | string[], options: YeomanOptions) {
+    super(Array.isArray(args) ? args : [args], options);
 
     this.option("packageManager", { type: String });
   }
@@ -33,27 +39,29 @@ export default class ApplicationGenerator extends Generator<UpgradeGeneratorOpti
   }
 
   async packageManger() {
-    this.options.packageManager = this.fs.exists(this.destinationPath("yarn.lock"))
+    this.opts.packageManager = this.fs.exists(this.destinationPath("yarn.lock"))
       ? "yarn"
       : "npm";
 
-    if (this.options.packageManager === "yarn") {
+    if (this.opts.packageManager === "yarn") {
       this.log("yarn.lock detected, installing dependencies with yarn.");
     } else {
       this.log("Defaulting to use npm.");
     }
 
-    this.env.options.nodePackageManager = this.options.packageManager;
+    (
+      this.env as typeof this.env & { options: { nodePackageManager?: string } }
+    ).options.nodePackageManager = this.opts.packageManager;
   }
 
   async checkDependencies() {
     const getLatestVersion = (packageName: string) => {
-      const { stdout } = this.spawnCommandSync(
+      const { stdout } = this.spawnSync(
         "npm",
         ["view", `${packageName}@latest`, "version"],
         { stdio: "pipe" },
       );
-      return stdout;
+      return String(stdout).trim();
     };
     const current = this.fs.readJSON(this.destinationPath("package.json")) as PackageJson;
 
@@ -149,21 +157,24 @@ export default class ApplicationGenerator extends Generator<UpgradeGeneratorOpti
       devDependencies: {},
     };
 
-    const validateSemver = (collection: Dependency[], type: string) => {
+    const validateSemver = (
+      collection: Dependency[],
+      type: "dependencies" | "devDependencies",
+    ) => {
       if (Object.keys(collection).length > 0) {
         this.log("");
         this.log(`${sentenceCase(type)} Updates:`);
       }
       collection.forEach(({ library, version, optional }) => {
-        const list = current[`${type}`];
+        const list = current[type];
         if (list && list[`${library}`]) {
           const libVersion = list[`${library}`];
           if (version !== libVersion) {
-            packages[`${type}`] = { ...packages[`${type}`], [library]: version };
+            packages[type] = { ...packages[type], [library]: version };
             this.log(`${chalk.yellow("Updating")} ${library}@${version}`);
           }
         } else if (!optional) {
-          packages[`${type}`] = { ...packages[`${type}`], [library]: version };
+          packages[type] = { ...packages[type], [library]: version };
           this.log(`${chalk.green("Adding")} ${library}@${version}`);
         }
       });

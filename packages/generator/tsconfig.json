@@ -1,13 +1,18 @@
 {
-  "extends": "../../tsconfig.json",
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/templates"],
   "compilerOptions": {
-    "module": "esnext",
     "target": "es2017",
+    "module": "esnext",
     "lib": ["es2017"],
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
+    "types": ["node"],
+    "rootDir": "src",
+    "declaration": true,
     "declarationDir": "generators/types",
-    "declaration": true
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true
   }
 }

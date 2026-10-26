@@ -7,21 +7,27 @@ import packageJson from "../package.json";
 import Application from "./application";
 import Upgrade from "./upgrade";
 
+type YeomanOptions = NonNullable<ConstructorParameters<typeof Generator>[1]>;
+
 interface HackneyGeneratorOptions {
   dir: string;
   type: "application" | "upgrade";
   destinationRoot: string;
 }
 
-export default class HackneyGenerator extends Generator<HackneyGeneratorOptions> {
-  constructor(args: string | string[], options: HackneyGeneratorOptions) {
-    super(args, options);
+export default class HackneyGenerator extends Generator {
+  private get opts(): HackneyGeneratorOptions {
+    return this.options as unknown as HackneyGeneratorOptions;
+  }
+
+  constructor(args: string | string[], options: YeomanOptions) {
+    super(Array.isArray(args) ? args : [args], options);
 
     this.option("dir", { type: String });
     this.option("type", { type: String });
 
-    if (args.length > 0 && !this.options.dir) {
-      this.options.dir = args[0];
+    if (args.length > 0 && !this.opts.dir) {
+      this.opts.dir = args[0];
     }
   }
 
@@ -29,13 +35,13 @@ export default class HackneyGenerator extends Generator<HackneyGeneratorOptions>
     this.log(`${chalk.bgGreen.black(` ${packageJson.name} `)} ${packageJson.version}`);
 
     try {
-      const { stdout } = this.spawnCommandSync(
+      const { stdout } = this.spawnSync(
         "npm",
         ["view", "@hackney/generator-mfe@latest", "version"],
         { stdio: "pipe" },
       );
 
-      const remoteVersion = stdout && stdout.toString && stdout.toString("utf8").trim();
+      const remoteVersion = String(stdout).trim();
 
       if (remoteVersion !== packageJson.version) {
         this.log(
@@ -50,10 +56,10 @@ export default class HackneyGenerator extends Generator<HackneyGeneratorOptions>
   }
 
   async selectChildGeneratorType() {
-    if (!this.options.type) {
+    if (!this.opts.type) {
       const response = await this.prompt([
         {
-          type: "list",
+          type: "select",
           name: "type",
           message: "Select type to generate",
           choices: [
@@ -63,12 +69,12 @@ export default class HackneyGenerator extends Generator<HackneyGeneratorOptions>
         },
       ]);
 
-      this.options.type = response.type;
+      this.opts.type = response.type;
     }
   }
 
   async chooseDestinationDir() {
-    if (!this.options.dir) {
+    if (!this.opts.dir) {
       const response = await this.prompt([
         {
           type: "input",
@@ -78,24 +84,24 @@ export default class HackneyGenerator extends Generator<HackneyGeneratorOptions>
         },
       ]);
 
-      this.options.dir = response.dir;
+      this.opts.dir = response.dir;
     }
   }
 
   async checkDestinationDirIsClean() {
-    if (this.options.dir) {
-      this.options.destinationRoot = path.isAbsolute(this.options.dir)
-        ? this.options.dir
-        : path.resolve(process.cwd(), this.options.dir);
+    if (this.opts.dir) {
+      this.opts.destinationRoot = path.isAbsolute(this.opts.dir)
+        ? this.opts.dir
+        : path.resolve(process.cwd(), this.opts.dir);
     } else {
-      this.options.destinationRoot = process.cwd();
+      this.opts.destinationRoot = process.cwd();
     }
 
-    this.destinationRoot(this.options.destinationRoot);
-    this.env.cwd = this.options.destinationRoot;
+    this.destinationRoot(this.opts.destinationRoot);
+    this.env.cwd = this.opts.destinationRoot;
 
     if (
-      this.options.type !== "upgrade" &&
+      this.opts.type !== "upgrade" &&
       this.fs.exists(this.destinationPath("package.json"))
     ) {
       this.log(chalk.red("The destination folder already contains a package.json file."));
@@ -104,21 +110,21 @@ export default class HackneyGenerator extends Generator<HackneyGeneratorOptions>
   }
 
   async executeChildGenerator() {
-    switch (this.options.type) {
+    switch (this.opts.type) {
       case "application":
         this.composeWith(
           { Generator: Application, path: require.resolve("../application") },
-          { options: this.options },
+          this.options,
         );
         break;
       case "upgrade":
         this.composeWith(
           { Generator: Upgrade, path: require.resolve("../upgrade") },
-          { options: this.options },
+          this.options,
         );
         break;
       default:
-        this.log(chalk.red(`Unsupported generator type ${this.options.type}.`));
+        this.log(chalk.red(`Unsupported generator type ${this.opts.type}.`));
     }
   }
 }
