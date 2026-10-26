@@ -4,9 +4,9 @@ import chalk from "chalk";
 import { paramCase, pascalCase } from "change-case";
 import Generator from "yeoman-generator";
 
-type YeomanOptions = NonNullable<ConstructorParameters<typeof Generator>[1]>;
-
 import validate from "../validate-name";
+
+type YeomanOptions = NonNullable<ConstructorParameters<typeof Generator>[1]>;
 
 interface ApplicationGeneratorOptions {
   packageManager: "yarn" | "npm";

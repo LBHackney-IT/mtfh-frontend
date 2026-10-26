@@ -3,11 +3,11 @@ import path from "path";
 import chalk from "chalk";
 import Generator from "yeoman-generator";
 
-type YeomanOptions = NonNullable<ConstructorParameters<typeof Generator>[1]>;
-
 import packageJson from "../package.json";
 import Application from "./application";
 import Upgrade from "./upgrade";
+
+type YeomanOptions = NonNullable<ConstructorParameters<typeof Generator>[1]>;
 
 interface HackneyGeneratorOptions {
   dir: string;
