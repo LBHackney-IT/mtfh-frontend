@@ -1,5 +1,13 @@
 # @hackney/generator-mfe
 
+## [1.2.7](https://github.com/LBHackney-IT/mtfh-frontend/compare/@hackney/generator-mfe-v1.2.6...@hackney/generator-mfe-v1.2.7) (2026-10-26)
+
+
+### Bug Fixes
+
+* vulnerability upgrades ([5de366a](https://github.com/LBHackney-IT/mtfh-frontend/commit/5de366ae8c7288a087977f3c5e925948249036ea))
+* vulnerability upgrades ([c23d254](https://github.com/LBHackney-IT/mtfh-frontend/commit/c23d254dded827fe8dc1c93debb9bb6614c3fe89))
+
 ## [1.2.6](https://github.com/LBHackney-IT/mtfh-frontend/compare/@hackney/generator-mfe-v1.2.5...@hackney/generator-mfe-v1.2.6) (2026-07-23)
 
 
